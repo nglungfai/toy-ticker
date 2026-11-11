@@ -1620,7 +1620,11 @@ function insChase() {
       ${prem ? ` Holo cards average <b>${usd(avg(holo.map(r => r.price)))}</b> vs ${usd(avg(plain.map(r => r.price)))} for the rest: a <b>${prem.toFixed(1)}×</b> holo premium.` : ""}</p>`;
   }).join("");
   const prem = variantPremium(SID);
-  const extra = (prem.toys ? `<p>Toys still <b>sealed in their package</b> ask <b>${prem.toys.x.toFixed(1)}×</b> the other listings (median across ${prem.toys.n} toys): keep them sealed if you might sell.</p>` : "") +
+  const t = prem.toys, sealedNote = !t ? "" : t.x >= 1.1
+    ? `<p>Toys still <b>sealed in their package</b> ask <b>${t.x.toFixed(1)}×</b> the other listings (median across ${t.n} toys): keep them sealed if you might sell.</p>`
+    : t.x <= 0.9 ? `<p>Sealed toys ask <b>less</b> than the other listings here (${t.x.toFixed(1)}×, across ${t.n} toys), so opening them costs nothing.</p>`
+    : `<p>Sealed and opened toys ask <b>about the same</b> here (across ${t.n} toys), so opening them costs nothing.</p>`;
+  const extra = sealedNote +
     (prem.cards ? `<p>A <b>PSA 10</b> graded card asks <b>${prem.cards.x.toFixed(1)}×</b> a raw copy (median across ${prem.cards.n} cards).</p>` : "");
   return `<div class="ins"><h4>The chase</h4><p class="q">Did you get a good one?</p>${blocks || `<p class="wait">Needs at least 3 priced items.</p>`}${extra}
     <div class="foot">Based on today's median asking prices.</div></div>`;

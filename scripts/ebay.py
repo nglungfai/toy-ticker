@@ -398,6 +398,7 @@ SET_COUNT = re.compile(r"\b(?:set of|all|lot of|s/)\s*\(?(\d+)\)?|\b(\d+)\s*(?:p
 SET_MULTI = re.compile(r"\b(\d+|two|three|four|five)\s+(complete\s+|full\s+)?sets\b|\b(2|3)x\b")
 SET_REJECT = re.compile(
     r"\b(singles?|or set|or full|or complete|pick|choose|select|your choice|u pick|menu|variation|"
+    r"(complete|finish|build|fill) (your|ur|my) (set|collection)|"
     r"incomplete|partial|missing|minus|except|doubles|duplicates|empty|box(es)? only|custom|fake|replica|parody|"
     r"aus|australia|australian|uk|canada|canadian|japan|japanese|malaysia|europe|nz|new zealand|mexico|asia|korea|philippines|"
     r"happy set|display|shelf|store|unused|poster sticker|sticker set|poster set|us limited|usa limited)\b")
