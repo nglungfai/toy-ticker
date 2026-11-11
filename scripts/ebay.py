@@ -125,6 +125,25 @@ def best_image(matched, item):
     }
 
 
+DEAL_CUTOFF = 0.80  # a "deal" asks at most 80% of today's median
+
+
+def deals(matched, median, limit=5):
+    """Today's cheapest matched listings that ask well under the median (with links back to eBay)."""
+    out = []
+    for it in matched:
+        try:
+            price = float(it["price"]["value"])
+        except (KeyError, ValueError):
+            continue
+        if price <= median * DEAL_CUTOFF and it.get("itemWebUrl"):
+            img = (it.get("image") or {}).get("imageUrl")
+            out.append({"title": it.get("title", "")[:120], "price": round(price, 2),
+                        "url": it["itemWebUrl"], "below": round(1 - price / median, 3),
+                        **({"image": img} if img else {})})
+    return sorted(out, key=lambda d: d["price"])[:limit]
+
+
 def snapshot(series, today):
     """Return {item_id: (item_meta, point_or_None)} for one configured series."""
     tok = token(os.environ["EBAY_CLIENT_ID"], os.environ["EBAY_CLIENT_SECRET"])
@@ -151,6 +170,7 @@ def snapshot(series, today):
                 pass
         meta.update(best_image(matched, item))
         point = {"date": today, **stats(prices)} if prices else None
+        meta["deals"] = deals(matched, point["median"]) if point else []
         print(f"  {iid} {item['name']}: {len(prices)}/{len(items)} listings kept"
               + (f", median ${point['median']}" if point else ""))
         out[iid] = (meta, point)

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Toy Ticker</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Toy Ticker tracks daily eBay prices for McDonald's Happy Meal toys and cards. Here's how it works and what the numbers mean.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About Toy Ticker">
+<meta property="og:description" content="Know what your Happy Meal toys are worth: daily eBay prices for every toy and card.">
+<meta property="og:image" content="https://nglungfai.github.io/toy-ticker/og/site.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #fafaf7; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #e6e5df;
+    --accent: #d62300; --accent-soft: #fde9e4; --gold: #f2b705; --up: #1a7f37; --up-soft: #e3f1ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --panel: #1e1e1c; --text: #ecebe6; --muted: #9b9a94; --line: #2f2f2c;
+      --accent: #ff6a4d; --accent-soft: #3a211b; --gold: #f5c542; --up: #4cc26a; --up-soft: #1f3a2b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413; --panel: #1e1e1c; --text: #ecebe6; --muted: #9b9a94; --line: #2f2f2c;
+    --accent: #ff6a4d; --accent-soft: #3a211b; --gold: #f5c542; --up: #4cc26a; --up-soft: #1f3a2b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 28px 16px 64px; }
+  h1, h2, h3, .brand, .eyebrow, .big { font-family: "Fredoka", -apple-system, sans-serif; }
+  a { color: var(--accent); }
+
+  /* Top bar */
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 40px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 700;
+           color: var(--text); text-decoration: none; }
+  .brand span { color: var(--accent); }
+  .brand img { width: 38px; height: 38px; }
+  .back { font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid var(--line);
+          background: var(--panel); color: var(--text); padding: 7px 14px; border-radius: 999px; }
+  .back:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; background: var(--panel); border: 1px solid var(--line);
+          border-radius: 20px; padding: 44px 32px 36px; }
+  .hero::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px;
+                  background: linear-gradient(90deg, #ffcb05, #ff7a1a, #5b1f8f, #0aa5d8); }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+             color: #7a1500; background: var(--accent-soft); padding: 4px 12px; border-radius: 999px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .eyebrow { color: #ffc9bc; } }
+  .hero h1 { font-size: 46px; line-height: 1.08; font-weight: 600; margin: 16px 0 12px; max-width: 640px; }
+  .hero p { font-size: 18px; color: var(--muted); max-width: 600px; margin: 0 0 24px; }
+  .cta { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600;
+         padding: 11px 22px; border-radius: 999px; }
+  .cta:hover { filter: brightness(1.08); }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .hero-stats div { min-width: 110px; }
+  .big { display: block; font-size: 30px; font-weight: 600; line-height: 1.1; }
+  .hero-stats small { color: var(--muted); font-size: 13px; }
+  @media (max-width: 640px) {
+    .hero { padding: 36px 20px 28px; } .hero h1 { font-size: 34px; } .hero p { font-size: 16px; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .hero-stats div { min-width: 0; }
+  }
+
+  /* Sections */
+  section { margin-top: 56px; }
+  h2 { font-size: 28px; font-weight: 600; margin: 0 0 6px; }
+  .lead { color: var(--muted); margin: 0 0 22px; max-width: 640px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; counter-reset: step; }
+  .step { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .step::before { counter-increment: step; content: counter(step); display: grid; place-items: center;
+                  width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff;
+                  font-family: "Fredoka", sans-serif; font-weight: 700; margin-bottom: 12px; }
+  .step h3 { margin: 0 0 6px; font-size: 19px; font-weight: 600; }
+  .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Glossary */
+  .terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .term { border-left: 4px solid var(--gold); background: var(--panel); border-radius: 0; padding: 14px 16px; }
+  .term b { display: block; font-family: "Fredoka", sans-serif; font-size: 17px; font-weight: 600; margin-bottom: 2px; }
+  .term span { color: var(--muted); font-size: 15px; }
+  .callout { margin-top: 16px; background: var(--up-soft); border-radius: 14px; padding: 14px 18px; font-size: 15px; }
+
+  /* Series list */
+  .series { display: grid; gap: 10px; }
+  .series a { display: flex; justify-content: space-between; align-items: center; gap: 12px; text-decoration: none;
+              color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+              padding: 14px 18px; border-left-width: 6px; }
+  .series a:hover { box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+  .series b { font-family: "Fredoka", sans-serif; font-size: 18px; font-weight: 600; }
+  .series small { display: block; color: var(--muted); font-size: 13px; }
+  .series .go { color: var(--accent); font-weight: 600; font-size: 14px; white-space: nowrap; }
+
+  /* FAQ */
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 4px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--accent); font-size: 20px; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin: 0 0 14px; color: var(--muted); }
+
+  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+  footer p { margin: 0 0 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="./"><img src="assets/logo.svg" alt="">Toy <span>Ticker</span></a>
+    <a class="back" href="./">← Today's prices</a>
+  </div>
+
+  <!-- Value prop: swap these three lines to try the other options. -->
+  <div class="hero">
+    <span class="eyebrow">The stock market for Happy Meal toys</span>
+    <h1>Know what your Happy Meal toys are worth.</h1>
+    <p>Toy Ticker checks eBay every day and turns hundreds of messy listings into one clear price for every toy and card, so you know what to keep, sell or hunt for.</p>
+    <a class="cta" href="./">See today's prices →</a>
+    <div class="hero-stats">
+      <div><span class="big" id="nSeries">3</span><small>series tracked</small></div>
+      <div><span class="big" id="nItems">35</span><small>toys and cards</small></div>
+      <div><span class="big" id="nListings">—</span><small>eBay listings checked today</small></div>
+      <div><span class="big">Daily</span><small>price updates</small></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>How it works</h2>
+    <p class="lead">No spreadsheets, no guessing from one lucky sale. Every morning, a robot does the boring part.</p>
+    <div class="steps">
+      <div class="step"><h3>Scan eBay</h3><p>We search eBay US for every toy and card in each Happy Meal series and collect every Buy It Now listing.</p></div>
+      <div class="step"><h3>Throw out the noise</h3><p>Lots, full sets, graded slabs, fakes and listings for other years are filtered out, leaving single, ungraded items.</p></div>
+      <div class="step"><h3>One fair price</h3><p>We take the median of what's left, so one silly $500 listing can't move the number, and save it to build a daily price history.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What the numbers mean</h2>
+    <p class="lead">Toy Ticker borrows ideas from stock sites. Here's the cheat sheet.</p>
+    <div class="terms">
+      <div class="term"><b>Median ask</b><span>The middle asking price of today's matching listings. Half ask more, half ask less.</span></div>
+      <div class="term"><b>Lowest ask</b><span>The cheapest listing today: roughly what you'd pay to buy one right now.</span></div>
+      <div class="term"><b>Listings ("volume")</b><span>How many copies are for sale. More listings usually means prices are about to soften.</span></div>
+      <div class="term"><b>Returns</b><span>How much the price moved over 1 day, 1 week, 1 month and so on. "–" means not enough history yet.</span></div>
+      <div class="term"><b>Full set</b><span>The total of every item in a series at today's median ask: what a complete collection is worth.</span></div>
+      <div class="term"><b>Confidence</b><span>How much to trust a price. High means lots of listings that mostly agree; Low means only a few, so one listing can move it.</span></div>
+      <div class="term"><b>Market map</b><span>Every item as a block: bigger means more valuable, greener or redder means a bigger daily move.</span></div>
+    </div>
+    <p class="callout"><b>Heads up:</b> these are <b>asking</b> prices, not completed sales. Sellers usually ask a bit more than buyers end up paying, so treat the median as a ceiling and check eBay's sold listings before you price something.</p>
+  </section>
+
+  <section>
+    <h2>What we track</h2>
+    <p class="lead">The current Happy Meal plus the series before it. New series are added when they hit restaurants.</p>
+    <div class="series" id="seriesList"></div>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <details><summary>Why asking prices and not sold prices?</summary>
+      <p>eBay only shares completed-sale data with a small number of approved partners. Asking prices are public, update daily and move in the same direction as sales, so they're a reliable signal of where the market is going.</p></details>
+    <details><summary>How often do prices update?</summary>
+      <p>Once a day, early morning US time. Each update adds one point to every item's chart and returns.</p></details>
+    <details><summary>Why is my toy missing a price or a photo?</summary>
+      <p>If nobody has listed a single, ungraded copy yet, there's nothing fair to measure. Photos come from eBay listings, so they appear once a good listing shows up.</p></details>
+    <details><summary>Where is "My collection" saved?</summary>
+      <p>Only in your browser. There are no accounts and no tracking, and nothing about your collection is sent anywhere. Clearing your browser data clears it.</p></details>
+    <details><summary>Is this investment advice?</summary>
+      <p>No. Happy Meal toys are made by the million and prices can swing on a single listing. Collect what you love; use Toy Ticker to avoid over- or under-paying.</p></details>
+    <details><summary>Something looks wrong, or I want a photo removed</summary>
+      <p>Open an issue on <a href="https://github.com/nglungfai/toy-ticker/issues" target="_blank" rel="noopener">GitHub</a> and it'll be fixed or removed.</p></details>
+  </section>
+
+  <footer>
+    <p>Unofficial fan site. Not affiliated with or endorsed by McDonald’s, The Pokémon Company, Disney, Nickelodeon, Toei Animation, Shueisha or eBay. All trademarks belong to their owners.</p>
+    <p>Prices are eBay US asking prices collected with the eBay Browse API. Not financial advice.</p>
+  </footer>
+</div>
+
+<script>
+// Fill the live numbers and series list from the same data file the price page uses.
+const BAND = { "pokemon-2026": "#f2b705", "boo-buckets-2026": "#7a3fc0", "spongebob-onepiece-2026": "#0a8fc4" };
+const fmt = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+fetch("data/index.json", { cache: "no-store" }).then(r => r.json()).then(d => {
+  const sets = Object.entries(d.sets).sort((a, b) => a[1].order - b[1].order);
+  document.getElementById("nSeries").textContent = sets.length;
+  document.getElementById("nItems").textContent = Object.keys(d.items).length;
+  const listings = Object.values(d.items).reduce((s, it) => s + (it.latest?.count || 0), 0);
+  document.getElementById("nListings").textContent = listings ? listings.toLocaleString() : "—";
+  document.getElementById("seriesList").innerHTML = sets.map(([id, s]) => {
+    const n = Object.values(d.items).filter(c => c.set === id).length;
+    return `<a href="./?s=${id}" style="border-left-color:${BAND[id] || "#d62300"}">
+      <span><b>${esc(s.name)}</b><small>${n} ${s.kind === "cards" ? "cards" : "toys"} · ${fmt(s.start)} – ${s.end ? fmt(s.end) : "now"}${s.current ? " · in restaurants now" : ""}</small></span>
+      <span class="go">View prices →</span></a>`;
+  }).join("");
+}).catch(() => {});
+</script>
+</body>
+</html>

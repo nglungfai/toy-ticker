@@ -1,0 +1,512 @@
+{
+ "sets": {
+  "pokemon-2026": {
+   "name": "Pokémon TCG cards",
+   "kind": "cards",
+   "start": "2026-11-10",
+   "end": "2026-12-14",
+   "current": true,
+   "note": "15 promo cards (7 holo), 2 per Happy Meal. Raw single cards only.",
+   "order": 0,
+   "refresh": "daily",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)",
+   "days": 0,
+   "lastUpdate": null
+  },
+  "boo-buckets-2026": {
+   "name": "Disney Villains Boo Buckets",
+   "kind": "toys",
+   "start": "2026-10-20",
+   "end": "2026-11-09",
+   "note": "5 Halloween pails with villain lids and stickers.",
+   "order": 2,
+   "refresh": "daily",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)",
+   "days": 0,
+   "lastUpdate": null
+  },
+  "spongebob-onepiece-2026": {
+   "name": "SpongeBob × One Piece",
+   "kind": "toys",
+   "start": "2026-09-15",
+   "end": "2026-10-19",
+   "note": "15 crossover figures. Toy list from Qz and Today; one pairing (Smitty × Brook) is from a single source.",
+   "order": 3,
+   "refresh": "daily",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)",
+   "days": 0,
+   "lastUpdate": null
+  },
+  "pokemon-toys-2026": {
+   "name": "Pokémon mini box toys",
+   "kind": "toys",
+   "start": "2026-11-10",
+   "end": "2026-12-14",
+   "current": true,
+   "note": "15 mini Happy Meal box toys that double as bag charms, one per Happy Meal.",
+   "franchise": "Pokémon",
+   "order": 1,
+   "refresh": "daily",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)",
+   "days": 0,
+   "lastUpdate": null
+  },
+  "hello-kitty-godzilla-2026": {
+   "name": "Hello Kitty × Godzilla",
+   "kind": "toys",
+   "start": "2026-08-18",
+   "end": "2026-09-14",
+   "note": "8 Sanrio characters dressed as Toho kaiju.",
+   "franchise": "Sanrio",
+   "order": 4,
+   "refresh": "daily",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)",
+   "days": 0,
+   "lastUpdate": null
+  },
+  "bt21-2026": {
+   "name": "BT21",
+   "kind": "toys",
+   "start": "2026-07-14",
+   "end": "2026-08-17",
+   "note": "7 BT21 characters on ring clips, plus VAN, the group on a ship, and a poster with stickers.",
+   "franchise": "BT21",
+   "order": 5,
+   "refresh": "daily",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)",
+   "days": 0,
+   "lastUpdate": null
+  }
+ },
+ "items": {
+  "pokemon-2026-001": {
+   "name": "Decidueye",
+   "set": "pokemon-2026",
+   "number": "001",
+   "rarity": null
+  },
+  "pokemon-2026-002": {
+   "name": "Chandelure",
+   "set": "pokemon-2026",
+   "number": "002",
+   "rarity": "Holo"
+  },
+  "pokemon-2026-003": {
+   "name": "Palafin",
+   "set": "pokemon-2026",
+   "number": "003",
+   "rarity": "Holo"
+  },
+  "pokemon-2026-004": {
+   "name": "Pikachu",
+   "set": "pokemon-2026",
+   "number": "004",
+   "rarity": "Holo"
+  },
+  "pokemon-2026-005": {
+   "name": "Mimikyu",
+   "set": "pokemon-2026",
+   "number": "005",
+   "rarity": "Holo"
+  },
+  "pokemon-2026-006": {
+   "name": "Lucario",
+   "set": "pokemon-2026",
+   "number": "006",
+   "rarity": "Holo"
+  },
+  "pokemon-2026-007": {
+   "name": "Hawlucha",
+   "set": "pokemon-2026",
+   "number": "007",
+   "rarity": null
+  },
+  "pokemon-2026-008": {
+   "name": "Tyranitar",
+   "set": "pokemon-2026",
+   "number": "008",
+   "rarity": "Holo"
+  },
+  "pokemon-2026-009": {
+   "name": "Absol",
+   "set": "pokemon-2026",
+   "number": "009",
+   "rarity": null
+  },
+  "pokemon-2026-010": {
+   "name": "Zoroark",
+   "set": "pokemon-2026",
+   "number": "010",
+   "rarity": null
+  },
+  "pokemon-2026-011": {
+   "name": "Metagross",
+   "set": "pokemon-2026",
+   "number": "011",
+   "rarity": null
+  },
+  "pokemon-2026-012": {
+   "name": "Jirachi",
+   "set": "pokemon-2026",
+   "number": "012",
+   "rarity": "Holo"
+  },
+  "pokemon-2026-013": {
+   "name": "Eevee",
+   "set": "pokemon-2026",
+   "number": "013",
+   "rarity": null
+  },
+  "pokemon-2026-014": {
+   "name": "Snorlax",
+   "set": "pokemon-2026",
+   "number": "014",
+   "rarity": null
+  },
+  "pokemon-2026-015": {
+   "name": "Wooloo",
+   "set": "pokemon-2026",
+   "number": "015",
+   "rarity": null
+  },
+  "boo-buckets-2026-01": {
+   "name": "Jafar (red)",
+   "set": "boo-buckets-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "boo-buckets-2026-02": {
+   "name": "Ursula (purple)",
+   "set": "boo-buckets-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "boo-buckets-2026-03": {
+   "name": "Scar (orange)",
+   "set": "boo-buckets-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "boo-buckets-2026-04": {
+   "name": "Cruella de Vil (white)",
+   "set": "boo-buckets-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "boo-buckets-2026-05": {
+   "name": "Maleficent (green)",
+   "set": "boo-buckets-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-01": {
+   "name": "SpongeBob × Luffy",
+   "set": "spongebob-onepiece-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-02": {
+   "name": "SpongeBob × Gear 5 Luffy",
+   "set": "spongebob-onepiece-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-03": {
+   "name": "Patrick × Zoro",
+   "set": "spongebob-onepiece-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-04": {
+   "name": "Sandy × Nami",
+   "set": "spongebob-onepiece-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-05": {
+   "name": "Squidward × Sanji",
+   "set": "spongebob-onepiece-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-06": {
+   "name": "Plankton × Usopp",
+   "set": "spongebob-onepiece-2026",
+   "number": "06",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-07": {
+   "name": "Gary × Chopper",
+   "set": "spongebob-onepiece-2026",
+   "number": "07",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-08": {
+   "name": "Pearl × Robin",
+   "set": "spongebob-onepiece-2026",
+   "number": "08",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-09": {
+   "name": "Larry × Franky",
+   "set": "spongebob-onepiece-2026",
+   "number": "09",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-10": {
+   "name": "Smitty × Brook",
+   "set": "spongebob-onepiece-2026",
+   "number": "10",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-11": {
+   "name": "Mr. Krabs × Jinbe",
+   "set": "spongebob-onepiece-2026",
+   "number": "11",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-12": {
+   "name": "Flying Dutchman × Blackbeard",
+   "set": "spongebob-onepiece-2026",
+   "number": "12",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-13": {
+   "name": "Mrs. Puff × Big Mom",
+   "set": "spongebob-onepiece-2026",
+   "number": "13",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-14": {
+   "name": "Barnacle Boy × Koby",
+   "set": "spongebob-onepiece-2026",
+   "number": "14",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-15": {
+   "name": "Mermaid Man × Garp",
+   "set": "spongebob-onepiece-2026",
+   "number": "15",
+   "rarity": null
+  },
+  "pokemon-toys-2026-01": {
+   "name": "Pikachu",
+   "set": "pokemon-toys-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "pokemon-toys-2026-02": {
+   "name": "Bulbasaur",
+   "set": "pokemon-toys-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "pokemon-toys-2026-03": {
+   "name": "Charmander",
+   "set": "pokemon-toys-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "pokemon-toys-2026-04": {
+   "name": "Squirtle",
+   "set": "pokemon-toys-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "pokemon-toys-2026-05": {
+   "name": "Rowlet",
+   "set": "pokemon-toys-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "pokemon-toys-2026-06": {
+   "name": "Sprigatito",
+   "set": "pokemon-toys-2026",
+   "number": "06",
+   "rarity": null
+  },
+  "pokemon-toys-2026-07": {
+   "name": "Eevee",
+   "set": "pokemon-toys-2026",
+   "number": "07",
+   "rarity": null
+  },
+  "pokemon-toys-2026-08": {
+   "name": "Weedle",
+   "set": "pokemon-toys-2026",
+   "number": "08",
+   "rarity": null
+  },
+  "pokemon-toys-2026-09": {
+   "name": "Umbreon",
+   "set": "pokemon-toys-2026",
+   "number": "09",
+   "rarity": null
+  },
+  "pokemon-toys-2026-10": {
+   "name": "Torchic",
+   "set": "pokemon-toys-2026",
+   "number": "10",
+   "rarity": null
+  },
+  "pokemon-toys-2026-11": {
+   "name": "Piplup",
+   "set": "pokemon-toys-2026",
+   "number": "11",
+   "rarity": null
+  },
+  "pokemon-toys-2026-12": {
+   "name": "Munchlax",
+   "set": "pokemon-toys-2026",
+   "number": "12",
+   "rarity": null
+  },
+  "pokemon-toys-2026-13": {
+   "name": "Minccino",
+   "set": "pokemon-toys-2026",
+   "number": "13",
+   "rarity": null
+  },
+  "pokemon-toys-2026-14": {
+   "name": "Espurr",
+   "set": "pokemon-toys-2026",
+   "number": "14",
+   "rarity": null
+  },
+  "pokemon-toys-2026-15": {
+   "name": "Sobble",
+   "set": "pokemon-toys-2026",
+   "number": "15",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-01": {
+   "name": "Hello Kitty × Godzilla",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-02": {
+   "name": "Kuromi × Mechagodzilla",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-03": {
+   "name": "Badtz-Maru × Rodan",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-04": {
+   "name": "My Melody × Mothra",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-05": {
+   "name": "Keroppi × King Ghidorah",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-06": {
+   "name": "Chococat × SpaceGodzilla",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "06",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-07": {
+   "name": "Cinnamoroll × Destoroyah",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "07",
+   "rarity": null
+  },
+  "hello-kitty-godzilla-2026-08": {
+   "name": "Pompompurin × Gigan",
+   "set": "hello-kitty-godzilla-2026",
+   "number": "08",
+   "rarity": null
+  },
+  "bt21-2026-01": {
+   "name": "KOYA",
+   "set": "bt21-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "bt21-2026-02": {
+   "name": "RJ",
+   "set": "bt21-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "bt21-2026-03": {
+   "name": "SHOOKY",
+   "set": "bt21-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "bt21-2026-04": {
+   "name": "MANG",
+   "set": "bt21-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "bt21-2026-05": {
+   "name": "CHIMMY",
+   "set": "bt21-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "bt21-2026-06": {
+   "name": "TATA",
+   "set": "bt21-2026",
+   "number": "06",
+   "rarity": null
+  },
+  "bt21-2026-07": {
+   "name": "COOKY",
+   "set": "bt21-2026",
+   "number": "07",
+   "rarity": null
+  },
+  "bt21-2026-08": {
+   "name": "VAN",
+   "set": "bt21-2026",
+   "number": "08",
+   "rarity": null
+  },
+  "bt21-2026-09": {
+   "name": "Group on ship",
+   "set": "bt21-2026",
+   "number": "09",
+   "rarity": null
+  },
+  "bt21-2026-10": {
+   "name": "Poster and stickers",
+   "set": "bt21-2026",
+   "number": "10",
+   "rarity": null
+  }
+ },
+ "calendar": [
+  {
+   "name": "FIFA World Cup Squishmallows",
+   "start": "2026-06-09",
+   "kind": "toys",
+   "note": "Not tracked."
+  },
+  {
+   "name": "Next Happy Meal",
+   "start": null,
+   "tba": true,
+   "note": "Watch this space for the next Happy Meal toys."
+  }
+ ],
+ "updated": "2026-11-11T08:45:00+00:00"
+}

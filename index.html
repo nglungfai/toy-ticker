@@ -57,6 +57,33 @@
   header h1 span { color: var(--accent); }
   .meta { color: var(--muted); font-size: 13px; }
   nav.series { display: flex; gap: 8px; margin: 24px 0 8px; overflow-x: auto; padding-bottom: 4px; }
+  nav.series .all-btn { flex: none; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--text);
+                        background: var(--bg); border: 1px dashed var(--muted); border-radius: 999px; padding: 7px 14px; }
+  nav.series .all-btn[aria-expanded="true"] { border-style: solid; border-color: var(--text); }
+
+  /* Series browser */
+  .browser { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin: 8px 0 16px; }
+  .browser-head { display: flex; flex-wrap: wrap; gap: 10px 16px; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .browser-head h3 { margin: 0; font-family: "Fredoka", sans-serif; font-size: 19px; }
+  .browser-head small { color: var(--muted); font-size: 13px; font-weight: 400; font-family: inherit; }
+  .browser-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .chips { display: inline-flex; gap: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .chips button { font: inherit; font-size: 13px; border: 0; background: none; color: var(--muted); padding: 4px 12px; border-radius: 999px; cursor: pointer; }
+  .chips button[aria-pressed="true"] { background: var(--text); color: var(--panel); }
+  #bFilter { font: inherit; font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line);
+             background: var(--bg); color: var(--text); width: 170px; }
+  .b-close { font: inherit; border: 0; background: none; color: var(--muted); font-size: 16px; cursor: pointer; padding: 4px 8px; }
+  .b-year { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 15px; color: var(--muted); margin: 14px 0 8px; }
+  .b-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+  .b-card { display: block; text-align: left; font: inherit; color: var(--text); cursor: pointer; background: var(--bg);
+            border: 1px solid var(--line); border-left: 6px solid var(--bc, var(--line)); border-radius: 0 12px 12px 0; padding: 12px 14px; }
+  .b-card:hover, .b-card:focus-visible { background: var(--panel); box-shadow: 0 6px 18px rgba(0,0,0,.08); outline: none; }
+  .b-card.cur { box-shadow: 0 0 0 2px var(--text); }
+  .b-card b { display: block; font-family: "Fredoka", sans-serif; font-size: 16px; font-weight: 600; }
+  .b-card small { display: block; color: var(--muted); font-size: 12px; }
+  .b-val { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; }
+  .b-val span:first-child { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .b-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
   nav.series a { flex: none; text-decoration: none; color: var(--text); background: var(--panel);
                  border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-size: 14px; }
   nav.series a[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -110,15 +137,179 @@
             padding: 10px 14px; margin-bottom: 12px; }
   footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
 
+  /* Happy Meal value calculator */
+  .meal-btn { margin-top: 10px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: #fff;
+              background: var(--accent); border: 0; border-radius: 999px; padding: 8px 16px; }
+  .meal-btn:hover { filter: brightness(1.08); }
+  .meal { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin: 0 0 16px; }
+  .meal-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .meal-head h3 { margin: 0; font-family: "Fredoka", sans-serif; font-size: 20px; }
+  .meal-hint { color: var(--muted); font-size: 14px; margin: 4px 0 12px; }
+  .meal-controls { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; font-size: 14px; margin-bottom: 12px; }
+  .paid { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; padding: 0 10px; margin-left: 6px; background: var(--bg); }
+  .paid input { width: 64px; font: inherit; border: 0; background: none; color: var(--text); padding: 6px 2px; }
+  .meal-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; max-height: 330px; overflow-y: auto; padding: 2px; }
+  .pick { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; font: inherit; cursor: pointer;
+          background: var(--bg); border: 1px solid var(--line); border-radius: 12px; color: var(--text); text-align: center; }
+  .pick .pic, .pick .ph { width: 44px; }
+  .pick b { font-size: 12px; line-height: 1.2; }
+  .pick small { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .pick .n { position: absolute; top: 4px; right: 4px; min-width: 20px; height: 20px; border-radius: 999px; background: var(--accent);
+             color: #fff; font-size: 12px; font-weight: 700; display: none; align-items: center; justify-content: center; padding: 0 5px; }
+  .pick.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+  .pick.on .n { display: inline-flex; }
+  .pick-group { grid-column: 1 / -1; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; }
+  .meal-result { margin-top: 14px; padding: 16px; border-radius: 14px; background: var(--bg); text-align: center; }
+  .meal-result .worth { font-family: "Fredoka", sans-serif; font-size: 34px; font-weight: 600; line-height: 1.1; }
+  .meal-result .x { display: inline-block; margin: 6px 0; font-weight: 700; font-size: 16px; padding: 3px 12px; border-radius: 999px; }
+  .meal-result .x.up { background: #e3f1ea; color: #17663b; } .meal-result .x.down { background: #fbe4e4; color: #b52a2a; }
+  .meal-result p { margin: 4px 0; color: var(--muted); font-size: 14px; }
+  .meal-result .chosen { font-size: 13px; }
+  .meal-result .share-btn { margin-top: 10px; }
+  .mine-share { margin-top: 10px; }
+  @media (max-width: 640px) {
+    .meal-pick { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; max-height: 300px; }
+    .pick { padding: 6px 4px; } .pick .pic, .pick .ph { width: 34px; } .pick b { font-size: 11px; }
+    .meal-result .worth { font-size: 30px; }
+  }
+
+  /* Share image modal */
+  .modal { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .modal-box { background: var(--panel); border-radius: 16px; padding: 16px; max-width: 460px; width: 100%; max-height: 92vh; overflow: auto; }
+  .modal-box img { display: block; width: 100%; border-radius: 10px; margin: 10px 0; border: 1px solid var(--line); }
+  .modal-actions { display: flex; gap: 10px; justify-content: center; }
+  .modal-actions .share-btn { text-decoration: none; display: inline-block; }
+
+  /* Search */
+  .search { position: relative; max-width: 420px; margin-top: 14px; }
+  .search input { width: 100%; font: inherit; font-size: 15px; padding: 9px 40px 9px 14px; border-radius: 999px;
+                  border: 1px solid var(--line); background: var(--panel); color: var(--text); }
+  .search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .search kbd { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font: 12px ui-monospace, monospace;
+                color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 0 6px; pointer-events: none; }
+  .q-results { position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 6px); background: var(--panel);
+               border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); overflow: hidden; }
+  .q-item { display: flex; gap: 10px; align-items: center; width: 100%; padding: 8px 12px; border: 0; background: none;
+            font: inherit; color: var(--text); text-align: left; cursor: pointer; }
+  .q-item[aria-selected="true"], .q-item:hover { background: var(--accent-soft); }
+  .q-item .pic, .q-item .ph { width: 30px; }
+  .q-item div { flex: 1; min-width: 0; }
+  .q-item b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .q-item small { color: var(--muted); font-size: 12px; }
+  .q-item .q-price { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .q-empty { padding: 12px 14px; color: var(--muted); font-size: 14px; }
+
+  /* Deal finder */
+  .deals-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 20px; }
+  .deal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .deal { display: flex; gap: 10px; align-items: center; padding: 10px; border-radius: 12px; text-decoration: none;
+          color: var(--text); border: 1px solid var(--line); background: var(--bg); }
+  .deal:hover { border-color: var(--up); }
+  .deal img, .deal .ph { width: 48px; height: 48px; object-fit: cover; border-radius: 8px; flex: none; aspect-ratio: auto; }
+  .deal div { min-width: 0; flex: 1; }
+  .deal b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .deal .deal-row { display: flex; align-items: center; gap: 8px; margin: 1px 0; }
+  .deal .deal-price { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 18px; }
+  .deal .off { font-size: 12px; font-weight: 700; color: #17663b; background: #e3f1ea; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+  .deal small { display: block; color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .deal .go { color: var(--accent); font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .item-deals { margin-top: 12px; }
+  .item-deals h4 { margin: 0 0 8px; font-size: 15px; font-family: "Fredoka", sans-serif; }
+  .item-deals .deal-grid { grid-template-columns: 1fr; }
+
+  /* Set completion */
+  .complete { flex-basis: 100%; border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; }
+  .complete summary { cursor: pointer; }
+  .complete .big { font-size: 16px; }
+  .miss { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px 16px; margin-top: 10px; }
+  .miss a, .miss span.row { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--text);
+                            text-decoration: none; padding: 4px 0; border-bottom: 1px dashed var(--line); }
+  .miss a:hover { color: var(--accent); }
+  .miss em { font-style: normal; color: var(--muted); }
+
+  /* Quote header layout */
+  .hero-top { display: flex; flex-wrap: wrap; gap: 16px 20px; justify-content: space-between; align-items: flex-end; }
+  .hero-change { display: block; font-weight: 700; font-size: 15px; margin: 2px 0; }
+  .hero-returns { margin-top: 18px; }
+  .hero-returns .ret-head { margin-bottom: 8px; }
+  .hero-returns .ret-head h3 { font-size: 15px; }
+  .hero-returns .ret-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+  .hero-returns .ret { padding: 7px 4px; }
+  .hero-returns .ret b { font-size: 15px; }
+  .hero-returns .ret span { font-size: 12px; }
+  .hero-foot { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: center;
+               margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .hero-foot .share-btn { margin-top: 0; }
+  @media (max-width: 640px) {
+    .hero { padding: 24px 16px 14px; }
+    .hero-note { display: none; }
+    .hero-top { gap: 10px; }
+    .hero-value { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 12px; }
+    .hero-value small:first-child, .hero-value #sPriced { grid-column: 1 / -1; }
+    .hero-returns { margin-top: 12px; }
+    .hero-returns .ret-grid { gap: 4px; }
+    .hero-returns .ret { padding: 6px 2px; border-radius: 6px; }
+    .hero-returns .ret b { font-size: 12px; }
+    .hero-returns .ret span { font-size: 11px; }
+    .hero-returns .ret-head small { display: none; }
+    .hero-foot { font-size: 12px; }
+  }
+
+  /* Section tabs */
+  .sections { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 6px 0 16px; overflow-x: auto; }
+  .sections button { flex: none; font: inherit; font-size: 15px; font-weight: 600; color: var(--muted); background: none; border: 0;
+                     border-bottom: 3px solid transparent; padding: 10px 14px 9px; cursor: pointer; }
+  .sections button:hover { color: var(--text); }
+  .sections button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); }
+  .sections .count { font-size: 12px; font-weight: 700; color: var(--muted); background: var(--bg); border: 1px solid var(--line);
+                     border-radius: 999px; padding: 0 7px; margin-left: 4px; }
+  .sections .count:empty { display: none; }
+  .toolbar .own-filter { margin-left: auto; }
+  @media (max-width: 640px) { .toolbar .own-filter { margin-left: 0; } }
+
+  /* Status pills (calendar, series browser) */
+  .chip { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+          border-radius: 999px; padding: 2px 8px; background: var(--bg); color: var(--muted); border: 1px solid var(--line); white-space: nowrap; }
+  .chip.now { background: #e3f1ea; color: #17663b; border-color: transparent; }
+  .chip.next { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chip.now { background: #1f3a2b; color: #95e0b2; } }
+
+  /* Calendar: compact list, newest first */
+  .calendar { margin-top: 28px; }
+  .cal { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 2px 14px; }
+  .cal-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 96px 90px 18px; gap: 12px; align-items: center;
+             padding: 10px 2px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--text); text-decoration: none; }
+  .cal-row:last-child { border-bottom: 0; }
+  a.cal-row:hover { background: var(--bg); }
+  .cal-when { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .cal-name { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 600; }
+  .cal-name i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--cal, var(--line)); }
+  .cal-name span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cal-row .chip { justify-self: start; }
+  .cal-val { text-align: right; font-variant-numeric: tabular-nums; }
+  .cal-val small { display: block; font-size: 11px; }
+  .cal-go { color: var(--muted); }
+  a.cal-row:hover .cal-go { color: var(--accent); }
+  @media (max-width: 640px) {
+    .cal-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name val" "when chip"; row-gap: 2px; }
+    .cal-name { grid-area: name; } .cal-when { grid-area: when; } .cal-row .chip { grid-area: chip; justify-self: end; }
+    .cal-val { grid-area: val; } .cal-go { display: none; }
+  }
+  footer p { margin: 0 0 8px; }
+  header { position: relative; }
+  .about-link { position: absolute; right: 0; top: 6px; font-size: 14px; font-weight: 600; text-decoration: none;
+                color: var(--text); border: 1px solid var(--line); background: var(--panel); padding: 6px 14px; border-radius: 999px; }
+  .about-link:hover { border-color: var(--accent); color: var(--accent); }
+  footer .disclaimer { padding-top: 8px; border-top: 1px solid var(--line); }
+
   /* Hero banner: light card; the series colour lives in the top band, status pill and price.
      --h1/--h2 band gradient, --hacc accent text, --hpill/--hpill-ink pill (each has a dark-mode twin). */
   .hero { --h1: #d62300; --h2: #ffb703;
           --hacc-l: #a31b00; --hpill-l: #fde9e4; --hpill-ink-l: #7a1500;
           --hacc-d: #ff8a70; --hpill-d: #4a1d14; --hpill-ink-d: #ffc9bc;
           --hacc: var(--hacc-l); --hpill: var(--hpill-l); --hpill-ink: var(--hpill-ink-l);
-          position: relative; overflow: hidden; display: flex; flex-wrap: wrap; gap: 20px;
-          justify-content: space-between; align-items: flex-end;
-          margin: 16px 0 16px; padding: 30px 24px 22px; border-radius: 18px; color: var(--text);
+          position: relative; overflow: hidden; display: block;
+          margin: 16px 0 16px; padding: 30px 24px 18px; border-radius: 18px; color: var(--text);
           background: var(--panel); border: 1px solid var(--line); }
   .hero::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px;
                   background: linear-gradient(90deg, var(--h1), var(--h2)); }
@@ -169,6 +360,19 @@
   .badge.flat { background: var(--bg); }
   .tile-sub { font-size: 12px; color: var(--muted); }
 
+  /* Confidence badges: how much to trust a price, from listing count and how tightly prices cluster */
+  .conf { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; letter-spacing: .02em;
+          padding: 1px 8px 1px 6px; border-radius: 999px; white-space: nowrap; cursor: help; vertical-align: middle; }
+  .conf::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .conf.c3 { background: #e3f1ea; color: #17663b; }
+  .conf.c2 { background: #fff3c4; color: #6b4300; }
+  .conf.c1 { background: #f0efea; color: #5f5e5a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .conf.c3 { background: #1f3a2b; color: #95e0b2; }
+    :root:not([data-theme="light"]) .conf.c2 { background: #4a3a00; color: #ffe27a; }
+    :root:not([data-theme="light"]) .conf.c1 { background: #2c2c2a; color: #b4b2a9; } }
+  .conf-why { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; }
+
   /* 3D tilt + holo shine */
   .tilt { position: relative; border-radius: 8px; transform-style: preserve-3d; will-change: transform;
           transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -213,17 +417,6 @@
   .map-cell span { font-size: 12px; font-variant-numeric: tabular-nums; }
   .map-legend i { background: var(--m-bg); border: 1px solid var(--line); }
 
-  /* Top movers ticker */
-  .ticker { overflow: hidden; margin: 20px 0 0; border-radius: 10px; background: var(--panel);
-            border: 1px solid var(--line); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
-  .ticker-track { display: flex; gap: 28px; width: max-content; padding: 8px 14px; animation: tick 40s linear infinite; }
-  .ticker:hover .ticker-track { animation-play-state: paused; }
-  @keyframes tick { to { transform: translateX(-50%); } }
-  .tick { border: 0; background: none; font: inherit; font-size: 13px; color: var(--text); cursor: pointer;
-          white-space: nowrap; padding: 0; display: inline-flex; gap: 6px; align-items: baseline; }
-  .tick .lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
-  .tick .ser { color: var(--muted); font-size: 12px; }
-
   /* Returns heat grid */
   .returns-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 20px; }
   .returns { margin-top: 12px; }
@@ -235,8 +428,6 @@
                      border-bottom: 2px solid transparent; }
   .ret-tabs button[aria-pressed="true"] { color: #2f6fed; border-bottom-color: #2f6fed; }
   .ret-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .returns-card .ret-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  @media (max-width: 640px) { .returns-card .ret-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   .ret { border-radius: 8px; padding: 10px 6px; text-align: center; background: var(--ret-bg, var(--bg)); }
   .ret b { display: block; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ret-fg, var(--muted)); }
   .ret span { font-size: 13px; color: var(--text); }
@@ -244,8 +435,8 @@
   .ret.up1 { --ret-bg: #e3f1ea; --ret-fg: #2e8b57; } .ret.up2 { --ret-bg: #cfe8da; --ret-fg: #23784a; } .ret.up3 { --ret-bg: #b4dcc5; --ret-fg: #17663b; }
   .ret.dn1 { --ret-bg: #fbe4e4; --ret-fg: #d64545; } .ret.dn2 { --ret-bg: #f7d0d0; --ret-fg: #c93636; } .ret.dn3 { --ret-bg: #f2b8b8; --ret-fg: #b52a2a; }
   .ret.na { --ret-bg: #f0efea; --ret-fg: #8a8a85; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ret {
-    --ret-fg: #ecebe6; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .ret { --ret-fg: #ecebe6; }
     :root:not([data-theme="light"]) .ret.up1 { --ret-bg: #1f3a2b; --ret-fg: #7fd3a0; } :root:not([data-theme="light"]) .ret.up2 { --ret-bg: #24503a; --ret-fg: #95e0b2; } :root:not([data-theme="light"]) .ret.up3 { --ret-bg: #2b6a49; --ret-fg: #b5f0cb; }
     :root:not([data-theme="light"]) .ret.dn1 { --ret-bg: #42221f; --ret-fg: #ff9a92; } :root:not([data-theme="light"]) .ret.dn2 { --ret-bg: #5a2a26; --ret-fg: #ffb0a9; } :root:not([data-theme="light"]) .ret.dn3 { --ret-bg: #73302b; --ret-fg: #ffc6c0; }
     :root:not([data-theme="light"]) .ret.na { --ret-bg: #262624; --ret-fg: #9b9a94; } }
@@ -296,7 +487,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     ::view-transition-old(root), ::view-transition-new(root), .enter > * { animation: none !important; }
-    .ticker-track { animation: none; flex-wrap: wrap; width: auto; }
     .tilt { transform: none !important; transition: none; }
     .tilt.shine::after { animation: none; }
     .status.live::before { animation: none; }
@@ -306,51 +496,112 @@
 <body>
 <div class="wrap">
   <header>
+    <a class="about-link" href="about.html">About</a>
     <h1><img class="logo" src="assets/logo.svg" alt="" width="44" height="44">Toy <span>Ticker</span></h1>
     <div class="meta" id="meta">Loading…</div>
+    <div class="search" role="search">
+      <input id="q" type="search" placeholder="Search toys and cards…" autocomplete="off" aria-label="Search toys and cards"
+             aria-controls="qResults" aria-expanded="false"><kbd>/</kbd>
+      <div class="q-results" id="qResults" role="listbox" hidden></div>
+    </div>
   </header>
-
-  <div class="ticker" id="ticker" hidden><div class="ticker-track" id="tickerTrack"></div></div>
 
   <nav class="series" id="nav" aria-label="Happy Meal series"></nav>
 
-  <section class="hero" id="hero">
-    <div class="hero-text">
-      <span class="status" id="sStatus"></span>
-      <h2 id="sTitle"></h2>
-      <div class="hero-meta" id="sMeta"></div>
+  <section class="browser" id="browser" hidden aria-label="All Happy Meal series">
+    <div class="browser-head">
+      <h3>All Happy Meal series <small id="bCount"></small></h3>
+      <div class="browser-tools">
+        <div class="chips" role="group" aria-label="Filter by type">
+          <button data-kind="all" aria-pressed="true">All</button>
+          <button data-kind="toys" aria-pressed="false">Toys</button>
+          <button data-kind="cards" aria-pressed="false">Cards</button>
+        </div>
+        <input id="bFilter" type="search" placeholder="Filter series…" aria-label="Filter series">
+        <button class="b-close" id="bClose" aria-label="Close series list">✕</button>
+      </div>
     </div>
-    <div class="hero-value">
-      <small>Full set at median asks</small>
-      <b id="sTotal">—</b>
-      <small id="sPriced"></small>
+    <div id="bList"></div>
+  </section>
+
+  <section class="hero" id="hero">
+    <div class="hero-top">
+      <div class="hero-text">
+        <span class="status" id="sStatus"></span>
+        <h2 id="sTitle"></h2>
+        <div class="hero-meta" id="sMeta"></div>
+      </div>
+      <div class="hero-value">
+        <small>Full set at median asks</small>
+        <b id="sTotal">—</b>
+        <span class="hero-change" id="sChange"></span>
+        <small id="sPriced"></small>
+      </div>
+    </div>
+    <div class="hero-returns" id="sReturns"></div>
+    <div class="hero-foot">
+      <span id="sFacts"></span>
       <button class="share-btn" id="shareBtn" type="button">↗ Share</button>
     </div>
   </section>
 
   <div class="banner" id="empty" hidden>No prices collected for this series yet. They appear after the next daily update.</div>
-  <div class="stats" id="stats"></div>
 
-  <section class="returns-card" id="sReturns"></section>
+  <nav class="sections" role="tablist" aria-label="Series sections">
+    <button role="tab" data-sec="items" aria-selected="true">Items</button>
+    <button role="tab" data-sec="deals" aria-selected="false">Deals <span class="count" id="cDeals"></span></button>
+    <button role="tab" data-sec="trends" aria-selected="false">Trends</button>
+    <button role="tab" data-sec="meal" aria-selected="false">🎁 My Happy Meal</button>
+    <button role="tab" data-sec="mine" aria-selected="false">My collection <span class="count" id="cMine"></span></button>
+  </nav>
 
-  <section class="since" id="since" hidden>
-    <div class="since-text">
-      <small id="sinceLabel">Since it left restaurants</small>
-      <b id="sinceChange"></b>
-      <div class="since-sub" id="sinceSub"></div>
-      <div class="since-movers" id="sinceMovers"></div>
+  <div class="sec" data-sec="trends" hidden>
+    <section class="since" id="since" hidden>
+      <div class="since-text">
+        <small id="sinceLabel">Since it left restaurants</small>
+        <b id="sinceChange"></b>
+        <div class="since-sub" id="sinceSub"></div>
+        <div class="since-movers" id="sinceMovers"></div>
+      </div>
+      <div class="since-chart"><canvas id="sinceChart"></canvas></div>
+    </section>
+    <p class="note" id="trendsEmpty" hidden>Trends appear once there are at least two days of prices.</p>
+  </div>
+
+  <div class="sec" data-sec="deals" hidden>
+    <section class="deals-card" id="deals">
+      <div class="ret-head"><h3>Deal finder<small id="dealsNote"></small></h3></div>
+      <div class="deal-grid" id="dealGrid"></div>
+    </section>
+  </div>
+
+  <div class="sec" data-sec="meal" hidden>
+  <section class="meal" id="meal" aria-label="Happy Meal value calculator">
+    <div class="meal-head">
+      <h3>What's my Happy Meal worth?</h3>
     </div>
-    <div class="since-chart"><canvas id="sinceChart"></canvas></div>
-  </section>
-
-  <section class="mine" id="mine">
-    <div>
-      <b>My collection</b>
-      <span id="mineText">Tap <span class="own-ex">＋</span> on the items you own to see what they're worth.</span>
+    <p class="meal-hint" id="mealHint">Tap what came in your Happy Meal.</p>
+    <div class="meal-controls">
+      <label>I paid <span class="paid"><span>$</span><input id="mealPaid" type="number" min="0" step="0.01" value="4.99" inputmode="decimal"></span></label>
+      <label>From <select id="mealSeries"></select></label>
     </div>
-    <label class="own-filter"><input type="checkbox" id="ownedOnly"> Show only mine</label>
+    <div class="meal-pick" id="mealPick"></div>
+    <div class="meal-result" id="mealResult"></div>
   </section>
+  </div>
 
+  <div class="sec" data-sec="mine" hidden>
+    <section class="mine" id="mine">
+      <div>
+        <b>My collection</b>
+        <span id="mineText">Tap <span class="own-ex">＋</span> on the items you own to see what they're worth.</span>
+      </div>
+      <div class="complete" id="complete" hidden></div>
+      <button class="share-btn mine-share" id="mineShare" type="button" hidden>📸 Create share image</button>
+    </section>
+  </div>
+
+  <div class="sec" data-sec="items">
   <div class="toolbar">
     <div class="seg" role="group" aria-label="View">
       <button data-view="gallery" aria-pressed="true">▦ Gallery</button>
@@ -367,6 +618,7 @@
         <option value="name:1">Name</option>
       </select>
     </label>
+    <label class="own-filter"><input type="checkbox" id="ownedOnly"> Only mine</label>
   </div>
 
   <div class="gallery" id="gallery"></div>
@@ -394,6 +646,7 @@
       <tbody id="rows"></tbody>
     </table>
   </div>
+  </div>
 
   <section class="detail" id="detail" hidden>
     <div class="detail-grid">
@@ -402,13 +655,33 @@
         <h2 id="dTitle"></h2>
         <div class="meta" id="dMeta"></div>
         <div class="returns" id="dReturns"></div>
+        <div class="item-deals" id="dDeals"></div>
         <div class="chart-box"><canvas id="dChart"></canvas></div>
         <div class="note" id="dNote"></div>
       </div>
     </div>
   </section>
 
-  <footer id="foot"></footer>
+  <section class="calendar">
+    <div class="ret-head"><h3>Happy Meal calendar<small>2026 US promotions, newest first</small></h3></div>
+    <div class="cal" id="cal"></div>
+  </section>
+
+  <div class="modal" id="shareModal" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+    <div class="modal-box">
+      <div class="meal-head"><h3 id="shareTitle">Share image</h3><button class="b-close" id="shareClose" aria-label="Close">✕</button></div>
+      <img id="shareImg" alt="Share image preview">
+      <div class="modal-actions">
+        <button class="share-btn" id="shareSend" type="button">↗ Share</button>
+        <a class="share-btn" id="shareSave" download="toy-ticker.png">⬇ Download</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p id="foot"></p>
+    <p class="disclaimer">Unofficial fan site, not affiliated with McDonald’s or The Pokémon Company. <a href="about.html">About Toy Ticker</a></p>
+  </footer>
 </div>
 
 <script>
@@ -420,6 +693,7 @@ const usd = (v) => v == null ? "—" : "$" + v.toFixed(2);
 // Axis labels: at most 2 decimals, and none when the value is whole ($52.8, $52.75, $50).
 const money = (v) => "$" + (+v).toLocaleString("en-US", { maximumFractionDigits: 2 });
 const mean = (a) => a.length ? a.reduce((s, x) => s + x, 0) / a.length : null;
+const daysBetween = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 864e5);
 const pct = (v) => v == null || !isFinite(v) ? "—" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
 const cls = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? "up" : "down";
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -434,51 +708,173 @@ try { OWNED = new Set(JSON.parse(localStorage.getItem("owned") || "[]")); } catc
 // Series colours. band = top stripe gradient; acc/pill/pillInk = text-safe colours on a light card
 // (all ≥ 4.5:1 contrast), with *D twins for dark mode. chart = line colour for that series' charts.
 const THEMES = {
-  "pokemon-2026": { band: ["#ffcb05", "#f08a00"], acc: "#9a5200", pill: "#fff3c4", pillInk: "#6b4300",
+  "pokemon-2026": { short: "Pokémon", band: ["#ffcb05", "#f08a00"], acc: "#9a5200", pill: "#fff3c4", pillInk: "#6b4300",
     accD: "#ffcb05", pillD: "#4a3a00", pillInkD: "#ffe27a", chart: "#e08a00" },
-  "boo-buckets-2026": { band: ["#ff7a1a", "#5b1f8f"], acc: "#5b1f8f", pill: "#eeedfe", pillInk: "#3c3489",
+  "boo-buckets-2026": { short: "Boo Buckets", band: ["#ff7a1a", "#5b1f8f"], acc: "#5b1f8f", pill: "#eeedfe", pillInk: "#3c3489",
     accD: "#c9a7ff", pillD: "#3b2a5c", pillInkD: "#ddd0ff", chart: "#7a3fc0" },
-  "spongebob-onepiece-2026": { band: ["#0aa5d8", "#0b4f8a"], acc: "#0b4f8a", pill: "#e0f2fb", pillInk: "#0b4f8a",
+  "spongebob-onepiece-2026": { short: "SpongeBob", band: ["#0aa5d8", "#0b4f8a"], acc: "#0b4f8a", pill: "#e0f2fb", pillInk: "#0b4f8a",
     accD: "#6fd0f5", pillD: "#123a52", pillInkD: "#bfe9fb", chart: "#0a8fc4" },
+  "pokemon-toys-2026": { short: "Pokémon toys", band: ["#ffcb05", "#e3350d"], acc: "#a32a0a", pill: "#fde3dc", pillInk: "#7a1f07",
+    accD: "#ffb199", pillD: "#4a1a10", pillInkD: "#ffd0c2", chart: "#e3350d" },
+  "hello-kitty-godzilla-2026": { short: "Hello Kitty", band: ["#ff6fa5", "#2f7a52"], acc: "#a3165a", pill: "#fde4ef", pillInk: "#7d1145",
+    accD: "#ff9cc4", pillD: "#4a1a30", pillInkD: "#ffc9df", chart: "#d4537e" },
+  "bt21-2026": { short: "BT21", band: ["#7f77dd", "#ff9ec4"], acc: "#534ab7", pill: "#eeedfe", pillInk: "#3c3489",
+    accD: "#b8b2f5", pillD: "#2e2a5c", pillInkD: "#dcd8ff", chart: "#7f77dd" },
 };
 const DEFAULT_THEME = { band: ["#d62300", "#ffb703"], acc: "#a31b00", pill: "#fde9e4", pillInk: "#7a1500",
   accD: "#ff8a70", pillD: "#4a1d14", pillInkD: "#ffc9bc", chart: "#d62300" };
 
+// Confidence in a price: more matching listings = more trustworthy; a wide spread between the
+// 25th percentile and the median (sellers disagree a lot) knocks it down a level.
+function confidence(r) {
+  const n = r.count;
+  if (n == null || r.price == null) return null;
+  let lvl = n >= 15 ? 3 : n >= 6 ? 2 : 1;
+  const spread = r.last?.p25 && r.price ? r.last.p25 / r.price : 1;
+  const wide = spread < 0.6;
+  if (wide) lvl = Math.max(1, lvl - 1);
+  const label = ["", "Low", "Medium", "High"][lvl];
+  const why = `${n} matching listing${n === 1 ? "" : "s"} today` +
+    (wide ? `; asks vary a lot (25th percentile is ${Math.round((1 - spread) * 100)}% under the median)` : "") +
+    (lvl === 3 ? ". Plenty of listings that mostly agree." : lvl === 2 ? ". A fair sample; expect some wobble." : ". Thin data, so one listing can move the price.");
+  return { lvl, label, why };
+}
+const confBadge = (r, withCount) => {
+  const c = confidence(r);
+  return c ? `<span class="conf c${c.lvl}" title="${esc(c.label)} confidence: ${esc(c.why)}">${c.label}${withCount ? ` · ${r.count}` : ""}</span>` : "";
+};
+
+// Series histories are loaded on demand (data/series/<id>.json); until then rows use the
+// index's "latest" summary, which is enough for search, the ticker, the map and the calendar.
+const LOADED = new Set(), LOADING = {};
+function loadSeries(sid) {
+  if (!DATA.sets[sid] || LOADED.has(sid)) return Promise.resolve();
+  return LOADING[sid] ||= fetch(`data/series/${sid}.json`, { cache: "no-store" })
+    .then(r => r.ok ? r.json() : { history: {} })
+    .then(d => { Object.assign(DATA.history, d.history || {}); LOADED.add(sid); })
+    .catch(() => { LOADED.add(sid); });
+}
 function rowsFor(sid) {
   const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
   return Object.entries(DATA.cards)
     .filter(([, c]) => c.set === sid)
     .map(([id, c]) => {
+      if (!LOADED.has(sid)) {
+        const L = c.latest || {};
+        return { id, ...c, h: [], last: L, price: L.median ?? null, low: L.low ?? null, count: L.count ?? null,
+                 d1: L.d1 ?? null, d30: L.d30 ?? null };
+      }
       const h = DATA.history[id] || [];
       const last = h[h.length - 1] || {}, prev = h[h.length - 2];
       const price = last.median ?? null;
       const ref30 = mean(h.slice(0, -1).filter(p => p.date >= cutoff).map(p => p.median).filter(v => v != null));
       return {
         id, ...c, h, last, price, low: last.low ?? null, count: last.count ?? null,
-        d1: price != null && prev?.median ? price / prev.median - 1 : null,
+        // A "1-day" change needs yesterday's snapshot; weekly-refreshed series don't have one.
+        d1: price != null && prev?.median && daysBetween(prev.date, last.date) <= 2 ? price / prev.median - 1 : null,
         d30: price != null && ref30 ? price / ref30 - 1 : null,
       };
     });
 }
 
+// Tabs show the newest few series (plus the one you're on); everything else lives in the series browser.
+const NAV_TABS = 4;
+const seriesColor = (id) => THEMES[id]?.chart ||
+  ["#d85a30", "#1d9e75", "#378add", "#d4537e", "#7f77dd", "#ba7517", "#639922"][[...id].reduce((h, ch) => h + ch.charCodeAt(0), 0) % 7];
 function renderNav() {
-  const list = Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order);
-  $("nav").innerHTML = list.map(([id, s]) =>
-    `<a href="?s=${id}" data-s="${id}" ${id === SID ? 'aria-current="page"' : ""}>${esc(s.name)}${s.current ? '<span class="tag">Now</span>' : ""}</a>`).join("");
+  const list = Object.entries(DATA.sets).sort((a, b) => (b[1].start || "").localeCompare(a[1].start || ""));
+  let tabs = list.slice(0, NAV_TABS);
+  if (!tabs.some(([id]) => id === SID)) tabs = [...tabs.slice(0, NAV_TABS - 1), list.find(([id]) => id === SID)];
+  tabs.sort((a, b) => a[1].order - b[1].order);
+  $("nav").innerHTML = tabs.map(([id, s]) =>
+    `<a href="?s=${id}" data-s="${id}" ${id === SID ? 'aria-current="page"' : ""}>${esc(s.name)}${s.current ? '<span class="tag">Now</span>' : ""}</a>`).join("") +
+    `<button class="all-btn" id="allBtn" aria-expanded="${!$("browser").hidden}" aria-controls="browser">All series (${list.length}) ▾</button>`;
   $("nav").querySelectorAll("a").forEach(a => a.onclick = (e) => {
     e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); switchTo(a.dataset.s);
   });
+  $("allBtn").onclick = () => toggleBrowser();
   const cur = $("nav").querySelector('[aria-current="page"]');
   if (cur) $("nav").scrollLeft = cur.offsetLeft - ($("nav").clientWidth - cur.offsetWidth) / 2;
+}
+
+// Section tabs under the quote header: Items (default), Deals, Trends, My collection.
+let SECTION = "items";
+function showSection(sec, scroll = true) {
+  SECTION = sec;
+  document.querySelectorAll(".sections [data-sec]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.sec === sec)));
+  // On narrow screens the tab row scrolls sideways: keep the selected tab visible.
+  const bar = document.querySelector(".sections"), tab = bar.querySelector(`[data-sec="${sec}"]`);
+  if (tab) {
+    const B = bar.getBoundingClientRect(), T = tab.getBoundingClientRect();
+    if (T.left < B.left || T.right > B.right) bar.scrollLeft += T.left - B.left - (B.width - T.width) / 2;
+  }
+  document.querySelectorAll(".sec[data-sec]").forEach(d => d.hidden = d.dataset.sec !== sec);
+  if (sec !== "items") $("detail").hidden = true;
+  if (sec === "items" && VIEW === "map") renderMap();
+  if (sec === "trends") sinceChart?.resize();
+  if (sec === "meal") openMeal();
+  if (scroll) document.querySelector(".sections").scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+// Series browser: every series grouped by year, filterable by type and name.
+let B_KIND = "all";
+function toggleBrowser(open = $("browser").hidden) {
+  $("browser").hidden = !open;
+  $("allBtn")?.setAttribute("aria-expanded", String(open));
+  if (open) { renderBrowser(); $("bFilter").focus({ preventScroll: true }); }
+}
+function seriesSummary(sid) {
+  const rows = rowsFor(sid), priced = rows.filter(r => r.price != null);
+  const total = priced.reduce((t, r) => t + r.price, 0);
+  const prev = priced.reduce((t, r) => t + (r.d1 != null ? r.price / (1 + r.d1) : r.price), 0);
+  const moved = priced.some(r => r.d1 != null);  // weekly series have no 1-day change
+  return { n: rows.length, priced: priced.length, total, d1: moved && prev ? total / prev - 1 : null };
+}
+function renderBrowser() {
+  const q = fold($("bFilter").value.trim());
+  const today = new Date().toISOString().slice(0, 10);
+  const list = Object.entries(DATA.sets)
+    .filter(([, s]) => B_KIND === "all" || (s.kind === "cards") === (B_KIND === "cards"))
+    .filter(([, s]) => !q || fold(`${s.name} ${s.franchise || ""} ${(s.start || "").slice(0, 4)}`).includes(q))
+    .sort((a, b) => (b[1].start || "").localeCompare(a[1].start || ""));
+  $("bCount").textContent = `${Object.keys(DATA.sets).length} tracked`;
+  const years = [...new Set(list.map(([, s]) => (s.start || "Undated").slice(0, 4)))];
+  $("bList").innerHTML = years.map(y => `<div class="b-year">${y}</div><div class="b-grid">` +
+    list.filter(([, s]) => (s.start || "Undated").slice(0, 4) === y).map(([id, s]) => {
+      const m = seriesSummary(id);
+      const live = s.current || (s.start <= today && (!s.end || s.end >= today));
+      return `<button class="b-card ${id === SID ? "cur" : ""}" data-s="${id}" style="--bc:${seriesColor(id)}">
+        <b>${esc(s.name)}</b>
+        <small>${fmtDate(s.start)}${s.end ? " – " + fmtDate(s.end) : ""} · ${m.n} ${s.kind === "cards" ? "cards" : "toys"}</small>
+        <div class="b-val"><span>${m.priced ? usd(m.total) : "—"}</span>${m.d1 != null ? `<span class="${cls(m.d1)}">${pct(m.d1)} 1d</span>` : ""}</div>
+        <div class="b-tags">${live ? '<span class="chip now">Now</span>' : '<span class="chip">Ended</span>'}${s.refresh === "weekly" ? '<span class="chip" title="Older series are re-priced once a week">Weekly prices</span>' : ""}</div>
+      </button>`;
+    }).join("") + `</div>`).join("") || `<p class="note">No series match.</p>`;
+  $("bList").querySelectorAll(".b-card").forEach(b => b.onclick = () => {
+    toggleBrowser(false);
+    if (b.dataset.s !== SID) history.pushState(null, "", `?s=${b.dataset.s}`);
+    switchTo(b.dataset.s);
+  });
+}
+function wireBrowser() {
+  $("bFilter").oninput = renderBrowser;
+  $("bClose").onclick = () => toggleBrowser(false);
+  document.querySelectorAll(".chips [data-kind]").forEach(b => b.onclick = () => {
+    B_KIND = b.dataset.kind;
+    document.querySelectorAll(".chips [data-kind]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    renderBrowser();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("browser").hidden) toggleBrowser(false); });
 }
 
 // Animated switch between series: slide in the direction of the tab, count numbers up.
 const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 function switchTo(sid, after) {
+  if (!DATA.sets[sid]) sid = defaultSeries();
   if (sid === SID) { after?.(); return; }
   const order = (id) => DATA.sets[id]?.order ?? 0;
   document.documentElement.dataset.dir = order(sid) < order(SID) ? "prev" : "next";
-  const run = () => { go(sid); after?.(); };
+  const run = async () => { await loadSeries(sid); go(sid); after?.(); };
   if (document.startViewTransition && !reduceMotion()) {
     document.startViewTransition(run);
   } else {
@@ -491,7 +887,7 @@ function switchTo(sid, after) {
 // Count every number in these elements up from 0, keeping its $ / % / sign formatting.
 function countUp() {
   if (reduceMotion()) return;
-  const els = document.querySelectorAll("#sTotal, #stats b, .tile-price, #mine .big, #sinceChange");
+  const els = document.querySelectorAll("#sTotal, .tile-price, #mine .big, #sinceChange");
   const jobs = [...els].map(el => {
     const m = el.textContent.match(/^([^\d-]*)(-?[\d,]*\.?\d+)(.*)$/);
     if (!m) return null;
@@ -523,7 +919,7 @@ function go(sid) {
   $("sStatus").textContent = live ? "Now in restaurants" : s.end ? `Ended ${fmtDate(s.end)}` : "Past series";
   $("sTitle").textContent = s.name;
   $("sMeta").innerHTML = `${s.kind === "cards" ? "Cards" : "Toys"} · ${fmtDate(s.start)} – ${s.end ? fmtDate(s.end) : "now"}` +
-    (s.note ? `<br>${esc(s.note)}` : "");
+    (s.note ? `<span class="hero-note"><br>${esc(s.note)}</span>` : "");
   $("thName").textContent = s.kind === "cards" ? "Card" : "Toy";
   $("foot").innerHTML = `Prices are <b>asking prices</b> of active eBay US Buy It Now listings, collected daily with the eBay Browse API. ` +
     (s.kind === "cards" ? "Lots, graded slabs and multi-card listings are filtered out. " : "Lots, full sets and multi-toy listings are filtered out. ") +
@@ -547,22 +943,26 @@ function render() {
     return (typeof x === "string" ? x.localeCompare(y) : x - y) * sortDir;
   });
 
-  const top = priced.slice().sort((a, b) => b.price - a.price)[0];
-  const mover = priced.filter(r => r.d30 != null).sort((a, b) => Math.abs(b.d30) - Math.abs(a.d30))[0];
   const days = Math.max(0, ...all.map(r => r.h.length));
   const first = all.map(r => r.h[0]?.date).filter(Boolean).sort()[0];
-  $("sTotal").textContent = priced.length ? usd(total) : "—";
-  $("sPriced").textContent = `${priced.length} of ${all.length} ${isCards() ? "cards" : "toys"} priced`;
   const listings = all.reduce((s, r) => s + (r.count || 0), 0);
-  $("stats").innerHTML = `
-    <div class="stat"><small>Listings tracked today</small><b>${listings || "—"}</b><small>active eBay US listings</small></div>
-    <div class="stat"><small>Most valuable</small><b>${top ? usd(top.price) : "—"}</b><small>${top ? esc(top.name) : ""}</small></div>
-    <div class="stat"><small>Biggest move vs 30-day avg</small><b class="${cls(mover?.d30)}">${mover ? pct(mover.d30) : "—"}</b><small>${mover ? esc(mover.name) : ""}</small></div>
-    <div class="stat"><small>Days tracked</small><b>${days}</b><small>${first ? "since " + fmtDate(first) : "not started"}</small></div>`;
+  const m = seriesSummary(SID);
+  $("sTotal").textContent = priced.length ? usd(total) : "—";
+  $("sChange").className = "hero-change " + cls(m.d1);
+  $("sChange").textContent = m.d1 != null ? `${m.d1 > 0 ? "▲" : m.d1 < 0 ? "▼" : ""} ${pct(m.d1)} today` : "";
+  $("sPriced").textContent = `${priced.length} of ${all.length} ${isCards() ? "cards" : "toys"} priced`;
+  $("sFacts").textContent = [listings ? `${listings} eBay listings today` : "",
+    days ? `${days} day${days > 1 ? "s" : ""} of prices since ${fmtDate(first)}` : "Price tracking starts with the next daily update",
+    series().refresh === "weekly" ? "updated weekly" : ""].filter(Boolean).join(" · ");
   $("empty").hidden = priced.length > 0;
   renderMine(all);
   renderSince(all);
   renderSeriesReturns(all);
+  renderDeals(all);
+  renderComplete(all);
+  const owned = all.filter(r => OWNED.has(r.id)).length;
+  $("cMine").textContent = owned ? `${owned}/${all.length}` : "";
+  showSection(SECTION, false);
 
   const ownBtn = (r) => `<button class="own" data-own="${r.id}" aria-pressed="${OWNED.has(r.id)}" title="${OWNED.has(r.id) ? "Remove from" : "Add to"} my collection">${OWNED.has(r.id) ? "✓" : "＋"}</button>`;
 
@@ -574,7 +974,7 @@ function render() {
       <td class="num ${cls(r.d1)}">${pct(r.d1)}</td>
       <td class="num ${cls(r.d30)}">${pct(r.d30)}</td>
       <td class="num">${usd(r.low)}</td>
-      <td class="num">${r.count ?? "—"}</td>
+      <td class="num">${r.count != null ? confBadge(r, true) : "—"}</td>
       <td class="num"><canvas class="spark" data-id="${r.id}"></canvas></td>
     </tr>`).join("");
 
@@ -591,7 +991,7 @@ function render() {
         ${ch != null ? `<span class="badge ${cls(ch)}">${ch > 0 ? "▲" : ch < 0 ? "▼" : ""} ${pct(Math.abs(ch)).replace("+", "")} <small>${label}</small></span>` : ""}
       </div>
       ${r.share ? `<div class="share" title="${(r.share * 100).toFixed(1)}% of the full set's value"><i style="width:${Math.max(2, r.share * 100 / (top.share || 1))}%"></i></div>` : ""}
-      <div class="tile-sub">${r.count != null ? `${r.count} listings · ${(r.share * 100).toFixed(0)}% of set value` : "No price yet"}</div>
+      <div class="tile-sub">${r.count != null ? `${confBadge(r)} ${r.count} listings · ${(r.share * 100).toFixed(0)}% of set` : "No price yet"}</div>
     </div>`;
   }).join("") || `<p class="note">Nothing here yet. Tap ＋ on items you own, or untick "Show only mine".</p>`;
   $("gallery").hidden = VIEW !== "gallery";
@@ -618,22 +1018,354 @@ function render() {
     th.textContent = th.textContent.replace(/ [▲▼]$/, "") + (th.dataset.k === sortKey ? (sortDir > 0 ? " ▲" : " ▼") : ""));
 }
 
+// ---------- Share images (drawn in the browser; no photos, so nothing cross-origin taints the canvas) ----------
+const LOGO = new Image(); LOGO.src = "assets/logo.svg";
+function wrapText(ctx, text, maxW) {
+  const words = text.split(" "), lines = [""];
+  for (const w of words) {
+    const t = (lines[lines.length - 1] + " " + w).trim();
+    if (ctx.measureText(t).width > maxW && lines[lines.length - 1]) lines.push(w); else lines[lines.length - 1] = t;
+  }
+  return lines;
+}
+// ---- Profit-card share image (in the style of stock apps' "share your gains" cards) ----
+const SITE = "https://nglungfai.github.io/toy-ticker/";
+// Headline percentage with thousands separators: +1,163.5%
+const bigPct = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v * 100).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+// Short ticker-style symbol for an item: first word's letters, up to 4 (Pikachu -> $PIKA, Mr. Krabs -> $MRKR).
+const symbol = (name) => "$" + (name.replace(/[^A-Za-z ]/g, "").split(" ").filter(Boolean).slice(0, 2).join("").toUpperCase().slice(0, 4) || "TOY");
+let QR_LIB = null;
+function loadQR() {
+  return QR_LIB ||= new Promise((ok) => {
+    if (window.qrcode) return ok(window.qrcode);
+    const sc = document.createElement("script");
+    sc.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
+    sc.onload = () => ok(window.qrcode); sc.onerror = () => ok(null);
+    document.head.appendChild(sc);
+  });
+}
+// Total value over time for a set of {r, n} positions: only days where every position has a price.
+function valueSeries(pos) {
+  const dates = [...new Set(pos.flatMap(({ r }) => r.h.map(p => p.date)))].sort();
+  return dates.map(d => {
+    let v = 0;
+    for (const { r, n } of pos) { const p = r.h.find(q => q.date === d); if (!p?.median) return null; v += p.median * n; }
+    return { date: d, v };
+  }).filter(Boolean);
+}
+// opts: { accent, label, title, big, bigTone: "up"|"down"|null, line, values:[num], rows:[{sym,name,price,ch}], more, qr, footer }
+async function drawProfitCard(o) {
+  await document.fonts.load('700 40px "Fredoka"').catch(() => {});
+  const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H;
+  const x = c.getContext("2d"), F = (w, s) => `${w} ${s}px "Fredoka", -apple-system, sans-serif`;
+  const UP = "#3ddc84", DOWN = "#ff6b6b", INK = "#f4f2ee", MUTED = "#9b9a94";
+  // Background: near-black with a glow in the series colour and faint chart gridlines.
+  x.fillStyle = "#0e1013"; x.fillRect(0, 0, W, H);
+  const glow = x.createRadialGradient(W * .85, 140, 40, W * .85, 140, 760);
+  glow.addColorStop(0, o.accent + "66"); glow.addColorStop(1, o.accent + "00");
+  x.fillStyle = glow; x.fillRect(0, 0, W, H);
+  x.strokeStyle = "rgba(255,255,255,.035)"; x.lineWidth = 1;
+  for (let gy = 90; gy < H; gy += 90) { x.beginPath(); x.moveTo(0, gy); x.lineTo(W, gy); x.stroke(); }
+  // Header
+  if (LOGO.complete && LOGO.naturalWidth) x.drawImage(LOGO, 64, 60, 68, 68);
+  x.fillStyle = INK; x.font = F(700, 40); x.textBaseline = "middle"; x.fillText("Toy Ticker", 148, 96);
+  x.fillStyle = MUTED; x.font = F(600, 26); x.textAlign = "right";
+  x.fillText(new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }), W - 64, 96);
+  x.textAlign = "left"; x.textBaseline = "alphabetic";
+  // Headline numbers
+  x.fillStyle = MUTED; x.font = F(700, 28); x.fillText(o.label.toUpperCase(), 64, 228);
+  x.fillStyle = INK; x.font = F(600, 46); x.fillText(o.title, 64, 290);
+  let size = 200; x.font = F(700, size);
+  while (x.measureText(o.big).width > W - 128 && size > 90) { size -= 10; x.font = F(700, size); }
+  x.fillStyle = o.bigTone === "up" ? UP : o.bigTone === "down" ? DOWN : INK; x.fillText(o.big, 58, 290 + size * .95);
+  let y = 290 + size * .95 + 70;
+  x.fillStyle = INK; x.font = F(600, 40); x.fillText(o.line, 64, y);
+  // Value chart
+  y += 40;
+  const vals = o.values || [];
+  if (vals.length >= 2) {
+    const top = y, h = 170, left = 64, w = W - 128, min = Math.min(...vals), max = Math.max(...vals), span = max - min || 1;
+    const pt = (i) => [left + (i / (vals.length - 1)) * w, top + h - ((vals[i] - min) / span) * (h - 12) - 6];
+    // Chart colour follows its own trend, unless the card asks for a neutral (series-coloured) line.
+    const tone = o.chartTone || (vals[vals.length - 1] >= vals[0] ? UP : DOWN);
+    const fill = x.createLinearGradient(0, top, 0, top + h); fill.addColorStop(0, tone + "55"); fill.addColorStop(1, tone + "00");
+    x.beginPath(); vals.forEach((_, i) => { const [px, py] = pt(i); i ? x.lineTo(px, py) : x.moveTo(px, py); });
+    x.lineTo(left + w, top + h); x.lineTo(left, top + h); x.closePath(); x.fillStyle = fill; x.fill();
+    x.beginPath(); vals.forEach((_, i) => { const [px, py] = pt(i); i ? x.lineTo(px, py) : x.moveTo(px, py); });
+    x.strokeStyle = tone; x.lineWidth = 6; x.lineJoin = "round"; x.stroke();
+    const [ex, ey] = pt(vals.length - 1); x.fillStyle = tone; x.beginPath(); x.arc(ex, ey, 11, 0, Math.PI * 2); x.fill();
+    y = top + h + 50;
+  } else y += 20;
+  // Positions
+  const footTop = H - 250, rowH = 74, maxRows = Math.max(0, Math.floor((footTop - 30 - (y + 34)) / rowH));
+  const rows = (o.rows || []).slice(0, maxRows), hidden = (o.rows || []).length - rows.length;
+  if (rows.length) {
+    x.fillStyle = MUTED; x.font = F(700, 24); x.fillText("POSITIONS", 64, y);
+    x.textAlign = "right"; x.fillText("PRICE · 30D", W - 64, y); x.textAlign = "left";
+    y += 20;
+    rows.forEach((r) => {
+      x.strokeStyle = "rgba(255,255,255,.08)"; x.lineWidth = 2; x.beginPath(); x.moveTo(64, y); x.lineTo(W - 64, y); x.stroke();
+      const cy = y + rowH / 2;
+      x.font = F(700, 24); const sw = x.measureText(r.sym).width + 24;
+      x.fillStyle = o.accent + "40"; x.beginPath(); x.roundRect ? x.roundRect(64, cy - 21, sw, 42, 10) : x.rect(64, cy - 21, sw, 42); x.fill();
+      x.fillStyle = INK; x.textBaseline = "middle"; x.fillText(r.sym, 76, cy + 1);
+      x.font = F(600, 30); let nm = r.name; const maxNm = W - 128 - sw - 330;
+      while (x.measureText(nm).width > maxNm && nm.length > 4) nm = nm.slice(0, -2).trimEnd() + "…";
+      x.fillText(nm, 64 + sw + 20, cy + 1);
+      x.textAlign = "right"; x.fillStyle = INK; x.font = F(700, 32); x.fillText(r.price, W - 64 - 150, cy + 1);
+      x.fillStyle = r.ch == null ? MUTED : r.ch >= 0 ? UP : DOWN; x.font = F(700, 28);
+      x.fillText(r.ch == null ? "—" : `${r.ch >= 0 ? "▲" : "▼"} ${Math.abs(r.ch * 100).toFixed(1)}%`, W - 64, cy + 1);
+      x.textAlign = "left"; x.textBaseline = "alphabetic";
+      y += rowH;
+    });
+    if (hidden > 0) { x.fillStyle = MUTED; x.font = F(600, 24); x.fillText(`+ ${hidden} more`, 64, y + 34); }
+  }
+  // Footer: call to action + QR code to the site
+  x.strokeStyle = "rgba(255,255,255,.12)"; x.lineWidth = 2; x.beginPath(); x.moveTo(64, footTop); x.lineTo(W - 64, footTop); x.stroke();
+  const qrSize = 170, qx = W - 64 - qrSize, qy = footTop + 30;
+  const qr = await loadQR();
+  if (qr) {
+    const q = qr(0, "M"); q.addData(o.qr || SITE); q.make();
+    const n = q.getModuleCount(), cell = (qrSize - 20) / n;
+    x.fillStyle = "#ffffff"; x.beginPath(); x.roundRect ? x.roundRect(qx, qy, qrSize, qrSize, 14) : x.rect(qx, qy, qrSize, qrSize); x.fill();
+    x.fillStyle = "#0e1013";
+    for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) if (q.isDark(r, col)) x.fillRect(qx + 10 + col * cell, qy + 10 + r * cell, cell + .5, cell + .5);
+  }
+  x.fillStyle = INK; x.font = F(700, 38); x.fillText(o.footer || "What's your Happy Meal worth?", 64, footTop + 82);
+  x.fillStyle = MUTED; x.font = F(600, 28); x.fillText("Scan or visit nglungfai.github.io/toy-ticker", 64, footTop + 128);
+  x.font = F(500, 22); x.fillText("Based on eBay asking prices. Just for fun, not financial advice.", 64, footTop + 178);
+  return c;
+}
+let shareBlob = null;
+async function openShareImage(opts, filename, text) {
+  const c = await drawProfitCard(opts);
+  shareBlob = await new Promise(r => c.toBlob(r, "image/png"));
+  const url = URL.createObjectURL(shareBlob);
+  $("shareImg").src = url; $("shareSave").href = url; $("shareSave").download = filename;
+  const file = new File([shareBlob], filename, { type: "image/png" });
+  $("shareSend").hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
+  $("shareSend").onclick = () => navigator.share({ files: [file], text }).catch(() => {});
+  $("shareModal").hidden = false;
+}
+function wireShareModal() {
+  const close = () => { $("shareModal").hidden = true; };
+  $("shareClose").onclick = close;
+  $("shareModal").onclick = (e) => { if (e.target === $("shareModal")) close(); };
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("shareModal").hidden) close(); });
+}
+
+// Collection share: value of what you own, and how it moved over the last 30 days (or since tracking began).
+async function shareCollection() {
+  await loadSeries(SID);
+  const all = rowsFor(SID), mine = all.filter(r => OWNED.has(r.id) && r.price != null), T = THEMES[SID] || DEFAULT_THEME;
+  const val = mine.reduce((t, r) => t + r.price, 0);
+  const vs = valueSeries(mine.map(r => ({ r, n: 1 })));
+  const cutoff = vs.length ? new Date(new Date(vs[vs.length - 1].date + "T12:00:00") - 30 * 864e5).toISOString().slice(0, 10) : "";
+  const recent = vs.filter(p => p.date >= cutoff), ch = recent.length >= 2 ? recent[recent.length - 1].v / recent[0].v - 1 : null;
+  const owned = all.filter(r => OWNED.has(r.id)).length;
+  openShareImage({
+    accent: T.chart, label: `My ${series().name} collection · ${recent.length > 25 ? "30-day" : "since tracking began"}`,
+    title: owned === all.length ? `Complete set · ${usd(val)}` : `${owned} of ${all.length} collected · ${usd(val)}`,
+    big: ch != null ? bigPct(ch) : usd(val), bigTone: ch == null ? null : ch >= 0 ? "up" : "down",
+    line: ch != null ? `${usd(recent[0].v)}  →  ${usd(val)}` : "worth at today's eBay median asks",
+    values: recent.map(p => p.v),
+    rows: [...mine].sort((a, b) => b.price - a.price).map(r => ({ sym: symbol(r.name), name: r.name, price: usd(r.price), ch: r.d30 })),
+    qr: `${SITE}s/${SID}/`, footer: "Track your Happy Meal collection",
+  }, `my-${SID}-collection.png`, `My ${series().name} Happy Meal collection on Toy Ticker`);
+}
+
+// ---------- "What's my Happy Meal worth?" calculator ----------
+const PICKED = new Map();  // item id -> count
+const COMBOS = { "pokemon-2026": ["pokemon-toys-2026", "pokemon-2026"], "pokemon-toys-2026": ["pokemon-toys-2026", "pokemon-2026"] };
+const MEAL_HINTS = { pokemon: "A Pokémon Happy Meal comes with 1 mini box toy and 2 cards. Tap what you got." };
+function mealSeriesOptions() {
+  const opts = [];
+  const seen = new Set();
+  Object.entries(DATA.sets).sort((a, b) => (b[1].start || "").localeCompare(a[1].start || "")).forEach(([id, s]) => {
+    if (COMBOS[id]) {
+      const key = COMBOS[id].join("+");
+      if (!seen.has(key)) { seen.add(key); opts.push([key, "Pokémon (toys + cards)"]); }
+    } else opts.push([id, s.name]);
+  });
+  return opts;
+}
+// Default the picker to the series being viewed; keep the user's own choice until they switch series.
+function openMeal() {
+  const sel = $("mealSeries");
+  if (sel.dataset.sid !== SID) {
+    const cur = COMBOS[SID] ? COMBOS[SID].join("+") : SID;
+    sel.innerHTML = mealSeriesOptions().map(([v, n]) => `<option value="${v}" ${v === cur ? "selected" : ""}>${esc(n)}</option>`).join("");
+    sel.dataset.sid = SID;
+  }
+  renderMeal();
+}
+function renderMeal() {
+  const sids = $("mealSeries").value.split("+");
+  $("mealHint").textContent = sids.some(s => s.startsWith("pokemon")) ? MEAL_HINTS.pokemon : "Tap what came in your Happy Meal (tap again for duplicates).";
+  $("mealPick").innerHTML = sids.map(sid => (sids.length > 1 ? `<div class="pick-group">${esc(DATA.sets[sid].name)}</div>` : "") +
+    rowsFor(sid).sort((a, b) => String(a.number).localeCompare(String(b.number))).map(r => `
+      <button class="pick ${PICKED.has(r.id) ? "on" : ""}" data-id="${r.id}" title="Tap to add, long-press or right-click to remove">
+        <span class="n">${PICKED.get(r.id) || ""}</span>${thumb(r, "sm")}<b>${esc(r.name)}</b><small>${usd(r.price)}</small></button>`).join("")).join("");
+  $("mealPick").querySelectorAll(".pick").forEach(b => {
+    b.onclick = () => { PICKED.set(b.dataset.id, (PICKED.get(b.dataset.id) || 0) + 1); renderMeal(); };
+    b.oncontextmenu = (e) => { e.preventDefault(); removePick(b.dataset.id); };
+  });
+  renderMealResult();
+}
+function removePick(id) { const n = (PICKED.get(id) || 0) - 1; n > 0 ? PICKED.set(id, n) : PICKED.delete(id); renderMeal(); }
+function mealRows() {
+  const byId = {};
+  Object.keys(DATA.sets).forEach(sid => rowsFor(sid).forEach(r => byId[r.id] = r));
+  return [...PICKED].map(([id, n]) => ({ r: byId[id], n })).filter(x => x.r);
+}
+// When a meal mixes series (Pokémon toys + cards), label each pick so "Pikachu" isn't ambiguous.
+const pickName = (r, rows) => new Set(rows.map(x => x.r.set)).size > 1
+  ? `${r.name} (${DATA.sets[r.set].kind === "cards" ? "card" : "toy"})` : r.name;
+function renderMealResult() {
+  const rows = mealRows(), paid = Math.max(0, parseFloat($("mealPaid").value) || 0);
+  if (!rows.length) { $("mealResult").innerHTML = `<p>Nothing picked yet.</p>`; return; }
+  const worth = rows.reduce((t, { r, n }) => t + (r.price || 0) * n, 0);
+  const unpriced = rows.filter(({ r }) => r.price == null).length;
+  const mult = paid ? worth / paid : null;
+  const msg = !worth ? "No prices yet for what you picked. Check back after the next daily update."
+    : mult == null ? "" : mult >= 5 ? "Jackpot! That's a seriously good Happy Meal."
+    : mult >= 2 ? "Nice haul: your toys are worth more than the meal." : mult >= 1 ? "Your Happy Meal paid for itself."
+    : "Worth less than the meal, but the fun's included.";
+  $("mealResult").innerHTML = `
+    <div class="worth">${worth ? usd(worth) : "—"}</div>
+    ${mult != null && worth ? `<span class="x ${mult >= 1 ? "up" : "down"}">${mult.toFixed(1)}× what you paid</span>` : ""}
+    <p>${msg}</p>
+    <p class="chosen">${rows.map(({ r, n }) => `${n > 1 ? n + "× " : ""}${esc(pickName(r, rows))} ${usd(r.price)} <a href="#" data-rm="${r.id}" aria-label="Remove ${esc(r.name)}">✕</a>`).join(" · ")}
+      ${unpriced ? ` · ${unpriced} not priced yet` : ""}</p>
+    <p style="font-size:12px">Based on today's median eBay asking prices. Sellers often accept less.</p>
+    ${worth ? `<button class="share-btn" id="mealShare" type="button">📸 Share my Happy Meal</button>` : ""}`;
+  $("mealResult").querySelectorAll("[data-rm]").forEach(a => a.onclick = (e) => { e.preventDefault(); removePick(a.dataset.rm); });
+  $("mealShare")?.addEventListener("click", async () => {
+    await Promise.all([...new Set(rows.map(({ r }) => r.set))].map(loadSeries));
+    const pos = mealRows(), T = THEMES[pos[0].r.set] || DEFAULT_THEME;
+    const vs = valueSeries(pos).slice(-30);
+    openShareImage({
+      accent: T.chart, chartTone: T.chart, label: "My Happy Meal · return",
+      title: `${pos.reduce((t, { n }) => t + n, 0)} collectibles from one Happy Meal`,
+      big: paid ? bigPct(worth / paid - 1) : usd(worth), bigTone: paid ? (worth >= paid ? "up" : "down") : null,
+      line: paid ? `Paid ${usd(paid)}  →  Worth ${usd(worth)}` : `Worth ${usd(worth)}`,
+      values: vs.map(p => p.v),
+      rows: pos.sort((a, b) => (b.r.price || 0) - (a.r.price || 0))
+        .map(({ r, n }) => ({ sym: symbol(r.name), name: `${n > 1 ? n + "× " : ""}${pickName(r, pos)}`, price: usd(r.price), ch: r.d30 })),
+      qr: SITE, footer: "What's your Happy Meal worth?",
+    }, "my-happy-meal.png", `My Happy Meal is worth ${usd(worth)} on Toy Ticker`);
+  });
+}
+function wireMeal() {
+  $("mealSeries").onchange = renderMeal;
+  $("mealPaid").oninput = renderMealResult;
+}
+
 // My collection: value of owned items in this series and across all series.
 function renderMine(all) {
   const mine = all.filter(r => OWNED.has(r.id));
   const val = mine.reduce((s, r) => s + (r.price || 0), 0);
   let allVal = 0, allN = 0;
   for (const id of OWNED) {
-    const h = DATA.history[id];
     if (!DATA.cards[id]) continue;
-    allN++; allVal += h?.[h.length - 1]?.median || 0;
+    allN++; allVal += DATA.cards[id].latest?.median || 0;
   }
   $("mine").classList.toggle("has", mine.length > 0);
+  $("mineShare").hidden = !mine.length;
   $("mineText").innerHTML = mine.length
     ? `You own <b>${mine.length}</b> of ${all.length} · worth <span class="big">${usd(val)}</span>` +
       (allN > mine.length ? ` · all series: <b>${allN}</b> items, <b>${usd(allVal)}</b>` : "")
     : `Tap <span class="own-ex">＋</span> on the items you own to see what they're worth.` +
       (allN ? ` · all series: <b>${allN}</b> items, <b>${usd(allVal)}</b>` : "");
+}
+
+// Chart event markers: a coloured line per event with a readable label pill at the top, e.g. "Promo ended".
+// Labels sit in headroom above the data (charts set y.grace) and stack into rows when they'd overlap.
+// Usage: options.plugins.eventMarkers = { dates: [ISO date per x label], items: [{ date, label, color }] }.
+Chart.register({
+  id: "eventMarkers",
+  afterDatasetsDraw(c, _a, opts) {
+    const dates = opts?.dates, items = opts?.items;
+    if (!dates?.length || !items?.length) return;
+    const { ctx, chartArea: a, scales: { x } } = c;
+    const H = 20, rows = [];
+    ctx.save();
+    ctx.font = "600 12px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.textBaseline = "middle";
+    for (const ev of items) {
+      if (ev.date < dates[0] || ev.date > dates[dates.length - 1]) continue;
+      const px = x.getPixelForValue(dates.findIndex(d => d >= ev.date));
+      const w = ctx.measureText(ev.label).width + 26;
+      const lx = Math.min(Math.max(px - w / 2, a.left), a.right - w);
+      let row = rows.findIndex(r => lx > r + 6);
+      if (row < 0) { row = rows.length; rows.push(0); }
+      rows[row] = lx + w;
+      const y = a.top + 2 + row * (H + 4);
+      // Line: solid, in the event's colour, from under the label down to the axis, with a dot on the axis.
+      ctx.globalAlpha = .55; ctx.strokeStyle = ev.color; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(px, y + H); ctx.lineTo(px, a.bottom); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.fillStyle = ev.color;
+      ctx.beginPath(); ctx.arc(px, a.bottom, 3.5, 0, Math.PI * 2); ctx.fill();
+      // Label pill: page-coloured with a coloured border and dot, so the text stays high-contrast.
+      ctx.fillStyle = css("--panel"); ctx.strokeStyle = ev.color; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(lx, y, w, H, H / 2) : ctx.rect(lx, y, w, H); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = ev.color; ctx.beginPath(); ctx.arc(lx + 10, y + H / 2, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = css("--text"); ctx.fillText(ev.label, lx + 19, y + H / 2 + .5);
+    }
+    ctx.restore();
+  },
+});
+// Events worth marking on a series' charts: its own launch and end, plus other series launching.
+const shortName = (id) => THEMES[id]?.short || DATA.sets[id].name.split(/ × | /)[0];
+// Extra room above the data (top only) so event labels never sit on the price lines.
+// Narrow charts stack labels into more rows, so they get more room.
+const headroom = (k) => ({ afterDataLimits(sc) {
+  sc.max += (sc.max - sc.min || sc.max || 1) * k * (sc.chart.width < 500 ? 1.8 : 1); } });
+function chartEvents(sid) {
+  const s = DATA.sets[sid], own = (THEMES[sid] || DEFAULT_THEME).chart, ev = [];
+  if (s.start) ev.push({ date: s.start, label: "In restaurants", color: own });
+  if (s.end && !s.current) ev.push({ date: s.end, label: "Promo ended", color: "#5f5e5a" });
+  for (const [id, o] of Object.entries(DATA.sets))
+    if (id !== sid && o.start) ev.push({ date: o.start, label: `${shortName(id)} launched`, color: (THEMES[id] || DEFAULT_THEME).chart });
+  return ev.sort((a, b) => a.date.localeCompare(b.date));
+}
+
+// Deal finder: today's listings asking at least 20% under the median, across this series.
+const ebaySearch = (r) => `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(
+  `mcdonalds ${r.set === "pokemon-2026" ? r.name + " " + r.number + "/015 2026" : (DATA.sets[r.set]?.name || "").replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`)}`;
+function dealCard(d, r) {
+  const img = d.image ? `<img src="${esc(d.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : `<div class="ph sm"><span>#${esc(r.number)}</span></div>`;
+  return `<a class="deal" href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title)}">${img}
+    <div><b>${esc(r.name)}</b>
+    <div class="deal-row"><span class="deal-price">${usd(d.price)}</span><span class="off">${Math.round(d.below * 100)}% under</span></div>
+    <small>${esc(d.title)} · eBay ↗</small></div></a>`;
+}
+const list_count = (all) => all.reduce((n, r) => n + (r.deals || []).length, 0);
+function renderDeals(all) {
+  const priced = all.some(r => r.price != null);
+  const list = all.flatMap(r => (r.deals || []).map(d => ({ d, r }))).sort((a, b) => b.d.below - a.d.below);
+  $("cDeals").textContent = list_count(all) || "";
+  if (!priced) { $("dealsNote").textContent = ""; $("dealGrid").innerHTML = `<p class="note" style="margin:0">Deals appear once prices are collected.</p>`; return; }
+  $("dealsNote").textContent = list.length
+    ? `${list.length} listing${list.length > 1 ? "s" : ""} asking 20%+ under today's median · prices change fast, check before you buy`
+    : "nothing 20%+ under today's median right now";
+  $("dealGrid").innerHTML = list.slice(0, 6).map(({ d, r }) => dealCard(d, r)).join("") ||
+    `<p class="note" style="margin:0">No standout deals today. They show up here when a seller lists well under the going price.</p>`;
+}
+
+// Set completion: what's missing from the user's set, and the cheapest way to finish it.
+function renderComplete(all) {
+  const mine = all.filter(r => OWNED.has(r.id));
+  const missing = all.filter(r => !OWNED.has(r.id));
+  $("complete").hidden = !mine.length;
+  if (!mine.length) return;
+  if (!missing.length) { $("complete").innerHTML = `🎉 <b>Set complete!</b> You own all ${all.length}.`; return; }
+  const priced = missing.filter(r => r.low != null), cost = priced.reduce((s, r) => s + r.low, 0);
+  $("complete").innerHTML = `<details><summary>Missing <b>${missing.length}</b> of ${all.length} · complete the set for about
+    <span class="big">${priced.length ? usd(cost) : "—"}</span> at today's lowest asks${priced.length < missing.length ? ` (${missing.length - priced.length} with no listing)` : ""}</summary>
+    <div class="miss">${missing.sort((a, b) => (a.low ?? 1e9) - (b.low ?? 1e9)).map(r => r.low != null
+      ? `<a href="${ebaySearch(r)}" target="_blank" rel="noopener"><span>#${esc(r.number)} ${esc(r.name)}</span><span>${usd(r.low)} ↗</span></a>`
+      : `<span class="row"><span>#${esc(r.number)} ${esc(r.name)}</span><em>no listing</em></span>`).join("")}</div></details>`;
 }
 
 // Ended series: how the full-set value moved since the promo left restaurants.
@@ -643,7 +1375,8 @@ function renderSince(all) {
   const today = new Date().toISOString().slice(0, 10);
   const ended = !s.current && s.end && s.end < today;
   const dates = [...new Set(all.flatMap(r => r.h.map(p => p.date)))].sort();
-  $("since").hidden = !ended || dates.length < 2;
+  $("since").hidden = dates.length < 2;
+  $("trendsEmpty").hidden = !$("since").hidden;
   if ($("since").hidden) return;
   // Only count items priced on every day, so the total isn't skewed by items appearing/disappearing.
   const full = all.filter(r => dates.every(d => r.h.some(p => p.date === d && p.median != null)));
@@ -672,8 +1405,9 @@ function renderSince(all) {
     }]},
     options: {
       maintainAspectRatio: false, plugins: { legend: { display: false },
-        tooltip: { callbacks: { label: c => `Full set: ${usd(c.parsed.y)}` } } },
-      scales: { x: { ticks: { maxTicksLimit: 6 } }, y: { ticks: { callback: money } } },
+        tooltip: { callbacks: { label: c => `Full set: ${usd(c.parsed.y)}` } },
+        eventMarkers: { dates: dates.slice(startIdx), items: chartEvents(SID).filter(e => e.label !== "Promo ended") } },
+      scales: { x: { ticks: { maxTicksLimit: 6 } }, y: { ...headroom(.6), ticks: { callback: money } } },
     },
   });
 }
@@ -739,7 +1473,7 @@ function renderMap() {
       const label = mid ? `<b>${esc(it.name)}</b>${big ? `<span>${usd(it.price)}</span>` : ""}<span>${pct(ch)}</span>` : "";
       html += `<button class="map-cell ${heat(ch)}" data-sid="${it.sid}" data-id="${it.id}"
         style="left:${it.x}px;top:${it.y}px;width:${Math.max(0, it.w - 2)}px;height:${Math.max(0, it.h - 2)}px"
-        title="${esc(it.name)} · ${esc(DATA.sets[it.sid].name)} · ${usd(it.price)} · ${pct(ch)}">${label}</button>`;
+        title="${esc(it.name)} · ${esc(DATA.sets[it.sid].name)} · ${usd(it.price)} · ${pct(ch)}${confidence(it) ? ` · ${confidence(it).label} confidence` : ""}">${label}</button>`;
     }
   }
   box.innerHTML = html;
@@ -770,6 +1504,8 @@ function periodReturns(pts) {
       if (pts[0].date > target && span !== "ytd") return { label, r: null };
       // YTD starts from the first price this year if tracking began after Jan 1.
       base = span === "ytd" ? (pts.find(p => p.date >= target) || pts[0]) : [...pts].reverse().find(p => p.date <= target);
+      // Weekly series have gaps: only use a snapshot reasonably close to the period start (1D needs yesterday).
+      if (base && span !== "ytd" && daysBetween(base.date, target) > Math.max(1, Math.round(span * 0.3))) base = null;
     }
     return { label, r: base && base !== last && base.v ? last.v / base.v - 1 : null };
   });
@@ -808,24 +1544,79 @@ function renderItemReturns(id) {
   wireRetTabs($("dReturns"), () => { render(); renderItemReturns(id); });
 }
 
-// Top movers across every series, as a scrolling ticker.
-function renderTicker() {
-  const rows = Object.keys(DATA.sets).flatMap(sid => rowsFor(sid).map(r => ({ ...r, sid })))
-    .filter(r => r.d1 != null && Math.abs(r.d1) >= 0.005);
-  const up = rows.filter(r => r.d1 > 0).sort((a, b) => b.d1 - a.d1).slice(0, 3);
-  const down = rows.filter(r => r.d1 < 0).sort((a, b) => a.d1 - b.d1).slice(0, 3);
-  if (!up.length && !down.length) { $("ticker").hidden = true; return; }
-  const item = (r, lbl) => `<button class="tick" data-sid="${r.sid}" data-id="${r.id}">
-      <span class="lbl">${lbl}</span><b>${esc(r.name)}</b><span class="ser">${esc(DATA.sets[r.sid].name)}</span>
-      <span>${usd(r.price)}</span><span class="${cls(r.d1)}">${r.d1 > 0 ? "▲" : "▼"} ${pct(Math.abs(r.d1)).replace("+", "")}</span></button>`;
-  const html = up.map(r => item(r, "Riser")).join("") + down.map(r => item(r, "Faller")).join("");
-  $("tickerTrack").innerHTML = html + html; // doubled for a seamless loop
-  $("ticker").hidden = false;
-  $("tickerTrack").querySelectorAll(".tick").forEach(b => b.onclick = () => {
-    history.pushState(null, "", `?s=${b.dataset.sid}`);
-    switchTo(b.dataset.sid, () => showDetail(b.dataset.id));
+// Search across every item in every series. "/" focuses the box; arrows + Enter pick a result.
+let qSel = 0, qHits = [];
+const fold = (t) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/×/g, "x");
+function runSearch() {
+  const q = fold($("q").value.trim());
+  if (!q) { closeSearch(); return; }
+  const words = q.split(/\s+/);
+  qHits = Object.keys(DATA.sets).flatMap(sid => rowsFor(sid).map(r => ({ ...r, sid })))
+    .filter(r => { const hay = fold(`${r.name} ${DATA.sets[r.sid].name} #${r.number}`); return words.every(w => hay.includes(w)); })
+    .slice(0, 8);
+  qSel = 0;
+  $("qResults").innerHTML = qHits.length ? qHits.map((r, i) => `
+    <button class="q-item" role="option" data-i="${i}" aria-selected="${i === qSel}">${thumb(r, "sm")}
+      <div><b>${esc(r.name)}</b><small>${esc(DATA.sets[r.sid].name)} · #${esc(r.number)}</small></div>
+      <span class="q-price">${usd(r.price)}</span></button>`).join("")
+    : `<div class="q-empty">No toys or cards match "${esc($("q").value)}"</div>`;
+  $("qResults").hidden = false; $("q").setAttribute("aria-expanded", "true");
+  $("qResults").querySelectorAll(".q-item").forEach(b => b.onmousedown = (e) => { e.preventDefault(); pick(+b.dataset.i); });
+}
+function pick(i) {
+  const r = qHits[i]; if (!r) return;
+  closeSearch(); $("q").value = ""; $("q").blur();
+  if (r.sid !== SID) history.pushState(null, "", `?s=${r.sid}`);
+  switchTo(r.sid, () => showDetail(r.id));
+}
+function closeSearch() { $("qResults").hidden = true; $("q").setAttribute("aria-expanded", "false"); }
+function wireSearch() {
+  $("q").oninput = runSearch;
+  $("q").onblur = () => setTimeout(closeSearch, 100);
+  $("q").onkeydown = (e) => {
+    if (e.key === "Escape") { closeSearch(); $("q").blur(); }
+    else if (e.key === "Enter") { e.preventDefault(); pick(qSel); }
+    else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault(); if (!qHits.length) return;
+      qSel = (qSel + (e.key === "ArrowDown" ? 1 : -1) + qHits.length) % qHits.length;
+      $("qResults").querySelectorAll(".q-item").forEach((b, i) => b.setAttribute("aria-selected", String(i === qSel)));
+    }
+  };
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); $("q").focus(); }
   });
 }
+
+// Happy Meal calendar: tracked series plus untracked/upcoming ones from config, as a compact list (newest first).
+function renderCalendar() {
+  const today = new Date().toISOString().slice(0, 10);
+  const tracked = Object.entries(DATA.sets).map(([id, s]) => ({
+    id, name: s.name, start: s.start, end: s.end, kind: s.kind, current: s.current, color: seriesColor(id) }));
+  const all = [...tracked, ...(DATA.calendar || [])].sort((a, b) => (a.start || "9999").localeCompare(b.start || "9999"));
+  // Entries without an end date run until the day before the next promotion starts.
+  all.forEach((e, i) => {
+    const next = all.slice(i + 1).find(n => n.start && n.start > e.start);
+    if (e.start && !e.end && next) e.end = new Date(new Date(next.start + "T12:00:00") - 864e5).toISOString().slice(0, 10);
+  });
+  const short = (d) => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  $("cal").innerHTML = all.reverse().map(e => {
+    const live = e.current || (e.start && e.start <= today && (!e.end || e.end >= today));
+    const chip = e.tba ? `<span class="chip next">Coming next</span>` : live ? `<span class="chip now">Now</span>`
+      : e.id ? `<span class="chip">Ended</span>` : `<span class="chip">Not tracked</span>`;
+    const when = e.tba ? "Date TBA" : `${short(e.start)}${e.end ? " – " + short(e.end) : ""}`;
+    let val = "—";
+    if (e.id) { const m = seriesSummary(e.id); if (m.priced) val = `${usd(m.total)}${m.d1 != null ? `<small class="${cls(m.d1)}">${pct(m.d1)}</small>` : ""}`; }
+    const body = `<span class="cal-when">${when}</span>
+      <span class="cal-name"><i></i><span>${esc(e.name)}</span></span>${chip}
+      <span class="cal-val">${val}</span><span class="cal-go">${e.id ? "→" : ""}</span>`;
+    return e.id ? `<a class="cal-row" href="?s=${e.id}" data-s="${e.id}" style="--cal:${e.color}" title="View ${esc(e.name)} prices">${body}</a>`
+      : `<div class="cal-row" style="--cal:${e.tba ? "var(--accent)" : "var(--line)"}">${body}</div>`;
+  }).join("");
+  $("cal").querySelectorAll("a[data-s]").forEach(a => a.onclick = (ev) => {
+    ev.preventDefault(); history.pushState(null, "", a.getAttribute("href")); switchTo(a.dataset.s); window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
 
 // Item photo, or a placeholder tile with the item number when there's no photo yet.
 function thumb(r, size, link = true) {
@@ -887,7 +1678,9 @@ function showDetail(id) {
   $("dPic").innerHTML = `<div class="tilt${r.rarity === "Holo" ? " shine" : ""}">${thumb(r, "lg")}</div>` +
     (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${esc(r.imageCredit)}</a>` : esc(r.imageCredit)}</div>` : "");
   const q = encodeURIComponent(`mcdonalds ${isCards() ? r.name + " " + r.number + "/015 2026" : series().name.replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`);
-  $("dMeta").innerHTML = `${esc(series().name)} · median ask ${usd(r.price)} · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
+  const cf = confidence(r);
+  $("dMeta").innerHTML = (cf ? `<span class="conf c${cf.lvl}">${cf.label} confidence</span><span class="conf-why">${esc(cf.why)}</span>` : "") +
+    `${esc(series().name)} · median ask ${usd(r.price)} · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
     `<a href="https://www.ebay.com/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`;
   if (chart) chart.destroy();
   Chart.defaults.color = css("--muted");
@@ -913,24 +1706,30 @@ function showDetail(id) {
     options: {
       maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
       scales: {
-        y: { ticks: { callback: money } },
+        y: { ...headroom(.45), ticks: { callback: money } },
         vol: { position: "right", beginAtZero: true, max: maxCount * 4, display: false, grid: { display: false } },
       },
       plugins: { tooltip: { callbacks: { label: c =>
-        c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}` : `${c.dataset.label}: ${usd(c.parsed.y)}` } } },
+        c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}` : `${c.dataset.label}: ${usd(c.parsed.y)}` } },
+        eventMarkers: { dates: r.h.map(p => p.date), items: chartEvents(SID) } },
     },
   });
   renderItemReturns(id);
+  $("dDeals").innerHTML = (r.deals || []).length
+    ? `<h4>Deals today</h4><div class="deal-grid">${r.deals.map(d => dealCard(d, r)).join("")}</div>` : "";
   $("dNote").textContent = !r.h.length ? "No prices collected yet."
     : r.h.length < 3 ? "Only a few days collected so far. The chart fills in as the daily job runs." : "";
   render();
   $("detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-fetch("data/prices.json", { cache: "no-store" })
+const defaultSeries = () => Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order)[0][0];
+fetch("data/index.json", { cache: "no-store" })
   .then(r => r.json())
-  .then(d => {
-    DATA = d;
+  .then(async d => {
+    DATA = { sets: d.sets, cards: d.items, history: {}, calendar: d.calendar || [], updated: d.updated };
+    const first = DATA.sets[new URLSearchParams(location.search).get("s")] ? new URLSearchParams(location.search).get("s") : defaultSeries();
+    await loadSeries(first);
     $("meta").textContent = `Daily eBay asking prices for McDonald's Happy Meal toys and cards · updated ${new Date(d.updated).toLocaleString()}`;
     document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
       sortDir = th.dataset.k === sortKey ? -sortDir : (th.dataset.k === "name" ? 1 : -1);
@@ -944,6 +1743,13 @@ fetch("data/prices.json", { cache: "no-store" })
       render();
     });
     $("ownedOnly").onchange = render;
+    document.querySelectorAll(".sections [data-sec]").forEach(b => b.onclick = () => showSection(b.dataset.sec));
+    wireSearch();
+    wireBrowser();
+    wireMeal();
+    wireShareModal();
+    $("mineShare").onclick = shareCollection;
+    renderCalendar();
     // Share the series' share page: it carries that series' link-preview image.
     $("shareBtn").onclick = async () => {
       const url = new URL(`s/${SID}/`, location.href).href, title = `${series().name} · Toy Ticker`;
@@ -953,11 +1759,10 @@ fetch("data/prices.json", { cache: "no-store" })
       } catch (e) { if (e.name !== "AbortError") prompt("Copy this link:", url); }
       setTimeout(() => $("shareBtn").textContent = "↗ Share", 2000);
     };
-    renderTicker();
     window.onpopstate = () => switchTo(new URLSearchParams(location.search).get("s"));
     go(new URLSearchParams(location.search).get("s"));
   })
-  .catch(e => { $("meta").textContent = "Couldn't load data/prices.json: " + e.message; });
+  .catch(e => { $("meta").textContent = "Couldn't load price data: " + e.message; });
 </script>
 </body>
 </html>

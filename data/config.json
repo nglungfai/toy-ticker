@@ -229,6 +229,195 @@
    ]
   },
   {
+   "id": "pokemon-toys-2026",
+   "name": "Pokémon mini box toys",
+   "kind": "toys",
+   "current": true,
+   "franchise": "Pokémon",
+   "start": "2026-11-10",
+   "end": "2026-12-14",
+   "note": "15 mini Happy Meal box toys that double as bag charms, one per Happy Meal.",
+   "require": [
+    [
+     "pokemon",
+     "pokémon"
+    ],
+    [
+     "mcdonald",
+     "mcdonalds",
+     "mcd",
+     "happy meal"
+    ],
+    [
+     "2026"
+    ]
+   ],
+   "exclude": [
+    "card",
+    "cards",
+    "tcg",
+    "holo",
+    "foil",
+    "promo",
+    "/015",
+    "m26",
+    "psa",
+    "graded"
+   ],
+   "items": [
+    {
+     "number": "01",
+     "name": "Pikachu",
+     "q": "mcdonalds pokemon 2026 toy Pikachu",
+     "match": [
+      [
+       "pikachu"
+      ]
+     ]
+    },
+    {
+     "number": "02",
+     "name": "Bulbasaur",
+     "q": "mcdonalds pokemon 2026 toy Bulbasaur",
+     "match": [
+      [
+       "bulbasaur"
+      ]
+     ]
+    },
+    {
+     "number": "03",
+     "name": "Charmander",
+     "q": "mcdonalds pokemon 2026 toy Charmander",
+     "match": [
+      [
+       "charmander"
+      ]
+     ]
+    },
+    {
+     "number": "04",
+     "name": "Squirtle",
+     "q": "mcdonalds pokemon 2026 toy Squirtle",
+     "match": [
+      [
+       "squirtle"
+      ]
+     ]
+    },
+    {
+     "number": "05",
+     "name": "Rowlet",
+     "q": "mcdonalds pokemon 2026 toy Rowlet",
+     "match": [
+      [
+       "rowlet"
+      ]
+     ]
+    },
+    {
+     "number": "06",
+     "name": "Sprigatito",
+     "q": "mcdonalds pokemon 2026 toy Sprigatito",
+     "match": [
+      [
+       "sprigatito"
+      ]
+     ]
+    },
+    {
+     "number": "07",
+     "name": "Eevee",
+     "q": "mcdonalds pokemon 2026 toy Eevee",
+     "match": [
+      [
+       "eevee"
+      ]
+     ]
+    },
+    {
+     "number": "08",
+     "name": "Weedle",
+     "q": "mcdonalds pokemon 2026 toy Weedle",
+     "match": [
+      [
+       "weedle"
+      ]
+     ]
+    },
+    {
+     "number": "09",
+     "name": "Umbreon",
+     "q": "mcdonalds pokemon 2026 toy Umbreon",
+     "match": [
+      [
+       "umbreon"
+      ]
+     ]
+    },
+    {
+     "number": "10",
+     "name": "Torchic",
+     "q": "mcdonalds pokemon 2026 toy Torchic",
+     "match": [
+      [
+       "torchic"
+      ]
+     ]
+    },
+    {
+     "number": "11",
+     "name": "Piplup",
+     "q": "mcdonalds pokemon 2026 toy Piplup",
+     "match": [
+      [
+       "piplup"
+      ]
+     ]
+    },
+    {
+     "number": "12",
+     "name": "Munchlax",
+     "q": "mcdonalds pokemon 2026 toy Munchlax",
+     "match": [
+      [
+       "munchlax"
+      ]
+     ]
+    },
+    {
+     "number": "13",
+     "name": "Minccino",
+     "q": "mcdonalds pokemon 2026 toy Minccino",
+     "match": [
+      [
+       "minccino"
+      ]
+     ]
+    },
+    {
+     "number": "14",
+     "name": "Espurr",
+     "q": "mcdonalds pokemon 2026 toy Espurr",
+     "match": [
+      [
+       "espurr"
+      ]
+     ]
+    },
+    {
+     "number": "15",
+     "name": "Sobble",
+     "q": "mcdonalds pokemon 2026 toy Sobble",
+     "match": [
+      [
+       "sobble"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "boo-buckets-2026",
    "name": "Disney Villains Boo Buckets",
    "kind": "toys",
@@ -502,6 +691,289 @@
      ]
     }
    ]
+  },
+  {
+   "id": "hello-kitty-godzilla-2026",
+   "name": "Hello Kitty × Godzilla",
+   "kind": "toys",
+   "franchise": "Sanrio",
+   "start": "2026-08-18",
+   "end": "2026-09-14",
+   "note": "8 Sanrio characters dressed as Toho kaiju.",
+   "require": [
+    [
+     "hello kitty",
+     "sanrio"
+    ],
+    [
+     "godzilla",
+     "kaiju",
+     "toho"
+    ],
+    [
+     "mcdonald",
+     "mcdonalds",
+     "mcd",
+     "happy meal"
+    ]
+   ],
+   "items": [
+    {
+     "number": "01",
+     "name": "Hello Kitty × Godzilla",
+     "q": "mcdonalds hello kitty godzilla hello kitty",
+     "match": [
+      [
+       "hello kitty"
+      ]
+     ],
+     "not": [
+      "badtz",
+      "badtz maru",
+      "badtzmaru",
+      "choco cat",
+      "chococat",
+      "cinnamoroll",
+      "destoroyah",
+      "ghidorah",
+      "gigan",
+      "keroppi",
+      "king ghidorah",
+      "kuromi",
+      "mechagodzilla",
+      "mothra",
+      "my melody",
+      "pompompurin",
+      "purin",
+      "rodan",
+      "space godzilla",
+      "spacegodzilla"
+     ]
+    },
+    {
+     "number": "02",
+     "name": "Kuromi × Mechagodzilla",
+     "q": "mcdonalds hello kitty godzilla kuromi",
+     "match": [
+      [
+       "kuromi",
+       "mechagodzilla"
+      ]
+     ]
+    },
+    {
+     "number": "03",
+     "name": "Badtz-Maru × Rodan",
+     "q": "mcdonalds hello kitty godzilla badtz maru",
+     "match": [
+      [
+       "badtz maru",
+       "badtzmaru",
+       "badtz",
+       "rodan"
+      ]
+     ]
+    },
+    {
+     "number": "04",
+     "name": "My Melody × Mothra",
+     "q": "mcdonalds hello kitty godzilla my melody",
+     "match": [
+      [
+       "my melody",
+       "mothra"
+      ]
+     ]
+    },
+    {
+     "number": "05",
+     "name": "Keroppi × King Ghidorah",
+     "q": "mcdonalds hello kitty godzilla keroppi",
+     "match": [
+      [
+       "keroppi",
+       "ghidorah",
+       "king ghidorah"
+      ]
+     ]
+    },
+    {
+     "number": "06",
+     "name": "Chococat × SpaceGodzilla",
+     "q": "mcdonalds hello kitty godzilla chococat",
+     "match": [
+      [
+       "chococat",
+       "choco cat",
+       "spacegodzilla",
+       "space godzilla"
+      ]
+     ]
+    },
+    {
+     "number": "07",
+     "name": "Cinnamoroll × Destoroyah",
+     "q": "mcdonalds hello kitty godzilla cinnamoroll",
+     "match": [
+      [
+       "cinnamoroll",
+       "destoroyah"
+      ]
+     ]
+    },
+    {
+     "number": "08",
+     "name": "Pompompurin × Gigan",
+     "q": "mcdonalds hello kitty godzilla pompompurin",
+     "match": [
+      [
+       "pompompurin",
+       "purin",
+       "gigan"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bt21-2026",
+   "name": "BT21",
+   "kind": "toys",
+   "franchise": "BT21",
+   "start": "2026-07-14",
+   "end": "2026-08-17",
+   "note": "7 BT21 characters on ring clips, plus VAN, the group on a ship, and a poster with stickers.",
+   "require": [
+    [
+     "bt21"
+    ],
+    [
+     "mcdonald",
+     "mcdonalds",
+     "mcd",
+     "happy meal"
+    ]
+   ],
+   "items": [
+    {
+     "number": "01",
+     "name": "KOYA",
+     "q": "mcdonalds bt21 koya",
+     "match": [
+      [
+       "koya"
+      ]
+     ]
+    },
+    {
+     "number": "02",
+     "name": "RJ",
+     "q": "mcdonalds bt21 rj",
+     "match": [
+      [
+       "rj"
+      ]
+     ]
+    },
+    {
+     "number": "03",
+     "name": "SHOOKY",
+     "q": "mcdonalds bt21 shooky",
+     "match": [
+      [
+       "shooky"
+      ]
+     ]
+    },
+    {
+     "number": "04",
+     "name": "MANG",
+     "q": "mcdonalds bt21 mang",
+     "match": [
+      [
+       "mang"
+      ]
+     ]
+    },
+    {
+     "number": "05",
+     "name": "CHIMMY",
+     "q": "mcdonalds bt21 chimmy",
+     "match": [
+      [
+       "chimmy"
+      ]
+     ]
+    },
+    {
+     "number": "06",
+     "name": "TATA",
+     "q": "mcdonalds bt21 tata",
+     "match": [
+      [
+       "tata"
+      ]
+     ]
+    },
+    {
+     "number": "07",
+     "name": "COOKY",
+     "q": "mcdonalds bt21 cooky",
+     "match": [
+      [
+       "cooky"
+      ]
+     ]
+    },
+    {
+     "number": "08",
+     "name": "VAN",
+     "q": "mcdonalds bt21 van",
+     "match": [
+      [
+       "van"
+      ]
+     ]
+    },
+    {
+     "number": "09",
+     "name": "Group on ship",
+     "q": "mcdonalds bt21 ship",
+     "match": [
+      [
+       "ship",
+       "group"
+      ]
+     ]
+    },
+    {
+     "number": "10",
+     "name": "Poster and stickers",
+     "q": "mcdonalds bt21 poster",
+     "match": [
+      [
+       "poster",
+       "sticker",
+       "stickers"
+      ]
+     ]
+    }
+   ]
   }
- ]
+ ],
+ "calendar": [
+  {
+   "name": "FIFA World Cup Squishmallows",
+   "start": "2026-06-09",
+   "kind": "toys",
+   "note": "Not tracked."
+  },
+  {
+   "name": "Next Happy Meal",
+   "start": null,
+   "tba": true,
+   "note": "Watch this space for the next Happy Meal toys."
+  }
+ ],
+ "_calendar_help": "calendar: untracked or upcoming Happy Meals shown in the page's calendar. When the next one is confirmed, replace the tba entry with name/start/end (and add it under series to track prices)."
 }

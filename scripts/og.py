@@ -15,6 +15,9 @@ THEMES = {  # gradient start, gradient end, text colour (keep in sync with index
     "pokemon-2026": ("#ffcb05", "#f08a00", "#1d1d1b"),
     "boo-buckets-2026": ("#ff7a1a", "#5b1f8f", "#ffffff"),
     "spongebob-onepiece-2026": ("#0aa5d8", "#0b4f8a", "#ffffff"),
+    "pokemon-toys-2026": ("#ffcb05", "#e3350d", "#1d1d1b"),
+    "hello-kitty-godzilla-2026": ("#d4537e", "#2f7a52", "#ffffff"),
+    "bt21-2026": ("#7f77dd", "#d4537e", "#ffffff"),
 }
 DEFAULT = ("#d62300", "#ffb703", "#ffffff")
 
@@ -162,17 +165,24 @@ def site_image(data, order, F, site_label):
     logo(d, 60, 50, 2.2)
     d.text((220, 125), "Toy Ticker", font=F(104, 700), fill="#ffffff", anchor="lm")
     d.text((62, 260), "Daily prices for McDonald's Happy Meal toys and cards", font=F(32, 500), fill="#ffffff")
-    y = 330
-    for sid in order:
+    # Series rows shrink to fit (6 series need tighter rows than 3); two columns past 6.
+    y0, bottom, gap = 315, H - 30, 10
+    cols = 1 if len(order) <= 6 else 2
+    per_col = -(-len(order) // cols)
+    rh = min(76, (bottom - y0 - gap * (per_col - 1)) / per_col)
+    cw = (W - 120 - 20 * (cols - 1)) / cols
+    fs = int(min(34, rh * 0.5))
+    for i, sid in enumerate(order):
         s = data["sets"][sid]
         c1, c2, ink = THEMES.get(sid, DEFAULT)
         rows = series_rows(data, sid)
         priced = [p for _, p in rows if p is not None]
-        d.rounded_rectangle([60, y, W - 60, y + 76], radius=18, fill=(255, 255, 255, 235))
-        d.rounded_rectangle([60, y, 76, y + 76], radius=8, fill=c1)
-        d.text((100, y + 38), s["name"], font=F(34, 600), fill="#1d1d1b", anchor="lm")
-        d.text((W - 90, y + 38), money(sum(priced)) if priced else "coming soon", font=F(34, 700), fill="#1d1d1b", anchor="rm")
-        y += 92
+        x0 = 60 + (i // per_col) * (cw + 20)
+        y = y0 + (i % per_col) * (rh + gap)
+        d.rounded_rectangle([x0, y, x0 + cw, y + rh], radius=14, fill=(255, 255, 255, 235))
+        d.rounded_rectangle([x0, y, x0 + 14, y + rh], radius=7, fill=c1)
+        d.text((x0 + 36, y + rh / 2), s["name"], font=F(fs, 600), fill="#1d1d1b", anchor="lm")
+        d.text((x0 + cw - 26, y + rh / 2), money(sum(priced)) if priced else "coming soon", font=F(fs, 700), fill="#1d1d1b", anchor="rm")
     return img
 
 
