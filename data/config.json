@@ -5,6 +5,7 @@
   {
    "id": "pokemon-2026",
    "name": "Pokémon TCG cards",
+   "description": "Fifteen Pokémon TCG promo cards, two in every Happy Meal. Seven are holo foils, including Pikachu, Mimikyu and Jirachi. We price raw single cards only: no graded slabs, lots or sets.",
    "kind": "cards",
    "current": true,
    "start": "2026-11-10",
@@ -236,6 +237,7 @@
   {
    "id": "pokemon-toys-2026",
    "name": "Pokémon mini box toys",
+   "description": "Fifteen mini Happy Meal boxes, one Pokémon each, that double as bag charms. One comes with every Happy Meal, alongside the TCG cards. The lineup runs from Pikachu and the Kanto starters to Sprigatito, Umbreon and Sobble.",
    "kind": "toys",
    "current": true,
    "franchise": "Pokémon",
@@ -429,6 +431,7 @@
   {
    "id": "boo-buckets-2026",
    "name": "Disney Villains Boo Buckets",
+   "description": "The Halloween Boo Buckets came back as five Disney Villains pails, each with its own coloured lid and stickers: Jafar, Ursula, Scar, Cruella de Vil and Maleficent.",
    "kind": "toys",
    "start": "2026-10-20",
    "end": "2026-11-09",
@@ -508,6 +511,7 @@
   {
    "id": "spongebob-onepiece-2026",
    "name": "SpongeBob × One Piece",
+   "description": "Fifteen crossover figures that pair Bikini Bottom with the One Piece cast, from SpongeBob × Luffy and Patrick × Zoro to Mermaid Man × Garp. SpongeBob appears twice, with Luffy and with Gear 5 Luffy.",
    "kind": "toys",
    "start": "2026-09-15",
    "end": "2026-10-19",
@@ -712,6 +716,7 @@
   {
    "id": "hello-kitty-godzilla-2026",
    "name": "Hello Kitty × Godzilla",
+   "description": "Eight Sanrio characters dressed as Toho monsters: Hello Kitty as Godzilla, Kuromi as Mechagodzilla, My Melody as Mothra, Pompompurin as Gigan and more.",
    "kind": "toys",
    "franchise": "Sanrio",
    "start": "2026-08-18",
@@ -864,6 +869,7 @@
   {
    "id": "bt21-2026",
    "name": "BT21",
+   "description": "Seven BT21 characters on ring clips (KOYA, RJ, SHOOKY, MANG, CHIMMY, TATA and COOKY), plus VAN, the whole group on a ship, and a poster with stickers: 10 items in all.",
    "kind": "toys",
    "franchise": "BT21",
    "start": "2026-07-14",
@@ -993,6 +999,19 @@
    }
   }
  ],
+ "groups": [
+  {
+   "id": "pokemon-happy-meal-2026",
+   "name": "Pokémon toys & cards",
+   "tab": "Pokémon",
+   "members": [
+    "pokemon-toys-2026",
+    "pokemon-2026"
+   ],
+   "description": "Every Pokémon Happy Meal comes with one mini box toy and two TCG promo cards. The 15 mini boxes, one Pokémon each, double as bag charms. Seven of the 15 cards are holo foils, including Pikachu, Mimikyu and Jirachi."
+  }
+ ],
+ "_groups_help": "groups: series shown on the site as one (same promotion, e.g. a toy and cards in every Happy Meal). Each member keeps its own matching rules, prices and full-set search.",
  "calendar": [
   {
    "name": "FIFA World Cup Squishmallows",

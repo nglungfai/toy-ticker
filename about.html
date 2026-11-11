@@ -189,19 +189,29 @@
 
 <script>
 // Fill the live numbers and series list from the same data file the price page uses.
-const BAND = { "pokemon-2026": "#f2b705", "boo-buckets-2026": "#7a3fc0", "spongebob-onepiece-2026": "#0a8fc4" };
+const BAND = { "pokemon-happy-meal-2026": "#e3350d", "pokemon-2026": "#f2b705", "boo-buckets-2026": "#7a3fc0", "spongebob-onepiece-2026": "#0a8fc4" };
 const fmt = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 fetch("data/index.json", { cache: "no-store" }).then(r => r.json()).then(d => {
-  const sets = Object.entries(d.sets).sort((a, b) => a[1].order - b[1].order);
+  // Groups (Pokémon toys + cards from the same Happy Meal) show as one series, like on the main page.
+  const memberOf = {};
+  (d.groups || []).forEach(g => g.members.forEach(m => memberOf[m] = g));
+  const sets = [];
+  Object.entries(d.sets).sort((a, b) => a[1].order - b[1].order).forEach(([id, s]) => {
+    const g = memberOf[id];
+    if (!g) return sets.push([id, s, Object.values(d.items).filter(c => c.set === id).length + " " + (s.kind === "cards" ? "cards" : "toys")]);
+    if (sets.some(([x]) => x === g.id)) return;
+    const ms = g.members.map(m => d.sets[m]);
+    const parts = g.members.map(m => Object.values(d.items).filter(c => c.set === m).length + " " + (d.sets[m].kind === "cards" ? "cards" : "toys"));
+    sets.push([g.id, { name: g.name, start: ms.map(x => x.start).sort()[0], end: ms.map(x => x.end || "").sort().pop(), current: ms.some(x => x.current) }, parts.join(" + ")]);
+  });
   document.getElementById("nSeries").textContent = sets.length;
   document.getElementById("nItems").textContent = Object.keys(d.items).length;
   const listings = Object.values(d.items).reduce((s, it) => s + (it.latest?.count || 0), 0);
   document.getElementById("nListings").textContent = listings ? listings.toLocaleString() : "—";
-  document.getElementById("seriesList").innerHTML = sets.map(([id, s]) => {
-    const n = Object.values(d.items).filter(c => c.set === id).length;
+  document.getElementById("seriesList").innerHTML = sets.map(([id, s, count]) => {
     return `<a href="./?s=${id}" style="border-left-color:${BAND[id] || "#d62300"}">
-      <span><b>${esc(s.name)}</b><small>${n} ${s.kind === "cards" ? "cards" : "toys"} · ${fmt(s.start)} – ${s.end ? fmt(s.end) : "now"}${s.current ? " · in restaurants now" : ""}</small></span>
+      <span><b>${esc(s.name)}</b><small>${count} · ${fmt(s.start)} – ${s.end ? fmt(s.end) : "now"}${s.current ? " · in restaurants now" : ""}</small></span>
       <span class="go">View prices →</span></a>`;
   }).join("");
 }).catch(() => {});

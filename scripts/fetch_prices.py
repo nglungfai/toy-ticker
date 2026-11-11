@@ -19,6 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ebay  # noqa: E402
+import listings  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -26,7 +27,7 @@ INDEX_FILE = DATA_DIR / "index.json"
 SERIES_DIR = DATA_DIR / "series"
 LEGACY_FILE = DATA_DIR / "prices.json"  # pre-split single file; migrated automatically
 CONFIG_FILE = DATA_DIR / "config.json"
-SERIES_KEYS = ("name", "kind", "start", "end", "current", "note", "franchise")
+SERIES_KEYS = ("name", "description", "kind", "start", "end", "current", "note", "franchise")
 WEEKLY_AFTER_DAYS = 90
 
 
@@ -88,7 +89,8 @@ def save_data(data):
     for f in SERIES_DIR.glob("*.json"):  # series no longer configured
         if f.stem not in data["sets"]:
             f.unlink()
-    INDEX_FILE.write_text(json.dumps({"sets": data["sets"], "items": items, "calendar": data.get("calendar", []),
+    INDEX_FILE.write_text(json.dumps({"sets": data["sets"], "items": items, "groups": data.get("groups", []),
+                                      "calendar": data.get("calendar", []),
                                       "updated": data.get("updated")}, indent=1, ensure_ascii=False) + "\n")
     if LEGACY_FILE.exists():
         LEGACY_FILE.unlink()
@@ -166,13 +168,21 @@ def main():
                 data["sets"][s["id"]]["fullSet"] = {**prev_fs, "history": hist, "deals": []}
         except Exception as e:  # noqa: BLE001
             print(f"! {s['id']} full set: {e}", file=sys.stderr)
+        # Listing ledger: follow matched listings over time to estimate sold prices.
+        try:
+            led = listings.update(s["id"], today)
+            calls += (led or {}).get("checked", 0)
+        except Exception as e:  # noqa: BLE001
+            print(f"! {s['id']} listing ledger: {e}", file=sys.stderr)
 
     # Happy Meal calendar: tracked series come from data["sets"]; this adds untracked and upcoming ones.
     data["calendar"] = config.get("calendar", [])
+    # Groups: series the site shows as one (members keep their own data).
+    data["groups"] = [g for g in config.get("groups", []) if all(m in data["sets"] for m in g["members"])]
     data["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     save_data(data)
     print(f"Saved {len(data['history'])} items with prices across {len(data['sets'])} series "
-          f"({calls} eBay searches) -> data/index.json + data/series/")
+          f"({calls} eBay API calls) -> data/index.json + data/series/")
 
     if os.environ.get("MATCH_REPORT") and ebay.REPORT:
         Path(os.environ["MATCH_REPORT"]).write_text(json.dumps(ebay.REPORT, indent=1, ensure_ascii=False))

@@ -316,8 +316,9 @@
   @media (max-width: 640px) { .toolbar .own-filter { margin-left: 0; } }
 
   /* Complete set vs singles */
-  .setbox { margin-top: 14px; display: grid; grid-template-columns: 1fr auto 1fr auto; gap: 8px 16px; align-items: center;
-            background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; }
+  .setbox { margin-top: 14px; display: grid; gap: 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; }
+  .setbox[hidden] { display: none; }
+  .setbox .sb { display: grid; grid-template-columns: 1fr auto 1fr auto; gap: 8px 16px; align-items: center; }
   .setbox .sb-col small { display: block; color: var(--muted); font-size: 12px; }
   .setbox .sb-col b { font-family: "Fredoka", sans-serif; font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .setbox .sb-col .conf { margin-left: 6px; }
@@ -327,7 +328,7 @@
   .setbox .sb-save.flat { background: var(--panel); color: var(--muted); border: 1px solid var(--line); }
   .setbox .sb-links { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
   @media (max-width: 640px) {
-    .setbox { grid-template-columns: 1fr 1fr; }
+    .setbox .sb { grid-template-columns: 1fr 1fr; }
     .setbox .sb-vs { display: none; }
     .setbox .sb-save { grid-column: 1 / -1; justify-self: start; }
   }
@@ -386,6 +387,20 @@
                   background: linear-gradient(90deg, var(--h1), var(--h2)); }
   .hero h2 { margin: 8px 0 4px; font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: 0; }
   .hero-meta { font-size: 14px; color: var(--muted); max-width: 560px; }
+  .hero-value .split { display: inline-block; margin-right: 12px; white-space: nowrap; }
+  .hero-value .split b { font-size: inherit; display: inline; color: var(--text); }
+  .kindbar { display: flex; align-items: center; gap: 6px; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+  .kindbar button { font: inherit; font-weight: 600; color: var(--text); background: var(--panel); border: 1px solid var(--line);
+                    border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+  .kindbar button small { color: var(--muted); font-weight: 500; margin-left: 2px; }
+  .kindbar button[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .kindbar button[aria-pressed="true"] small { color: inherit; opacity: .7; }
+  .kind-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+              color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; margin-right: 5px; vertical-align: 1px; }
+  .setbox .sb + .sb { border-top: 1px solid var(--line); padding-top: 10px; }
+  .hero-desc { margin: 8px 0 0; font-size: 14px; line-height: 1.5; max-width: 600px; color: var(--text); opacity: .85; }
+  .b-card .b-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+                    font-size: 12px; line-height: 1.4; color: var(--muted); margin-top: 6px; }
   .hero-value { text-align: right; }
   .hero-value b { display: block; font-size: 40px; line-height: 1.1; font-weight: 600; color: var(--hacc); font-variant-numeric: tabular-nums; }
   .hero-value small { color: var(--muted); font-size: 13px; }
@@ -605,6 +620,7 @@
         <span class="status" id="sStatus"></span>
         <h2 id="sTitle"></h2>
         <div class="hero-meta" id="sMeta"></div>
+        <p class="hero-desc" id="sDesc" hidden></p>
       </div>
       <div class="hero-value">
         <small>Full set · median price incl. shipping</small>
@@ -622,6 +638,8 @@
   </section>
 
   <div class="banner" id="empty" hidden>No prices collected for this series yet. They appear after the next daily update.</div>
+
+  <div class="kindbar" id="kindBar" hidden role="group" aria-label="Show toys, cards or both"></div>
 
   <nav class="sections" role="tablist" aria-label="Series sections">
     <button role="tab" data-sec="items" aria-selected="true">Items</button>
@@ -777,6 +795,26 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<"
 const fmtDate = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
 const series = () => DATA.sets[SID];
 const isCards = () => series().kind === "cards";
+// Groups (e.g. Pokémon toys + cards from the same Happy Meal) show as one series; members keep their own data.
+const members = (sid) => DATA.sets[sid]?.members || [sid];
+const isGroup = (sid = SID) => !!DATA.sets[sid]?.members;
+const kindOf = (r) => DATA.sets[r.set]?.kind || "toys";
+const kindWord = (s, one) => s.kind === "cards" ? (one ? "card" : "cards") : s.kind === "mixed" ? (one ? "item" : "items") : (one ? "toy" : "toys");
+// The series the site shows: groups instead of their members, newest first unless sorted otherwise.
+const shownSets = () => Object.entries(DATA.sets).filter(([, s]) => !s.group);
+const shownId = (sid) => DATA.sets[sid]?.group || sid;
+let KIND = "all";  // Cards | Toys filter inside a group
+function setupGroups(groups) {
+  for (const g of groups || []) {
+    const ms = g.members.filter(m => DATA.sets[m]);
+    if (ms.length < 2) continue;
+    const sets = ms.map(m => DATA.sets[m]);
+    ms.forEach(m => DATA.sets[m].group = g.id);
+    DATA.sets[g.id] = { ...g, members: ms, kind: "mixed", start: sets.map(x => x.start).sort()[0],
+      end: sets.map(x => x.end || "").sort().pop() || null, current: sets.some(x => x.current),
+      order: Math.min(...sets.map(x => x.order ?? 0)), refresh: sets.some(x => x.refresh === "daily") ? "daily" : sets[0].refresh };
+  }
+}
 let VIEW = "gallery";
 try { VIEW = localStorage.getItem("view") || "gallery"; } catch (e) {}
 let OWNED = new Set();
@@ -795,6 +833,8 @@ const THEMES = {
     accD: "#ffb199", pillD: "#4a1a10", pillInkD: "#ffd0c2", chart: "#e3350d" },
   "hello-kitty-godzilla-2026": { tab: "Hello Kitty × Godzilla", short: "Hello Kitty", band: ["#ff6fa5", "#2f7a52"], acc: "#a3165a", pill: "#fde4ef", pillInk: "#7d1145",
     accD: "#ff9cc4", pillD: "#4a1a30", pillInkD: "#ffc9df", chart: "#d4537e" },
+  "pokemon-happy-meal-2026": { tab: "Pokémon", short: "Pokémon", band: ["#ffcb05", "#e3350d"], acc: "#a32a0a", pill: "#fde3dc", pillInk: "#7a1f07",
+    accD: "#ffb199", pillD: "#4a1a10", pillInkD: "#ffd0c2", chart: "#e3350d" },
   "bt21-2026": { tab: "BT21", short: "BT21", band: ["#7f77dd", "#ff9ec4"], acc: "#534ab7", pill: "#eeedfe", pillInk: "#3c3489",
     accD: "#b8b2f5", pillD: "#2e2a5c", pillInkD: "#dcd8ff", chart: "#7f77dd" },
 };
@@ -825,6 +865,7 @@ const confBadge = (r, withCount) => {
 // index's "latest" summary, which is enough for search, the ticker, the map and the calendar.
 const LOADED = new Set(), LOADING = {};
 function loadSeries(sid) {
+  if (isGroup(sid)) return Promise.all(members(sid).map(loadSeries));
   if (!DATA.sets[sid] || LOADED.has(sid)) return Promise.resolve();
   return LOADING[sid] ||= fetch(`data/series/${sid}.json`, { cache: "no-store" })
     .then(r => r.ok ? r.json() : { history: {} })
@@ -832,6 +873,7 @@ function loadSeries(sid) {
     .catch(() => { LOADED.add(sid); });
 }
 function rowsFor(sid) {
+  if (isGroup(sid)) return members(sid).flatMap(rowsFor);
   const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
   return Object.entries(DATA.cards)
     .filter(([, c]) => c.set === sid)
@@ -859,13 +901,13 @@ const NAV_TABS = 6;
 const seriesColor = (id) => THEMES[id]?.chart ||
   ["#d85a30", "#1d9e75", "#378add", "#d4537e", "#7f77dd", "#ba7517", "#639922"][[...id].reduce((h, ch) => h + ch.charCodeAt(0), 0) % 7];
 function renderNav() {
-  const list = Object.entries(DATA.sets).sort((a, b) => (b[1].start || "").localeCompare(a[1].start || ""));
+  const list = shownSets().sort((a, b) => (b[1].start || "").localeCompare(a[1].start || ""));
   let tabs = list.slice(0, NAV_TABS);
   if (!tabs.some(([id]) => id === SID)) tabs = [...tabs.slice(0, NAV_TABS - 1), list.find(([id]) => id === SID)];
   tabs.sort((a, b) => a[1].order - b[1].order);
   $("nav").innerHTML = tabs.map(([id, s]) =>
     `<a href="?s=${id}" data-s="${id}" ${id === SID ? 'aria-current="page"' : ""} title="${esc(s.name)}${s.current ? " · in restaurants now" : ""}" style="--dot:${seriesColor(id)}">` +
-    `<span class="dot"></span>${esc(THEMES[id]?.tab || s.name)}${s.current ? '<span class="live" aria-label="in restaurants now"></span>' : ""}</a>`).join("") +
+    `<span class="dot"></span>${esc(THEMES[id]?.tab || s.tab || s.name)}${s.current ? '<span class="live" aria-label="in restaurants now"></span>' : ""}</a>`).join("") +
     `<button class="all-btn" id="allBtn" aria-expanded="${!$("browser").hidden}" aria-controls="browser">All ${list.length} ▾</button>`;
   $("nav").querySelectorAll("a").forEach(a => a.onclick = (e) => {
     e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); switchTo(a.dataset.s);
@@ -891,17 +933,35 @@ function wireNav() {
   document.querySelector(".nav-arrow.r").onclick = () => $("nav").scrollBy({ left: $("nav").clientWidth * .7 });
 }
 
-// Complete set vs buying every item separately, from the daily full-set eBay search.
-function renderSetBox(all) {
-  const fs = series().fullSet, last = fs?.history?.[fs.history.length - 1];
-  $("sSet").hidden = !last;
-  if (!last) return;
+// Cards | Toys switch for a group; filters the items, deals, trends and collection below the header.
+function renderKindBar(full) {
+  $("kindBar").hidden = !isGroup();
+  if (!isGroup()) return;
+  const n = (k) => k === "all" ? full.length : full.filter(r => kindOf(r) === k).length;
+  const opts = [["all", "All"], ...members(SID).map(id => [DATA.sets[id].kind, DATA.sets[id].kind === "cards" ? "Cards" : "Toys"])];
+  $("kindBar").innerHTML = `<span>Show</span>` + opts.map(([k, label]) =>
+    `<button type="button" data-kind="${k}" aria-pressed="${KIND === k}">${label} <small>${n(k)}</small></button>`).join("");
+  $("kindBar").querySelectorAll("button").forEach(b => b.onclick = () => { KIND = b.dataset.kind; selected = null; $("detail").hidden = true; render(); });
+}
+
+// Complete set vs buying every item separately, from the daily full-set eBay search (one per member of a group).
+function renderSetBox() {
+  const blocks = members(SID).map(id => setBlock(id)).filter(Boolean);
+  $("sSet").hidden = !blocks.length;
+  $("sSet").classList.toggle("multi", blocks.length > 1);
+  $("sSet").innerHTML = blocks.join("");
+}
+function setBlock(sid) {
+  const fs = DATA.sets[sid].fullSet, last = fs?.history?.[fs.history.length - 1];
+  if (!last) return "";
+  const all = rowsFor(sid);
   const priced = all.filter(r => r.price != null), singles = priced.reduce((t, r) => t + r.price, 0);
   const complete = priced.length === all.length, save = complete && singles ? 1 - last.median / singles : null;
   const conf = confBadge({ count: last.count, price: last.median, last }, false);
-  const kind = isCards() ? "cards" : "toys";
-  $("sSet").innerHTML = `
-    <div class="sb-col"><small>Complete set on eBay</small><b>${usd(last.median)}</b>${conf}
+  const kind = DATA.sets[sid].kind === "cards" ? "cards" : "toys";
+  const label = isGroup() ? `Complete ${kind === "cards" ? "card" : "toy"} set on eBay` : "Complete set on eBay";
+  return `<div class="sb">
+    <div class="sb-col"><small>${label}</small><b>${usd(last.median)}</b>${conf}
       <small>${last.count} listing${last.count > 1 ? "s" : ""} · incl. shipping</small></div>
     <span class="sb-vs">vs</span>
     <div class="sb-col"><small>Buying all ${all.length} separately</small><b>${complete ? usd(singles) : "—"}</b>
@@ -910,7 +970,7 @@ function renderSetBox(all) {
       : `<span class="sb-save ${save >= 0.02 ? "up" : save <= -0.02 ? "down" : "flat"}">${save >= 0.02 ? `Save ${Math.round(save * 100)}% with a set`
         : save <= -0.02 ? `Singles ${Math.round(-save * 100)}% cheaper` : "About the same"}</span>`}
     <div class="sb-links">${(fs.deals || []).length ? `Cheapest set: <a href="${esc(fs.deals[0].url)}" target="_blank" rel="noopener">${usd(fs.deals[0].price)} on eBay ↗</a> · ` : ""}
-      <a href="${esc(fs.search)}" target="_blank" rel="noopener">All complete-set listings ↗</a></div>`;
+      <a href="${esc(fs.search)}" target="_blank" rel="noopener">All complete-set listings ↗</a></div></div>`;
 }
 
 // Section tabs under the quote header: Items (default), Deals, Trends, My collection.
@@ -949,11 +1009,11 @@ function seriesSummary(sid) {
 function renderBrowser() {
   const q = fold($("bFilter").value.trim());
   const today = new Date().toISOString().slice(0, 10);
-  const list = Object.entries(DATA.sets)
-    .filter(([, s]) => B_KIND === "all" || (s.kind === "cards") === (B_KIND === "cards"))
-    .filter(([, s]) => !q || fold(`${s.name} ${s.franchise || ""} ${(s.start || "").slice(0, 4)}`).includes(q))
+  const list = shownSets()
+    .filter(([, s]) => B_KIND === "all" || s.kind === "mixed" || (s.kind === "cards") === (B_KIND === "cards"))
+    .filter(([, s]) => !q || fold(`${s.name} ${s.franchise || ""} ${s.description || ""} ${(s.start || "").slice(0, 4)}`).includes(q))
     .sort((a, b) => (b[1].start || "").localeCompare(a[1].start || ""));
-  $("bCount").textContent = `${Object.keys(DATA.sets).length} tracked`;
+  $("bCount").textContent = `${shownSets().length} tracked`;
   const years = [...new Set(list.map(([, s]) => (s.start || "Undated").slice(0, 4)))];
   $("bList").innerHTML = years.map(y => `<div class="b-year">${y}</div><div class="b-grid">` +
     list.filter(([, s]) => (s.start || "Undated").slice(0, 4) === y).map(([id, s]) => {
@@ -961,7 +1021,8 @@ function renderBrowser() {
       const live = s.current || (s.start <= today && (!s.end || s.end >= today));
       return `<button class="b-card ${id === SID ? "cur" : ""}" data-s="${id}" style="--bc:${seriesColor(id)}">
         <b>${esc(s.name)}</b>
-        <small>${fmtDate(s.start)}${s.end ? " – " + fmtDate(s.end) : ""} · ${m.n} ${s.kind === "cards" ? "cards" : "toys"}</small>
+        <small>${fmtDate(s.start)}${s.end ? " – " + fmtDate(s.end) : ""} · ${m.n} ${kindWord(s)}</small>
+        ${s.description ? `<span class="b-desc">${esc(s.description)}</span>` : ""}
         <div class="b-val"><span>${m.priced ? usd(m.total) : "—"}</span>${m.d1 != null ? `<span class="${cls(m.d1)}">${pct(m.d1)} 1d</span>` : ""}</div>
         <div class="b-tags">${live ? '<span class="chip now">Now</span>' : '<span class="chip">Ended</span>'}${s.refresh === "weekly" ? '<span class="chip" title="Older series are re-priced once a week">Weekly prices</span>' : ""}</div>
       </button>`;
@@ -987,6 +1048,7 @@ function wireBrowser() {
 const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 function switchTo(sid, after) {
   if (!DATA.sets[sid]) sid = defaultSeries();
+  if (DATA.sets[sid].group) { KIND = DATA.sets[sid].kind; sid = DATA.sets[sid].group; history.replaceState(null, "", `?s=${sid}`); }
   if (sid === SID) { after?.(); return; }
   const order = (id) => DATA.sets[id]?.order ?? 0;
   document.documentElement.dataset.dir = order(sid) < order(SID) ? "prev" : "next";
@@ -1020,7 +1082,9 @@ function countUp() {
 }
 
 function go(sid) {
-  SID = DATA.sets[sid] ? sid : Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order)[0][0];
+  if (DATA.sets[sid]?.group) { KIND = DATA.sets[sid].kind; sid = DATA.sets[sid].group; history.replaceState(null, "", `?s=${sid}${location.hash}`); }
+  SID = DATA.sets[sid] ? sid : defaultSeries();
+  if (!isGroup()) KIND = "all";
   selected = null; $("detail").hidden = true;
   const s = series();
   document.title = `${s.name} · Toy Ticker`;
@@ -1034,11 +1098,13 @@ function go(sid) {
   $("sStatus").className = "status" + (live ? " live" : "");
   $("sStatus").textContent = live ? "Now in restaurants" : s.end ? `Ended ${fmtDate(s.end)}` : "Past series";
   $("sTitle").textContent = s.name;
-  $("sMeta").innerHTML = `${s.kind === "cards" ? "Cards" : "Toys"} · ${fmtDate(s.start)} – ${s.end ? fmtDate(s.end) : "now"}` +
-    (s.note ? `<span class="hero-note"><br>${esc(s.note)}</span>` : "");
-  $("thName").textContent = s.kind === "cards" ? "Card" : "Toy";
+  $("sMeta").innerHTML = `${s.kind === "cards" ? "Cards" : s.kind === "mixed" ? "Toys + cards" : "Toys"} · ${fmtDate(s.start)} – ${s.end ? fmtDate(s.end) : "now"}` +
+    "";
+  $("sDesc").textContent = s.description || "";
+  $("sDesc").hidden = !s.description;
+  $("thName").textContent = s.kind === "cards" ? "Card" : s.kind === "mixed" ? "Item" : "Toy";
   $("foot").innerHTML = `Prices are <b>asking prices including shipping</b> (item + cheapest shipping to the US) of active eBay US Buy It Now listings, collected daily with the eBay Browse API. ` +
-    (s.kind === "cards" ? "Lots, graded slabs and multi-card listings are filtered out. " : "Lots, full sets and multi-toy listings are filtered out. ") +
+    (s.kind === "cards" ? "Lots, graded slabs and multi-card listings are filtered out. " : s.kind === "mixed" ? "Lots, full sets, graded slabs and multi-item listings are filtered out. " : "Lots, full sets and multi-toy listings are filtered out. ") +
     `Shown is the median of what's left; asking prices usually run above what items actually sell for. Photos are from eBay listings and link to them. Not financial advice.`;
   renderNav();
   render();
@@ -1046,7 +1112,9 @@ function go(sid) {
 }
 
 function render() {
-  const all = rowsFor(SID);
+  const full = rowsFor(SID);
+  const all = KIND === "all" ? full : full.filter(r => kindOf(r) === KIND);
+  renderKindBar(full);
   // Value rank and share of the full set, among priced items.
   const priced = all.filter(r => r.price != null);
   const total = priced.reduce((s, r) => s + r.price, 0);
@@ -1059,22 +1127,25 @@ function render() {
     return (typeof x === "string" ? x.localeCompare(y) : x - y) * sortDir;
   });
 
-  const days = Math.max(0, ...all.map(r => r.h.length));
-  const first = all.map(r => r.h[0]?.date).filter(Boolean).sort()[0];
-  const listings = all.reduce((s, r) => s + (r.count || 0), 0);
+  const days = Math.max(0, ...full.map(r => r.h.length));
+  const first = full.map(r => r.h[0]?.date).filter(Boolean).sort()[0];
+  const listings = full.reduce((s, r) => s + (r.count || 0), 0);
   const m = seriesSummary(SID);
-  $("sTotal").textContent = priced.length ? usd(total) : "—";
+  $("sTotal").textContent = m.priced ? usd(m.total) : "—";
   $("sChange").className = "hero-change " + cls(m.d1);
   $("sChange").textContent = m.d1 != null ? `${m.d1 > 0 ? "▲" : m.d1 < 0 ? "▼" : ""} ${pct(m.d1)} today` : "";
-  $("sPriced").textContent = `${priced.length} of ${all.length} ${isCards() ? "cards" : "toys"} priced`;
-  renderSetBox(all);
+  $("sPriced").innerHTML = isGroup() ? members(SID).map(id => {
+      const x = seriesSummary(id), k = DATA.sets[id].kind === "cards" ? "Cards" : "Toys";
+      return `<span class="split">${k} <b>${x.priced ? usd(x.total) : "—"}</b>${x.d1 != null ? ` <span class="${cls(x.d1)}">${pct(x.d1)}</span>` : ""}</span>`;
+    }).join("") : `${m.priced} of ${m.n} ${kindWord(series())} priced`;
+  renderSetBox();
   $("sFacts").textContent = [listings ? `${listings} eBay listings today` : "",
     days ? `${days} day${days > 1 ? "s" : ""} of prices since ${fmtDate(first)}` : "Price tracking starts with the next daily update",
     series().refresh === "weekly" ? "updated weekly" : ""].filter(Boolean).join(" · ");
-  $("empty").hidden = priced.length > 0;
+  $("empty").hidden = m.priced > 0;
   renderMine(all);
   renderSince(all);
-  renderSeriesReturns(all);
+  renderSeriesReturns(full);
   renderDeals(all);
   renderComplete(all);
   const owned = all.filter(r => OWNED.has(r.id)).length;
@@ -1086,7 +1157,7 @@ function render() {
   $("rows").innerHTML = rows.map(r => `
     <tr data-id="${r.id}" class="${r.id === selected ? "sel" : ""}">
       <td>${ownBtn(r)}</td>
-      <td><div class="cardcell">${thumb(r, "sm")}<div><span class="no">#${esc(r.number)}</span>${esc(r.name)}${r.rarity === "Holo" ? ' <span class="holo" title="Holo">✦</span>' : ""}</div></div></td>
+      <td><div class="cardcell">${thumb(r, "sm")}<div>${isGroup() ? `<span class="kind-tag">${kindOf(r) === "cards" ? "Card" : "Toy"}</span>` : ""}<span class="no">#${esc(r.number)}</span>${esc(r.name)}${r.rarity === "Holo" ? ' <span class="holo" title="Holo">✦</span>' : ""}</div></div></td>
       <td class="num">${usd(r.price)}</td>
       <td class="num ${cls(r.d1)}">${pct(r.d1)}</td>
       <td class="num ${cls(r.d30)}">${pct(r.d30)}</td>
@@ -1097,18 +1168,18 @@ function render() {
 
   $("gallery").innerHTML = rows.map(r => {
     const ch = r.d1 ?? r.d30, label = r.d1 != null ? "1d" : r.d30 != null ? "30d" : "";
-    const rank = r.rank ? `<span class="rank${r.rank <= 3 ? " r" + r.rank : ""}">${r.rank === 1 ? "★ Most valuable" : "#" + r.rank + " in set"}</span>` : "";
+    const rank = r.rank ? `<span class="rank${r.rank <= 3 ? " r" + r.rank : ""}">${r.rank === 1 ? "★ Most valuable" : "#" + r.rank + (KIND === "all" && isGroup() ? " overall" : " in set")}</span>` : "";
     return `
     <div class="tile ${r.id === selected ? "sel" : ""} ${OWNED.has(r.id) ? "owned" : ""}" data-id="${r.id}" role="button" tabindex="0">
       ${rank}${ownBtn(r)}
       ${picBox(r, "tile")}
-      <div class="tile-name"><span class="no">#${esc(r.number)}</span>${esc(r.name)}${r.rarity === "Holo" ? ' <span class="holo" title="Holo">✦</span>' : ""}</div>
+      <div class="tile-name">${isGroup() ? `<span class="kind-tag">${kindOf(r) === "cards" ? "Card" : "Toy"}</span>` : ""}<span class="no">#${esc(r.number)}</span>${esc(r.name)}${r.rarity === "Holo" ? ' <span class="holo" title="Holo">✦</span>' : ""}</div>
       <div class="tile-row">
         <span class="tile-price">${usd(r.price)}</span>
         ${ch != null ? `<span class="badge ${cls(ch)}">${ch > 0 ? "▲" : ch < 0 ? "▼" : ""} ${pct(Math.abs(ch)).replace("+", "")} <small>${label}</small></span>` : ""}
       </div>
       ${r.share ? `<div class="share" title="${(r.share * 100).toFixed(1)}% of the full set's value"><i style="width:${Math.max(2, r.share * 100 / (top.share || 1))}%"></i></div>` : ""}
-      <div class="tile-sub">${r.count != null ? `${confBadge(r)} ${r.count} listings · ${(r.share * 100).toFixed(0)}% of set` : "No price yet"}</div>
+      <div class="tile-sub">${r.count != null ? `${confBadge(r)} ${r.count} listings · ${(r.share * 100).toFixed(0)}% of ${isGroup() && KIND === "all" ? "total" : "set"}` : "No price yet"}</div>
     </div>`;
   }).join("") || `<p class="note">Nothing here yet. Tap ＋ on items you own, or untick "Show only mine".</p>`;
   $("gallery").hidden = VIEW !== "gallery";
@@ -1301,38 +1372,30 @@ async function shareCollection() {
   const top = [...mine].sort((a, b) => b.price - a.price)[0];
   openShareImage({
     sid: SID, pill: "MY COLLECTION", title: series().name, value: usd(val),
-    sub: owned === all.length ? `Complete set · all ${all.length} ${isCards() ? "cards" : "toys"}` : `${owned} of ${all.length} ${isCards() ? "cards" : "toys"} collected`,
+    sub: owned === all.length ? `Complete set · all ${all.length} ${kindWord(series())}` : `${owned} of ${all.length} ${kindWord(series())} collected`,
     tiles: [
       { val: `${owned}/${all.length}`, label: "collected", tone: owned === all.length ? "up2" : "flat" },
       { val: ch != null ? bigPct(ch) : "–", label: recent.length > 25 ? "30-day change" : "since tracking", tone: toneOf(ch) },
       { val: top ? usd(top.price) : "–", label: "most valuable", tone: "flat" },
     ],
     rows: [...all.filter(r => OWNED.has(r.id))].sort((a, b) => (b.price ?? -1) - (a.price ?? -1))
-      .map(r => ({ name: r.name, tag: r.rarity === "Holo" ? "HOLO" : "", price: r.price != null ? usd(r.price) : "—" })),
+      .map(r => ({ name: r.name, tag: r.rarity === "Holo" ? "HOLO" : isGroup() ? (kindOf(r) === "cards" ? "CARD" : "TOY") : "", price: r.price != null ? usd(r.price) : "—" })),
     qr: `${SITE}s/${SID}/`, footer: "Track your Happy Meal collection",
   }, `my-${SID}-collection.png`, `My ${series().name} Happy Meal collection on Toy Ticker`);
 }
 
 // ---------- "What's my Happy Meal worth?" calculator ----------
 const PICKED = new Map();  // item id -> count
-const COMBOS = { "pokemon-2026": ["pokemon-toys-2026", "pokemon-2026"], "pokemon-toys-2026": ["pokemon-toys-2026", "pokemon-2026"] };
 const MEAL_HINTS = { pokemon: "A Pokémon Happy Meal comes with 1 mini box toy and 2 cards. Tap what you got." };
 function mealSeriesOptions() {
-  const opts = [];
-  const seen = new Set();
-  Object.entries(DATA.sets).sort((a, b) => (b[1].start || "").localeCompare(a[1].start || "")).forEach(([id, s]) => {
-    if (COMBOS[id]) {
-      const key = COMBOS[id].join("+");
-      if (!seen.has(key)) { seen.add(key); opts.push([key, "Pokémon (toys + cards)"]); }
-    } else opts.push([id, s.name]);
-  });
-  return opts;
+  return shownSets().sort((a, b) => (b[1].start || "").localeCompare(a[1].start || ""))
+    .map(([id, s]) => [members(id).join("+"), s.name]);
 }
 // Default the picker to the series being viewed; keep the user's own choice until they switch series.
 function openMeal() {
   const sel = $("mealSeries");
   if (sel.dataset.sid !== SID) {
-    const cur = COMBOS[SID] ? COMBOS[SID].join("+") : SID;
+    const cur = members(SID).join("+");
     sel.innerHTML = mealSeriesOptions().map(([v, n]) => `<option value="${v}" ${v === cur ? "selected" : ""}>${esc(n)}</option>`).join("");
     sel.dataset.sid = SID;
   }
@@ -1354,7 +1417,7 @@ function renderMeal() {
 function removePick(id) { const n = (PICKED.get(id) || 0) - 1; n > 0 ? PICKED.set(id, n) : PICKED.delete(id); renderMeal(); }
 function mealRows() {
   const byId = {};
-  Object.keys(DATA.sets).forEach(sid => rowsFor(sid).forEach(r => byId[r.id] = r));
+  shownSets().forEach(([sid]) => rowsFor(sid).forEach(r => byId[r.id] = r));
   return [...PICKED].map(([id, n]) => ({ r: byId[id], n })).filter(x => x.r);
 }
 // When a meal mixes series (Pokémon toys + cards), label each pick so "Pikachu" isn't ambiguous.
@@ -1488,8 +1551,8 @@ function chartEvents(sid) {
   const s = DATA.sets[sid], own = (THEMES[sid] || DEFAULT_THEME).chart, ev = [];
   if (s.start) ev.push({ date: s.start, label: "In restaurants", color: own });
   if (s.end && !s.current) ev.push({ date: s.end, label: "Promo ended", color: "#5f5e5a" });
-  for (const [id, o] of Object.entries(DATA.sets))
-    if (id !== sid && o.start) ev.push({ date: o.start, label: `${shortName(id)} launched`, color: (THEMES[id] || DEFAULT_THEME).chart });
+  for (const [id, o] of shownSets())
+    if (id !== shownId(sid) && o.start) ev.push({ date: o.start, label: `${shortName(id)} launched`, color: (THEMES[id] || DEFAULT_THEME).chart });
   return ev.sort((a, b) => a.date.localeCompare(b.date));
 }
 
@@ -1622,8 +1685,9 @@ function renderMap() {
   const box = $("map");
   const W = box.clientWidth, H = W < 640 ? 620 : 520;
   box.style.height = H + "px";
-  const groups = Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order).map(([sid, s]) => {
-    const items = rowsFor(sid).filter(r => r.price != null).map(r => ({ ...r, sid, v: r.price }));
+  const groups = shownSets().sort((a, b) => a[1].order - b[1].order).map(([sid, s]) => {
+    const items = rowsFor(sid).filter(r => r.price != null).map(r => ({ ...r, sid, v: r.price,
+      name: isGroup(sid) ? `${r.name} ${kindOf(r) === "cards" ? "card" : "toy"}` : r.name }));
     return { sid, name: s.name, items, v: items.reduce((t, r) => t + r.v, 0) };
   }).filter(g => g.v > 0);
   if (!groups.length) { box.innerHTML = `<p class="note" style="padding:16px">No prices yet. The map fills in after the first daily eBay update.</p>`; return; }
@@ -1637,7 +1701,7 @@ function renderMap() {
       const label = mid ? `<b>${esc(it.name)}</b>${big ? `<span>${usd(it.price)}</span>` : ""}<span>${pct(ch)}</span>` : "";
       html += `<button class="map-cell ${heat(ch)}" data-sid="${it.sid}" data-id="${it.id}"
         style="left:${it.x}px;top:${it.y}px;width:${Math.max(0, it.w - 2)}px;height:${Math.max(0, it.h - 2)}px"
-        title="${esc(it.name)} · ${esc(DATA.sets[it.sid].name)} · ${usd(it.price)} · ${pct(ch)}${confidence(it) ? ` · ${confidence(it).label} confidence` : ""}">${label}</button>`;
+        title="${esc(it.name)} · ${esc(DATA.sets[it.set].name)} · ${usd(it.price)} · ${pct(ch)}${confidence(it) ? ` · ${confidence(it).label} confidence` : ""}">${label}</button>`;
     }
   }
   box.innerHTML = html;
@@ -1715,7 +1779,7 @@ function runSearch() {
   const q = fold($("q").value.trim());
   if (!q) { closeSearch(); return; }
   const words = q.split(/\s+/);
-  qHits = Object.keys(DATA.sets).flatMap(sid => rowsFor(sid).map(r => ({ ...r, sid })))
+  qHits = Object.keys(DATA.sets).filter(sid => !isGroup(sid)).flatMap(sid => rowsFor(sid).map(r => ({ ...r, sid })))
     .filter(r => { const hay = fold(`${r.name} ${DATA.sets[r.sid].name} #${r.number}`); return words.every(w => hay.includes(w)); })
     .slice(0, 8);
   qSel = 0;
@@ -1730,8 +1794,10 @@ function runSearch() {
 function pick(i) {
   const r = qHits[i]; if (!r) return;
   closeSearch(); $("q").value = ""; $("q").blur();
-  if (r.sid !== SID) history.pushState(null, "", `?s=${r.sid}`);
-  switchTo(r.sid, () => showDetail(r.id));
+  const to = shownId(r.sid);
+  if (to !== SID) history.pushState(null, "", `?s=${to}`);
+  KIND = "all";
+  switchTo(to, () => showDetail(r.id));
 }
 function closeSearch() { $("qResults").hidden = true; $("q").setAttribute("aria-expanded", "false"); }
 function wireSearch() {
@@ -1754,7 +1820,7 @@ function wireSearch() {
 // Happy Meal calendar: tracked series plus untracked/upcoming ones from config, as a compact list (newest first).
 function renderCalendar() {
   const today = new Date().toISOString().slice(0, 10);
-  const tracked = Object.entries(DATA.sets).map(([id, s]) => ({
+  const tracked = shownSets().map(([id, s]) => ({
     id, name: s.name, start: s.start, end: s.end, kind: s.kind, current: s.current, color: seriesColor(id) }));
   const all = [...tracked, ...(DATA.calendar || [])].sort((a, b) => (a.start || "9999").localeCompare(b.start || "9999"));
   // Entries without an end date run until the day before the next promotion starts.
@@ -1798,7 +1864,7 @@ function renderCountdown(live, short) {
   const names = live.filter(e => e.end === end).map(e => esc(e.name));
   const list = names.length > 1 ? names.slice(0, -1).join(", ") + " and " + names.at(-1) : names[0];
   box.innerHTML = `<b>${left}<small>${left === 1 ? "day left" : "days left"}</small></b>
-    <p>${list} ${names.length > 1 ? "are" : "is"} in restaurants until ${short(end)}.
+    <p>${list} ${names.length > 1 || live.some(e => e.end === end && e.kind === "mixed") ? "are" : "is"} in restaurants until ${short(end)}.
     <span>After that, eBay is the only place to get them.</span></p>`;
   box.hidden = false;
 }
@@ -1859,13 +1925,14 @@ function showDetail(id) {
   selected = id;
   const r = rowsFor(SID).find(x => x.id === id);
   $("detail").hidden = false;
-  $("dTitle").textContent = `${r.name} #${r.number}`;
+  $("dTitle").textContent = `${r.name}${isGroup() ? (kindOf(r) === "cards" ? " card" : " toy") : ""} #${r.number}`;
   $("dPic").innerHTML = `<div class="tilt${r.rarity === "Holo" ? " shine" : ""}">${thumb(r, "lg")}</div>` +
     (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${esc(r.imageCredit)}</a>` : esc(r.imageCredit)}</div>` : "");
-  const q = encodeURIComponent(`mcdonalds ${isCards() ? r.name + " " + r.number + "/015 2026" : series().name.replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`);
+  const own = DATA.sets[r.set];
+  const q = encodeURIComponent(`mcdonalds ${own.kind === "cards" ? r.name + " " + r.number + "/015 2026" : own.name.replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`);
   const cf = confidence(r);
   $("dMeta").innerHTML = (cf ? `<span class="conf c${cf.lvl}">${cf.label} confidence</span><span class="conf-why">${esc(cf.why)}</span>` : "") +
-    `${esc(series().name)} · median ${usd(r.price)} incl. shipping` +
+    `${esc(own.name)} · median ${usd(r.price)} incl. shipping` +
     (r.last.itemMedian != null ? ` (item ${usd(r.last.itemMedian)} + ship ${usd(r.last.shipMedian)})` : "") +
     ` · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
     `<a href="https://www.ebay.com/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`;
@@ -1910,12 +1977,14 @@ function showDetail(id) {
   $("detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-const defaultSeries = () => Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order)[0][0];
+const defaultSeries = () => shownSets().sort((a, b) => a[1].order - b[1].order)[0][0];
 fetch("data/index.json", { cache: "no-store" })
   .then(r => r.json())
   .then(async d => {
     DATA = { sets: d.sets, cards: d.items, history: {}, calendar: d.calendar || [], updated: d.updated };
-    const first = DATA.sets[new URLSearchParams(location.search).get("s")] ? new URLSearchParams(location.search).get("s") : defaultSeries();
+    setupGroups(d.groups);
+    const asked = new URLSearchParams(location.search).get("s");
+    const first = DATA.sets[asked] ? shownId(asked) : defaultSeries();
     await loadSeries(first);
     $("meta").textContent = `Daily eBay prices, including shipping, for McDonald's Happy Meal toys and cards · updated ${new Date(d.updated).toLocaleString()}`;
     document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {

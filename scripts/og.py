@@ -18,6 +18,7 @@ THEMES = {  # gradient start, gradient end, text colour (keep in sync with index
     "pokemon-toys-2026": ("#ffcb05", "#e3350d", "#1d1d1b"),
     "hello-kitty-godzilla-2026": ("#d4537e", "#2f7a52", "#ffffff"),
     "bt21-2026": ("#7f77dd", "#d4537e", "#ffffff"),
+    "pokemon-happy-meal-2026": ("#ffcb05", "#e3350d", "#1d1d1b"),
 }
 DEFAULT = ("#d62300", "#ffb703", "#ffffff")
 
@@ -106,6 +107,30 @@ def series_rows(data, sid):
     return rows
 
 
+def units(data):
+    """What the site shows as series: groups replace their members. [(id, series dict, rows)] in site order."""
+    sets = data["sets"]
+    member_of = {m: g for g in data.get("groups", []) for m in g["members"]}
+    out, done = [], set()
+    for sid in sorted(sets, key=lambda k: sets[k].get("order", 0)):
+        g = member_of.get(sid)
+        if not g:
+            out.append((sid, sets[sid], series_rows(data, sid)))
+        elif g["id"] not in done:
+            done.add(g["id"])
+            ms = [sets[m] for m in g["members"]]
+            merged = {**g, "kind": "mixed", "start": min(m["start"] for m in ms),
+                      "end": max((m.get("end") or "") for m in ms) or None, "current": any(m.get("current") for m in ms)}
+            # Name each item's kind so "Eevee" isn't ambiguous between the toy and the card.
+            out.append((g["id"], merged, [(f"{n} {'card' if sets[m].get('kind') == 'cards' else 'toy'}", p)
+                                          for m in g["members"] for n, p in series_rows(data, m)]))
+    return out
+
+
+def kind_word(s):
+    return {"cards": "cards", "mixed": "toys and cards"}.get(s.get("kind"), "toys")
+
+
 def money(v):
     return f"${v:,.2f}"
 
@@ -125,8 +150,7 @@ def series_image(s, sid, rows, today, F, site_label):
 
     title = s["name"]
     d.text((60, 214), title, font=fit(d, title, F, 700, 76), fill=ink)
-    kind = "cards" if s.get("kind") == "cards" else "toys"
-    d.text((62, 316), f"{len(rows)} {kind} · daily eBay prices", font=F(30, 500), fill=ink)
+    d.text((62, 316), f"{len(rows)} {kind_word(s)} · daily eBay prices", font=F(30, 500), fill=ink)
 
     priced = sorted([r for r in rows if r[1] is not None], key=lambda r: -r[1])
     # Right column: full-set value.
@@ -158,7 +182,7 @@ def series_image(s, sid, rows, today, F, site_label):
     return img
 
 
-def site_image(data, order, F, site_label):
+def site_image(units_, F, site_label):
     img = gradient("#d62300", "#ffb703")
     dots(img, "#ffffff")
     d = ImageDraw.Draw(img, "RGBA")
@@ -167,15 +191,13 @@ def site_image(data, order, F, site_label):
     d.text((62, 260), "Daily prices for McDonald's Happy Meal toys and cards", font=F(32, 500), fill="#ffffff")
     # Series rows shrink to fit (6 series need tighter rows than 3); two columns past 6.
     y0, bottom, gap = 315, H - 30, 10
-    cols = 1 if len(order) <= 6 else 2
-    per_col = -(-len(order) // cols)
+    cols = 1 if len(units_) <= 6 else 2
+    per_col = -(-len(units_) // cols)
     rh = min(76, (bottom - y0 - gap * (per_col - 1)) / per_col)
     cw = (W - 120 - 20 * (cols - 1)) / cols
     fs = int(min(34, rh * 0.5))
-    for i, sid in enumerate(order):
-        s = data["sets"][sid]
+    for i, (sid, s, rows) in enumerate(units_):
         c1, c2, ink = THEMES.get(sid, DEFAULT)
-        rows = series_rows(data, sid)
         priced = [p for _, p in rows if p is not None]
         x0 = 60 + (i // per_col) * (cw + 20)
         y = y0 + (i % per_col) * (rh + gap)
@@ -215,17 +237,21 @@ def build(data, root, site_url):
     today = date.today().isoformat()
     (root / "og").mkdir(exist_ok=True)
     order = sorted(data["sets"], key=lambda k: data["sets"][k].get("order", 0))
-    for sid in order:
-        s = data["sets"][sid]
-        rows = series_rows(data, sid)
+    shown = units(data)
+    # Every series and group gets an image and share page (old links to a group's members keep working).
+    pages = shown + [(sid, data["sets"][sid], series_rows(data, sid)) for sid in order if sid not in {u[0] for u in shown}]
+    for sid, s, rows in pages:
         series_image(s, sid, rows, today, F, site_label).save(root / "og" / f"{sid}.png", optimize=True)
         priced = [p for _, p in rows if p is not None]
         desc = (f"Full set {money(sum(priced))} at today's median eBay asking prices. " if priced else "") + \
-            f"Daily eBay prices for all {len(rows)} McDonald's {s['name']} Happy Meal {'cards' if s.get('kind') == 'cards' else 'toys'}."
+            (f"Daily eBay prices for all {len(rows)} toys and cards from the McDonald's {s.get('tab', s['name'])} Happy Meal."
+             if s.get("kind") == "mixed" else
+             f"Daily eBay prices for all {len(rows)} McDonald's {s['name']} Happy Meal {kind_word(s)}.") + \
+            (f" {s['description']}" if s.get("description") else "")
         page = root / "s" / sid / "index.html"
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(SHARE_PAGE.format(
             title=html.escape(f"{s['name']} · Toy Ticker"), desc=html.escape(desc), name=html.escape(s["name"]),
             image=f"{site_url}og/{sid}.png", url=f"{site_url}s/{sid}/", target=f"{site_url}?s={sid}", sid=sid))
-    site_image(data, order, F, site_label).save(root / "og" / "site.png", optimize=True)
-    return order
+    site_image(shown, F, site_label).save(root / "og" / "site.png", optimize=True)
+    return [u[0] for u in pages]

@@ -20,6 +20,14 @@ import urllib.request
 TOKEN_URL = "https://api.ebay.com/identity/v1/oauth2/token"
 SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search"
 
+# Every listing seen this run, for the listing ledger (scripts/listings.py):
+# SEEN[series_id] = {"raw": {itemId of every search result}, "rows": [(item_key, listing, price, ship, total)]}
+SEEN = {}
+
+
+def seen(series_id):
+    return SEEN.setdefault(series_id, {"raw": set(), "rows": []})
+
 # Never a single item, whatever the series.
 EXCLUDE_ANY = re.compile(
     r"\b(lot|lots|bundle|complete set|full set|sets?|set of|choose|pick|select|you pick|singles|your choice|"
@@ -269,6 +277,9 @@ def snapshot(series, today):
             else:
                 rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
         rows = delivered(matched)  # prices are item + shipping to the US
+        led = seen(series["id"])
+        led["raw"].update(it.get("itemId") for it in items)
+        led["rows"] += [(iid, *r[:4]) for r in rows]
         if os.environ.get("MATCH_REPORT"):
             REPORT[iid] = {"name": item["name"], "query": item["q"],
                            "kept": [{"title": it.get("title", ""), "price": p, "ship": sh, "total": t, "shipKnown": k}
@@ -343,6 +354,9 @@ def full_set(series, today):
         else:
             rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
     rows = delivered(kept)
+    led = seen(series["id"])
+    led["raw"].update(it.get("itemId") for it in items)
+    led["rows"] += [(f"{series['id']}-SET", *r[:4]) for r in rows]
     if os.environ.get("MATCH_REPORT"):
         REPORT[f"{series['id']}-SET"] = {"name": f"{series['name']} complete set", "query": q,
                                           "kept": [{"title": it.get("title", ""), "price": p, "ship": sh, "total": t, "shipKnown": k}
