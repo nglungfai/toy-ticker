@@ -52,6 +52,9 @@
   .detail .chart-box { position: relative; height: 300px; margin-top: 12px; }
   .note { color: var(--muted); font-size: 13px; margin-top: 8px; }
   a { color: var(--accent); }
+  .holo { color: var(--gold); font-size: 12px; }
+  .banner { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px;
+            padding: 10px 14px; margin-bottom: 12px; }
   footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
 </style>
 </head>
@@ -66,6 +69,7 @@
     <label>Set <select id="setSel"></select></label>
   </div>
 
+  <div class="banner" id="empty" hidden>No prices collected for this set yet. They appear after the next daily update.</div>
   <div class="stats" id="stats"></div>
 
   <div class="table-wrap">
@@ -90,8 +94,7 @@
   </section>
 
   <footer>
-    Prices are Cardmarket (EU) figures in EUR, collected daily from the free <a href="https://tcgdex.dev">TCGdex API</a>.
-    "Trend" is Cardmarket's smoothed sale price. Ungraded, near-mint singles only. Not financial advice.
+    <span id="footSrc"></span> Ungraded singles only. Not financial advice.
   </footer>
 </div>
 
@@ -100,7 +103,10 @@ const $ = (id) => document.getElementById(id);
 let DATA, sortKey = "price", sortDir = -1, selected = null, chart = null;
 
 const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const eur = (v) => v == null ? "—" : "€" + v.toFixed(2);
+const curSet = () => DATA.sets[$("setSel").value] || {};
+const isEbay = (s) => (s || curSet()).currency === "USD";
+const eur = (v) => v == null ? "—" : (isEbay() ? "$" : "€") + v.toFixed(2);
+const mean = (a) => a.length ? a.reduce((s, x) => s + x, 0) / a.length : null;
 const pct = (v) => v == null || !isFinite(v) ? "—" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
 const cls = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? "up" : "down";
 
@@ -110,12 +116,16 @@ function rowsFor(setId) {
     .map(([id, c]) => {
       const h = DATA.history[id] || [];
       const last = h[h.length - 1] || {}, prev = h[h.length - 2];
-      const price = last.trend ?? last.avg ?? null;
-      const prevPrice = prev ? (prev.trend ?? prev.avg) : (last.avg1 ?? null);
+      const val = (p) => p ? (p.trend ?? p.median ?? p.avg ?? null) : null;
+      const price = val(last);
+      const prevPrice = prev ? val(prev) : (last.avg1 ?? null);
+      // 30-day reference: Cardmarket's own 30-day average, else the mean of our earlier snapshots.
+      const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+      const ref30 = last.avg30 ?? mean(h.slice(0, -1).filter(p => p.date >= cutoff).map(val).filter(v => v != null));
       return {
         id, ...c, h, last, price, low: last.low ?? null,
         d1: price != null && prevPrice ? price / prevPrice - 1 : null,
-        d30: price != null && last.avg30 ? price / last.avg30 - 1 : null,
+        d30: price != null && ref30 ? price / ref30 - 1 : null,
       };
     });
 }
@@ -133,14 +143,22 @@ function render() {
   const top = priced.slice().sort((a, b) => b.price - a.price)[0];
   const mover = priced.filter(r => r.d30 != null).sort((a, b) => Math.abs(b.d30) - Math.abs(a.d30))[0];
   $("stats").innerHTML = `
-    <div class="stat"><small>Full set (trend)</small><b>${eur(total)}</b><small>${priced.length} of ${rows.length} cards priced</small></div>
+    <div class="stat"><small>Full set (${isEbay() ? "median ask" : "trend"})</small><b>${eur(total)}</b><small>${priced.length} of ${rows.length} cards priced</small></div>
     <div class="stat"><small>Most valuable</small><b>${top ? eur(top.price) : "—"}</b><small>${top ? top.name : ""}</small></div>
     <div class="stat"><small>Biggest move vs 30-day avg</small><b class="${cls(mover?.d30)}">${mover ? pct(mover.d30) : "—"}</b><small>${mover ? mover.name : ""}</small></div>
     <div class="stat"><small>Days tracked</small><b>${Math.max(0, ...rows.map(r => r.h.length))}</b><small>since ${rows[0]?.h[0]?.date ?? "—"}</small></div>`;
 
+  const s = curSet();
+  document.querySelector('th[data-k="price"]').firstChild.textContent = isEbay() ? "Median ask" : "Trend price";
+  document.querySelector('th[data-k="low"]').firstChild.textContent = isEbay() ? "Lowest ask" : "Lowest listing";
+  $("footSrc").innerHTML = isEbay()
+    ? `Prices for this set are <b>asking prices</b> of active eBay US listings (USD), collected daily with the eBay Browse API. Lots, graded slabs and multi-card listings are filtered out; shown is the median of what's left. Asking prices usually run above what cards actually sell for.`
+    : `Prices for this set are Cardmarket (EU) figures in EUR, collected daily from the free <a href="https://tcgdex.dev">TCGdex API</a>. "Trend" is Cardmarket's smoothed sale price.`;
+  $("empty").hidden = priced.length > 0;
+
   $("rows").innerHTML = rows.map(r => `
     <tr data-id="${r.id}" class="${r.id === selected ? "sel" : ""}">
-      <td><span class="no">#${r.number ?? ""}</span>${r.name}</td>
+      <td><span class="no">#${r.number ?? ""}</span>${r.name}${/holo/i.test(r.rarity || "") ? ' <span class="holo" title="Holo">✦</span>' : ""}</td>
       <td class="num">${eur(r.price)}</td>
       <td class="num ${cls(r.d1)}">${pct(r.d1)}</td>
       <td class="num ${cls(r.d30)}">${pct(r.d30)}</td>
@@ -177,8 +195,12 @@ function showDetail(id) {
   const r = rowsFor(DATA.cards[id].set).find(x => x.id === id);
   $("detail").hidden = false;
   $("dTitle").textContent = `${r.name} #${r.number ?? ""}`;
-  $("dMeta").innerHTML = `${DATA.sets[r.set].name} · trend ${eur(r.price)} · 7-day avg ${eur(r.last.avg7)} · 30-day avg ${eur(r.last.avg30)}` +
-    (r.cardmarketId ? ` · <a href="https://www.cardmarket.com/en/Pokemon/Products?idProduct=${r.cardmarketId}" target="_blank" rel="noopener">Cardmarket</a>` : "");
+  const ebayQ = encodeURIComponent(`${r.name} ${r.number}/015 mcdonalds 2026`);
+  $("dMeta").innerHTML = isEbay()
+    ? `${DATA.sets[r.set].name} · median ask ${eur(r.price)} · 25th percentile ${eur(r.last.p25)} · ${r.last.count ?? 0} listings · ` +
+      `<a href="https://www.ebay.com/sch/i.html?_nkw=${ebayQ}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`
+    : `${DATA.sets[r.set].name} · trend ${eur(r.price)} · 7-day avg ${eur(r.last.avg7)} · 30-day avg ${eur(r.last.avg30)}` +
+      (r.cardmarketId ? ` · <a href="https://www.cardmarket.com/en/Pokemon/Products?idProduct=${r.cardmarketId}" target="_blank" rel="noopener">Cardmarket</a>` : "");
   const labels = r.h.map(p => p.date);
   const line = (key, label, color, dash) => ({
     label, data: r.h.map(p => p[key] ?? null), borderColor: color, backgroundColor: color,
@@ -189,7 +211,11 @@ function showDetail(id) {
   Chart.defaults.borderColor = css("--line");
   chart = new Chart($("dChart"), {
     type: "line",
-    data: { labels, datasets: [
+    data: { labels, datasets: isEbay() ? [
+      line("median", "Median ask", css("--accent")),
+      line("p25", "25th percentile ask", css("--gold")),
+      line("low", "Lowest ask", css("--muted"), [4, 4]),
+    ] : [
       line("trend", "Trend", css("--accent")),
       line("avg", "Average sale", css("--gold")),
       line("low", "Lowest listing", css("--muted"), [4, 4]),
@@ -214,7 +240,7 @@ fetch("data/prices.json", { cache: "no-store" })
     const sets = Object.entries(d.sets).sort((a, b) => (b[1].releaseDate || "").localeCompare(a[1].releaseDate || ""));
     $("setSel").innerHTML = sets.map(([id, s]) => `<option value="${id}">${s.name}</option>`).join("");
     $("setSel").onchange = () => { selected = null; $("detail").hidden = true; render(); };
-    $("meta").textContent = `Updated ${new Date(d.updated).toLocaleString()} · ${d.source}`;
+    $("meta").textContent = `Updated ${new Date(d.updated).toLocaleString()}`;
     document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
       sortDir = th.dataset.k === sortKey ? -sortDir : (th.dataset.k === "name" ? 1 : -1);
       sortKey = th.dataset.k; render();

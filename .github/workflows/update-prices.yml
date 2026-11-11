@@ -17,6 +17,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/fetch_prices.py
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
       - name: Commit new prices
         run: |
           git config user.name "price-bot"

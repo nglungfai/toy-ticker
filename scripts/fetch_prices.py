@@ -6,6 +6,7 @@ latest run for a date replaces that date's entry.
 Standard library only (Python 3.9+).
 """
 import json
+import os
 import re
 import sys
 import time
@@ -13,6 +14,9 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ebay  # noqa: E402
 
 API = "https://api.tcgdex.net/v2/en"
 ROOT = Path(__file__).resolve().parent.parent
@@ -70,7 +74,8 @@ def main():
             print(f"! set {set_id}: {e}", file=sys.stderr)
             failures += 1
             continue
-        data["sets"][set_id] = {"name": s["name"], "releaseDate": s.get("releaseDate")}
+        data["sets"][set_id] = {"name": s["name"], "releaseDate": s.get("releaseDate"),
+                                "currency": "EUR", "source": "Cardmarket via TCGdex"}
         print(f"{s['name']}: {len(s['cards'])} cards")
 
         for c in s["cards"]:
@@ -97,9 +102,35 @@ def main():
             hist.sort(key=lambda p: p["date"])
             data["history"][card["id"]] = hist
 
+    # Sets TCGdex doesn't have yet: eBay active-listing prices (USD).
+    have_keys = bool(os.environ.get("EBAY_CLIENT_ID") and os.environ.get("EBAY_CLIENT_SECRET"))
+    for es in config.get("ebay_sets", []):
+        print(f"{es['name']} (eBay): {len(es['cards'])} cards")
+        data["sets"][es["id"]] = {"name": es["name"], "releaseDate": es.get("releaseDate"),
+                                  "currency": "USD", "source": "eBay US active listings (median asking price)"}
+        if not have_keys:
+            # Still publish the card list so the page shows it, just without prices.
+            print("! EBAY_CLIENT_ID / EBAY_CLIENT_SECRET not set, no eBay prices", file=sys.stderr)
+            for c in es["cards"]:
+                data["cards"].setdefault(f"{es['id']}-{c['number']}", {
+                    "name": c["name"], "set": es["id"], "number": c["number"],
+                    "rarity": "Holo" if c.get("holo") else "Regular"})
+            continue
+        try:
+            results = ebay.snapshot(es, today)
+        except Exception as e:  # noqa: BLE001
+            print(f"! eBay set {es['id']}: {e}", file=sys.stderr)
+            failures += 1
+            continue
+        for cid, (meta, point) in results.items():
+            data["cards"][cid] = meta
+            if point:
+                hist = [p for p in data["history"].get(cid, []) if p["date"] != today]
+                data["history"][cid] = sorted(hist + [point], key=lambda p: p["date"])
+
     data["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    data["currency"] = "EUR"
-    data["source"] = "Cardmarket via TCGdex (api.tcgdex.net)"
+    data.pop("currency", None)
+    data.pop("source", None)
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     DATA_FILE.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
     print(f"Saved {len(data['history'])} cards with prices -> {DATA_FILE.relative_to(ROOT)}")

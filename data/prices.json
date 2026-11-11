@@ -2,7 +2,15 @@
  "sets": {
   "2024sv": {
    "name": "McDonald's Collection 2024",
-   "releaseDate": "2024-12-04"
+   "releaseDate": "2024-12-04",
+   "currency": "EUR",
+   "source": "Cardmarket via TCGdex"
+  },
+  "mcd2026": {
+   "name": "McDonald's Collection 2026",
+   "releaseDate": "2026-11-10",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)"
   }
  },
  "cards": {
@@ -125,6 +133,96 @@
    "rarity": "None",
    "image": null,
    "cardmarketId": 802837
+  },
+  "mcd2026-001": {
+   "name": "Decidueye",
+   "set": "mcd2026",
+   "number": "001",
+   "rarity": "Regular"
+  },
+  "mcd2026-002": {
+   "name": "Chandelure",
+   "set": "mcd2026",
+   "number": "002",
+   "rarity": "Holo"
+  },
+  "mcd2026-003": {
+   "name": "Palafin",
+   "set": "mcd2026",
+   "number": "003",
+   "rarity": "Holo"
+  },
+  "mcd2026-004": {
+   "name": "Pikachu",
+   "set": "mcd2026",
+   "number": "004",
+   "rarity": "Holo"
+  },
+  "mcd2026-005": {
+   "name": "Mimikyu",
+   "set": "mcd2026",
+   "number": "005",
+   "rarity": "Holo"
+  },
+  "mcd2026-006": {
+   "name": "Lucario",
+   "set": "mcd2026",
+   "number": "006",
+   "rarity": "Holo"
+  },
+  "mcd2026-007": {
+   "name": "Hawlucha",
+   "set": "mcd2026",
+   "number": "007",
+   "rarity": "Regular"
+  },
+  "mcd2026-008": {
+   "name": "Tyranitar",
+   "set": "mcd2026",
+   "number": "008",
+   "rarity": "Holo"
+  },
+  "mcd2026-009": {
+   "name": "Absol",
+   "set": "mcd2026",
+   "number": "009",
+   "rarity": "Regular"
+  },
+  "mcd2026-010": {
+   "name": "Zoroark",
+   "set": "mcd2026",
+   "number": "010",
+   "rarity": "Regular"
+  },
+  "mcd2026-011": {
+   "name": "Metagross",
+   "set": "mcd2026",
+   "number": "011",
+   "rarity": "Regular"
+  },
+  "mcd2026-012": {
+   "name": "Jirachi",
+   "set": "mcd2026",
+   "number": "012",
+   "rarity": "Holo"
+  },
+  "mcd2026-013": {
+   "name": "Eevee",
+   "set": "mcd2026",
+   "number": "013",
+   "rarity": "Regular"
+  },
+  "mcd2026-014": {
+   "name": "Snorlax",
+   "set": "mcd2026",
+   "number": "014",
+   "rarity": "Regular"
+  },
+  "mcd2026-015": {
+   "name": "Wooloo",
+   "set": "mcd2026",
+   "number": "015",
+   "rarity": "Regular"
   }
  },
  "history": {
@@ -309,7 +407,5 @@
    }
   ]
  },
- "updated": "2026-11-11T01:08:07+00:00",
- "currency": "EUR",
- "source": "Cardmarket via TCGdex (api.tcgdex.net)"
+ "updated": "2026-11-11T01:15:59+00:00"
 }

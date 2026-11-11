@@ -1,5 +1,30 @@
 {
-  "_comment": "sets: TCGdex set IDs always tracked. auto_from_year: also track every 'McDonald's Collection YYYY' set from this year on, so the 2026 set is picked up as soon as TCGdex adds it.",
+  "_comment": "sets: TCGdex set IDs always tracked (Cardmarket EUR). auto_from_year: also track any TCGdex 'McDonald's Collection YYYY' set from this year on. ebay_sets: sets TCGdex doesn't have yet, priced from eBay US active listings (needs EBAY_CLIENT_ID / EBAY_CLIENT_SECRET).",
   "sets": ["2024sv"],
-  "auto_from_year": 2025
+  "auto_from_year": 2025,
+  "ebay_sets": [
+    {
+      "id": "mcd2026",
+      "name": "McDonald's Collection 2026",
+      "year": 2026,
+      "releaseDate": "2026-11-10",
+      "cards": [
+        {"number": "001", "name": "Decidueye"},
+        {"number": "002", "name": "Chandelure", "holo": true},
+        {"number": "003", "name": "Palafin", "holo": true},
+        {"number": "004", "name": "Pikachu", "holo": true},
+        {"number": "005", "name": "Mimikyu", "holo": true},
+        {"number": "006", "name": "Lucario", "holo": true},
+        {"number": "007", "name": "Hawlucha"},
+        {"number": "008", "name": "Tyranitar", "holo": true},
+        {"number": "009", "name": "Absol"},
+        {"number": "010", "name": "Zoroark"},
+        {"number": "011", "name": "Metagross"},
+        {"number": "012", "name": "Jirachi", "holo": true},
+        {"number": "013", "name": "Eevee"},
+        {"number": "014", "name": "Snorlax"},
+        {"number": "015", "name": "Wooloo"}
+      ]
+    }
+  ]
 }
