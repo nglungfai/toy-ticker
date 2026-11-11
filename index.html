@@ -1865,7 +1865,7 @@ function renderCountdown(live, short) {
   const list = names.length > 1 ? names.slice(0, -1).join(", ") + " and " + names.at(-1) : names[0];
   box.innerHTML = `<b>${left}<small>${left === 1 ? "day left" : "days left"}</small></b>
     <p>${list} ${names.length > 1 || live.some(e => e.end === end && e.kind === "mixed") ? "are" : "is"} in restaurants until ${short(end)}.
-    <span>After that, eBay is the only place to get them.</span></p>`;
+    <span>After that, you'll need to buy them second-hand, like on eBay.</span></p>`;
   box.hidden = false;
 }
 
