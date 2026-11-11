@@ -21,6 +21,15 @@ jobs:
         env:
           EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
           EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+          MATCH_REPORT: ${{ runner.temp }}/match-report.json
+      - name: Keep the match report (private to the run, not published)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: match-report
+          path: ${{ runner.temp }}/match-report.json
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Commit new prices
         run: |
           git config user.name "toy-ticker-bot"

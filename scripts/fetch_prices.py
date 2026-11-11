@@ -158,6 +158,10 @@ def main():
     print(f"Saved {len(data['history'])} items with prices across {len(data['sets'])} series "
           f"({calls} eBay searches) -> data/index.json + data/series/")
 
+    if os.environ.get("MATCH_REPORT") and ebay.REPORT:
+        Path(os.environ["MATCH_REPORT"]).write_text(json.dumps(ebay.REPORT, indent=1, ensure_ascii=False))
+        print(f"Match report: {os.environ['MATCH_REPORT']}")
+
     # Link-preview images and share pages (optional: needs Pillow).
     try:
         import og

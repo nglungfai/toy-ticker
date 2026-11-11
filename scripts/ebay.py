@@ -49,16 +49,30 @@ def item_hits(t, item):
     return hits(t, item["match"]) and not any(has(t, w) for w in item.get("not", []))
 
 
-def matches(title, series, item):
+def reject_reason(title, series, item):
+    """None if the title is a single copy of this item, otherwise why it was rejected."""
     t = norm(title)
-    if not hits(t, series.get("require", [])) or not item_hits(t, item):
-        return False
-    if EXCLUDE_ANY.search(t) or (series["kind"] == "cards" and EXCLUDE_CARDS.search(t)):
-        return False
-    if any(has(t, w) for w in series.get("exclude", [])):
-        return False
+    if not hits(t, series.get("require", [])):
+        return "missing series words"
+    if not item_hits(t, item):
+        return "not this item"
+    m = EXCLUDE_ANY.search(t) or (series["kind"] == "cards" and EXCLUDE_CARDS.search(t))
+    if m:
+        return f"excluded word: {m.group(0)}"
+    for w in series.get("exclude", []):
+        if has(t, w):
+            return f"series exclude: {w}"
     # A title that also fully matches another item is a multi-item listing.
-    return not any(o is not item and item_hits(t, o) for o in series["items"])
+    other = next((o for o in series["items"] if o is not item and item_hits(t, o)), None)
+    return f"also names {other['name']}" if other else None
+
+
+def matches(title, series, item):
+    return reject_reason(title, series, item) is None
+
+
+# Optional match report (set MATCH_REPORT=path): every kept and rejected title per item, for auditing.
+REPORT = {}
 
 
 def token(client_id, secret):
@@ -184,11 +198,20 @@ def snapshot(series, today):
             print(f"  ! {iid}: {e}")
             out[iid] = (meta, None)
             continue
-        seen, matched = set(), []
+        seen, matched, rejected = set(), [], []
         for it in items:
-            if it.get("itemId") not in seen and matches(it.get("title", ""), series, item):
+            if it.get("itemId") in seen:
+                continue
+            why = reject_reason(it.get("title", ""), series, item)
+            if why is None:
                 seen.add(it.get("itemId"))
                 matched.append(it)
+            else:
+                rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
+        if os.environ.get("MATCH_REPORT"):
+            REPORT[iid] = {"name": item["name"], "query": item["q"],
+                           "kept": [{"title": it.get("title", ""), "price": it["price"]["value"]} for it in matched if it.get("price")],
+                           "rejected": rejected}
         prices = []
         for it in matched:
             try:
