@@ -159,13 +159,46 @@
   .pick.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
   .pick.on .n { display: inline-flex; }
   .pick-group { grid-column: 1 / -1; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; }
-  .meal-result { margin-top: 14px; padding: 16px; border-radius: 14px; background: var(--bg); text-align: center; }
-  .meal-result .worth { font-family: "Fredoka", sans-serif; font-size: 34px; font-weight: 600; line-height: 1.1; }
-  .meal-result .x { display: inline-block; margin: 6px 0; font-weight: 700; font-size: 16px; padding: 3px 12px; border-radius: 999px; }
+  .meal-result { margin-top: 14px; padding: 16px; border-radius: 14px; background: var(--bg); }
+  .mr-empty { text-align: center; color: var(--muted); margin: 6px 0; }
+  .mr-grid { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(0, 1.6fr); gap: 20px; align-items: start; }
+  .mr-sum { text-align: center; padding: 8px 4px; }
+  .mr-sum small { color: var(--muted); font-size: 13px; }
+  .meal-result .worth { font-family: "Fredoka", sans-serif; font-size: 40px; font-weight: 600; line-height: 1.1; margin: 2px 0 6px; }
+  .meal-result .x { display: inline-block; font-weight: 700; font-size: 15px; padding: 3px 12px; border-radius: 999px; }
   .meal-result .x.up { background: #e3f1ea; color: #17663b; } .meal-result .x.down { background: #fbe4e4; color: #b52a2a; }
-  .meal-result p { margin: 4px 0; color: var(--muted); font-size: 14px; }
-  .meal-result .chosen { font-size: 13px; }
-  .meal-result .share-btn { margin-top: 10px; }
+  .mr-msg { margin: 10px 0 4px; font-size: 14px; }
+  .mr-paid { margin: 0; color: var(--muted); font-size: 13px; }
+  .meal-result .share-btn, .mine-share { margin-top: 12px; color: #fff; background: var(--accent); border-color: var(--accent); padding: 8px 18px; }
+  .meal-result .share-btn:hover, .mine-share:hover { filter: brightness(1.08); background: var(--accent); }
+  .mr-list { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 4px 12px; }
+  .mr-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) 40px 76px 26px; gap: 10px; align-items: center;
+            padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .mr-row .pic, .mr-row .ph { width: 34px; }
+  .mr-head { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 6px 0; }
+  .mr-name { min-width: 0; }
+  .mr-name b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
+  .mr-name small { display: flex; gap: 6px; align-items: center; color: var(--muted); font-size: 12px; }
+  .mr-kind { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 0 6px; border-radius: 999px;
+             background: var(--bg); border: 1px solid var(--line); }
+  .mr-n { text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .mr-p { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .mr-p.na { color: var(--muted); font-weight: 400; }
+  .mr-rm { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 14px; padding: 4px; border-radius: 6px; }
+  .mr-rm:hover { color: var(--down); background: var(--bg); }
+  .mr-total { border-bottom: 0; font-weight: 700; }
+  .mr-total .mr-p { font-family: "Fredoka", sans-serif; font-size: 16px; }
+  .mr-note { margin: 12px 0 0; text-align: center; color: var(--muted); font-size: 12px; }
+  .mr-qty { display: none; font-weight: 700; color: var(--text); }
+  @media (max-width: 760px) { .mr-grid { grid-template-columns: 1fr; gap: 12px; } }
+  @media (max-width: 640px) {
+    .meal-result { padding: 12px 8px; }
+    .mr-list { padding: 2px 10px; }
+    .mr-row { grid-template-columns: 30px minmax(0, 1fr) auto 22px; gap: 8px; }
+    .mr-row .pic, .mr-row .ph { width: 30px; }
+    .mr-row > .mr-n { display: none; }
+    .mr-qty { display: inline; }
+  }
   .mine-share { margin-top: 10px; }
   @media (max-width: 640px) {
     .meal-pick { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; max-height: 300px; }
@@ -582,7 +615,7 @@
     </div>
     <p class="meal-hint" id="mealHint">Tap what came in your Happy Meal.</p>
     <div class="meal-controls">
-      <label>I paid <span class="paid"><span>$</span><input id="mealPaid" type="number" min="0" step="0.01" value="4.99" inputmode="decimal"></span></label>
+      <label>Price per Happy Meal <span class="paid"><span>$</span><input id="mealPaid" type="number" min="0" step="0.01" value="4.99" inputmode="decimal"></span></label>
       <label>From <select id="mealSeries"></select></label>
     </div>
     <div class="meal-pick" id="mealPick"></div>
@@ -1221,32 +1254,57 @@ function mealRows() {
 // When a meal mixes series (Pokémon toys + cards), label each pick so "Pikachu" isn't ambiguous.
 const pickName = (r, rows) => new Set(rows.map(x => x.r.set)).size > 1
   ? `${r.name} (${DATA.sets[r.set].kind === "cards" ? "card" : "toy"})` : r.name;
+// How many Happy Meals a pick probably took: Pokémon meals have 1 toy + 2 cards; other series 1 toy each.
+function mealsFor(rows) {
+  const toys = rows.filter(({ r }) => DATA.sets[r.set].kind !== "cards").reduce((t, { n }) => t + n, 0);
+  const cards = rows.filter(({ r }) => DATA.sets[r.set].kind === "cards").reduce((t, { n }) => t + n, 0);
+  return Math.max(1, toys, Math.ceil(cards / 2));
+}
 function renderMealResult() {
-  const rows = mealRows(), paid = Math.max(0, parseFloat($("mealPaid").value) || 0);
-  if (!rows.length) { $("mealResult").innerHTML = `<p>Nothing picked yet.</p>`; return; }
+  const rows = mealRows(), perMeal = Math.max(0, parseFloat($("mealPaid").value) || 0);
+  if (!rows.length) { $("mealResult").innerHTML = `<p class="mr-empty">Tap the items you got to see what they're worth.</p>`; return; }
   const worth = rows.reduce((t, { r, n }) => t + (r.price || 0) * n, 0);
-  const unpriced = rows.filter(({ r }) => r.price == null).length;
+  const items = rows.reduce((t, { n }) => t + n, 0), meals = mealsFor(rows), paid = perMeal * meals;
   const mult = paid ? worth / paid : null;
   const msg = !worth ? "No prices yet for what you picked. Check back after the next daily update."
-    : mult == null ? "" : mult >= 5 ? "Jackpot! That's a seriously good Happy Meal."
-    : mult >= 2 ? "Nice haul: your toys are worth more than the meal." : mult >= 1 ? "Your Happy Meal paid for itself."
-    : "Worth less than the meal, but the fun's included.";
+    : mult == null ? "" : mult >= 5 ? "Jackpot! That's a seriously good haul."
+    : mult >= 2 ? "Nice haul: worth more than the meals." : mult >= 1 ? "Your Happy Meals paid for themselves."
+    : "Worth less than the meals, but the fun's included.";
+  const mixed = new Set(rows.map(x => x.r.set)).size > 1;
+  const sorted = [...rows].sort((a, b) => (b.r.price ?? -1) * b.n - (a.r.price ?? -1) * a.n);
   $("mealResult").innerHTML = `
-    <div class="worth">${worth ? usd(worth) : "—"}</div>
-    ${mult != null && worth ? `<span class="x ${mult >= 1 ? "up" : "down"}">${mult.toFixed(1)}× what you paid</span>` : ""}
-    <p>${msg}</p>
-    <p class="chosen">${rows.map(({ r, n }) => `${n > 1 ? n + "× " : ""}${esc(pickName(r, rows))} ${usd(r.price)} <a href="#" data-rm="${r.id}" aria-label="Remove ${esc(r.name)}">✕</a>`).join(" · ")}
-      ${unpriced ? ` · ${unpriced} not priced yet` : ""}</p>
-    <p style="font-size:12px">Based on today's median eBay asking prices, including shipping. Sellers often accept less.</p>
-    ${worth ? `<button class="share-btn" id="mealShare" type="button">📸 Share my Happy Meal</button>` : ""}`;
-  $("mealResult").querySelectorAll("[data-rm]").forEach(a => a.onclick = (e) => { e.preventDefault(); removePick(a.dataset.rm); });
+    <div class="mr-grid">
+      <div class="mr-sum">
+        <small>Your haul is worth</small>
+        <div class="worth">${worth ? usd(worth) : "—"}</div>
+        ${mult != null && worth ? `<span class="x ${mult >= 1 ? "up" : "down"}">${mult.toFixed(1)}× what you paid</span>` : ""}
+        <p class="mr-msg">${msg}</p>
+        <p class="mr-paid">${items} item${items > 1 ? "s" : ""} · ${meals} Happy Meal${meals > 1 ? "s" : ""} · paid ${usd(paid)}</p>
+        ${worth ? `<button class="share-btn" id="mealShare" type="button">📸 Share my Happy Meal</button>` : ""}
+      </div>
+      <div class="mr-list" role="table" aria-label="Your items">
+        <div class="mr-row mr-head" role="row"><span></span><span>Item</span><span class="mr-n">Qty</span><span class="mr-p">Price</span><span></span></div>
+        ${sorted.map(({ r, n }) => `
+          <div class="mr-row" role="row">
+            ${thumb(r, "sm")}
+            <span class="mr-name"><b>${esc(r.name)}</b>
+              <small>${mixed ? `<span class="mr-kind">${DATA.sets[r.set].kind === "cards" ? "Card" : "Toy"}</span>` : ""}${r.price == null ? "No listings yet" : `#${esc(r.number)}`}${n > 1 ? `<span class="mr-qty">×${n}</span>` : ""}</small></span>
+            <span class="mr-n">${n > 1 ? "×" + n : ""}</span>
+            <span class="mr-p ${r.price == null ? "na" : ""}">${r.price == null ? "—" : usd(r.price * n)}</span>
+            <button class="mr-rm" data-rm="${r.id}" aria-label="Remove one ${esc(r.name)}" title="Remove">✕</button>
+          </div>`).join("")}
+        <div class="mr-row mr-total" role="row"><span></span><span>Total</span><span class="mr-n">${items}</span><span class="mr-p">${worth ? usd(worth) : "—"}</span><span></span></div>
+      </div>
+    </div>
+    <p class="mr-note">Today's median eBay prices including shipping. Sellers often accept less.</p>`;
+  $("mealResult").querySelectorAll("[data-rm]").forEach(b => b.onclick = () => removePick(b.dataset.rm));
   $("mealShare")?.addEventListener("click", async () => {
     await Promise.all([...new Set(rows.map(({ r }) => r.set))].map(loadSeries));
     const pos = mealRows(), T = THEMES[pos[0].r.set] || DEFAULT_THEME;
     const vs = valueSeries(pos).slice(-30);
     openShareImage({
       accent: T.chart, chartTone: T.chart, label: "My Happy Meal · return",
-      title: `${pos.reduce((t, { n }) => t + n, 0)} collectibles from one Happy Meal`,
+      title: `${items} collectible${items > 1 ? "s" : ""} from ${meals} Happy Meal${meals > 1 ? "s" : ""}`,
       big: paid ? bigPct(worth / paid - 1) : usd(worth), bigTone: paid ? (worth >= paid ? "up" : "down") : null,
       line: paid ? `Paid ${usd(paid)}  →  Worth ${usd(worth)}` : `Worth ${usd(worth)}`,
       values: vs.map(p => p.v),
