@@ -76,7 +76,7 @@ def reject_reason(title, series, item):
     if not item_hits(t, item):
         return "not this item"
     m = (EXCLUDE_ANY.search(t) or (series["kind"] == "cards" and EXCLUDE_CARDS.search(t))
-         or (series["kind"] == "toys" and EXCLUDE_TOYS.search(t)))
+         or (series["kind"] == "toys" and (EXCLUDE_TOYS.search(t) or CARDNUM.search(t))))
     if m:
         return f"excluded word: {m.group(0)}"
     for w in series.get("exclude", []):
