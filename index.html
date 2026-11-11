@@ -202,6 +202,7 @@
   .mr-kind { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 0 6px; border-radius: 999px;
              background: var(--bg); border: 1px solid var(--line); }
   .mr-n { text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .mr-n.dupe { color: var(--text); font-weight: 700; }
   .mr-p { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
   .mr-p.na { color: var(--muted); font-weight: 400; }
   .mr-rm { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 14px; padding: 4px; border-radius: 6px; }
@@ -254,6 +255,33 @@
 
   /* Deal finder */
   .deals-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 20px; }
+  .deal-ctrls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 12px; font-size: 13px; }
+  .deal-ctrls .seg2 { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .deal-ctrls .seg2 button { font: inherit; font-weight: 600; border: 0; background: var(--panel); color: var(--text); padding: 5px 12px; cursor: pointer; }
+  .deal-ctrls .seg2 button + button { border-left: 1px solid var(--line); }
+  .deal-ctrls .seg2 button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+  .deal-ctrls label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; }
+  .deal-ctrls select { font: inherit; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); max-width: 14em; }
+  .deal-ctrls .muted { color: var(--muted); }
+  .deal-group { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .deal-group .more-btn { align-self: flex-start; font: inherit; font-size: 13px; font-weight: 600; color: var(--accent); background: none; border: 0; padding: 2px 4px; cursor: pointer; }
+  .deal-extra { display: grid; gap: 2px; padding: 4px 6px; border-left: 2px solid var(--line); margin-left: 8px; }
+  .deal-extra a { display: grid; grid-template-columns: auto auto 1fr auto; gap: 8px; align-items: baseline; font-size: 13px; color: var(--text); text-decoration: none; padding: 4px 6px; border-radius: 6px; }
+  .deal-extra a:hover { background: var(--bg); }
+  .deal-extra b { font-variant-numeric: tabular-nums; }
+  .deal-extra .muted { color: var(--muted); white-space: nowrap; }
+  .deal-extra .t { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .deal-extra .up { color: var(--up); font-weight: 700; } .deal-extra .down { color: var(--down); font-weight: 700; }
+  .pager { gap: 4px; flex-wrap: wrap; }
+  .pager button { min-width: 36px; padding: 6px 10px !important; }
+  .pager button[aria-current="page"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .pager button:disabled { opacity: .4; cursor: default; }
+  .deal-more { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; }
+  .deal-more[hidden] { display: none; }
+  .deal-more small { color: var(--muted); font-size: 13px; }
+  .deal-more button { font: inherit; font-weight: 600; font-size: 14px; color: var(--accent); background: var(--panel);
+                      border: 1px solid var(--line); border-radius: 999px; padding: 7px 18px; cursor: pointer; }
+  .deal-more button:hover { border-color: var(--accent); }
   .deal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
   .deal { display: flex; gap: 10px; align-items: center; padding: 10px; border-radius: 12px; text-decoration: none;
           color: var(--text); border: 1px solid var(--line); background: var(--bg); }
@@ -284,7 +312,20 @@
   .item-deals .deal-grid { grid-template-columns: 1fr; }
 
   /* Set completion */
-  .complete { flex-basis: 100%; border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; }
+  .complete { flex-basis: 100%; font-size: 14px; }
+  .miss-card { margin-top: 14px; padding: 16px; border-radius: 14px; background: var(--bg); }
+  .miss-card.done { text-align: center; font-size: 16px; }
+  .miss-head { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4px 10px; }
+  .miss-head b { font-family: "Fredoka", sans-serif; font-size: 18px; font-weight: 600; }
+  .miss-head span { color: var(--muted); font-size: 13px; }
+  .mr-row.miss-row { grid-template-columns: 34px minmax(0, 1fr) 90px 64px; }
+  .miss-row .pic, .miss-row .ph { opacity: .75; }
+  .miss-row .mr-name small { display: block; }
+  .miss-row .mr-total small, .mr-total small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+  .miss-go { justify-self: end; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; border: 1px solid var(--line);
+             border-radius: 999px; padding: 3px 10px; white-space: nowrap; background: var(--panel); }
+  .miss-go:hover { border-color: var(--accent); }
+  @media (max-width: 640px) { .mr-row.miss-row { grid-template-columns: 30px minmax(0, 1fr) auto auto; gap: 8px; } }
   .complete summary { cursor: pointer; }
   .complete .big { font-size: 16px; }
   .miss { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px 16px; margin-top: 10px; }
@@ -499,35 +540,6 @@
           transition: opacity .3s; }
   .tilt.shine:not(.active)::after { animation: drift 6s ease-in-out infinite alternate; opacity: .22; }
   @keyframes drift { from { background-position: center, 0% 0%; } to { background-position: center, 100% 100%; } }
-  /* Market map (heatmap) */
-  .map-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
-  .map-head { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
-  .map-legend { display: inline-flex; align-items: center; gap: 6px; }
-  .map-legend i { display: inline-block; width: 22px; height: 10px; border-radius: 2px; }
-  .map { position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: var(--line); }
-  .map-group { position: absolute; box-sizing: border-box; border: 2px solid var(--panel); }
-  .map-group.cur { outline: 2px solid var(--text); outline-offset: -2px; z-index: 2; pointer-events: none; }
-  .map-gname { height: 22px; line-height: 22px; padding: 0 8px; font-size: 12px; font-weight: 700; color: var(--muted);
-               text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: var(--panel); }
-  /* Stepped light tints, same shades as the returns grid: <0.5% flat, then <2%, 2–4%, >4% */
-  .map-cell, .map-legend i { --m-bg: #f0efea; --m-fg: #5f5e5a; }
-  .m-up1 { --m-bg: #e3f1ea; --m-fg: #2e7d52; } .m-up2 { --m-bg: #b4dcc5; --m-fg: #17663b; } .m-up3 { --m-bg: #5fb585; --m-fg: #ffffff; }
-  .m-dn1 { --m-bg: #fbe4e4; --m-fg: #b52a2a; } .m-dn2 { --m-bg: #f2b8b8; --m-fg: #9b2222; } .m-dn3 { --m-bg: #d9615d; --m-fg: #ffffff; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .map-cell, :root:not([data-theme="light"]) .map-legend i { --m-bg: #2c2c2a; --m-fg: #b4b2a9; }
-    :root:not([data-theme="light"]) .m-up1 { --m-bg: #1f3a2b; --m-fg: #95e0b2; } :root:not([data-theme="light"]) .m-up2 { --m-bg: #24503a; --m-fg: #b5f0cb; } :root:not([data-theme="light"]) .m-up3 { --m-bg: #2f7a52; --m-fg: #ffffff; }
-    :root:not([data-theme="light"]) .m-dn1 { --m-bg: #42221f; --m-fg: #ffb0a9; } :root:not([data-theme="light"]) .m-dn2 { --m-bg: #5a2a26; --m-fg: #ffc6c0; } :root:not([data-theme="light"]) .m-dn3 { --m-bg: #8e3a33; --m-fg: #ffffff; } }
-  .map-cell { position: absolute; border: 0; padding: 4px; margin: 1px; cursor: pointer; font: inherit; border-radius: 3px;
-              background: var(--m-bg); color: var(--m-fg);
-              display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; text-align: center;
-              overflow: hidden; transition: filter .15s, box-shadow .15s; }
-  .map-cell:hover, .map-cell:focus-visible { filter: brightness(.96); box-shadow: inset 0 0 0 2px currentColor; outline: none; z-index: 3; }
-  .map-cell b { font-family: "Fredoka", sans-serif; font-size: 13px; font-weight: 600; line-height: 1.15; overflow: hidden; text-overflow: ellipsis;
-                white-space: nowrap; max-width: 100%; }
-  @media (max-width: 640px) { .map-cell b { font-size: 11px; } .map-cell span { font-size: 11px; } }
-  .map-cell span { font-size: 12px; font-variant-numeric: tabular-nums; }
-  .map-legend i { background: var(--m-bg); border: 1px solid var(--line); }
-
   /* Returns heat grid */
   .returns-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 20px; }
   .returns { margin-top: 12px; }
@@ -726,7 +738,9 @@
     <section class="deals-card" id="deals">
       <div class="ret-head"><h3>Deal finder<small id="dealsNote"></small></h3></div>
       <div class="flipbar" id="flipBarDeals"></div>
+      <div class="deal-ctrls" id="dealCtrls"></div>
       <div class="deal-grid" id="dealGrid"></div>
+      <div class="deal-more" id="dealMore" hidden></div>
     </section>
   </div>
 
@@ -752,7 +766,6 @@
     <div class="seg" role="group" aria-label="View">
       <button data-view="gallery" aria-pressed="true">▦ Gallery</button>
       <button data-view="list" aria-pressed="false">☰ List</button>
-      <button data-view="map" aria-pressed="false">▩ Market map</button>
     </div>
     <label class="sortby">Sort
       <select id="sortSel">
@@ -769,13 +782,6 @@
 
   <div class="gallery" id="gallery"></div>
 
-  <section class="map-wrap" id="mapWrap" hidden>
-    <div class="map-head">
-      <span>Whole market · block size = median price incl. shipping · colour = 1-day change</span>
-      <span class="map-legend">−4%+<i class="m-dn3"></i><i class="m-dn2"></i><i class="m-dn1"></i><i></i><i class="m-up1"></i><i class="m-up2"></i><i class="m-up3"></i>+4%+</span>
-    </div>
-    <div class="map" id="map"></div>
-  </section>
 
   <div class="table-wrap" id="tableWrap" hidden>
     <table>
@@ -801,6 +807,7 @@
         <h2 id="dTitle"></h2>
         <div class="meta" id="dMeta"></div>
         <div class="variants" id="dVariants" hidden></div>
+        <div class="variants" id="dAuction" hidden></div>
         <div class="returns" id="dReturns"></div>
         <div class="item-deals" id="dDeals"></div>
         <div class="chart-box"><canvas id="dChart"></canvas></div>
@@ -870,6 +877,7 @@ function setupGroups(groups) {
 }
 let VIEW = "gallery";
 try { VIEW = localStorage.getItem("view") || "gallery"; } catch (e) {}
+if (!["gallery", "list"].includes(VIEW)) VIEW = "gallery";
 // What you have: item id -> how many (duplicates count). Saved in this browser only.
 // Older versions saved a plain list of owned ids under "owned"; those become 1 each.
 let OWN = new Map();
@@ -928,7 +936,7 @@ const confBadge = (r, withCount) => {
 };
 
 // Series histories are loaded on demand (data/series/<id>.json); until then rows use the
-// index's "latest" summary, which is enough for search, the ticker, the map and the calendar.
+// index's "latest" summary, which is enough for search, the series browser and the calendar.
 const LOADED = new Set(), LOADING = {};
 function loadSeries(sid) {
   if (isGroup(sid)) return Promise.all(members(sid).map(loadSeries));
@@ -1052,7 +1060,6 @@ function showSection(sec, scroll = true) {
   }
   document.querySelectorAll(".sec[data-sec]").forEach(d => d.hidden = d.dataset.sec !== sec);
   if (sec !== "items") $("detail").hidden = true;
-  if (sec === "items" && VIEW === "map") renderMap();
   if (sec === "trends") sinceChart?.resize();
   if (sec === "insights") renderInsights();
   if (sec === "mine") renderMineTab();
@@ -1150,6 +1157,7 @@ function countUp() {
 
 function go(sid) {
   if (DATA.sets[sid]?.group) { KIND = DATA.sets[sid].kind; sid = DATA.sets[sid].group; history.replaceState(null, "", `?s=${sid}${location.hash}`); }
+  if ((DATA.sets[sid] ? sid : defaultSeries()) !== SID) resetDeals();
   SID = DATA.sets[sid] ? sid : defaultSeries();
   if (!isGroup()) KIND = "all";
   selected = null; $("detail").hidden = true;
@@ -1250,9 +1258,6 @@ function render() {
   }).join("") || `<p class="note">Nothing here yet. Tap ＋ on items you own, or untick "Show only mine".</p>`;
   $("gallery").hidden = VIEW !== "gallery";
   $("tableWrap").hidden = VIEW !== "list";
-  $("mapWrap").hidden = VIEW !== "map";
-  $("sortSel").parentElement.style.visibility = VIEW === "map" ? "hidden" : "";
-  if (VIEW === "map") renderMap();
   document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === VIEW)));
   $("sortSel").value = `${sortKey}:${sortDir}`;
 
@@ -1504,7 +1509,7 @@ function renderMineResult(full) {
             ${thumb(r, "sm")}
             <span class="mr-name"><b>${esc(r.name)}</b>
               <small>${mixed ? `<span class="mr-kind">${kindLabel(r) === "card" ? "Card" : "Toy"}</span>` : ""}${r.price == null ? "No listings yet" : `#${esc(r.number)} · ${usd(r.price)} each`}${n > 1 ? `<span class="mr-qty">×${n}</span>` : ""}</small></span>
-            <span class="mr-n">${n > 1 ? "×" + n : ""}</span>
+            <span class="mr-n ${n > 1 ? "dupe" : ""}" ${n > 1 ? `title="${n - 1} duplicate${n > 2 ? "s" : ""}"` : ""}>${n}</span>
             <span class="mr-p ${r.price == null ? "na" : ""}">${r.price == null ? "—" : usd(r.price * n)}</span>
             <button class="mr-rm" data-rm="${r.id}" aria-label="Remove one ${esc(r.name)}" title="Remove one">✕</button>
           </div>`).join("")}
@@ -1574,6 +1579,22 @@ function renderVariants(r) {
       card(label, f.g[k], f.raw && f.g[k].count >= MIN_VARIANT ? `${vs(f.g[k].median / f.raw)}raw` : f.g[k].count < MIN_VARIANT ? "thin data" : "")).join("") +
       `<p>Graded and slabbed copies (PSA, CGC, BGS) asking prices incl. shipping, from a separate search. The main price above is for raw cards.</p>`;
   }
+}
+// Real sale prices from auctions that ended with bids (collected by the daily job's listing ledger).
+function auctionFacts(r) {
+  const a = DATA.sets[r.set]?.insights?.auctions;
+  const x = a?.items?.[r.id];
+  return x ? { ...x, window: a.window, vsAsk: r.price ? x.median / r.price : null } : null;
+}
+function renderAuction(r) {
+  const f = auctionFacts(r), box = $("dAuction");
+  box.hidden = !f;
+  if (!f) return;
+  const vs = f.vsAsk == null ? "" : f.vsAsk < 0.98 ? `${Math.round((1 - f.vsAsk) * 100)}% under the asking median`
+    : f.vsAsk > 1.02 ? `${Math.round((f.vsAsk - 1) * 100)}% over the asking median` : "about the asking median";
+  box.innerHTML = `<h5>Sold at auction</h5><div class="variant"><small>Median final price</small><b>${usd(f.median)}</b>
+    <small>${f.n} sale${f.n > 1 ? "s" : ""} in ${f.window} days${vs ? ` · ${vs}` : ""}</small></div>
+    <p>Real sales: eBay auctions for this item that ended with bids, final bid plus shipping.${f.n < 3 ? " Few sales so far, so treat it as a rough guide." : ""}</p>`;
 }
 // Series-wide: how much more sealed toys or PSA 10 cards ask, as the median of each item's ratio.
 function variantPremium(sid) {
@@ -1737,7 +1758,12 @@ function insSales() {
   const since = parts.map(p => p.x.since).sort()[0];
   const sold = parts.reduce((t, p) => t + (p.x.sales?.sold || 0), 0);
   const head = `<div class="ins wide"><h4>How fast things sell</h4><p class="q">Estimated from listings that disappear from eBay</p>`;
-  if (sold < 5) return head + `<p class="wait">Collecting since ${since ? fmtDate(since) : "the next daily update"}. Results show once at least 5 sales have been spotted.</p></div>`;
+  const auc = parts.map(p => p.x.auctions).filter(Boolean);
+  const aucSold = auc.reduce((t, a) => t + a.sold, 0);
+  const ratios = parts.flatMap(p => Object.entries(p.x.auctions?.items || {}).map(([k, v]) => {
+    const it = DATA.cards[k]; return it?.latest?.median ? v.median / it.latest.median : null; })).filter(v => v != null).sort((a, b) => a - b);
+  const aucLine = aucSold >= 3 ? `<p><b>${aucSold}</b> auction${aucSold > 1 ? "s" : ""} ended with a winning bid${ratios.length ? `, typically at <b>${Math.round(ratios[Math.floor(ratios.length / 2)] * 100)}%</b> of the asking median` : ""}. That's what buyers actually paid.</p>` : "";
+  if (sold < 5) return head + `<p class="wait">Collecting since ${since ? fmtDate(since) : "the next daily update"}. Results show once at least 5 sales have been spotted.</p>${aucLine}</div>`;
   const items = parts.flatMap(p => Object.entries(p.x.sales.items || {}).map(([key, v]) => ({ key, v })))
     .filter(x => DATA.cards[x.key] && x.v.sold).sort((a, b) => b.v.sold - a.v.sold);
   const nm = (key) => `${DATA.cards[key].name}${isGroup() ? (DATA.sets[DATA.cards[key].set].kind === "cards" ? " card" : " toy") : ""}`;
@@ -1746,6 +1772,7 @@ function insSales() {
   const win = parts[0].x.sales.window, recent = daysBetween(since, new Date().toISOString().slice(0, 10)) < win;
   return head + `<div class="big">${sold}<small>sold ${recent ? `since ${fmtDate(since)}` : `in the last ${win} days`}</small></div>
     <p><b>${Math.round(sold / Math.max(1, closed) * 100)}%</b> of listings that came down were sold (the rest were ended or removed)${days.length ? `, and a typical sale happened <b>${Math.round(avg(days))} days</b> after listing` : ""}.</p>
+    ${aucLine}
     <p class="ins-sub">Selling fastest</p>
     ${insBars(items.slice(0, 6).map(x => ({ label: nm(x.key), v: x.v.sold, c: "#1a7f37" })), v => `${v} sold`)}
     <div class="foot">A listing counts as sold when eBay shows it sold out with sales. It's an estimate: sellers can also revise or relist. Collecting since ${fmtDate(since)}.</div></div>`;
@@ -1821,17 +1848,72 @@ function dealCard(d, r) {
     <small>${esc(d.title)} · eBay ↗</small></div></a>`;
 }
 const list_count = (all) => all.reduce((n, r) => n + (r.deals || []).length, 0);
+// Deal finder: one card per item (its best deal) with "+N more" for the rest, sorting, a profit filter,
+// an item picker, and pages of 9 items so the section never gets long.
+const DEALS_PER_PAGE = 9;
+let DEAL_SORT = "below", DEAL_PROFIT = false, DEAL_ITEM = "", DEAL_PAGE = 1;
+const DEAL_OPEN = new Set();
+const dealProfit = (d, r) => r.price ? netSale(r.price) - d.price : null;
+const DEAL_SORTS = {
+  below: { label: "Biggest discount", key: (x) => -x.d.below },
+  profit: { label: "Best resale profit", key: (x) => -(x.p ?? -1e9) },
+  price: { label: "Lowest price", key: (x) => x.d.price },
+};
+function resetDeals() { DEAL_PAGE = 1; DEAL_ITEM = ""; DEAL_OPEN.clear(); }
 function renderDeals(all) {
   flipBar("flipBarDeals");
   const priced = all.some(r => r.price != null);
-  const list = all.flatMap(r => (r.deals || []).map(d => ({ d, r }))).sort((a, b) => b.d.below - a.d.below);
+  const every = all.flatMap(r => (r.deals || []).map(d => ({ d, r, p: dealProfit(d, r) })));
   $("cDeals").textContent = list_count(all) || "";
-  if (!priced) { $("dealsNote").textContent = ""; $("dealGrid").innerHTML = `<p class="note" style="margin:0">Deals appear once prices are collected.</p>`; return; }
-  $("dealsNote").textContent = list.length
-    ? `${list.length} listing${list.length > 1 ? "s" : ""} asking 20%+ under today's median · prices change fast, check before you buy`
+  if (!priced) {
+    $("dealsNote").textContent = ""; $("dealCtrls").innerHTML = ""; $("dealMore").hidden = true;
+    $("dealGrid").innerHTML = `<p class="note" style="margin:0">Deals appear once prices are collected.</p>`; return;
+  }
+  const label = (r) => `${r.name}${isGroup() ? (kindOf(r) === "cards" ? " card" : " toy") : ""}`;
+  const withDeals = [...new Map(every.map(x => [x.r.id, x.r])).values()].sort((a, b) => String(a.number).localeCompare(String(b.number), undefined, { numeric: true }));
+  if (DEAL_ITEM && !withDeals.some(r => r.id === DEAL_ITEM)) DEAL_ITEM = "";
+  $("dealCtrls").innerHTML = `<span class="seg2" role="group" aria-label="Sort deals">${Object.entries(DEAL_SORTS).map(([k, v]) =>
+      `<button type="button" data-sort="${k}" aria-pressed="${DEAL_SORT === k}">${v.label}</button>`).join("")}</span>
+    <label><input type="checkbox" id="dealProfit" ${DEAL_PROFIT ? "checked" : ""}> Profitable flips only</label>
+    <select id="dealItem" aria-label="Show deals for one item"><option value="">All items</option>${withDeals.map(r =>
+      `<option value="${r.id}" ${r.id === DEAL_ITEM ? "selected" : ""}>#${esc(r.number)} ${esc(label(r))}</option>`).join("")}</select>`;
+  $("dealCtrls").querySelectorAll("[data-sort]").forEach(b => b.onclick = () => { DEAL_SORT = b.dataset.sort; DEAL_PAGE = 1; renderDeals(all); });
+  $("dealProfit").onchange = (e) => { DEAL_PROFIT = e.target.checked; DEAL_PAGE = 1; renderDeals(all); };
+  $("dealItem").onchange = (e) => { DEAL_ITEM = e.target.value; DEAL_PAGE = 1; renderDeals(all); };
+
+  const key = DEAL_SORTS[DEAL_SORT].key;
+  const shown = every.filter(x => (!DEAL_PROFIT || x.p > 0) && (!DEAL_ITEM || x.r.id === DEAL_ITEM)).sort((a, b) => key(a) - key(b));
+  const groups = [...shown.reduce((m, x) => m.set(x.r.id, [...(m.get(x.r.id) || []), x]), new Map()).values()];  // keeps best-first order
+  const pages = Math.max(1, Math.ceil(groups.length / DEALS_PER_PAGE));
+  DEAL_PAGE = Math.min(DEAL_PAGE, pages);
+  const flips = every.filter(x => x.p > 0).length;
+  $("dealsNote").textContent = every.length
+    ? `${every.length} listing${every.length > 1 ? "s" : ""} for ${withDeals.length} item${withDeals.length > 1 ? "s" : ""} asking 20%+ under today's median${flips ? ` · ${flips} would flip for a profit` : ""} · prices change fast, check before you buy`
     : "nothing 20%+ under today's median right now";
-  $("dealGrid").innerHTML = list.slice(0, 6).map(({ d, r }) => dealCard(d, r)).join("") ||
-    `<p class="note" style="margin:0">No standout deals today. They show up here when a seller lists well under the going price.</p>`;
+  const extraRow = ({ d, p }) => `<a href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title)}">
+      <b>${usd(d.price)}</b><span class="muted">${Math.round(d.below * 100)}% under</span><span class="t">${esc(d.title)}</span>
+      ${p != null ? `<span class="${p >= 0 ? "up" : "down"}">${signUsd(p)}</span>` : "<span></span>"}</a>`;
+  const page = groups.slice((DEAL_PAGE - 1) * DEALS_PER_PAGE, DEAL_PAGE * DEALS_PER_PAGE);
+  $("dealGrid").innerHTML = page.map(g => {
+    const r = g[0].r, open = DEAL_OPEN.has(r.id) || !!DEAL_ITEM, rest = g.slice(1);
+    return `<div class="deal-group">${dealCard(g[0].d, r)}
+      ${rest.length ? `${open ? `<div class="deal-extra">${rest.map(extraRow).join("")}</div>` : ""}
+        ${DEAL_ITEM ? "" : `<button type="button" class="more-btn" data-open="${r.id}">${open ? "Hide" : `+${rest.length} more`} for ${esc(label(r))}</button>`}` : ""}
+    </div>`;
+  }).join("") || `<p class="note" style="margin:0">${every.length ? "No deals match. Try another sort or untick “Profitable flips only”."
+    : "No standout deals today. They show up here when a seller lists well under the going price."}</p>`;
+  $("dealGrid").querySelectorAll("[data-open]").forEach(b => b.onclick = () => {
+    DEAL_OPEN.has(b.dataset.open) ? DEAL_OPEN.delete(b.dataset.open) : DEAL_OPEN.add(b.dataset.open); renderDeals(all);
+  });
+  // Pages of items: ‹ 1 2 3 ›
+  $("dealMore").hidden = pages < 2;
+  $("dealMore").className = "deal-more pager";
+  $("dealMore").innerHTML = pages < 2 ? "" : `<button type="button" data-page="${DEAL_PAGE - 1}" ${DEAL_PAGE === 1 ? "disabled" : ""} aria-label="Previous page">‹</button>` +
+    Array.from({ length: pages }, (_, i) => `<button type="button" data-page="${i + 1}" ${i + 1 === DEAL_PAGE ? 'aria-current="page"' : ""}>${i + 1}</button>`).join("") +
+    `<button type="button" data-page="${DEAL_PAGE + 1}" ${DEAL_PAGE === pages ? "disabled" : ""} aria-label="Next page">›</button>`;
+  $("dealMore").querySelectorAll("[data-page]").forEach(b => b.onclick = () => {
+    DEAL_PAGE = +b.dataset.page; renderDeals(all); $("deals").scrollIntoView({ block: "start", behavior: "smooth" });
+  });
 }
 
 // Set completion: what's missing from the user's set, and the cheapest way to finish it.
@@ -1840,13 +1922,32 @@ function renderComplete(all) {
   const missing = all.filter(r => !owns(r.id));
   $("complete").hidden = !mine.length;
   if (!mine.length) return;
-  if (!missing.length) { $("complete").innerHTML = `🎉 <b>Set complete!</b> You own all ${all.length}.`; return; }
-  const priced = missing.filter(r => r.low != null), cost = priced.reduce((s, r) => s + r.low, 0);
-  $("complete").innerHTML = `<details><summary>Missing <b>${missing.length}</b> of ${all.length} · complete the set for about
-    <span class="big">${priced.length ? usd(cost) : "—"}</span> at today's lowest prices incl. shipping${priced.length < missing.length ? ` (${missing.length - priced.length} with no listing)` : ""}</summary>
-    <div class="miss">${missing.sort((a, b) => (a.low ?? 1e9) - (b.low ?? 1e9)).map(r => r.low != null
-      ? `<a href="${ebaySearch(r)}" target="_blank" rel="noopener"><span>#${esc(r.number)} ${esc(r.name)}</span><span>${usd(r.low)} ↗</span></a>`
-      : `<span class="row"><span>#${esc(r.number)} ${esc(r.name)}</span><em>no listing</em></span>`).join("")}</div></details>`;
+  if (!missing.length) {
+    $("complete").innerHTML = `<div class="miss-card done">🎉 <b>Set complete!</b> You have all ${all.length}.</div>`; return;
+  }
+  const priced = missing.filter(r => r.low != null), cost = priced.reduce((t, r) => t + r.low, 0);
+  missing.sort((a, b) => (a.low ?? 1e9) - (b.low ?? 1e9));
+  // The cheapest whole set across this series (or each half of a group), as an alternative to buying the gaps.
+  const sets = members(SID).map(id => DATA.sets[id].fullSet).filter(fs => fs?.history?.length);
+  const setPrice = sets.length === members(SID).length ? sets.reduce((t, fs) => t + (fs.deals?.[0]?.price ?? fs.history[fs.history.length - 1].median), 0) : null;
+  const kindTag = (r) => isGroup() ? `<span class="mr-kind">${kindOf(r) === "cards" ? "Card" : "Toy"}</span>` : "";
+  $("complete").innerHTML = `<div class="miss-card">
+    <div class="miss-head"><b>Still missing</b><span>${missing.length} of ${all.length}</span></div>
+    <div class="mr-list" role="table" aria-label="Items you're missing">
+      <div class="mr-row miss-row mr-head" role="row"><span></span><span>Item</span><span class="mr-p">Lowest today</span><span></span></div>
+      ${missing.map(r => `
+        <div class="mr-row miss-row" role="row">
+          ${thumb(r, "sm", false)}
+          <span class="mr-name"><b>${esc(r.name)}</b><small>${kindTag(r)}#${esc(r.number)}${r.low == null ? " · no listings yet" : r.price ? ` · usually ${usd(r.price)}` : ""}</small></span>
+          <span class="mr-p ${r.low == null ? "na" : ""}">${r.low == null ? "—" : usd(r.low)}</span>
+          ${r.low == null ? "<span></span>" : `<a class="miss-go" href="${ebaySearch(r)}" target="_blank" rel="noopener" aria-label="Find ${esc(r.name)} on eBay">Find ↗</a>`}
+        </div>`).join("")}
+      <div class="mr-row miss-row mr-total" role="row"><span></span><span>Complete the set${priced.length < missing.length ? `<small>${missing.length - priced.length} with no listing yet</small>` : ""}</span>
+        <span class="mr-p">${priced.length ? usd(cost) : "—"}</span><span></span></div>
+    </div>
+    <p class="mr-note">Today's lowest asking prices incl. shipping; the cheapest listings go fast.${setPrice != null && priced.length === missing.length
+      ? ` ${setPrice < cost ? `<b>Tip:</b> whole complete sets start at about ${usd(setPrice)} on eBay, less than buying the ${missing.length} you're missing.` : `Whole complete sets start at about ${usd(setPrice)} on eBay.`}` : ""}</p>
+  </div>`;
 }
 
 // Ended series: how the full-set value moved since the promo left restaurants.
@@ -1892,83 +1993,6 @@ function renderSince(all) {
     },
   });
 }
-
-// Squarified treemap: lays out items (each with .v) in the rectangle, keeping blocks close to square.
-function squarify(items, x, y, w, h) {
-  const total = items.reduce((s, i) => s + i.v, 0);
-  if (!total || w <= 0 || h <= 0) return [];
-  const scale = (w * h) / total;
-  const nodes = items.map(i => ({ ...i, a: i.v * scale })).sort((a, b) => b.a - a.a);
-  const out = [];
-  let row = [];
-  const worst = (r, side) => {
-    const s = r.reduce((t, n) => t + n.a, 0), mx = Math.max(...r.map(n => n.a)), mn = Math.min(...r.map(n => n.a));
-    return Math.max((side * side * mx) / (s * s), (s * s) / (side * side * mn));
-  };
-  const layoutRow = () => {
-    const s = row.reduce((t, n) => t + n.a, 0);
-    if (w >= h) {
-      const rw = s / h; let cy = y;
-      row.forEach(n => { const rh = n.a / rw; out.push({ ...n, x, y: cy, w: rw, h: rh }); cy += rh; });
-      x += rw; w -= rw;
-    } else {
-      const rh = s / w; let cx = x;
-      row.forEach(n => { const cw = n.a / rh; out.push({ ...n, x: cx, y, w: cw, h: rh }); cx += cw; });
-      y += rh; h -= rh;
-    }
-    row = [];
-  };
-  for (let i = 0; i < nodes.length;) {
-    const side = Math.min(w, h);
-    if (!row.length || worst([...row, nodes[i]], side) <= worst(row, side)) { row.push(nodes[i]); i++; }
-    else layoutRow();
-  }
-  if (row.length) layoutRow();
-  return out;
-}
-
-// Stepped colour class for a % change: flat under 0.5%, then <2%, 2–4%, over 4% each way.
-function heat(ch) {
-  if (ch == null || Math.abs(ch) < 0.005) return "";
-  const a = Math.abs(ch), lvl = a < 0.02 ? 1 : a < 0.04 ? 2 : 3;
-  return `m-${ch > 0 ? "up" : "dn"}${lvl}`;
-}
-
-// Market map (Finviz-style): every priced item in every series, grouped by series.
-function renderMap() {
-  const box = $("map");
-  const W = box.clientWidth, H = W < 640 ? 620 : 520;
-  box.style.height = H + "px";
-  const groups = shownSets().sort((a, b) => a[1].order - b[1].order).map(([sid, s]) => {
-    const items = rowsFor(sid).filter(r => r.price != null).map(r => ({ ...r, sid, v: r.price,
-      name: isGroup(sid) ? `${r.name} ${kindOf(r) === "cards" ? "card" : "toy"}` : r.name }));
-    return { sid, name: s.name, items, v: items.reduce((t, r) => t + r.v, 0) };
-  }).filter(g => g.v > 0);
-  if (!groups.length) { box.innerHTML = `<p class="note" style="padding:16px">No prices yet. The map fills in after the first daily eBay update.</p>`; return; }
-  let html = "";
-  for (const g of squarify(groups, 0, 0, W, H)) {
-    const head = g.h > 60 && g.w > 90 ? 22 : 0, pad = 2;
-    html += `<div class="map-group ${g.sid === SID ? "cur" : ""}" style="left:${g.x}px;top:${g.y}px;width:${g.w}px;height:${g.h}px">` +
-      (head ? `<div class="map-gname">${esc(g.name)}</div>` : "") + `</div>`;
-    for (const it of squarify(g.items, g.x + pad, g.y + head + pad, g.w - pad * 2, g.h - head - pad * 2)) {
-      const ch = it.d1 ?? it.d30, big = it.w > 90 && it.h > 54, mid = it.w > 54 && it.h > 30;
-      const label = mid ? `<b>${esc(it.name)}</b>${big ? `<span>${usd(it.price)}</span>` : ""}<span>${pct(ch)}</span>` : "";
-      html += `<button class="map-cell ${heat(ch)}" data-sid="${it.sid}" data-id="${it.id}"
-        style="left:${it.x}px;top:${it.y}px;width:${Math.max(0, it.w - 2)}px;height:${Math.max(0, it.h - 2)}px"
-        title="${esc(it.name)} · ${esc(DATA.sets[it.set].name)} · ${usd(it.price)} · ${pct(ch)}${confidence(it) ? ` · ${confidence(it).label} confidence` : ""}">${label}</button>`;
-    }
-  }
-  box.innerHTML = html;
-  box.querySelectorAll(".map-cell").forEach(b => b.onclick = () => {
-    if (b.dataset.sid !== SID) history.pushState(null, "", `?s=${b.dataset.sid}`);
-    switchTo(b.dataset.sid, () => showDetail(b.dataset.id));
-  });
-}
-let mapResize;
-window.addEventListener("resize", () => {
-  clearTimeout(mapResize);
-  mapResize = setTimeout(() => { if (VIEW === "map" && DATA) renderMap(); }, 150);
-});
 
 // Returns over standard periods from a [{date, v}] series (sorted by date).
 // A period shows "–" when the history doesn't reach back that far, like a stock's 5Y on a 2-year-old listing.
@@ -2188,9 +2212,11 @@ function showDetail(id) {
   $("dMeta").innerHTML = (cf ? `<span class="conf c${cf.lvl}">${cf.label} confidence</span><span class="conf-why">${esc(cf.why)}</span>` : "") +
     `${esc(own.name)} · median ${usd(r.price)} incl. shipping` +
     (r.last.itemMedian != null ? ` (item ${usd(r.last.itemMedian)} + ship ${usd(r.last.shipMedian)})` : "") +
-    ` · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
+    ` · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings` +
+    (r.last.supply > (r.count ?? 0) ? ` (about ${r.last.supply.toLocaleString()} on eBay in all)` : "") + ` · ` +
     `<a href="https://www.ebay.com/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`;
   renderVariants(r);
+  renderAuction(r);
   if (chart) chart.destroy();
   Chart.defaults.color = css("--muted");
   Chart.defaults.borderColor = css("--line");
