@@ -10,12 +10,12 @@
    "insights": {
     "since": "2026-11-11",
     "sellers": {
-     "listings": 832,
-     "sellers": 396,
+     "listings": 851,
+     "sellers": 404,
      "top1": 0.018,
-     "top3": 0.05,
-     "top10": 0.125,
-     "one": 0.566
+     "top3": 0.049,
+     "top10": 0.122,
+     "one": 0.564
     }
    },
    "name": "Pokémon TCG cards",
@@ -80,11 +80,11 @@
    "insights": {
     "since": "2026-11-11",
     "sellers": {
-     "listings": 410,
-     "sellers": 301,
+     "listings": 411,
+     "sellers": 302,
      "top1": 0.029,
      "top3": 0.056,
-     "top10": 0.12,
+     "top10": 0.119,
      "one": 0.781
     }
    },
@@ -138,7 +138,7 @@
       "price": 47.49,
       "item": 39.99,
       "ship": 7.5,
-      "url": "https://www.ebay.com/itm/820180524834?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=itembef6919f22:g:DRwAAeSwkUhqqEpU&amdata=enc%3AAQALAAABEOf5zIIojhOf%2BkQK%2Bxzjn7kYW1Pn219mf%2BgN6mjyv5PVoyjjNWBK6VLlmLKe2Jno%2BVjY%2B04XbSsXKDEOAdbytaT2fkyrQhnI%2FhWsogf4wD7lyzN2msWCe9k74IIGgRr9dojm6l%2BBHsH5C0JTYtyM1rixpaeJ141dV2Blcoea44XiIf8TYTNy54iWb9VdGMi2qeeqP9dqqO7mLTQFIQh3ciqu27rU6nENmZHx%2Fub12QvtjaHPpfXjctR0IAZYXTGh1S5PIB82IEN1qN%2F%2B0NeRlyEsRtrLRYDPlcG%2Bavnl8TiknCyoTW9Yx04Zn%2FbR3n7jvxmhVWk3dlhtd1avrfse9lL5xucD9J1y6TefRmeWYHda",
+      "url": "https://www.ebay.com/itm/820180524834?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=itembef6919f22:g:DRwAAeSwkUhqqEpU&amdata=enc%3AAQALAAABEOf5zIIojhOf%2BkQK%2Bxzjn7kYW1Pn219mf%2BgN6mjyv5PVoyjjNWBK6VLlmLKe2Jno%2BVjY%2B04XbSsXKDEOAdbytaT2fkyrQhnI%2FhWsogf4wD7lyzN2msWCe9k74IIGgRr9dojm6l%2BBHsH5C0JTYtyM1rizhiPWYybROW13TLY%2B7%2BX%2B64V9GJz74Aji2mwW8GpUtgSgfBe40iRUR3ox8eSprp%2FiAaxTd1EFukWKxy6Gx%2F7T0J5imn9CAYSo29mcb1%2BHjRlrY716h1dbtgi1RSqbkiEzURncPJGkKjB5ty06guAyJAaDf7lmaXiVltCB7xaQjBIe7lZqXG6z9puy%2BQIgbU%2B0EVHBKIrOfItv2LeGt%2BVx",
       "below": 0.448,
       "image": "https://i.ebayimg.com/images/g/DRwAAeSwkUhqqEpU/s-l225.jpg"
      }
@@ -149,7 +149,7 @@
    "insights": {
     "since": "2026-11-11",
     "sellers": {
-     "listings": 1686,
+     "listings": 1687,
      "sellers": 991,
      "top1": 0.009,
      "top3": 0.024,
@@ -162,7 +162,7 @@
    "kind": "toys",
    "start": "2026-09-15",
    "end": "2026-10-19",
-   "note": "15 crossover figures. Toy list from Qz and Today; one pairing (Smitty × Brook) is from a single source.",
+   "note": "15 crossover figures. Toy list from Qz and Today; one pairing (Smitty × Brook) is from a single source. Official checklist numbers (shown on the site) come from a majority of eBay titles; item ids keep the original order.",
    "order": 3,
    "refresh": "daily",
    "currency": "USD",
@@ -200,12 +200,12 @@
    "insights": {
     "since": "2026-11-11",
     "sellers": {
-     "listings": 321,
-     "sellers": 192,
-     "top1": 0.025,
-     "top3": 0.069,
-     "top10": 0.174,
-     "one": 0.656
+     "listings": 329,
+     "sellers": 195,
+     "top1": 0.024,
+     "top3": 0.067,
+     "top10": 0.17,
+     "one": 0.646
     }
    },
    "name": "Pokémon mini box toys",
@@ -228,40 +228,40 @@
     "history": [
      {
       "date": "2026-11-11",
-      "median": 97.47,
-      "p25": 86.43,
-      "low": 67.48,
-      "count": 103,
-      "itemMedian": 89.95,
-      "shipMedian": 7.48
+      "median": 96.98,
+      "p25": 85.95,
+      "low": 66.99,
+      "count": 104,
+      "itemMedian": 89.97,
+      "shipMedian": 6.99
      }
     ],
     "deals": [
      {
       "title": "MCDONALD’S HELLO KITTY AND FRIENDS X GODZILLA COMPLETE TOY SET ALL 8 TOTAL NEW",
-      "price": 67.48,
+      "price": 66.99,
       "item": 60.0,
-      "ship": 7.48,
+      "ship": 6.99,
       "url": "https://www.ebay.com/itm/189043668885?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item2c03e17795:g:zWQAAeSwNoNqmgYf",
-      "below": 0.308,
+      "below": 0.309,
       "image": "https://i.ebayimg.com/images/g/zWQAAeSwNoNqmgYf/s-l225.jpg"
      },
      {
       "title": "McDonald’s Happy Meal Hello Kitty x Godzilla Complete Set 2026",
-      "price": 72.47,
+      "price": 71.98,
       "item": 64.99,
-      "ship": 7.48,
+      "ship": 6.99,
       "url": "https://www.ebay.com/itm/128155943830?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item1dd6b08396:g:iJgAAeSwN61q3jwT",
-      "below": 0.256,
+      "below": 0.258,
       "image": "https://i.ebayimg.com/images/g/iJgAAeSwN61q3jwT/s-l225.jpg"
      },
      {
       "title": "2026 McDonald's Happy Meal Toy Hello Kitty/Godzilla Complete Set of 8",
-      "price": 72.48,
+      "price": 71.99,
       "item": 65.0,
-      "ship": 7.48,
+      "ship": 6.99,
       "url": "https://www.ebay.com/itm/318918689193?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item4a410901a9:g:rV8AAeSw1hlqtw6M",
-      "below": 0.256,
+      "below": 0.258,
       "image": "https://i.ebayimg.com/images/g/rV8AAeSw1hlqtw6M/s-l225.jpg"
      }
     ],
@@ -271,11 +271,11 @@
    "insights": {
     "since": "2026-11-11",
     "sellers": {
-     "listings": 917,
+     "listings": 918,
      "sellers": 701,
      "top1": 0.009,
-     "top3": 0.024,
-     "top10": 0.067,
+     "top3": 0.025,
+     "top10": 0.068,
      "one": 0.809
     }
    },
@@ -284,7 +284,7 @@
    "kind": "toys",
    "start": "2026-08-18",
    "end": "2026-09-14",
-   "note": "8 Sanrio characters dressed as Toho kaiju.",
+   "note": "8 Sanrio characters dressed as Toho kaiju. Official checklist numbers (shown on the site) come from a majority of eBay titles; item ids keep the original order.",
    "franchise": "Sanrio",
    "order": 4,
    "refresh": "daily",
@@ -359,31 +359,31 @@
     "history": [
      {
       "date": "2026-11-11",
-      "median": 114.24,
+      "median": 114.99,
       "p25": 99.88,
-      "low": 82.5,
+      "low": 84.0,
       "count": 12,
       "itemMedian": 99.5,
-      "shipMedian": 13.5
+      "shipMedian": 15.0
      }
     ],
     "deals": [
      {
       "title": "McDonald’s FIFA Squishmallows Complete Set Of 23 Ready To Ship",
-      "price": 82.5,
+      "price": 84.0,
       "item": 69.0,
-      "ship": 13.5,
+      "ship": 15.0,
       "url": "https://www.ebay.com/itm/137644354133?_skw=mcdonalds+world+cup+squishmallows+complete+set&hash=item200c3e2a55:g:PugAAeSwALdqh1Y3",
-      "below": 0.273,
+      "below": 0.27,
       "image": "https://i.ebayimg.com/images/g/PugAAeSwALdqh1Y3/s-l225.jpg"
      },
      {
       "title": "Squishmallow McDonald's World Cup Set Of 23. Full Collection. ",
-      "price": 83.49,
+      "price": 84.99,
       "item": 69.99,
-      "ship": 13.5,
-      "url": "https://www.ebay.com/itm/358870955873?_skw=mcdonalds+world+cup+squishmallows+complete+set&hash=item538e603761:g:HvQAAeSwrsFqbg1b&amdata=enc%3AAQALAAABEOf5zIIojhOf%2BkQK%2Bxzjn7mTScr0dDvwCTe9FtTkFhHajfR7O6onNmfDvR3TC4YWYtAzyES5kB%2B0OszzMmBFxBRYS8YLs39YNmlo0CKmwi4HWfDaWjyrP967nphySVCSz5hIx1gQf1OARB9udGlW3RqVzVoP3TR1LsgFwUejEuDMhJ1KyRaCGoC1gFyHv5Q3f7N4nVFoV5oS%2F99TsB5CizKAVpBM92T256cC1%2FMV0pOOCwyziamfzflUmY6wezSW7I%2BK2IDR05RVF70bzqw3%2FhjjwDPP%2FK0NO5vI4MoNsk1SsgqdnjZ%2FhOYorjsJUvgIIM2JkrrWgW6%2FbhDuU%2BvdJAPlhhPwjUsv2CO9kD7Ssb0s",
-      "below": 0.264,
+      "ship": 15.0,
+      "url": "https://www.ebay.com/itm/358870955873?_skw=mcdonalds+world+cup+squishmallows+complete+set&hash=item538e603761:g:HvQAAeSwrsFqbg1b&amdata=enc%3AAQALAAABEOf5zIIojhOf%2BkQK%2Bxzjn7mTScr0dDvwCTe9FtTkFhHajfR7O6onNmfDvR3TC4YWYtAzyES5kB%2B0OszzMmBFxBRYS8YLs39YNmlo0CKmwi4HWfDaWjyrP967nphySVCSz5hIx1gQf1OARB9udGlW3RpBrxix8XddNYr0cAjsYUgzz59lYW7F627wQdkT1mWNuZunICw%2FjqZc0QjrDM09AL1xE9y3%2Bfb4kjuYM5CPmLAfRw1eTxSVc2Tt3VpBZ1FYEvqK1Cs7OeH%2BOy3lY1pkJC%2BSOGQlpNoLhNkvmRh9S75EYTEIX3imAw72av4Xqxg9OlQzRKWeYZOan5zYbTXle6kwLdDJpqIbmI%2FVYe%2BacbIi",
+      "below": 0.261,
       "image": "https://i.ebayimg.com/images/g/HvQAAeSwrsFqbg1b/s-l225.jpg"
      }
     ],
@@ -422,9 +422,6 @@
    "set": "pokemon-2026",
    "number": "001",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/S4YAAeSwt15q82Xi/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147674889423?_skw=Decidueye+mcdonalds+2026&hash=item22621bfccf:g:S4YAAeSwt15q82Xi",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "The Pokémon Company Pokemon TCG Decidueye 001/015 McDonald's 2026 Promo EN",
@@ -472,6 +469,10 @@
      "image": "https://i.ebayimg.com/images/g/ENoAAeSwpm5q8-oa/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/S4YAAeSwt15q82Xi/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/147674889423?_skw=Decidueye+mcdonalds+2026&hash=item22621bfccf:g:S4YAAeSwt15q82Xi",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 3.99,
@@ -485,9 +486,6 @@
    "set": "pokemon-2026",
    "number": "002",
    "rarity": "Holo",
-   "image": "https://i.ebayimg.com/images/g/D4wAAeSw8ZNq9E~7/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/860134008783?_skw=Chandelure+mcdonalds+2026&hash=itemc843fb67cf:g:D4wAAeSw8ZNq9E~7",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Chandelure Confetti Holo 002/015 – 2026 McDonald's Pokémon Card English ",
@@ -495,16 +493,25 @@
      "item": 2.5,
      "ship": 0.99,
      "url": "https://www.ebay.com/itm/128187429927?_skw=Chandelure+mcdonalds+2026&hash=item1dd890f427:g:nL0AAeSwFCJq832~",
-     "below": 0.482,
+     "below": 0.473,
      "image": "https://i.ebayimg.com/images/g/nL0AAeSwFCJq832~/s-l225.jpg"
     },
     {
+     "title": "Chandelure 002/015 Holo McDonald's Promos 2026",
+     "price": 3.77,
+     "item": 2.99,
+     "ship": 0.78,
+     "url": "https://www.ebay.com/itm/287722457916?_skw=Chandelure+mcdonalds+2026&hash=item42fd984b3c:g:ogEAAeSw5Btq9Oj6",
+     "below": 0.431,
+     "image": "https://i.ebayimg.com/images/g/ogEAAeSw5Btq9Oj6/s-l225.jpg"
+    },
+    {
      "title": "Chandelure 002/015 McDonald's 2026 M26 Promo Confetti Holo Pokemon TCG Card NM",
-     "price": 3.98,
+     "price": 3.85,
      "item": 2.23,
-     "ship": 1.75,
+     "ship": 1.62,
      "url": "https://www.ebay.com/itm/880090568957?_skw=Chandelure+mcdonalds+2026&hash=itemcce97c58fd:g:OO8AAeSwMLhq7mrq",
-     "below": 0.409,
+     "below": 0.418,
      "image": "https://i.ebayimg.com/images/g/OO8AAeSwMLhq7mrq/s-l225.jpg"
     },
     {
@@ -513,7 +520,7 @@
      "item": 3.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/407353877019?_skw=Chandelure+mcdonalds+2026&hash=item5ed82ee21b:g:AacAAeSws~hq84U5",
-     "below": 0.408,
+     "below": 0.397,
      "image": "https://i.ebayimg.com/images/g/AacAAeSws~hq84U5/s-l225.jpg"
     },
     {
@@ -522,25 +529,20 @@
      "item": 4.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/117516247791?_skw=Chandelure+mcdonalds+2026&hash=item1b5c83a2ef:g:MqcAAeSwejxq9KMo",
-     "below": 0.407,
+     "below": 0.396,
      "image": "https://i.ebayimg.com/images/g/MqcAAeSwejxq9KMo/s-l225.jpg"
-    },
-    {
-     "title": "Chandelure 002/015 Holo Rare Stage 2 HP 150 McDonald's 2026 EN Pokemon TCG",
-     "price": 4.15,
-     "item": 2.4,
-     "ship": 1.75,
-     "url": "https://www.ebay.com/itm/377636575000?_skw=Chandelure+mcdonalds+2026&hash=item57ece4d718:g:2GYAAeSwHS5q8-qV",
-     "below": 0.384,
-     "image": "https://i.ebayimg.com/images/g/2GYAAeSwHS5q8-qV/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/D4wAAeSw8ZNq9E~7/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/860134008783?_skw=Chandelure+mcdonalds+2026&hash=itemc843fb67cf:g:D4wAAeSw8ZNq9E~7",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 6.74,
-    "p25": 5.35,
+    "median": 6.62,
+    "p25": 5.14,
     "low": 3.49,
-    "count": 72
+    "count": 73
    }
   },
   "pokemon-2026-003": {
@@ -548,27 +550,33 @@
    "set": "pokemon-2026",
    "number": "003",
    "rarity": "Holo",
-   "image": "https://i.ebayimg.com/images/g/wqAAAeSwYKZq8ylo/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377635114298?_skw=Palafin+mcdonalds+2026&hash=item57ecce8d3a:g:wqAAAeSwYKZq8ylo",
-   "imageCredit": "eBay listing photo",
    "deals": [
+    {
+     "title": "Nintendo Pokémon TCG Palafin M26 003/015 Holo EN 2026 HP 150",
+     "price": 1.78,
+     "item": 1.0,
+     "ship": 0.78,
+     "url": "https://www.ebay.com/itm/960183882497?_skw=Palafin+mcdonalds+2026&hash=itemdf8f6b5301:g:gCAAAeSwvANq9LuD",
+     "below": 0.628,
+     "image": "https://i.ebayimg.com/images/g/gCAAAeSwvANq9LuD/s-l225.jpg"
+    },
     {
      "title": "Palafin McDonald's Promos 2026 3 NM Holo ENGLISH",
      "price": 2.0,
      "item": 2.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/820344236744?_skw=Palafin+mcdonalds+2026&hash=itembf0053aac8:g:NVoAAeSwvH1q9N~w",
-     "below": 0.605,
+     "below": 0.582,
      "image": "https://i.ebayimg.com/images/g/NVoAAeSwvH1q9N~w/s-l225.jpg"
     },
     {
-     "title": "Nintendo Pokémon TCG Palafin M26 003/015 Holo EN 2026 HP 150",
-     "price": 2.07,
-     "item": 1.0,
-     "ship": 1.07,
-     "url": "https://www.ebay.com/itm/960183882497?_skw=Palafin+mcdonalds+2026&hash=itemdf8f6b5301:g:gCAAAeSwvANq9LuD",
-     "below": 0.591,
-     "image": "https://i.ebayimg.com/images/g/gCAAAeSwvANq9LuD/s-l225.jpg"
+     "title": "Palafin 003/015 Holo McDonald's 2026 Pokemon TCG Card 150 HP English",
+     "price": 2.36,
+     "item": 1.58,
+     "ship": 0.78,
+     "url": "https://www.ebay.com/itm/198788246715?_skw=Palafin+mcdonalds+2026&hash=item2e48b3ecbb:g:XawAAeSwAWNq9M0I",
+     "below": 0.506,
+     "image": "https://i.ebayimg.com/images/g/XawAAeSwAWNq9M0I/s-l225.jpg"
     },
     {
      "title": "Palafin 003/015 Holo P McDonald's Promos 2026 NM",
@@ -576,34 +584,29 @@
      "item": 2.49,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/168853497123?_skw=Palafin+mcdonalds+2026&hash=item275073e523:g:RroAAeSwFHBq88wf",
-     "below": 0.508,
+     "below": 0.479,
      "image": "https://i.ebayimg.com/images/g/RroAAeSwFHBq88wf/s-l225.jpg"
     },
     {
-     "title": "Palafin 003/015 Holo McDonald's 2026 Pokemon TCG Card 150 HP English",
-     "price": 2.65,
-     "item": 1.58,
-     "ship": 1.07,
-     "url": "https://www.ebay.com/itm/198788246715?_skw=Palafin+mcdonalds+2026&hash=item2e48b3ecbb:g:XawAAeSwAWNq9M0I",
-     "below": 0.476,
-     "image": "https://i.ebayimg.com/images/g/XawAAeSwAWNq9M0I/s-l225.jpg"
-    },
-    {
      "title": "Palafin 003/015 Holo Promo - 2026 McDonald's Pokemon Collection (NM)",
-     "price": 2.85,
+     "price": 2.56,
      "item": 1.78,
-     "ship": 1.07,
+     "ship": 0.78,
      "url": "https://www.ebay.com/itm/168848588147?_skw=Palafin+mcdonalds+2026&hash=item275028fd73:g:RR0AAeSwQuhq8N-K",
-     "below": 0.437,
+     "below": 0.464,
      "image": "https://i.ebayimg.com/images/g/RR0AAeSwQuhq8N-K/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/wqAAAeSwYKZq8ylo/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/377635114298?_skw=Palafin+mcdonalds+2026&hash=item57ecce8d3a:g:wqAAAeSwYKZq8ylo",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 5.06,
-    "p25": 3.83,
-    "low": 2.0,
-    "count": 80
+    "median": 4.78,
+    "p25": 3.57,
+    "low": 1.78,
+    "count": 82
    }
   },
   "pokemon-2026-004": {
@@ -611,18 +614,15 @@
    "set": "pokemon-2026",
    "number": "004",
    "rarity": "Holo",
-   "image": "https://i.ebayimg.com/images/g/YyYAAeSwFClq8x5u/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377635048894?_skw=Pikachu+mcdonalds+2026&hash=item57eccd8dbe:g:YyYAAeSwFClq8x5u",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
-     "title": "Nintendo Pokemon TCG Pikachu McDonald's 2026 004/015 Holo Promo 70 HP EN",
-     "price": 5.96,
-     "item": 4.0,
-     "ship": 1.96,
-     "url": "https://www.ebay.com/itm/960184355618?_skw=Pikachu+mcdonalds+2026&hash=itemdf8f728b22:g:f4oAAeSwMbpq9Lqj",
-     "below": 0.649,
-     "image": "https://i.ebayimg.com/images/g/f4oAAeSwMbpq9Lqj/s-l225.jpg"
+     "title": "Pokemon TCG McDonald’s 2026 promo Pikachu Pokemon Card 004/015 Holo, M26a, 70 HP",
+     "price": 6.88,
+     "item": 5.0,
+     "ship": 1.88,
+     "url": "https://www.ebay.com/itm/860135360766?_skw=Pikachu+mcdonalds+2026&hash=itemc8441008fe:g:JRkAAeSw-u5q9OjC&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7l8WZL6PpiMuzgBAm%2BXjblpLGFoLZCBBG6JJfFfx%2FhCXTLdmtmwniOyClSqrM%2BeuhA4nVMAw77gCAEYYwtO9Xm5nqsdSCxsEPIrxPyCfx9UkDZY%2B858kNu8xIVwo3OehAk0R2subhc2KEscAHuoFdZJ%2FP1rZE%2Bf18HYLLztZKqPUk7yKmANToA3WUOzu52VHov5jipMQjx7No314NewWUjEbGK9B%2B5ZJYXDi1MQ5m%2FR3LBe4YYyt01xLEC3ji0YsUxnL2rEhDMzhXBcHou%2BkLJMweIDmJ1vi8%2FdN2dckw4E%2Fw%3D%3D",
+     "below": 0.595,
+     "image": "https://i.ebayimg.com/images/g/JRkAAeSw-u5q9OjC/s-l225.jpg"
     },
     {
      "title": "Pikachu 004/015 Common McDonald's 2026 Pokemon Holo 70 HP English M26EN",
@@ -630,17 +630,8 @@
      "item": 8.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/267840856729?_skw=Pikachu+mcdonalds+2026&hash=item3e5c8f2299:g:XoMAAeSwZbdq9J4Z",
-     "below": 0.47,
+     "below": 0.471,
      "image": "https://i.ebayimg.com/images/g/XoMAAeSwZbdq9J4Z/s-l225.jpg"
-    },
-    {
-     "title": "McDonald's Pikachu Pokemon Card 2026 (004/015) - Holo Rare English",
-     "price": 9.6,
-     "item": 8.5,
-     "ship": 1.1,
-     "url": "https://www.ebay.com/itm/287720696087?_skw=Pikachu+mcdonalds+2026&hash=item42fd7d6917:g:bEkAAeSw5PBq8~4J",
-     "below": 0.434,
-     "image": "https://i.ebayimg.com/images/g/bEkAAeSw5PBq8~4J/s-l225.jpg"
     },
     {
      "title": "Pikachu (004/015) [Cracked Ice Holo] (NM) - Pokémon - 2026 McDonalds Promo (ENG)",
@@ -652,6 +643,15 @@
      "image": "https://i.ebayimg.com/images/g/f0gAAeSwQrtq9LTC/s-l225.jpg"
     },
     {
+     "title": "Pikachu 2026 McDonalds promo 004/015 Pokémon card",
+     "price": 10.36,
+     "item": 8.48,
+     "ship": 1.88,
+     "url": "https://www.ebay.com/itm/820344116157?_skw=Pikachu+mcdonalds+2026&hash=itembf0051d3bd:g:qukAAeSw5Btq9NWH",
+     "below": 0.39,
+     "image": "https://i.ebayimg.com/images/g/qukAAeSw5Btq9NWH/s-l225.jpg"
+    },
+    {
      "title": "2026 McDonald’s Happy Meal Pokémon Card- Pikachu Confetti Holofoil (004/015)",
      "price": 10.56,
      "item": 7.04,
@@ -661,12 +661,16 @@
      "image": "https://i.ebayimg.com/images/g/jPkAAeSw87Vq7tT2/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/qukAAeSw5Btq9NWH/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/820344116157?_skw=Pikachu+mcdonalds+2026&hash=itembf0051d3bd:g:qukAAeSw5Btq9NWH",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 16.97,
-    "p25": 12.51,
-    "low": 5.96,
-    "count": 80
+    "median": 16.98,
+    "p25": 12.98,
+    "low": 6.88,
+    "count": 81
    }
   },
   "pokemon-2026-005": {
@@ -674,17 +678,14 @@
    "set": "pokemon-2026",
    "number": "005",
    "rarity": "Holo",
-   "image": "https://i.ebayimg.com/images/g/A9AAAeSwY39q9DxD/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307277234565?_skw=Mimikyu+mcdonalds+2026&hash=item478b268185:g:A9AAAeSwY39q9DxD",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "NEW Pokemon TCG Mimikyu 005/015 McDonalds 2026 Promo Holo Card Happy Meal Rare",
-     "price": 5.32,
+     "price": 5.71,
      "item": 4.93,
-     "ship": 0.39,
+     "ship": 0.78,
      "url": "https://www.ebay.com/itm/920130749987?_skw=Mimikyu+mcdonalds+2026&hash=itemd63c110623:g:VUkAAeSwbd9q9IIQ",
-     "below": 0.532,
+     "below": 0.506,
      "image": "https://i.ebayimg.com/images/g/VUkAAeSwbd9q9IIQ/s-l225.jpg"
     },
     {
@@ -693,42 +694,46 @@
      "item": 6.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/128189383779?_skw=Mimikyu+mcdonalds+2026&hash=item1dd8aec463:g:YzEAAeSwhtVq9Ns~",
-     "below": 0.472,
+     "below": 0.481,
      "image": "https://i.ebayimg.com/images/g/YzEAAeSwhtVq9Ns~/s-l225.jpg"
     },
     {
      "title": "Mimikyu Reverse holo 2026 McDonalds promo Pokémon card",
-     "price": 6.38,
+     "price": 6.77,
      "item": 5.99,
-     "ship": 0.39,
+     "ship": 0.78,
      "url": "https://www.ebay.com/itm/820344176674?_skw=Mimikyu+mcdonalds+2026&hash=itembf0052c022:g:5SkAAeSwXV9q9No9",
-     "below": 0.439,
+     "below": 0.414,
      "image": "https://i.ebayimg.com/images/g/5SkAAeSwXV9q9No9/s-l225.jpg"
     },
     {
      "title": "Mimikyu 005/015 Promo McDonald's Promos 2026 Pokemon Holo NM",
-     "price": 7.05,
+     "price": 7.44,
      "item": 6.66,
-     "ship": 0.39,
+     "ship": 0.78,
      "url": "https://www.ebay.com/itm/227608774534?_skw=Mimikyu+mcdonalds+2026&hash=item34fe8a4786:g:P7gAAeSw7bNq897h",
-     "below": 0.38,
+     "below": 0.356,
      "image": "https://i.ebayimg.com/images/g/P7gAAeSw7bNq897h/s-l225.jpg"
     },
     {
      "title": "Nintendo Pokemon TCG Mimikyu 005/015 McDonald's 2026 Holo Promo English Mint",
-     "price": 7.99,
-     "item": 7.99,
+     "price": 8.5,
+     "item": 8.5,
      "ship": 0.0,
-     "url": "https://www.ebay.com/itm/206693031061?_skw=Mimikyu+mcdonalds+2026&hash=item301fdd5c95:g:ldgAAeSwVzVq9LZE",
-     "below": 0.297,
-     "image": "https://i.ebayimg.com/images/g/ldgAAeSwVzVq9LZE/s-l225.jpg"
+     "url": "https://www.ebay.com/itm/237177883639?_skw=Mimikyu+mcdonalds+2026&hash=item3738e74bf7:g:qg4AAeSwQf9q9Omk",
+     "below": 0.265,
+     "image": "https://i.ebayimg.com/images/g/qg4AAeSwQf9q9Omk/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/9hMAAeSwOPNq9KLg/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/377637931504?_skw=Mimikyu+mcdonalds+2026&hash=item57ecf989f0:g:9hMAAeSwOPNq9KLg",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 11.37,
-    "p25": 9.38,
-    "low": 5.32,
+    "median": 11.56,
+    "p25": 9.76,
+    "low": 5.71,
     "count": 82
    }
   },
@@ -737,9 +742,6 @@
    "set": "pokemon-2026",
    "number": "006",
    "rarity": "Holo",
-   "image": "https://i.ebayimg.com/images/g/VHEAAeSwhrlq9DnJ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/257847040782?_skw=Lucario+mcdonalds+2026&hash=item3c08e19b0e:g:VHEAAeSwhrlq9DnJ",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Lucario 06/15 Mcdonald’s Promo 2026 M26 Pokemon Card NM + Holo Bleed ",
@@ -747,7 +749,7 @@
      "item": 4.22,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/820329703369?_skw=Lucario+mcdonalds+2026&hash=itembeff75e7c9:g:Q2UAAeSwOXJq7-0D",
-     "below": 0.583,
+     "below": 0.578,
      "image": "https://i.ebayimg.com/images/g/Q2UAAeSwOXJq7-0D/s-l225.jpg"
     },
     {
@@ -756,8 +758,17 @@
      "item": 4.97,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/206692502834?_skw=Lucario+mcdonalds+2026&hash=item301fd54d32:g:hQsAAeSwH4tq9JoP",
-     "below": 0.509,
+     "below": 0.503,
      "image": "https://i.ebayimg.com/images/g/hQsAAeSwH4tq9JoP/s-l225.jpg"
+    },
+    {
+     "title": "2026 POKEMON McDONALD'S PROMO LUCARIO HOLO CARD 006/015 Near Mint",
+     "price": 4.99,
+     "item": 4.99,
+     "ship": 0.0,
+     "url": "https://www.ebay.com/itm/407356493439?_skw=Lucario+mcdonalds+2026&hash=item5ed856ce7f:g:zJgAAeSwIEpq9OnA",
+     "below": 0.501,
+     "image": "https://i.ebayimg.com/images/g/zJgAAeSwIEpq9OnA/s-l225.jpg"
     },
     {
      "title": "Lucario 006/015 Promo McDonald's Promos 2026 Pokemon Holo Near Mint",
@@ -765,7 +776,7 @@
      "item": 4.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/137922637196?_skw=Lucario+mcdonalds+2026&hash=item201cd46d8c:g:ZeUAAeSwJ3tq9M3A",
-     "below": 0.507,
+     "below": 0.501,
      "image": "https://i.ebayimg.com/images/g/ZeUAAeSwJ3tq9M3A/s-l225.jpg"
     },
     {
@@ -774,25 +785,20 @@
      "item": 4.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/900083685053?_skw=Lucario+mcdonalds+2026&hash=itemd1912b16bd:g:5DcAAeSwZvtq9NDT",
-     "below": 0.507,
+     "below": 0.501,
      "image": "https://i.ebayimg.com/images/g/5DcAAeSwZvtq9NDT/s-l225.jpg"
-    },
-    {
-     "title": "Lucario 006/015 McDonald's 2026 Promo Holo Pokemon TCG Pokemon Card 130 HP",
-     "price": 4.99,
-     "item": 4.99,
-     "ship": 0.0,
-     "url": "https://www.ebay.com/itm/117516245418?_skw=Lucario+mcdonalds+2026&hash=item1b5c8399aa:g:nr0AAeSw38Zq9KH9",
-     "below": 0.507,
-     "image": "https://i.ebayimg.com/images/g/nr0AAeSw38Zq9KH9/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/zJgAAeSwIEpq9OnA/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407356493439?_skw=Lucario+mcdonalds+2026&hash=item5ed856ce7f:g:zJgAAeSwIEpq9OnA",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 10.12,
-    "p25": 6.73,
+    "median": 9.99,
+    "p25": 6.4,
     "low": 4.22,
-    "count": 85
+    "count": 87
    }
   },
   "pokemon-2026-007": {
@@ -800,9 +806,6 @@
    "set": "pokemon-2026",
    "number": "007",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/1I8AAeSwoGZq87Lj/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/327450282307?_skw=Hawlucha+mcdonalds+2026&hash=item4c3d8ec943:g:1I8AAeSwoGZq87Lj",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Hawlucha 007/015 M26 EN McDonald's 2026 Pokemon Promo",
@@ -850,6 +853,10 @@
      "image": "https://i.ebayimg.com/images/g/GhUAAeSwjYtq88pH/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/gUsAAeSw-Udq87QI/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/327451593983?_skw=Hawlucha+mcdonalds+2026&hash=item4c3da2ccff:g:gUsAAeSw-Udq87QI",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 5.2,
@@ -863,62 +870,63 @@
    "set": "pokemon-2026",
    "number": "008",
    "rarity": "Holo",
-   "image": "https://i.ebayimg.com/images/g/HPsAAeSwxYJq83yx/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307276379956?_skw=Tyranitar+mcdonalds+2026&hash=item478b197734:g:HPsAAeSwxYJq83yx",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Tyranitar 8/15 M26 McDonald's 2026 Pokemon NM",
-     "price": 4.08,
+     "price": 4.03,
      "item": 2.78,
-     "ship": 1.31,
+     "ship": 1.25,
      "url": "https://www.ebay.com/itm/880102143061?_skw=Tyranitar+mcdonalds+2026&hash=itemccea2cf455:g:GNoAAeSwCvVq8xQV",
-     "below": 0.441,
+     "below": 0.443,
      "image": "https://i.ebayimg.com/images/g/GNoAAeSwCvVq8xQV/s-l225.jpg"
     },
     {
      "title": "Tyranitar Mcdonald’s Promo 2026 Holo 08/15 M26EN NM",
-     "price": 4.12,
+     "price": 4.06,
      "item": 2.81,
-     "ship": 1.31,
+     "ship": 1.25,
      "url": "https://www.ebay.com/itm/960159615921?_skw=Tyranitar+mcdonalds+2026&hash=itemdf8df90bb1:g:ccIAAeSwARRq7RgH",
-     "below": 0.436,
+     "below": 0.439,
      "image": "https://i.ebayimg.com/images/g/ccIAAeSwARRq7RgH/s-l225.jpg"
     },
     {
      "title": "Tyranitar M26 008/015 Holo 180 HP Stage 2 English 2026 Pokémon Co.",
-     "price": 4.79,
+     "price": 4.74,
      "item": 3.49,
-     "ship": 1.31,
+     "ship": 1.25,
      "url": "https://www.ebay.com/itm/206690421073?_skw=Tyranitar+mcdonalds+2026&hash=item301fb58951:g:9tkAAeSwxZ1q84sP",
-     "below": 0.344,
+     "below": 0.345,
      "image": "https://i.ebayimg.com/images/g/9tkAAeSwxZ1q84sP/s-l225.jpg"
     },
     {
      "title": "McDonald's Pokemon 2026 Promo Tyranitar 008/015 Holo",
-     "price": 4.83,
+     "price": 4.77,
      "item": 3.52,
-     "ship": 1.31,
+     "ship": 1.25,
      "url": "https://www.ebay.com/itm/377636068773?_skw=Tyranitar+mcdonalds+2026&hash=item57ecdd1da5:g:pGIAAeSwSO1q87b6",
-     "below": 0.338,
+     "below": 0.341,
      "image": "https://i.ebayimg.com/images/g/pGIAAeSwSO1q87b6/s-l225.jpg"
     },
     {
      "title": "Tyranitar Mcdonald’s Promo 2026 Holo 08/15 NM",
-     "price": 4.83,
+     "price": 4.77,
      "item": 3.52,
-     "ship": 1.31,
+     "ship": 1.25,
      "url": "https://www.ebay.com/itm/307273545923?_skw=Tyranitar+mcdonalds+2026&hash=item478aee38c3:g:WDMAAeSwl2Jq8SX8",
-     "below": 0.338,
+     "below": 0.341,
      "image": "https://i.ebayimg.com/images/g/WDMAAeSwl2Jq8SX8/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/HXAAAeSwCJJq8~2g/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/920129195163?_skw=Tyranitar+mcdonalds+2026&hash=itemd63bf94c9b:g:HXAAAeSwCJJq8~2g",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 7.3,
-    "p25": 6.23,
-    "low": 4.08,
-    "count": 67
+    "median": 7.24,
+    "p25": 5.91,
+    "low": 4.03,
+    "count": 69
    }
   },
   "pokemon-2026-009": {
@@ -926,9 +934,6 @@
    "set": "pokemon-2026",
    "number": "009",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/4IAAAeSwRP9q9Fsl/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/128188594088?_skw=Absol+mcdonalds+2026&hash=item1dd8a2b7a8:g:4IAAAeSwRP9q9Fsl",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Absol 009/015 Promo McDonald's Collection 2026 Pokemon ",
@@ -936,8 +941,17 @@
      "item": 1.4,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/920131562929?_skw=Absol+mcdonalds+2026&hash=itemd63c1d6db1:g:hfkAAeSwuQNq9LSQ",
-     "below": 0.598,
+     "below": 0.599,
      "image": "https://i.ebayimg.com/images/g/hfkAAeSwuQNq9LSQ/s-l225.jpg"
+    },
+    {
+     "title": "Absol 009/015 McDonald's Promos 2026",
+     "price": 1.78,
+     "item": 1.0,
+     "ship": 0.78,
+     "url": "https://www.ebay.com/itm/287722457938?_skw=Absol+mcdonalds+2026&hash=item42fd984b52:g:ICsAAeSwc8lq9Oj6",
+     "below": 0.49,
+     "image": "https://i.ebayimg.com/images/g/ICsAAeSwc8lq9Oj6/s-l225.jpg"
     },
     {
      "title": "Absol 009/015 Promo McDonald's Promos 2026 Pokemon Near Mint",
@@ -945,7 +959,7 @@
      "item": 1.95,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/128189383809?_skw=Absol+mcdonalds+2026&hash=item1dd8aec481:g:Z8cAAeSwe2Rq9NtD",
-     "below": 0.44,
+     "below": 0.441,
      "image": "https://i.ebayimg.com/images/g/Z8cAAeSwe2Rq9NtD/s-l225.jpg"
     },
     {
@@ -954,7 +968,7 @@
      "item": 1.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/940082356118?_skw=Absol+mcdonalds+2026&hash=itemdae1465f96:g:ZIYAAeSwclZq88tJ",
-     "below": 0.428,
+     "below": 0.43,
      "image": "https://i.ebayimg.com/images/g/ZIYAAeSwclZq88tJ/s-l225.jpg"
     },
     {
@@ -963,25 +977,20 @@
      "item": 2.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/860134674683?_skw=Absol+mcdonalds+2026&hash=itemc8440590fb:g:CDMAAeSw7q1q800G",
-     "below": 0.425,
+     "below": 0.427,
      "image": "https://i.ebayimg.com/images/g/CDMAAeSw7q1q800G/s-l225.jpg"
-    },
-    {
-     "title": "Absol 009/015 McDonald's 2026 Promo EN Pokemon TCG",
-     "price": 2.11,
-     "item": 2.11,
-     "ship": 0.0,
-     "url": "https://www.ebay.com/itm/128189165953?_skw=Absol+mcdonalds+2026&hash=item1dd8ab7181:g:OoAAAeSw1klq9K-R",
-     "below": 0.394,
-     "image": "https://i.ebayimg.com/images/g/OoAAAeSw1klq9K-R/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/ZIYAAeSwclZq88tJ/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/940082356118?_skw=Absol+mcdonalds+2026&hash=itemdae1465f96:g:ZIYAAeSwclZq88tJ",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 3.48,
+    "median": 3.49,
     "p25": 2.48,
     "low": 1.4,
-    "count": 36
+    "count": 37
    }
   },
   "pokemon-2026-010": {
@@ -989,9 +998,6 @@
    "set": "pokemon-2026",
    "number": "010",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/WQoAAeSw6l9q8ynL/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377635115907?_skw=Zoroark+mcdonalds+2026&hash=item57ecce9383:g:WQoAAeSw6l9q8ynL",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Zoroark 010/015 Promo McDonald's Promos 2026 Pokemon Near Mint",
@@ -1039,6 +1045,10 @@
      "image": "https://i.ebayimg.com/images/g/Zb4AAeSw4UFq89h4/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/WQoAAeSw6l9q8ynL/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/377635115907?_skw=Zoroark+mcdonalds+2026&hash=item57ecce9383:g:WQoAAeSw6l9q8ynL",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 3.99,
@@ -1052,9 +1062,6 @@
    "set": "pokemon-2026",
    "number": "011",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/ULAAAeSw5adq82so/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/128187348980?_skw=Metagross+mcdonalds+2026&hash=item1dd88fb7f4:g:ULAAAeSw5adq82so",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Pokemon TCG Metagross McDonald's 2026 011/015 Holo Stage 2 EN 2026",
@@ -1062,7 +1069,7 @@
      "item": 1.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/960183887134?_skw=Metagross+mcdonalds+2026&hash=itemdf8f6b651e:g:3rgAAeSwmWxq9LxF",
-     "below": 0.667,
+     "below": 0.685,
      "image": "https://i.ebayimg.com/images/g/3rgAAeSwmWxq9LxF/s-l225.jpg"
     },
     {
@@ -1071,7 +1078,7 @@
      "item": 1.5,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/820340463280?_skw=Metagross+mcdonalds+2026&hash=itembf001a16b0:g:sA4AAeSwQPZq88AV",
-     "below": 0.5,
+     "below": 0.527,
      "image": "https://i.ebayimg.com/images/g/sA4AAeSwQPZq88AV/s-l225.jpg"
     },
     {
@@ -1080,7 +1087,7 @@
      "item": 1.87,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/267840974934?_skw=Metagross+mcdonalds+2026&hash=item3e5c90f056:g:40AAAeSwJwdq9MOg",
-     "below": 0.377,
+     "below": 0.41,
      "image": "https://i.ebayimg.com/images/g/40AAAeSwJwdq9MOg/s-l225.jpg"
     },
     {
@@ -1089,7 +1096,7 @@
      "item": 1.92,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/128188594086?_skw=Metagross+mcdonalds+2026&hash=item1dd8a2b7a6:g:hSIAAeSwOnxq9Fse",
-     "below": 0.36,
+     "below": 0.394,
      "image": "https://i.ebayimg.com/images/g/hSIAAeSwOnxq9Fse/s-l225.jpg"
     },
     {
@@ -1098,16 +1105,20 @@
      "item": 1.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/128189261040?_skw=Metagross+mcdonalds+2026&hash=item1dd8ace4f0:g:6EsAAeSwKFBq9MMO",
-     "below": 0.337,
+     "below": 0.372,
      "image": "https://i.ebayimg.com/images/g/6EsAAeSwKFBq9MMO/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/40AAAeSwJwdq9MOg/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/267840974934?_skw=Metagross+mcdonalds+2026&hash=item3e5c90f056:g:40AAAeSwJwdq9MOg",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 3.0,
-    "p25": 2.75,
+    "median": 3.17,
+    "p25": 2.76,
     "low": 1.0,
-    "count": 47
+    "count": 48
    }
   },
   "pokemon-2026-012": {
@@ -1115,16 +1126,13 @@
    "set": "pokemon-2026",
    "number": "012",
    "rarity": "Holo",
-   "image": "https://i.ebayimg.com/images/g/QgIAAeSwrWlq83KZ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/880105917421?_skw=Jirachi+mcdonalds+2026&hash=itemccea668bed:g:QgIAAeSwrWlq83KZ",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Jirachi 012/015 Holo Promo McDonald's 2026 Pokemon TCG Card English",
      "price": 3.0,
      "item": 3.0,
      "ship": 0.0,
-     "url": "https://www.ebay.com/itm/820340406737?_skw=Jirachi+mcdonalds+2026&hash=itembf001939d1:g:uBwAAeSwzytq87pe&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7m36hHdGhJmfY7838%2ByegFL%2BR2%2BjLQDuKM7G3YAJICe1rC4nL4ngMim6j5HEiV0L%2Bs1CaSHEurdJfT0mh1oa2hPZjTADVvb3ltwvYtPKiNqaMn5t8wczVbJeAkKhiCCX%2FLQt9zQXdlvEkpZ0P9TRtDcvDKvUnSf83JUMExKQswK4%2B6zo4AkNgCLF2MEDWHXQprwHd18SDvXcmmG3W%2Fw5KfjO8Tyeo%2Fotk44ZJoW7P21P%2F5pf751VNR4wKEuZxtjkJ%2BIgw1BE8dchpPW08vUhZb2I1uAWmREZ6MQKg0C%2FRionA%3D%3D",
+     "url": "https://www.ebay.com/itm/820340406737?_skw=Jirachi+mcdonalds+2026&hash=itembf001939d1:g:uBwAAeSwzytq87pe&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7m36hHdGhJmfY7838%2ByegFL%2BR2%2BjLQDuKM7G3YAJICe1rC4nL4ngMim6j5HEiV0L%2Bs1CaSHEurdJfT0mh1oa2hPZjTADVvb3ltwvYtPKiNqaMn5t8wczVbJeAkKhiCCX%2FLm328rfPLLrtyLZcX4cBmea7Nm3ZDGbw10lR%2F0Du9b%2Bui1LlBdtU7wXV3EV3IWZabqwxzNszOz3oiqidyzTh3ix60sXqvONFfvVndAdkAa7OwCe6eKlFQY4nj3zHLE6nHKluXFMZgb2jFKrcDwCbVA%2FzR8%2FwUn4wc2oJM6Ba0Lgg%3D%3D",
      "below": 0.7,
      "image": "https://i.ebayimg.com/images/g/uBwAAeSwzytq87pe/s-l225.jpg"
     },
@@ -1165,6 +1173,10 @@
      "image": "https://i.ebayimg.com/images/g/MacAAeSwDYpq7mwV/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/4SgAAeSwNFdq9MMw/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/366802446720?_skw=Jirachi+mcdonalds+2026&hash=item5567212980:g:4SgAAeSwNFdq9MMw",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 9.99,
@@ -1178,62 +1190,63 @@
    "set": "pokemon-2026",
    "number": "013",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/WMcAAeSwiw9q89Fl/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/257846486999?_skw=Eevee+mcdonalds+2026&hash=item3c08d927d7:g:WMcAAeSwiw9q89Fl",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald’s Happy Meal Pokémon Card-Eevee (013/015)",
-     "price": 3.03,
+     "price": 2.9,
      "item": 1.4,
-     "ship": 1.63,
+     "ship": 1.5,
      "url": "https://www.ebay.com/itm/920132085165?_skw=Eevee+mcdonalds+2026&hash=itemd63c2565ad:g:UR0AAeSwQPZq9IvF",
-     "below": 0.542,
+     "below": 0.553,
      "image": "https://i.ebayimg.com/images/g/UR0AAeSwQPZq9IvF/s-l225.jpg"
     },
     {
      "title": "Eevee M26 013/015 NM McDonald's Promos 2026",
-     "price": 3.62,
+     "price": 3.49,
      "item": 1.99,
-     "ship": 1.63,
+     "ship": 1.5,
      "url": "https://www.ebay.com/itm/880105476040?_skw=Eevee+mcdonalds+2026&hash=itemccea5fcfc8:g:At4AAeSwvZVq9Gb-",
-     "below": 0.453,
+     "below": 0.462,
      "image": "https://i.ebayimg.com/images/g/At4AAeSwvZVq9Gb-/s-l225.jpg"
     },
     {
      "title": "Eevee 013/015 McDonald's 2026 M26 Promo Happy Meal Pokemon TCG Card NM",
-     "price": 4.44,
+     "price": 4.31,
      "item": 2.81,
-     "ship": 1.63,
+     "ship": 1.5,
      "url": "https://www.ebay.com/itm/880093716408?_skw=Eevee+mcdonalds+2026&hash=itemcce9ac5fb8:g:pQcAAeSw5KRq7mw3",
-     "below": 0.329,
+     "below": 0.336,
      "image": "https://i.ebayimg.com/images/g/pQcAAeSw5KRq7mw3/s-l225.jpg"
     },
     {
      "title": "Eevee 013/015 Holo Rare McDonald's 2026 70 HP Pokemon TCG Card English",
-     "price": 4.63,
-     "item": 3.0,
-     "ship": 1.63,
-     "url": "https://www.ebay.com/itm/820344246874?_skw=Eevee+mcdonalds+2026&hash=itembf0053d25a:g:uhwAAeSwJ~1q9OD-&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7kKat1DBJoMfQKTglqkABZPGG%2BuCJHiDffR%2BOYMgjkzp9ofVoqOpxUiyYrRZVjqgwa0m9VMyHf%2BMTG90K1C2gm2GAIrklcNwCsh0lRpxjOgiQPvn29WUTwMFQEaQlBm6kSBmKqNQdcJ3OnGn3Q%2FJfood4RkxFRXnzTThUM5xq1Sh%2Be0iN%2BrZjlMdHY1kvL3eQv5C2RQswDNwe8dccsIsjYtJewfdD2dRdqCDtbsYcWgdoOr4qET1tYXifDZDdzw8XCBW1Nh5DeAvUvkJY466aMDLdL5hWdlyQjtIsPrv17%2B1A%3D%3D",
-     "below": 0.301,
-     "image": "https://i.ebayimg.com/images/g/uhwAAeSwJ~1q9OD-/s-l225.jpg"
+     "price": 4.33,
+     "item": 2.99,
+     "ship": 1.34,
+     "url": "https://www.ebay.com/itm/327451699399?_skw=Eevee+mcdonalds+2026&hash=item4c3da468c7:g:q5cAAeSwHOFq9OhK&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7mqBFFU6KqRsqw6G2UvgIkKbzVkQto3ECV0su7N8X4xli7ysTIaj0tfimxE8H8rZha3XEer64TBytqP703cMLJBjoWloSfJWqHgTyZ9A%2FqAwrkbBPfueGf72W%2F6rFkrJ3EqJKo2Jeu%2FVqt2jh1mx0wj2e5gMRq1gVmOEabnpWrDPVunN6cT%2BP2GBAcyPqNS7dY3SoAsGpVUB2DwxjXLVBbUbqv6zo0LLXjzmWTsVJjgbBJENYi6LwQOGenQMR2iGwYw1Dm%2BfPQjmSWS2P2nUJgXJA28wqDOf1jjry5QmgrByw%3D%3D",
+     "below": 0.333,
+     "image": "https://i.ebayimg.com/images/g/q5cAAeSwHOFq9OhK/s-l225.jpg"
     },
     {
-     "title": "2026 Mcdonald's Happy Meal Pokemon Promo Card Eevee 013/015",
-     "price": 4.76,
-     "item": 3.13,
-     "ship": 1.63,
-     "url": "https://www.ebay.com/itm/880106370176?_skw=Eevee+mcdonalds+2026&hash=itemccea6d7480:g:s58AAeSwuKhq9Ljh",
-     "below": 0.281,
-     "image": "https://i.ebayimg.com/images/g/s58AAeSwuKhq9Ljh/s-l225.jpg"
+     "title": "Eevee 013/015 Holo Rare McDonald's 2026 70 HP Pokemon TCG Card English",
+     "price": 4.5,
+     "item": 3.0,
+     "ship": 1.5,
+     "url": "https://www.ebay.com/itm/820344246874?_skw=Eevee+mcdonalds+2026&hash=itembf0053d25a:g:uhwAAeSwJ~1q9OD-&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7kKat1DBJoMfQKTglqkABZPGG%2BuCJHiDffR%2BOYMgjkzp9ofVoqOpxUiyYrRZVjqgwa0m9VMyHf%2BMTG90K1C2gm2GAIrklcNwCsh0lRpxjOgiQPvn29WUTwMFQEaQlBm6kSZqARYBztG9mCXkdv5LtVTFgN3Hz6W1ngOq2%2FPG7M6xwEC8%2B0bLhgfPonJv%2FI2uufjtTQInLPpW7%2BQSETc6JQnezESHNpbIQGlCDUyKa8iQVypzdPyxUd5d5tuDi9ZF0gGlm0ENRS8vqBc%2FnzwFOUnho20x0qfPc4uFOSsvbny9A%3D%3D",
+     "below": 0.307,
+     "image": "https://i.ebayimg.com/images/g/uhwAAeSwJ~1q9OD-/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/LtMAAeSwEQFq9Ole/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/840119033737?_skw=Eevee+mcdonalds+2026&hash=itemc39aff1f89:g:LtMAAeSwEQFq9Ole",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 6.62,
-    "p25": 5.11,
-    "low": 3.03,
-    "count": 34
+    "median": 6.49,
+    "p25": 5.0,
+    "low": 2.9,
+    "count": 36
    }
   },
   "pokemon-2026-014": {
@@ -1241,9 +1254,6 @@
    "set": "pokemon-2026",
    "number": "014",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/PHgAAeSwok1q88vg/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/880103970428?_skw=Snorlax+mcdonalds+2026&hash=itemccea48d67c:g:PHgAAeSwok1q88vg",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Snorlax 014/015 Promo McDonald's Promos 2026 Pokemon Near Mint",
@@ -1291,6 +1301,10 @@
      "image": "https://i.ebayimg.com/images/g/E6cAAeSwObBq88zO/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/gScAAeSwJD9q9Mk4/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/840118744469?_skw=Snorlax+mcdonalds+2026&hash=itemc39afab595:g:gScAAeSwJD9q9Mk4",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 6.34,
@@ -1304,9 +1318,6 @@
    "set": "pokemon-2026",
    "number": "015",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/vrUAAeSwQ~xq8-Zp/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/117515183380?_skw=Wooloo+mcdonalds+2026&hash=item1b5c736514:g:vrUAAeSwQ~xq8-Zp",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Pokémon TCG Wooloo McDonald's 2026 #015/015 EN  Promo 2026 70 HP",
@@ -1314,7 +1325,7 @@
      "item": 1.25,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/880105786311?_skw=Wooloo+mcdonalds+2026&hash=itemccea648bc7:g:f2YAAeSwH4tq9IOt",
-     "below": 0.643,
+     "below": 0.583,
      "image": "https://i.ebayimg.com/images/g/f2YAAeSwH4tq9IOt/s-l225.jpg"
     },
     {
@@ -1323,7 +1334,7 @@
      "item": 1.4,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/920131566412?_skw=Wooloo+mcdonalds+2026&hash=itemd63c1d7b4c:g:jZEAAeSwSj9q9LUJ",
-     "below": 0.6,
+     "below": 0.533,
      "image": "https://i.ebayimg.com/images/g/jZEAAeSwSj9q9LUJ/s-l225.jpg"
     },
     {
@@ -1332,7 +1343,7 @@
      "item": 1.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/900083616998?_skw=Wooloo+mcdonalds+2026&hash=itemd1912a0ce6:g:KfsAAeSwhIlq9Mjs",
-     "below": 0.431,
+     "below": 0.337,
      "image": "https://i.ebayimg.com/images/g/KfsAAeSwhIlq9Mjs/s-l225.jpg"
     },
     {
@@ -1341,7 +1352,7 @@
      "item": 1.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/227608654461?_skw=Wooloo+mcdonalds+2026&hash=item34fe88727d:g:SQwAAeSwzABq88hv",
-     "below": 0.431,
+     "below": 0.337,
      "image": "https://i.ebayimg.com/images/g/SQwAAeSwzABq88hv/s-l225.jpg"
     },
     {
@@ -1350,13 +1361,17 @@
      "item": 1.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/307277019422?_skw=Wooloo+mcdonalds+2026&hash=item478b23391e:g:R4oAAeSwo79q9A~h",
-     "below": 0.431,
+     "below": 0.337,
      "image": "https://i.ebayimg.com/images/g/R4oAAeSwo79q9A~h/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/Op8AAeSw8CRq9OaU/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/800905285437?_skw=Wooloo+mcdonalds+2026&hash=itemba79accf3d:g:Op8AAeSw8CRq9OaU",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 3.5,
+    "median": 3.0,
     "p25": 2.57,
     "low": 1.25,
     "count": 38
@@ -1367,9 +1382,6 @@
    "set": "boo-buckets-2026",
    "number": "01",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/kgkAAeSwGY9q56Q2/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377613484775?_skw=mcdonalds+boo+bucket+Jafar&hash=item57eb8482e7:g:kgkAAeSwGY9q56Q2",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Disney McDonald’s Happy Meal Boo Bucket Disney Villains JAFAR 2026 STICKERS ONLY",
@@ -1417,6 +1429,10 @@
      "image": "https://i.ebayimg.com/images/g/Po8AAeSwx3Fq7lE5/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/8XgAAeSwD6Jq8mr1/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407351937056?_skw=mcdonalds+boo+bucket+Jafar&hash=item5ed8114820:g:8XgAAeSwD6Jq8mr1",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.95,
@@ -1437,9 +1453,6 @@
    "set": "boo-buckets-2026",
    "number": "02",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/Z6QAAeSw0phq2Sp7/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/860070153712?_skw=mcdonalds+boo+bucket+Ursula&hash=itemc8402d0df0:g:Z6QAAeSw0phq2Sp7",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Disney McDonald’s Happy Meal Boo Bucket Disney Villains Ursula STICKERS ONLY",
@@ -1487,6 +1500,10 @@
      "image": "https://i.ebayimg.com/images/g/9EMAAeSwaTdq74n6/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/Z6QAAeSw0phq2Sp7/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/860070153712?_skw=mcdonalds+boo+bucket+Ursula&hash=itemc8402d0df0:g:Z6QAAeSw0phq2Sp7",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 19.49,
@@ -1507,9 +1524,6 @@
    "set": "boo-buckets-2026",
    "number": "03",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/6ygAAeSwSS9q8Nsd/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/287714612643?_skw=mcdonalds+boo+bucket+Scar&hash=item42fd2095a3:g:6ygAAeSwSS9q8Nsd",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Disney McDonald’s Happy Meal Boo Bucket Disney Villains SCAR 2026 STICKERS ONLY",
@@ -1557,6 +1571,10 @@
      "image": "https://i.ebayimg.com/images/g/6ygAAeSwSS9q8Nsd/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/6ygAAeSwSS9q8Nsd/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/287714612643?_skw=mcdonalds+boo+bucket+Scar&hash=item42fd2095a3:g:6ygAAeSwSS9q8Nsd",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 16.65,
@@ -1577,9 +1595,6 @@
    "set": "boo-buckets-2026",
    "number": "04",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/3rEAAeSwQ~xq7XP3/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307238409200?_skw=mcdonalds+boo+bucket+Cruella&hash=item4788d613f0:g:3rEAAeSwQ~xq7XP3",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald's Disney Villains Boo Bucket Halloween Happy Meal  white cruella",
@@ -1587,21 +1602,25 @@
      "item": 8.95,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/860128943378?_skw=mcdonalds+boo+bucket+Cruella&hash=itemc843ae1d12:g:ABgAAeSwy25q8jjY",
-     "below": 0.253,
+     "below": 0.254,
      "image": "https://i.ebayimg.com/images/g/ABgAAeSwy25q8jjY/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/3rEAAeSwQ~xq7XP3/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/307238409200?_skw=mcdonalds+boo+bucket+Cruella&hash=item4788d613f0:g:3rEAAeSwQ~xq7XP3",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 19.95,
+    "median": 19.97,
     "p25": 16.95,
     "low": 14.9,
-    "count": 37,
+    "count": 38,
     "cond": {
      "other": {
-      "median": 19.95,
+      "median": 19.97,
       "low": 14.9,
-      "count": 37
+      "count": 38
      }
     }
    }
@@ -1611,9 +1630,6 @@
    "set": "boo-buckets-2026",
    "number": "05",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/jO4AAeSwkYpq3sVC/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/336863265645?_skw=mcdonalds+boo+bucket+Maleficent&hash=item4e6e9d836d:g:jO4AAeSwkYpq3sVC",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald’s Happy Meal Disney Villains Green Maleficent Boo Bucket new",
@@ -1661,6 +1677,10 @@
      "image": "https://i.ebayimg.com/images/g/HO4AAeSw8eFq54hH/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/jO4AAeSwkYpq3sVC/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/336863265645?_skw=mcdonalds+boo+bucket+Maleficent&hash=item4e6e9d836d:g:jO4AAeSwkYpq3sVC",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.99,
@@ -1681,9 +1701,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "01",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/m6QAAeSwZbdq7i-e/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/800886049245?_skw=mcdonalds+spongebob+one+piece+luffy&hash=itemba788749dd:g:m6QAAeSwZbdq7i-e",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "mcdonalds happy meal toys One piece SpongBob 2026 SpongeBob x Luffy",
@@ -1691,16 +1708,16 @@
      "item": 8.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/287675638762?_skw=mcdonalds+spongebob+one+piece+luffy&hash=item42facde3ea:g:OG8AAeSwfORq3Ofw",
-     "below": 0.422,
+     "below": 0.427,
      "image": "https://i.ebayimg.com/images/g/OG8AAeSwfORq3Ofw/s-l225.jpg"
     },
     {
      "title": "McDonalds Happy Meal Toy Spongebob Squarepants One Piece #1 Spongebob x Luffy",
-     "price": 9.38,
+     "price": 9.53,
      "item": 4.0,
-     "ship": 5.38,
+     "ship": 5.53,
      "url": "https://www.ebay.com/itm/336854750220?_skw=mcdonalds+spongebob+one+piece+luffy&hash=item4e6e1b940c:g:5c0AAeSwSgxq2BFf",
-     "below": 0.322,
+     "below": 0.317,
      "image": "https://i.ebayimg.com/images/g/5c0AAeSwSgxq2BFf/s-l225.jpg"
     },
     {
@@ -1709,32 +1726,36 @@
      "item": 10.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/147675238393?_skw=mcdonalds+spongebob+one+piece+luffy&hash=item2262214ff9:g:4QYAAeSwF3Bq88Lz",
-     "below": 0.277,
+     "below": 0.284,
      "image": "https://i.ebayimg.com/images/g/4QYAAeSwF3Bq88Lz/s-l225.jpg"
     },
     {
      "title": "2026 McDonald's Happy Meal Toy SpongeBob x One Piece #1 SpongeBob x Luffy",
-     "price": 10.32,
+     "price": 10.48,
      "item": 4.95,
-     "ship": 5.38,
+     "ship": 5.53,
      "url": "https://www.ebay.com/itm/128139427635?_skw=mcdonalds+spongebob+one+piece+luffy&hash=item1dd5b47f33:g:z6IAAeSw8VFq0mz~",
-     "below": 0.254,
+     "below": 0.249,
      "image": "https://i.ebayimg.com/images/g/z6IAAeSw8VFq0mz~/s-l225.jpg"
     },
     {
      "title": "McDonald's SpongeBob x Luffy Collectible (2 Available Sold Separately)",
-     "price": 10.38,
+     "price": 10.53,
      "item": 5.0,
-     "ship": 5.38,
+     "ship": 5.53,
      "url": "https://www.ebay.com/itm/407329646870?_skw=mcdonalds+spongebob+one+piece+luffy&hash=item5ed6bd2916:g:SLQAAeSwiRtq5jwr",
-     "below": 0.25,
+     "below": 0.246,
      "image": "https://i.ebayimg.com/images/g/SLQAAeSwiRtq5jwr/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/m6QAAeSwZbdq7i-e/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/800886049245?_skw=mcdonalds+spongebob+one+piece+luffy&hash=itemba788749dd:g:m6QAAeSwZbdq7i-e",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 13.84,
-    "p25": 12.37,
+    "median": 13.96,
+    "p25": 12.52,
     "low": 8.0,
     "count": 88,
     "cond": {
@@ -1744,7 +1765,7 @@
       "count": 16
      },
      "other": {
-      "median": 13.91,
+      "median": 14.01,
       "low": 8.0,
       "count": 72
      }
@@ -1756,9 +1777,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "09",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/lqgAAeSwNsRqrNZa/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377505102674?_skw=mcdonalds+spongebob+one+piece+gear+5+luffy&hash=item57e50ebb52:g:lqgAAeSwNsRqrNZa",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald's Happy Meal Toy SpongeBob x One Piece #9 SpongeBob x Gear 5 Luffy",
@@ -1783,7 +1801,7 @@
      "price": 11.99,
      "item": 6.0,
      "ship": 5.99,
-     "url": "https://www.ebay.com/itm/257819082247?_skw=mcdonalds+spongebob+one+piece+gear+5+luffy&hash=item3c0736fe07:g:CuoAAeSwybpq36RE&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nA9wajETpPE8njZ1ojBDHoM3terAE2iro9%2ByP6YGFErnCX1Y1cyN6KSMZcYDLLGm2fJAkTEoJ4IfvouuQqAkfHbuHYeJQmmFLHaC6UtB6fDsRDkN395RXiVGUH%2FtzAnYUPGMxgqLxvkWcaK3qgGIGJETdIuHn2MgEVbr%2FECz8ODFd%2FQOROypY2bAmfb1Vzqgaf22SFKMCmkEqOWuz9Mz%2Fog8T6o2ZDGzgIBU3SnXhYhrVw30BnjhCZumtMkGvxTRb3AmmNaWH%2Fc3iVZkfw%2FcrCSZ2%2BzEvZIdKawTPCkUmPAEoZqZPiAID7HjrHSg5yF8M%3D",
+     "url": "https://www.ebay.com/itm/257819082247?_skw=mcdonalds+spongebob+one+piece+gear+5+luffy&hash=item3c0736fe07:g:CuoAAeSwybpq36RE&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nA9wajETpPE8njZ1ojBDHoM3terAE2iro9%2ByP6YGFErnCX1Y1cyN6KSMZcYDLLGm2fJAkTEoJ4IfvouuQqAkfHbuHYeJQmmFLHaC6UtB6fDsRDkN395RXiVGUH%2FtzAnYVZMWEfJPOpobG8ZsDJ34jGiPc2s7U7IOnl0JQwi72J9RtwYAQBM5wCCjqntC7KPQy9qiRZyJHYdz1QiWBojzvMGmiK3jvOWR1KlDeJNYiYbChHv78KWqCFn2h%2BfuvQRTiGfcAlxqS%2FRre%2Bw61ANkpBJDLdUHu3pSBb3KdwLxJDubC1sojJqDPMP0BWMrolh%2Fo%3D",
      "below": 0.294,
      "image": "https://i.ebayimg.com/images/g/CuoAAeSwybpq36RE/s-l225.jpg"
     },
@@ -1806,17 +1824,21 @@
      "image": "https://i.ebayimg.com/images/g/lBwAAeSwi8lqrI9D/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/lqgAAeSwNsRqrNZa/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/377505102674?_skw=mcdonalds+spongebob+one+piece+gear+5+luffy&hash=item57e50ebb52:g:lqgAAeSwNsRqrNZa",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 16.98,
-    "p25": 15.0,
+    "p25": 14.99,
     "low": 10.94,
-    "count": 133,
+    "count": 132,
     "cond": {
      "other": {
       "median": 16.98,
       "low": 10.94,
-      "count": 118
+      "count": 117
      },
      "sealed": {
       "median": 15.99,
@@ -1831,9 +1853,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "04",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/A~MAAeSw1INqibfK/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/820069605394?_skw=mcdonalds+spongebob+one+piece+zoro&hash=itembeeff52012:g:A~MAAeSw1INqibfK",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "CLOSED Spongebob x One Piece Mcdonalds Patrick x Zoro",
@@ -1841,25 +1860,25 @@
      "item": 8.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/407351486104?_skw=mcdonalds+spongebob+one+piece+zoro&hash=item5ed80a6698:g:4scAAeSw-Udq8hpE",
-     "below": 0.465,
+     "below": 0.455,
      "image": "https://i.ebayimg.com/images/g/4scAAeSw-Udq8hpE/s-l225.jpg"
     },
     {
      "title": "McDonald’s #4 Patrick x Zoro Happy Meal Toy Box & Figure SpongeBob One Piece",
-     "price": 9.97,
+     "price": 9.95,
      "item": 4.0,
-     "ship": 5.97,
+     "ship": 5.95,
      "url": "https://www.ebay.com/itm/307266825636?_skw=mcdonalds+spongebob+one+piece+zoro&hash=item478a87ada4:g:5pQAAeSwqpJq4Q4B",
-     "below": 0.333,
+     "below": 0.322,
      "image": "https://i.ebayimg.com/images/g/5pQAAeSwqpJq4Q4B/s-l225.jpg"
     },
     {
      "title": "Patrick Star Roronoa Zoro SpongeBob x One Piece McDonald's Toy 2026",
-     "price": 9.97,
+     "price": 9.95,
      "item": 4.0,
-     "ship": 5.97,
+     "ship": 5.95,
      "url": "https://www.ebay.com/itm/198749121919?_skw=mcdonalds+spongebob+one+piece+zoro&hash=item2e465eed7f:g:QFYAAeSwuVdq4Hfa",
-     "below": 0.333,
+     "below": 0.322,
      "image": "https://i.ebayimg.com/images/g/QFYAAeSwuVdq4Hfa/s-l225.jpg"
     },
     {
@@ -1868,33 +1887,37 @@
      "item": 4.99,
      "ship": 5.49,
      "url": "https://www.ebay.com/itm/137917014616?_skw=mcdonalds+spongebob+one+piece+zoro&hash=item201c7ea258:g:qE4AAeSwghlq8kHi",
-     "below": 0.299,
+     "below": 0.286,
      "image": "https://i.ebayimg.com/images/g/qE4AAeSwghlq8kHi/s-l225.jpg"
     },
     {
      "title": "NEW 2026 McDonalds Happy Meal SpongeBob One Piece Patrick x Zoro #4 Toy",
-     "price": 10.96,
+     "price": 10.94,
      "item": 4.99,
-     "ship": 5.97,
+     "ship": 5.95,
      "url": "https://www.ebay.com/itm/198643313082?_skw=mcdonalds+spongebob+one+piece+zoro&hash=item2e401069ba:g:vMkAAeSwKcdqqT5l",
-     "below": 0.266,
+     "below": 0.255,
      "image": "https://i.ebayimg.com/images/g/vMkAAeSwKcdqqT5l/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/qE4AAeSwghlq8kHi/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/137917014616?_skw=mcdonalds+spongebob+one+piece+zoro&hash=item201c7ea258:g:qE4AAeSwghlq8kHi",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 14.94,
-    "p25": 12.4,
+    "median": 14.68,
+    "p25": 12.28,
     "low": 8.0,
-    "count": 126,
+    "count": 124,
     "cond": {
      "other": {
-      "median": 14.92,
+      "median": 14.45,
       "low": 8.0,
-      "count": 111
+      "count": 109
      },
      "sealed": {
-      "median": 15.97,
+      "median": 15.95,
       "low": 11.27,
       "count": 15
      }
@@ -1906,9 +1929,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "07",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/-awAAeSw58pqm8Dn/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/398361292763?_skw=mcdonalds+spongebob+one+piece+nami&hash=item5cc02eefdb:g:-awAAeSw58pqm8Dn&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nG4Zod%2B76CLaysVoDBBCrKqIE345AkBNZB0E09%2BA6R%2FbB%2FkOXoep9Z0tm5L99YlovLwnSK18v1pJofcCS7yWvp029jWm%2FCeSx1fkgq7DGj51mDSk4kg0yFFAsE%2B7znPGRbKEoTsCrTox7mEDb7xh%2FB1%2FdvSwRa%2BdX19bFtYhralTJzxoH0mdaIEkyYfdDMjxD6WJbIM4VMFOeMfky5xMYBBu2bLBiRtLjIWyufSa1ENVveWNPNnF2kvpIZLfcdBcPYgMEzci3O1TW2fhqgiQmg0XzSifWfrq2%2BNCY7UTcfbw9kofz0m5sSoHV3kO6bACw%3D",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s Happy Meal Toy-SANDY x NAMI-SpongeBob x One Piece ",
@@ -1956,6 +1976,10 @@
      "image": "https://i.ebayimg.com/images/g/rbUAAeSwiw9q76sp/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/xcQAAeSwTx1qs8Rl/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/237085970555?_skw=mcdonalds+spongebob+one+piece+nami&hash=item37336cd07b:g:xcQAAeSwTx1qs8Rl",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.42,
@@ -1981,9 +2005,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "05",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/V-sAAeSwFClq74BB/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/336885821223?_skw=mcdonalds+spongebob+one+piece+sanji&hash=item4e6ff5af27:g:V-sAAeSwFClq74BB",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's Happy Meal Toy SpongeBob Squarepants X One Piece #5 Squidward x Sanji",
@@ -2031,17 +2052,21 @@
      "image": "https://i.ebayimg.com/images/g/PccAAeSwEPJq8iLl/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/f1cAAeSwSkFqqYGE/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/147598944154?_skw=mcdonalds+spongebob+one+piece+sanji&hash=item225d95279a:g:f1cAAeSwSkFqqYGE",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.98,
     "p25": 12.99,
     "low": 10.28,
-    "count": 127,
+    "count": 126,
     "cond": {
      "other": {
       "median": 14.99,
       "low": 10.28,
-      "count": 103
+      "count": 102
      },
      "sealed": {
       "median": 14.53,
@@ -2056,9 +2081,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "02",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/KYkAAeSwPOlqqe7~/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/278379157500?_skw=mcdonalds+spongebob+one+piece+usopp&hash=item40d0b0d7fc:g:KYkAAeSwPOlqqe7~",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "New! Mcdonald's 2026 Spongebob Squarepants X One Piece 2026 Toy PLANKTON x USOPP",
@@ -2106,6 +2128,10 @@
      "image": "https://i.ebayimg.com/images/g/KYkAAeSwPOlqqe7~/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/eAQAAeSw1xJq8kJt/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/137917016375?_skw=mcdonalds+spongebob+one+piece+usopp&hash=item201c7ea937:g:eAQAAeSw1xJq8kJt",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.81,
@@ -2114,14 +2140,14 @@
     "count": 133,
     "cond": {
      "other": {
-      "median": 12.42,
+      "median": 12.37,
       "low": 6.82,
-      "count": 121
+      "count": 122
      },
      "sealed": {
-      "median": 13.1,
+      "median": 13.22,
       "low": 9.57,
-      "count": 12
+      "count": 11
      }
     }
    }
@@ -2131,9 +2157,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "12",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/c1wAAeSw465q1~W8/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/287661910022?_skw=mcdonalds+spongebob+one+piece+chopper&hash=item42f9fc6806:g:c1wAAeSw465q1~W8",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonalds SpongeBob One Piece GARY X CHOPPER Happy Meal Toy Figure.",
@@ -2181,6 +2204,10 @@
      "image": "https://i.ebayimg.com/images/g/NyAAAeSwsSdqwmU2/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/1MEAAeSwVZVq36eW/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407318185253?_skw=mcdonalds+spongebob+one+piece+chopper&hash=item5ed60e4525:g:1MEAAeSwVZVq36eW",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.99,
@@ -2206,9 +2233,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "14",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/3EYAAeSwE9Zq6ke0/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147664814853?_skw=mcdonalds+spongebob+one+piece+robin&hash=item2261824305:g:3EYAAeSwE9Zq6ke0",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s SpongeBob SquarePants x One Piece Pearl Robin Figurine #14 Toy",
@@ -2256,17 +2280,21 @@
      "image": "https://i.ebayimg.com/images/g/GOIAAeSwXRRq55ne/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/3EYAAeSwE9Zq6ke0/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/147664814853?_skw=mcdonalds+spongebob+one+piece+robin&hash=item2261824305:g:3EYAAeSwE9Zq6ke0",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 15.88,
-    "p25": 13.34,
+    "p25": 13.33,
     "low": 9.99,
-    "count": 89,
+    "count": 88,
     "cond": {
      "other": {
-      "median": 16.13,
+      "median": 15.88,
       "low": 9.99,
-      "count": 80
+      "count": 79
      },
      "sealed": {
       "median": 14.37,
@@ -2281,9 +2309,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "13",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/NEgAAeSwQuhq6kgK/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147664818107?_skw=mcdonalds+spongebob+one+piece+franky&hash=item2261824fbb:g:NEgAAeSwQuhq6kgK",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s SpongeBob SquarePants x One Piece Larry Franky Figurine #13 Toy",
@@ -2291,16 +2316,16 @@
      "item": 10.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/147664818107?_skw=mcdonalds+spongebob+one+piece+franky&hash=item2261824fbb:g:NEgAAeSwQuhq6kgK",
-     "below": 0.336,
+     "below": 0.344,
      "image": "https://i.ebayimg.com/images/g/NEgAAeSwQuhq6kgK/s-l225.jpg"
     },
     {
      "title": "2026 LARRY X FRANKY MCDONALD'S ONEPIECE SpongeBob HAPPY MEAL TOYS 13",
-     "price": 10.07,
+     "price": 10.25,
      "item": 4.0,
-     "ship": 6.08,
+     "ship": 6.25,
      "url": "https://www.ebay.com/itm/307252430197?_skw=mcdonalds+spongebob+one+piece+franky&hash=item4789ac0575:g:V60AAeSwzQZq4Qys",
-     "below": 0.332,
+     "below": 0.328,
      "image": "https://i.ebayimg.com/images/g/V60AAeSwzQZq4Qys/s-l225.jpg"
     },
     {
@@ -2309,43 +2334,47 @@
      "item": 10.66,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/168841776867?_skw=mcdonalds+spongebob+one+piece+franky&hash=item274fc10ee3:g:cT4AAeSwNTdq7O41",
-     "below": 0.293,
+     "below": 0.301,
      "image": "https://i.ebayimg.com/images/g/cT4AAeSwNTdq7O41/s-l225.jpg"
     },
     {
      "title": "Mcdonald's Spongebob one piece #13  Lary x franky",
-     "price": 10.82,
+     "price": 11.0,
      "item": 4.75,
-     "ship": 6.08,
+     "ship": 6.25,
      "url": "https://www.ebay.com/itm/267835566342?_skw=mcdonalds+spongebob+one+piece+franky&hash=item3e5c3e6906:g:UFUAAeSwPGZq6Kp8",
-     "below": 0.282,
+     "below": 0.279,
      "image": "https://i.ebayimg.com/images/g/UFUAAeSwPGZq6Kp8/s-l225.jpg"
     },
     {
      "title": "LARRY x FRANKY McDonald's Spongebob x One Piece Happy Meal Toy 2026",
-     "price": 11.0,
+     "price": 11.18,
      "item": 4.93,
-     "ship": 6.08,
+     "ship": 6.25,
      "url": "https://www.ebay.com/itm/278320517229?_skw=mcdonalds+spongebob+one+piece+franky&hash=item40cd32106d:g:OusAAeSwEu1qkcMf",
-     "below": 0.27,
+     "below": 0.267,
      "image": "https://i.ebayimg.com/images/g/OusAAeSwEu1qkcMf/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/NEgAAeSwQuhq6kgK/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/147664818107?_skw=mcdonalds+spongebob+one+piece+franky&hash=item2261824fbb:g:NEgAAeSwQuhq6kgK",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 15.07,
-    "p25": 13.07,
+    "median": 15.25,
+    "p25": 13.25,
     "low": 10.0,
-    "count": 91,
+    "count": 90,
     "cond": {
      "other": {
-      "median": 15.45,
+      "median": 15.41,
       "low": 10.0,
-      "count": 83
+      "count": 82
      },
      "sealed": {
-      "median": 13.47,
-      "low": 11.57,
+      "median": 13.64,
+      "low": 11.75,
       "count": 8
      }
     }
@@ -2356,9 +2385,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "08",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/H8gAAeSw4tJq0sbb/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/257802100117?_skw=mcdonalds+spongebob+one+piece+brook&hash=item3c0633dd95:g:H8gAAeSw4tJq0sbb",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s SpongeBob OnePiece Happy MealToy #8 SMITTY WERBENJAGERMAN  X BROOK",
@@ -2406,6 +2432,10 @@
      "image": "https://i.ebayimg.com/images/g/hOUAAeSwUnNq4avS/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/H8gAAeSw4tJq0sbb/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/257802100117?_skw=mcdonalds+spongebob+one+piece+brook&hash=item3c0633dd95:g:H8gAAeSw4tJq0sbb",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.99,
@@ -2431,9 +2461,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "10",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/2h4AAeSwtnRquJir/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318923235019?_skw=mcdonalds+spongebob+one+piece+jinbe&hash=item4a414e5ecb:g:2h4AAeSwtnRquJir",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonalds SpongeBob One Piece MR. KRABS X JINBE Happy Meal Toy #10 Figure 2026",
@@ -2481,6 +2508,10 @@
      "image": "https://i.ebayimg.com/images/g/X1IAAeSwmhhqzUuz/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/2h4AAeSwtnRquJir/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/318923235019?_skw=mcdonalds+spongebob+one+piece+jinbe&hash=item4a414e5ecb:g:2h4AAeSwtnRquJir",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.68,
@@ -2506,9 +2537,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "15",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/HFcAAeSwy6lq6kal/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147664811171?_skw=mcdonalds+spongebob+one+piece+blackbeard&hash=item22618234a3:g:HFcAAeSwy6lq6kal",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s SpongeBob x One Piece / Flying Dutchman x Teach NEW TOY",
@@ -2556,6 +2584,10 @@
      "image": "https://i.ebayimg.com/images/g/YOUAAeSwyExqyifk/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/HFcAAeSwy6lq6kal/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/147664811171?_skw=mcdonalds+spongebob+one+piece+blackbeard&hash=item22618234a3:g:HFcAAeSwy6lq6kal",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 15.98,
@@ -2581,9 +2613,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "03",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/6Y0AAeSwD1Jqwn15/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/920007613827?_skw=mcdonalds+spongebob+one+piece+big+mom&hash=itemd634ba1d83:g:6Y0AAeSwD1Jqwn15",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's SpongeBob x One Piece Collab Mrs. Puff as Linlin Big Mom Toy #3 NIP",
@@ -2595,6 +2624,10 @@
      "image": "https://i.ebayimg.com/images/g/CY8AAeSw40FqtF4A/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/6Y0AAeSwD1Jqwn15/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/920007613827?_skw=mcdonalds+spongebob+one+piece+big+mom&hash=itemd634ba1d83:g:6Y0AAeSwD1Jqwn15",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 9.5,
@@ -2620,9 +2653,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "06",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/iJUAAeSwok1q8pCS/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407352156595?_skw=mcdonalds+spongebob+one+piece+koby&hash=item5ed814a1b3:g:iJUAAeSwok1q8pCS",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonalds Happy Meal Toy SpongeBob x One Piece - barnacle boy x koby",
@@ -2670,6 +2700,10 @@
      "image": "https://i.ebayimg.com/images/g/ElYAAeSwTxFq0kWL/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/iJUAAeSwok1q8pCS/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407352156595?_skw=mcdonalds+spongebob+one+piece+koby&hash=item5ed814a1b3:g:iJUAAeSwok1q8pCS",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.49,
@@ -2695,9 +2729,6 @@
    "set": "spongebob-onepiece-2026",
    "number": "11",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/7wkAAeSwvOBquJhF/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318923233123?_skw=mcdonalds+spongebob+one+piece+garp&hash=item4a414e5763:g:7wkAAeSwvOBquJhF",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "SpongeBob One piece mcdonald's Happy Meal MermaidMan X Garp (Display Stand Only)",
@@ -2745,6 +2776,10 @@
      "image": "https://i.ebayimg.com/images/g/V5cAAeSw03Nq55v8/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/7wkAAeSwvOBquJhF/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/318923233123?_skw=mcdonalds+spongebob+one+piece+garp&hash=item4a414e5763:g:7wkAAeSwvOBquJhF",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.22,
@@ -2770,70 +2805,71 @@
    "set": "pokemon-toys-2026",
    "number": "01",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/GYQAAeSwX-1q8h1T/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147673531099?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=item22620742db:g:GYQAAeSwX-1q8h1T&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7lz3t6xgJGCkccoUwB1LnV1j8QFw9nrn9saEO9KCkLWVfpAf3eam00YJQ0G1V1XGp8YdaYny%2FsbhuwH8bqKjN8A1TILfd%2Fy0GvKOb6uyE1JrVprYGEVw0BfUBOGH8KBxr%2FXtjy0O8KsJAsXhsvhUkc4LRgNIfFu%2FxkmniYgrS6CXZyxBbTYJ3uBEq7u%2F77MdUyvzUg5uLJJgTPLbiG5Ir343yT2BmRWWk1DJyt7pqQ7kFDe%2BXMolmC6xPHO8WcFePaBSweFlosrp2lxW8f1z9rUJe6Ljm1F%2FB6Km35WxUC%2B22ZyNGBgrzrQPsyZdSvi%2FHQ%3D",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Toy- Pikachu Keychain Only",
-     "price": 8.28,
+     "price": 7.38,
      "item": 2.49,
-     "ship": 5.79,
+     "ship": 4.89,
      "url": "https://www.ebay.com/itm/117515480984?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=item1b5c77ef98:g:WkIAAeSw~~tq9CMn",
-     "below": 0.475,
+     "below": 0.504,
      "image": "https://i.ebayimg.com/images/g/WkIAAeSw~~tq9CMn/s-l225.jpg"
     },
     {
-     "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Pikachu Keychain Only",
-     "price": 10.0,
-     "item": 10.0,
-     "ship": 0.0,
-     "url": "https://www.ebay.com/itm/840116770510?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=itemc39adc96ce:g:TUwAAeSwFPZq9At0",
-     "below": 0.366,
-     "image": "https://i.ebayimg.com/images/g/TUwAAeSwFPZq9At0/s-l225.jpg"
-    },
-    {
      "title": "2026 McDonald's Happy Meal Pokemon Pikachu 30th Anniversary Box",
-     "price": 10.29,
+     "price": 9.39,
      "item": 4.5,
-     "ship": 5.79,
+     "ship": 4.89,
      "url": "https://www.ebay.com/itm/117516156961?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=item1b5c824021:g:ee4AAeSw87Bq9JMF",
-     "below": 0.348,
+     "below": 0.369,
      "image": "https://i.ebayimg.com/images/g/ee4AAeSw87Bq9JMF/s-l225.jpg"
     },
     {
      "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Toy- Pikachu OPENED NO CARDS",
-     "price": 10.49,
-     "item": 10.49,
-     "ship": 0.0,
-     "url": "https://www.ebay.com/itm/920129273157?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=itemd63bfa7d45:g:HKcAAeSw9RFq9AbL",
-     "below": 0.335,
-     "image": "https://i.ebayimg.com/images/g/HKcAAeSw9RFq9AbL/s-l225.jpg"
+     "price": 9.88,
+     "item": 4.99,
+     "ship": 4.89,
+     "url": "https://www.ebay.com/itm/840115734011?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=itemc39accc5fb:g:bnIAAeSwRP9q859v",
+     "below": 0.336,
+     "image": "https://i.ebayimg.com/images/g/bnIAAeSwRP9q859v/s-l225.jpg"
     },
     {
-     "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Toy- Pikachu OPENED NO CARDS",
-     "price": 10.78,
+     "title": "Pikachu Happy Meal Toy & Box (NO CARDS) - Pokémon - 2026 McDonalds",
+     "price": 9.88,
      "item": 4.99,
-     "ship": 5.79,
-     "url": "https://www.ebay.com/itm/840115734011?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=itemc39accc5fb:g:bnIAAeSwRP9q859v",
-     "below": 0.317,
-     "image": "https://i.ebayimg.com/images/g/bnIAAeSwRP9q859v/s-l225.jpg"
+     "ship": 4.89,
+     "url": "https://www.ebay.com/itm/128187385198?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=item1dd890456e:g:~R0AAeSw-YFq83N6",
+     "below": 0.336,
+     "image": "https://i.ebayimg.com/images/g/~R0AAeSw-YFq83N6/s-l225.jpg"
+    },
+    {
+     "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Toy- Pikachu No Cards",
+     "price": 9.88,
+     "item": 4.99,
+     "ship": 4.89,
+     "url": "https://www.ebay.com/itm/820340079269?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=itembf00143aa5:g:wVYAAeSwBERq851N",
+     "below": 0.336,
+     "image": "https://i.ebayimg.com/images/g/wVYAAeSwBERq851N/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/I2kAAeSwLUZq9Mhw/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/840118735519?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=itemc39afa929f:g:I2kAAeSwLUZq9Mhw&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7kj2ZNJH15%2BcRycWz1%2B%2B3mYCxEQaGoko31uHZ1n%2FeKX%2F%2BHZATrzyS%2Ba2YhUFh5SECaiiT2a2bRUhPhbS7Q%2BFxmS%2BwzzDFaMo913PQuLQ3SsVkLPixZ2%2F0tRPt9mcmWErrtFtyqzgRTDiC0gSWS2Aobeo000hb8VbyxkM43o4nwWa%2FA3wIwFhS7agSoA1UJVS4yrWl2V85baWZouOkavsa4PkkBQcCKf2Okf3v6gHKhaO5mbzdLViPKMX5XCVtzaan4%2FE%2FUzEPkiYyWntf42z21STt71jvSKYyNXpZBtuxcsFdE0NzGetaf8EIJYlI69DbY%3D",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 15.78,
-    "p25": 11.98,
-    "low": 8.28,
-    "count": 55,
+    "median": 14.89,
+    "p25": 12.19,
+    "low": 7.38,
+    "count": 57,
     "cond": {
      "other": {
-      "median": 14.99,
-      "low": 8.28,
-      "count": 47
+      "median": 14.74,
+      "low": 7.38,
+      "count": 49
      },
      "sealed": {
-      "median": 22.62,
+      "median": 22.17,
       "low": 13.99,
       "count": 8
      }
@@ -2845,9 +2881,6 @@
    "set": "pokemon-toys-2026",
    "number": "02",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/YE8AAeSw-Udq89Mu/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377637719208?_skw=mcdonalds+pokemon+2026+toy+Bulbasaur&hash=item57ecf64ca8:g:YE8AAeSw-Udq89Mu",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Pokemon Mcdonalds 2026 Happy Meal Toy Bulbasaur (NO CARDS INCLUDED)",
@@ -2859,6 +2892,10 @@
      "image": "https://i.ebayimg.com/images/g/c~8AAeSwd-Nq6lVr/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/YE8AAeSw-Udq89Mu/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/377637719208?_skw=mcdonalds+pokemon+2026+toy+Bulbasaur&hash=item57ecf64ca8:g:YE8AAeSw-Udq89Mu",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 7.75,
@@ -2886,9 +2923,6 @@
    "set": "pokemon-toys-2026",
    "number": "04",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/OA8AAeSwOIRq6mKt/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407337790063?_skw=mcdonalds+pokemon+2026+toy+Squirtle&hash=item5ed7396a6f:g:OA8AAeSwOIRq6mKt",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Pokemon Blue Squirtle McDonalds Happy Meal Toy 2026 Unopened",
@@ -2918,6 +2952,10 @@
      "image": "https://i.ebayimg.com/images/g/apUAAeSw38Nq8ozm/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/5dAAAeSwZvtq9ND2/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/880106599383?_skw=mcdonalds+pokemon+2026+toy+Squirtle&hash=itemccea70f3d7:g:5dAAAeSwZvtq9ND2",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 16.99,
@@ -2943,9 +2981,6 @@
    "set": "pokemon-toys-2026",
    "number": "05",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/EaYAAeSwdjVq7E5J/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/840095804750?_skw=mcdonalds+pokemon+2026+toy+Rowlet&hash=itemc3999cad4e:g:EaYAAeSwdjVq7E5J",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Rowlet Pokemon McDonald's 2026 Happy Meal Toy Figure - No Box or Cards",
@@ -2957,6 +2992,10 @@
      "image": "https://i.ebayimg.com/images/g/HhQAAeSwsqtq88sm/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/HhQAAeSwsqtq88sm/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/227608670597?_skw=mcdonalds+pokemon+2026+toy+Rowlet&hash=item34fe88b185:g:HhQAAeSwsqtq88sm",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.17,
@@ -2977,17 +3016,36 @@
    "set": "pokemon-toys-2026",
    "number": "06",
    "rarity": null,
-   "deals": []
+   "deals": [],
+   "image": "https://i.ebayimg.com/images/g/0LwAAeSwziRq9Opn/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/940084692642?_skw=mcdonalds+pokemon+2026+toy+Sprigatito&hash=itemdae16a06a2:g:0LwAAeSwziRq9Opn",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
+   "latest": {
+    "date": "2026-11-11",
+    "median": 6.34,
+    "p25": 6.34,
+    "low": 6.34,
+    "count": 1,
+    "cond": {
+     "other": {
+      "median": 6.34,
+      "low": 6.34,
+      "count": 1
+     }
+    }
+   }
   },
   "pokemon-toys-2026-07": {
    "name": "Eevee",
    "set": "pokemon-toys-2026",
    "number": "07",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/u2cAAeSw3mdq84bp/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/267839899289?_skw=mcdonalds+pokemon+2026+toy+Eevee&hash=item3e5c808699:g:u2cAAeSw3mdq84bp",
-   "imageCredit": "eBay listing photo",
    "deals": [],
+   "image": "https://i.ebayimg.com/images/g/Q3UAAeSw14tq9Azl/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/840116781309?_skw=mcdonalds+pokemon+2026+toy+Eevee&hash=itemc39adcc0fd:g:Q3UAAeSw14tq9Azl",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 29.95,
@@ -3008,9 +3066,6 @@
    "set": "pokemon-toys-2026",
    "number": "08",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/a7cAAeSwuZhq6mMW/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/820312333182?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=itembefe6cdb7e:g:a7cAAeSwuZhq6mMW",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Weedle Keychain Only",
@@ -3018,57 +3073,61 @@
      "item": 8.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/840117065857?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=itemc39ae11881:g:joAAAeSw6B5q9Cpm",
-     "below": 0.427,
+     "below": 0.402,
      "image": "https://i.ebayimg.com/images/g/joAAAeSw6B5q9Cpm/s-l225.jpg"
     },
     {
      "title": "2026 Pokémon x McDonald's Happy Meal Toy WEEDLE Keychain only",
-     "price": 8.46,
+     "price": 8.12,
      "item": 2.49,
-     "ship": 5.97,
+     "ship": 5.62,
      "url": "https://www.ebay.com/itm/117515467174?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=item1b5c77b9a6:g:85oAAeSwY39q9CHd",
-     "below": 0.394,
+     "below": 0.393,
      "image": "https://i.ebayimg.com/images/g/85oAAeSwY39q9CHd/s-l225.jpg"
     },
     {
      "title": "McDonald’s Pokemon 2026 - Weedle Happy Meal Bag Clip ONLY - No Cards",
-     "price": 8.97,
+     "price": 8.62,
      "item": 3.0,
-     "ship": 5.97,
+     "ship": 5.62,
      "url": "https://www.ebay.com/itm/800905068054?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=itemba79a97e16:g:N5gAAeSwVoBq9Nf7",
-     "below": 0.358,
+     "below": 0.355,
      "image": "https://i.ebayimg.com/images/g/N5gAAeSwVoBq9Nf7/s-l225.jpg"
     },
     {
      "title": "Weedle Happy Meal Toy & Box (NO CARDS) - Pokémon - 2026 McDonalds",
-     "price": 9.96,
+     "price": 9.62,
      "item": 3.99,
-     "ship": 5.97,
+     "ship": 5.62,
      "url": "https://www.ebay.com/itm/128189229940?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=item1dd8ac6b74:g:40MAAeSw9Nxq9LzC",
-     "below": 0.287,
+     "below": 0.28,
      "image": "https://i.ebayimg.com/images/g/40MAAeSw9Nxq9LzC/s-l225.jpg"
     },
     {
      "title": "2026 Pokémon x McDonald's Happy Meal Toy WEEDLE #0013 Keychain",
-     "price": 9.96,
+     "price": 9.62,
      "item": 3.99,
-     "ship": 5.97,
+     "ship": 5.62,
      "url": "https://www.ebay.com/itm/128187613123?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=item1dd893bfc3:g:5LcAAeSw1xpq85~Q",
-     "below": 0.287,
+     "below": 0.28,
      "image": "https://i.ebayimg.com/images/g/5LcAAeSw1xpq85~Q/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/ZgoAAeSwZllq801t/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/287719169429?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=item42fd661d95:g:ZgoAAeSwZllq801t",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 13.97,
-    "p25": 11.96,
+    "median": 13.37,
+    "p25": 11.62,
     "low": 8.0,
-    "count": 61,
+    "count": 62,
     "cond": {
      "other": {
-      "median": 14.23,
+      "median": 13.62,
       "low": 8.0,
-      "count": 60
+      "count": 61
      },
      "sealed": {
       "median": 12.99,
@@ -3083,9 +3142,6 @@
    "set": "pokemon-toys-2026",
    "number": "09",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/rQMAAeSwKJZq81We/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147674812640?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item22621ad0e0:g:rQMAAeSwKJZq81We",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's Pokémon Umbreon 2026 Happy Meal Mini Box Toy Keychain Only w/ Box",
@@ -3093,17 +3149,8 @@
      "item": 4.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/237177776201?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item3738e5a849:g:qjYAAeSwWrtq9NUV",
-     "below": 0.6,
+     "below": 0.643,
      "image": "https://i.ebayimg.com/images/g/qjYAAeSwWrtq9NUV/s-l225.jpg"
-    },
-    {
-     "title": "Pokemon McDonald's 2026 30th Anniversary Happy Meal Toy Grey Umbreon  (NO CARDS)",
-     "price": 6.0,
-     "item": 6.0,
-     "ship": 0.0,
-     "url": "https://www.ebay.com/itm/860131467361?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=itemc843d4a061:g:BwsAAeSwiw9q80jZ",
-     "below": 0.519,
-     "image": "https://i.ebayimg.com/images/g/BwsAAeSwiw9q80jZ/s-l225.jpg"
     },
     {
      "title": "2026 McDonald's Pokemon Happy Meal Toy Umbreon No Cards",
@@ -3111,7 +3158,7 @@
      "item": 7.04,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/128188119895?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item1dd89b7b57:g:OrcAAeSwQopq9Af8",
-     "below": 0.435,
+     "below": 0.497,
      "image": "https://i.ebayimg.com/images/g/OrcAAeSwQopq9Af8/s-l225.jpg"
     },
     {
@@ -3120,7 +3167,7 @@
      "item": 8.5,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/227608388714?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item34fe84646a:g:94UAAeSw21hq85CN",
-     "below": 0.318,
+     "below": 0.392,
      "image": "https://i.ebayimg.com/images/g/94UAAeSw21hq85CN/s-l225.jpg"
     },
     {
@@ -3129,21 +3176,34 @@
      "item": 8.5,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/327451444204?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item4c3da083ec:g:qIYAAeSwPddq9KqW",
-     "below": 0.318,
+     "below": 0.392,
      "image": "https://i.ebayimg.com/images/g/qIYAAeSwPddq9KqW/s-l225.jpg"
+    },
+    {
+     "title": "2026 McDonald’s Pokemon 30th Anniversary Happy Meal Umbreon Box",
+     "price": 8.58,
+     "item": 8.58,
+     "ship": 0.0,
+     "url": "https://www.ebay.com/itm/128187784391?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item1dd8965cc7:g:pnwAAeSwXAdq88GY",
+     "below": 0.387,
+     "image": "https://i.ebayimg.com/images/g/pnwAAeSwXAdq88GY/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/mQwAAeSwFPZq9Bo9/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/206691425230?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item301fc4dbce:g:mQwAAeSwFPZq9Bo9",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 12.47,
+    "median": 13.99,
     "p25": 9.99,
     "low": 4.99,
-    "count": 44,
+    "count": 43,
     "cond": {
      "other": {
-      "median": 12.0,
+      "median": 13.47,
       "low": 4.99,
-      "count": 41
+      "count": 40
      },
      "sealed": {
       "median": 22.55,
@@ -3158,17 +3218,14 @@
    "set": "pokemon-toys-2026",
    "number": "10",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/6ToAAeSwELFq8sB8/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407352423232?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=item5ed818b340:g:6ToAAeSwELFq8sB8",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's Happy Meal Pokemon torchic Orange Cube 2026  Ages 3-7",
      "price": 4.0,
      "item": 4.0,
      "ship": 0.0,
-     "url": "https://www.ebay.com/itm/960183687715?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=itemdf8f685a23:g:MeUAAeSw12lq9Ksl&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7mrRaNpQr7Gc7pKqivSeS5EgOfTMcPjfRLbZZle%2Foq35TZsCaWwpXrpTzFdyCuuCmxkR5dcL5HndGh%2Bq49EsOYupXUgQ%2FqTgRCcJjM4V0LFcpQa2%2FhnceFIjPFX36MMg6xocJ9W53k7TeJO90Juq59JvpT1JoRSucbJ4UjP9GG8rys44%2B47PL0WeiWvyE0QKcYfhToBrAgMGQb4l5%2BQty09da7Gw0qzUI1VoRwKzA%2Fy%2F88cnOlnl6KEjMmwAb7F5YfSd%2FXayVYcxlsED500j6ZIitzyjCe80ldTlUfWzSWBpZlPOOsjWm7BDcgPtg%2For%2Bc%3D",
-     "below": 0.529,
+     "url": "https://www.ebay.com/itm/960183687715?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=itemdf8f685a23:g:MeUAAeSw12lq9Ksl&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7mrRaNpQr7Gc7pKqivSeS5EgOfTMcPjfRLbZZle%2Foq35TZsCaWwpXrpTzFdyCuuCmxkR5dcL5HndGh%2Bq49EsOYupXUgQ%2FqTgRCcJjM4V0LFcpQa2%2FhnceFIjPFX36MMg6wA0s0F0JukMIa5QdWoce%2BjHY0Y5LbeNGuowaT%2BHNQBPKrpV3SvUBMkG%2B2ZMV%2B%2FKO1EizuItWHp3QkjNvJQbuug2FovDZYo7KhsKkTP3Pzy6mEUaGQ%2FPhomziBcv89M4pxEPPSoghHFgtBn7RWSa%2FpvaSVgbiV2Zyr6F6mZo2tbfOeUxDZH4fAm%2BSxHYuVT%2BoQ%3D",
+     "below": 0.555,
      "image": "https://i.ebayimg.com/images/g/MeUAAeSw12lq9Ksl/s-l225.jpg"
     },
     {
@@ -3177,7 +3234,7 @@
      "item": 4.95,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/377635529352?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=item57ecd4e288:g:fP4AAeSwK3lq81xJ",
-     "below": 0.417,
+     "below": 0.449,
      "image": "https://i.ebayimg.com/images/g/fP4AAeSwK3lq81xJ/s-l225.jpg"
     },
     {
@@ -3186,7 +3243,7 @@
      "item": 4.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/900083128052?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=itemd1912296f4:g:ZuIAAeSwObBq9IyN",
-     "below": 0.412,
+     "below": 0.444,
      "image": "https://i.ebayimg.com/images/g/ZuIAAeSwObBq9IyN/s-l225.jpg"
     },
     {
@@ -3195,7 +3252,7 @@
      "item": 4.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/237176352924?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=item3738cff09c:g:odYAAeSwk-Jq8-6g",
-     "below": 0.412,
+     "below": 0.444,
      "image": "https://i.ebayimg.com/images/g/odYAAeSwk-Jq8-6g/s-l225.jpg"
     },
     {
@@ -3204,21 +3261,25 @@
      "item": 4.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/880106639411?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=itemccea719033:g:G4cAAeSw6eJq9NXd",
-     "below": 0.412,
+     "below": 0.444,
      "image": "https://i.ebayimg.com/images/g/G4cAAeSw6eJq9NXd/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/6ToAAeSwELFq8sB8/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407352423232?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=item5ed818b340:g:6ToAAeSwELFq8sB8",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 8.49,
+    "median": 8.98,
     "p25": 6.0,
     "low": 4.0,
-    "count": 36,
+    "count": 37,
     "cond": {
      "other": {
-      "median": 8.49,
+      "median": 8.98,
       "low": 4.0,
-      "count": 34
+      "count": 35
      },
      "sealed": {
       "median": 13.04,
@@ -3233,10 +3294,11 @@
    "set": "pokemon-toys-2026",
    "number": "11",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/76AAAeSw4Gdq7Ex5/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/840095794602?_skw=mcdonalds+pokemon+2026+toy+Piplup&hash=itemc3999c85aa:g:76AAAeSw4Gdq7Ex5&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7m%2F1xBNWwaKZniPZ3KUGe%2FIqJYxI8CjLANP3iIjbwulrOxxHYqU8SNxve9QNC7V3EstIRhYtrNwa4xDuO4n%2FKAgecqi7XQ5NMKEgd6ipgIjlM1TNW5KXooBrwMVqSVq4hk7ZC8U1EdCmdKg95%2F1icynJxxqfUa3OVrYSrDlwfnOdHmrPzDTcbJLaYPj5pN9%2B%2B9Hf2dd7QKAzENQnJsiiubdnRODbk5Z9FzMJSsVkj2Aq64NAcIf8DvgZNYWFfGK4Ob0eGHZdjs2xWj1i%2FL4OpJNxQfkC3y9CbkJMNR82Nm2mUhB0TnuwbCtaeQKJt%2BBd0Q%3D",
-   "imageCredit": "eBay listing photo",
    "deals": [],
+   "image": "https://i.ebayimg.com/images/g/oz8AAeSwlXRq76kT/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/327445150917?_skw=mcdonalds+pokemon+2026+toy+Piplup&hash=item4c3d407cc5:g:oz8AAeSwlXRq76kT",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 33.09,
@@ -3262,71 +3324,72 @@
    "set": "pokemon-toys-2026",
    "number": "12",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/yb0AAeSwzfdq8sDw/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/820337667965?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=itembeffef6f7d:g:yb0AAeSwzfdq8sDw",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Toy- Munchlax keychain only",
-     "price": 2.49,
+     "price": 4.49,
      "item": 2.49,
-     "ship": 0.0,
+     "ship": 2.0,
      "url": "https://www.ebay.com/itm/117515484005?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=item1b5c77fb65:g:x90AAeSwpspq9CRO",
-     "below": 0.751,
+     "below": 0.618,
      "image": "https://i.ebayimg.com/images/g/x90AAeSwpspq9CRO/s-l225.jpg"
     },
     {
      "title": "McDonald's Happy Meal Toy Pokemon munchlax 2026",
-     "price": 3.5,
+     "price": 5.5,
      "item": 3.5,
-     "ship": 0.0,
+     "ship": 2.0,
      "url": "https://www.ebay.com/itm/198786147303?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=item2e4893e3e7:g:Gl0AAeSwK3lq82mI",
-     "below": 0.65,
+     "below": 0.532,
      "image": "https://i.ebayimg.com/images/g/Gl0AAeSwK3lq82mI/s-l225.jpg"
     },
     {
      "title": "McDonald's Pokémon MUNCHLAX 2026 Happy Meal Mini Box Toy Keychain - NO CARDS",
-     "price": 3.75,
+     "price": 5.75,
      "item": 3.75,
-     "ship": 0.0,
+     "ship": 2.0,
      "url": "https://www.ebay.com/itm/407353868817?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=item5ed82ec211:g:zdcAAeSw8z1q84RB",
-     "below": 0.625,
+     "below": 0.511,
      "image": "https://i.ebayimg.com/images/g/zdcAAeSw8z1q84RB/s-l225.jpg"
     },
     {
      "title": "Munchlax Happy Meal Toy & Box (NO CARDS) - Pokémon - 2026 McDonalds",
-     "price": 4.0,
+     "price": 6.0,
      "item": 4.0,
-     "ship": 0.0,
+     "ship": 2.0,
      "url": "https://www.ebay.com/itm/147676488172?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=item22623461ec:g:UMAAAeSwy59q9Mu1",
-     "below": 0.6,
+     "below": 0.489,
      "image": "https://i.ebayimg.com/images/g/UMAAAeSwy59q9Mu1/s-l225.jpg"
     },
     {
      "title": "McDonald's 2026 Pokemon 30th Anniversary Happy Meal Toy- Munchlax (unopened)",
-     "price": 4.99,
+     "price": 6.99,
      "item": 4.99,
-     "ship": 0.0,
+     "ship": 2.0,
      "url": "https://www.ebay.com/itm/820339929632?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=itembf0011f220:g:cjYAAeSw9uxq848P",
-     "below": 0.501,
+     "below": 0.405,
      "image": "https://i.ebayimg.com/images/g/cjYAAeSw9uxq848P/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/UpQAAeSwSk1q8~MP/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407354586256?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=item5ed839b490:g:UpQAAeSwSk1q8~MP",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 9.99,
-    "p25": 7.0,
-    "low": 2.49,
-    "count": 61,
+    "median": 11.75,
+    "p25": 9.0,
+    "low": 4.49,
+    "count": 62,
     "cond": {
      "other": {
-      "median": 9.99,
-      "low": 2.49,
-      "count": 55
+      "median": 11.75,
+      "low": 4.49,
+      "count": 56
      },
      "sealed": {
-      "median": 8.99,
-      "low": 4.99,
+      "median": 10.99,
+      "low": 6.99,
       "count": 6
      }
     }
@@ -3344,10 +3407,11 @@
    "set": "pokemon-toys-2026",
    "number": "14",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/UUQAAeSwWSVq9ICW/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/960183153681?_skw=mcdonalds+pokemon+2026+toy+Espurr&hash=itemdf8f603411:g:UUQAAeSwWSVq9ICW",
-   "imageCredit": "eBay listing photo",
    "deals": [],
+   "image": "https://i.ebayimg.com/images/g/NjIAAeSw~n1q9CnP/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/840117299377?_skw=mcdonalds+pokemon+2026+toy+Espurr&hash=itemc39ae4a8b1:g:NjIAAeSw~n1q9CnP",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 20.0,
@@ -3368,9 +3432,6 @@
    "set": "pokemon-toys-2026",
    "number": "15",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/tUUAAeSw~iRq87Yf/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/327450290753?_skw=mcdonalds+pokemon+2026+toy+Sobble&hash=item4c3d8eea41:g:tUUAAeSw~iRq87Yf",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Pokemon Sobble McDonalds Happy Meal Toy 2026 No Cards",
@@ -3418,17 +3479,21 @@
      "image": "https://i.ebayimg.com/images/g/Z4UAAeSwJPdq85MS/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/tUUAAeSw~iRq87Yf/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/327450290753?_skw=mcdonalds+pokemon+2026+toy+Sobble&hash=item4c3d8eea41:g:tUUAAeSw~iRq87Yf",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 10.0,
-    "p25": 6.0,
+    "p25": 6.52,
     "low": 3.99,
-    "count": 31,
+    "count": 33,
     "cond": {
      "other": {
-      "median": 9.75,
+      "median": 10.0,
       "low": 3.99,
-      "count": 30
+      "count": 32
      },
      "sealed": {
       "median": 14.99,
@@ -3443,72 +3508,27 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "01",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/5y4AAeSw0KxqfkeS/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/178418096078?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=item298a8c17ce:g:5y4AAeSw0KxqfkeS",
+   "deals": [],
+   "image": "https://i.ebayimg.com/images/g/Fj4AAeSwJS9qvgPQ/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/198679557560?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=item2e423975b8:g:Fj4AAeSwJS9qvgPQ",
    "imageCredit": "eBay listing photo",
-   "deals": [
-    {
-     "title": "2026 McDonald’s Hello Kitty & Friends X Godzilla Happy Meal Box",
-     "price": 10.64,
-     "item": 2.99,
-     "ship": 7.65,
-     "url": "https://www.ebay.com/itm/147547794095?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=item225a88aaaf:g:BDAAAeSwM99qtuRw",
-     "below": 0.468,
-     "image": "https://i.ebayimg.com/images/g/BDAAAeSwM99qtuRw/s-l225.jpg"
-    },
-    {
-     "title": "2026 McDonald’s Hello Kitty Godzilla Happy Meal Figure and box",
-     "price": 11.76,
-     "item": 2.88,
-     "ship": 8.88,
-     "url": "https://www.ebay.com/itm/398352521286?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=item5cbfa91846:g:kmoAAeSw2bhqmJcI",
-     "below": 0.412,
-     "image": "https://i.ebayimg.com/images/g/kmoAAeSw2bhqmJcI/s-l225.jpg"
-    },
-    {
-     "title": "McDonald's Hello Kitty and Friends Godzilla  Happy Meal Box 2026",
-     "price": 12.75,
-     "item": 11.25,
-     "ship": 1.5,
-     "url": "https://www.ebay.com/itm/840079160703?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=itemc3989eb57f:g:2wsAAeSwqlBqkCVP",
-     "below": 0.362,
-     "image": "https://i.ebayimg.com/images/g/2wsAAeSwqlBqkCVP/s-l225.jpg"
-    },
-    {
-     "title": "FREE SHIP McDonalds Happy Meal HELLO KITTY x GODZILLA  #5 NIB,  QR code",
-     "price": 14.29,
-     "item": 14.29,
-     "ship": 0.0,
-     "url": "https://www.ebay.com/itm/257844447609?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=item3c08ba0979:g:IXIAAeSwK3lq8lBZ",
-     "below": 0.285,
-     "image": "https://i.ebayimg.com/images/g/IXIAAeSwK3lq8lBZ/s-l225.jpg"
-    },
-    {
-     "title": "McDONALDS Toy HELLO KITTY GODZILLA - HELLO KITTY Toy MINT 2026 Box Malaysia McD",
-     "price": 14.49,
-     "item": 5.99,
-     "ship": 8.5,
-     "url": "https://www.ebay.com/itm/960182393787?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=itemdf8f549bbb:g:WywAAeSw7mhq6SSo",
-     "below": 0.275,
-     "image": "https://i.ebayimg.com/images/g/WywAAeSw7mhq6SSo/s-l225.jpg"
-    }
-   ],
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 19.99,
-    "p25": 15.99,
-    "low": 10.64,
-    "count": 30,
+    "median": 20.51,
+    "p25": 17.98,
+    "low": 17.49,
+    "count": 14,
     "cond": {
      "other": {
-      "median": 19.99,
-      "low": 10.64,
-      "count": 27
+      "median": 20.07,
+      "low": 17.49,
+      "count": 12
      },
      "sealed": {
-      "median": 20.87,
-      "low": 14.29,
-      "count": 3
+      "median": 25.93,
+      "low": 20.87,
+      "count": 2
      }
     }
    }
@@ -3518,9 +3538,6 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "05",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/RxIAAeSwZGpq7z7G/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/880092489828?_skw=mcdonalds+hello+kitty+godzilla+kuromi&hash=itemcce999a864:g:RxIAAeSwZGpq7z7G",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "💥NEW 26 McDONALDS HAPPY MEAL TOY HELLO KITTY GODZILLA  Kuromi #5 Mechagodzilla",
@@ -3568,6 +3585,10 @@
      "image": "https://i.ebayimg.com/images/g/q80AAeSwE7dq7nSj/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/RxIAAeSwZGpq7z7G/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/880092489828?_skw=mcdonalds+hello+kitty+godzilla+kuromi&hash=itemcce999a864:g:RxIAAeSwZGpq7z7G",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 15.79,
@@ -3593,9 +3614,6 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "07",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/eKUAAeSw6N9qrupF/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318891972965?_skw=mcdonalds+hello+kitty+godzilla+badtz+maru&hash=item4a3f715965:g:eKUAAeSw6N9qrupF",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Sanrio Badtz-Maru & Rodan Hello Kitty Friends X Godzilla Box 7 Happy Meal Toy",
@@ -3643,6 +3661,10 @@
      "image": "https://i.ebayimg.com/images/g/snEAAeSwldpq59nn/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/gDMAAeSwtjZqvUDv/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/267834601966?_skw=mcdonalds+hello+kitty+godzilla+badtz+maru&hash=item3e5c2fb1ee:g:gDMAAeSwtjZqvUDv",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 17.9,
@@ -3668,72 +3690,73 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "03",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/C~IAAeSws-Fq2cYM/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/237137300751?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=item37367c0d0f:g:C~IAAeSws-Fq2cYM",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald's Hello Kitty x Godzilla #3 My Melody Mothra NEW Open Box",
-     "price": 10.27,
+     "price": 10.22,
      "item": 5.0,
-     "ship": 5.27,
+     "ship": 5.22,
      "url": "https://www.ebay.com/itm/257840006562?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=item3c087645a2:g:m48AAeSwyHhq7rUZ",
-     "below": 0.327,
+     "below": 0.328,
      "image": "https://i.ebayimg.com/images/g/m48AAeSwyHhq7rUZ/s-l225.jpg"
     },
     {
      "title": "My Melody x Mothra - Hello Kitty And Friends McDonald's Godzilla Toy #3 NIB",
-     "price": 10.46,
+     "price": 10.41,
      "item": 5.19,
-     "ship": 5.27,
+     "ship": 5.22,
      "url": "https://www.ebay.com/itm/237137300751?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=item37367c0d0f:g:C~IAAeSws-Fq2cYM",
-     "below": 0.315,
+     "below": 0.316,
      "image": "https://i.ebayimg.com/images/g/C~IAAeSws-Fq2cYM/s-l225.jpg"
     },
     {
      "title": "McDonalds Hello Kitty & Friends Godzilla Happy Meal Toy #3 My Melody Mothra 2026",
-     "price": 11.26,
+     "price": 11.21,
      "item": 5.99,
-     "ship": 5.27,
+     "ship": 5.22,
      "url": "https://www.ebay.com/itm/198675964641?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=item2e4202a2e1:g:mdgAAeSwmmZqkwM2",
      "below": 0.263,
      "image": "https://i.ebayimg.com/images/g/mdgAAeSwmmZqkwM2/s-l225.jpg"
     },
     {
      "title": "From McDonalds Hello Kitty Godzilla ~ MY MELODY / MOTHRA ~ NEW IN BOX ",
-     "price": 11.27,
+     "price": 11.22,
      "item": 6.0,
-     "ship": 5.27,
+     "ship": 5.22,
      "url": "https://www.ebay.com/itm/920116223073?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=itemd63b335c61:g:dfgAAeSwxXlq74Bz",
      "below": 0.262,
      "image": "https://i.ebayimg.com/images/g/dfgAAeSwxXlq74Bz/s-l225.jpg"
     },
     {
      "title": "Sanrio Hello Kitty & Friends x Godzilla My Melody Mothra McDonald's Toy 2026",
-     "price": 11.27,
+     "price": 11.22,
      "item": 6.0,
-     "ship": 5.27,
+     "ship": 5.22,
      "url": "https://www.ebay.com/itm/820339035185?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=itembf00044c31:g:B6AAAeSwk~Vq80Tc",
      "below": 0.262,
      "image": "https://i.ebayimg.com/images/g/B6AAAeSwk~Vq80Tc/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/C~IAAeSws-Fq2cYM/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/237137300751?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=item37367c0d0f:g:C~IAAeSws-Fq2cYM",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 15.27,
-    "p25": 14.01,
-    "low": 10.27,
-    "count": 125,
+    "median": 15.21,
+    "p25": 14.0,
+    "low": 10.22,
+    "count": 122,
     "cond": {
      "sealed": {
-      "median": 15.21,
-      "low": 10.46,
-      "count": 22
+      "median": 15.15,
+      "low": 10.41,
+      "count": 21
      },
      "other": {
-      "median": 15.27,
-      "low": 10.27,
-      "count": 103
+      "median": 15.22,
+      "low": 10.22,
+      "count": 101
      }
     }
    }
@@ -3743,9 +3766,6 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "02",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/mGQAAeSwQe1qhI14/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407153908330?_skw=mcdonalds+hello+kitty+godzilla+keroppi&hash=item5ecc439a6a:g:mGQAAeSwQe1qhI14",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Happy Meal Toy Keroppi x King Ghidorah Hello Kitty/Godzilla Toy #2 ~ No Box",
@@ -3793,12 +3813,16 @@
      "image": "https://i.ebayimg.com/images/g/uLwAAeSwQSJq81Gt/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/mGQAAeSwQe1qhI14/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407153908330?_skw=mcdonalds+hello+kitty+godzilla+keroppi&hash=item5ecc439a6a:g:mGQAAeSwQe1qhI14",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 16.24,
-    "p25": 14.97,
+    "p25": 15.0,
     "low": 9.95,
-    "count": 101,
+    "count": 100,
     "cond": {
      "other": {
       "median": 16.0,
@@ -3806,9 +3830,9 @@
       "count": 92
      },
      "sealed": {
-      "median": 16.94,
-      "low": 11.94,
-      "count": 9
+      "median": 16.96,
+      "low": 12.95,
+      "count": 8
      }
     }
    }
@@ -3818,9 +3842,6 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "08",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/pFgAAeSwOIxq83z4/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407353809911?_skw=mcdonalds+hello+kitty+godzilla+chococat&hash=item5ed82ddbf7:g:pFgAAeSwOIxq83z4",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Chococat X Space Godzilla Mcdonalds Happy Meal Toy Sanrio ",
@@ -3868,22 +3889,26 @@
      "image": "https://i.ebayimg.com/images/g/eTsAAeSw6IlquHWD/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/bD0AAeSwDW5qpyc~/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/147591436166?_skw=mcdonalds+hello+kitty+godzilla+chococat&hash=item225d229786:g:bD0AAeSwDW5qpyc~",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.99,
     "p25": 12.99,
     "low": 9.79,
-    "count": 121,
+    "count": 119,
     "cond": {
      "other": {
       "median": 14.99,
       "low": 9.79,
-      "count": 102
+      "count": 101
      },
      "sealed": {
-      "median": 16.95,
+      "median": 16.47,
       "low": 11.95,
-      "count": 19
+      "count": 18
      }
     }
    }
@@ -3893,9 +3918,6 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "06",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/8NEAAeSwwtFqmv7U/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407193118025?_skw=mcdonalds+hello+kitty+godzilla+cinnamoroll&hash=item5ece99e549:g:8NEAAeSwwtFqmv7U",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Mcdonald’s Hello Kitty x Godzilla Cinnamoroll Destoroyah Fig #6 Ship Fast !",
@@ -3943,6 +3965,10 @@
      "image": "https://i.ebayimg.com/images/g/diYAAeSwnsxqpvkZ/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/8NEAAeSwwtFqmv7U/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407193118025?_skw=mcdonalds+hello+kitty+godzilla+cinnamoroll&hash=item5ece99e549:g:8NEAAeSwwtFqmv7U",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 16.98,
@@ -3968,9 +3994,6 @@
    "set": "hello-kitty-godzilla-2026",
    "number": "04",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/hK0AAeSw3yxq1GI1/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407350309323?_skw=mcdonalds+hello+kitty+godzilla+pompompurin&hash=item5ed7f871cb:g:hK0AAeSw3yxq1GI1",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald’s Hello Kitty & Friends Godzilla #4 Pompompurin Gigan (No Box)",
@@ -4018,17 +4041,21 @@
      "image": "https://i.ebayimg.com/images/g/-sgAAeSwJIxq1rGQ/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/VncAAeSwhENq8sQg/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/267839371228?_skw=mcdonalds+hello+kitty+godzilla+pompompurin&hash=item3e5c7877dc:g:VncAAeSwhENq8sQg",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.0,
     "p25": 11.99,
     "low": 7.99,
-    "count": 113,
+    "count": 112,
     "cond": {
      "other": {
       "median": 13.0,
       "low": 7.99,
-      "count": 97
+      "count": 96
      },
      "sealed": {
       "median": 13.99,
@@ -4043,9 +4070,6 @@
    "set": "bt21-2026",
    "number": "01",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/MPEAAeSwDAJq4A1G/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/257736173157?_skw=mcdonalds+bt21+koya&hash=item3c0245e665:g:MPEAAeSwDAJq4A1G",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "BT21 Koya RM BTS Backpack Clip Keychain McDonald's Happy Meal Toy",
@@ -4093,6 +4117,10 @@
      "image": "https://i.ebayimg.com/images/g/7wYAAeSwieZqmuxD/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/ys4AAeSwQ1xq8JsP/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/147671971345?_skw=mcdonalds+bt21+koya&hash=item2261ef7611:g:ys4AAeSwQ1xq8JsP",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.98,
@@ -4118,9 +4146,6 @@
    "set": "bt21-2026",
    "number": "02",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/WKYAAeSwDp1qdUsR/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/800473424888?_skw=mcdonalds+bt21+rj&hash=itemba5fef23f8:g:WKYAAeSwDp1qdUsR",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "BT21 McDonald's Happy Meal BT21 RJ Collectible Figure Toy in Box",
@@ -4159,6 +4184,10 @@
      "image": "https://i.ebayimg.com/images/g/WKYAAeSwDp1qdUsR/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/WKYAAeSwDp1qdUsR/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/800473424888?_skw=mcdonalds+bt21+rj&hash=itemba5fef23f8:g:WKYAAeSwDp1qdUsR",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.87,
@@ -4184,9 +4213,6 @@
    "set": "bt21-2026",
    "number": "03",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/aokAAeSwe41qcwgt/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/840105906275?_skw=mcdonalds+bt21+shooky&hash=itemc39a36d063:g:aokAAeSwe41qcwgt",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s Happy Meal BT21 Shooky Toy",
@@ -4194,7 +4220,7 @@
      "item": 2.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/237080665417?_skw=mcdonalds+bt21+shooky&hash=item37331bdd49:g:NhoAAeSwyXtqsHOx",
-     "below": 0.748,
+     "below": 0.732,
      "image": "https://i.ebayimg.com/images/g/NhoAAeSwyXtqsHOx/s-l225.jpg"
     },
     {
@@ -4203,7 +4229,7 @@
      "item": 2.55,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/407183421580?_skw=mcdonalds+bt21+shooky&hash=item5ece05f08c:g:~9kAAeSwL3VqlfYr",
-     "below": 0.679,
+     "below": 0.659,
      "image": "https://i.ebayimg.com/images/g/~9kAAeSwL3VqlfYr/s-l225.jpg"
     },
     {
@@ -4212,7 +4238,7 @@
      "item": 2.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/168585017059?_skw=mcdonalds+bt21+shooky&hash=item27407336e3:g:87QAAeSwK8xqcEhH",
-     "below": 0.624,
+     "below": 0.6,
      "image": "https://i.ebayimg.com/images/g/87QAAeSwK8xqcEhH/s-l225.jpg"
     },
     {
@@ -4221,7 +4247,7 @@
      "item": 2.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/117510427102?_skw=mcdonalds+bt21+shooky&hash=item1b5c2ad1de:g:Y7QAAeSwWEVqoi37",
-     "below": 0.624,
+     "below": 0.6,
      "image": "https://i.ebayimg.com/images/g/Y7QAAeSwWEVqoi37/s-l225.jpg"
     },
     {
@@ -4230,21 +4256,25 @@
      "item": 2.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/128084812052?_skw=mcdonalds+bt21+shooky&hash=item1dd2732114:g:RrgAAeSw1XpqrFPH",
-     "below": 0.624,
+     "below": 0.6,
      "image": "https://i.ebayimg.com/images/g/RrgAAeSw1XpqrFPH/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/vkUAAeSwU7xqYhh6/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/236958123948?_skw=mcdonalds+bt21+shooky&hash=item372bce07ac:g:vkUAAeSwU7xqYhh6",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 7.95,
+    "median": 7.47,
     "p25": 5.0,
     "low": 2.0,
-    "count": 105,
+    "count": 104,
     "cond": {
      "other": {
-      "median": 7.99,
+      "median": 7.5,
       "low": 2.0,
-      "count": 75
+      "count": 74
      },
      "sealed": {
       "median": 7.47,
@@ -4259,9 +4289,6 @@
    "set": "bt21-2026",
    "number": "04",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/R~sAAeSwNBBq3mNw/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377597130549?_skw=mcdonalds+bt21+mang&hash=item57ea8af735:g:R~sAAeSwNBBq3mNw",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "BT21 Mang J-Hope BTS Backpack Clip Keychain McDonald's Happy Meal Toy",
@@ -4309,12 +4336,16 @@
      "image": "https://i.ebayimg.com/images/g/XXEAAeSwi21qy9Ax/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/R~sAAeSwNBBq3mNw/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/377597130549?_skw=mcdonalds+bt21+mang&hash=item57ea8af735:g:R~sAAeSwNBBq3mNw",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.76,
-    "p25": 11.38,
+    "p25": 11.34,
     "low": 6.76,
-    "count": 102,
+    "count": 101,
     "cond": {
      "other": {
       "median": 12.77,
@@ -4322,9 +4353,9 @@
       "count": 74
      },
      "sealed": {
-      "median": 11.96,
+      "median": 11.94,
       "low": 9.77,
-      "count": 28
+      "count": 27
      }
     }
    }
@@ -4334,71 +4365,72 @@
    "set": "bt21-2026",
    "number": "05",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/6rcAAeSwVHJq81bZ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/128187257508?_skw=mcdonalds+bt21+chimmy&hash=item1dd88e52a4:g:6rcAAeSwVHJq81bZ",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s BT21 CHIMMY Happy Meal Toy Figure with Original Box BTS Kpop",
-     "price": 8.13,
+     "price": 5.56,
      "item": 3.0,
-     "ship": 5.13,
+     "ship": 2.56,
      "url": "https://www.ebay.com/itm/237161637816?_skw=mcdonalds+bt21+chimmy&hash=item3737ef67b8:g:7IMAAeSwN9Jq6mBA",
-     "below": 0.38,
+     "below": 0.484,
      "image": "https://i.ebayimg.com/images/g/7IMAAeSwN9Jq6mBA/s-l225.jpg"
     },
     {
      "title": "BT21 CHIMMY McDonald’s Kids Happy Meal Figure Toy Jimin BTS Puppy 2026",
-     "price": 8.13,
+     "price": 5.56,
      "item": 3.0,
-     "ship": 5.13,
+     "ship": 2.56,
      "url": "https://www.ebay.com/itm/880072742940?_skw=mcdonalds+bt21+chimmy&hash=itemcce86c581c:g:v9AAAeSw~0pq553J",
-     "below": 0.38,
+     "below": 0.484,
      "image": "https://i.ebayimg.com/images/g/v9AAAeSw~0pq553J/s-l225.jpg"
     },
     {
      "title": "Chimmy BT21 x McDonald's Galaxy Space Bag Clip Keychain Figure New In Box",
-     "price": 8.42,
+     "price": 5.86,
      "item": 3.29,
-     "ship": 5.13,
+     "ship": 2.56,
      "url": "https://www.ebay.com/itm/257828426465?_skw=mcdonalds+bt21+chimmy&hash=item3c07c592e1:g:oQ8AAeSwxrdq504w",
-     "below": 0.358,
+     "below": 0.456,
      "image": "https://i.ebayimg.com/images/g/oQ8AAeSwxrdq504w/s-l225.jpg"
     },
     {
      "title": "McDonald’s BT21 CHIMMY Happy Meal Toy Figure with Original Box BTS Kpop",
-     "price": 8.73,
+     "price": 6.17,
      "item": 3.6,
-     "ship": 5.13,
+     "ship": 2.56,
      "url": "https://www.ebay.com/itm/198707224817?_skw=mcdonalds+bt21+chimmy&hash=item2e43dfa0f1:g:dBYAAeSwZaxqy9CT",
-     "below": 0.335,
+     "below": 0.428,
      "image": "https://i.ebayimg.com/images/g/dBYAAeSwZaxqy9CT/s-l225.jpg"
     },
     {
      "title": "BRAND NEW  McDonald's BT21 CHIMMY Figure with retractable bag clip",
-     "price": 9.09,
+     "price": 6.53,
      "item": 3.96,
-     "ship": 5.13,
+     "ship": 2.56,
      "url": "https://www.ebay.com/itm/168592264673?_skw=mcdonalds+bt21+chimmy&hash=item2740e1cde1:g:b~EAAeSwGs1qc-78",
-     "below": 0.307,
+     "below": 0.394,
      "image": "https://i.ebayimg.com/images/g/b~EAAeSwGs1qc-78/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/6rcAAeSwVHJq81bZ/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/128187257508?_skw=mcdonalds+bt21+chimmy&hash=item1dd88e52a4:g:6rcAAeSwVHJq81bZ",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 13.12,
-    "p25": 10.99,
-    "low": 8.13,
-    "count": 103,
+    "median": 10.78,
+    "p25": 8.54,
+    "low": 5.56,
+    "count": 102,
     "cond": {
      "other": {
-      "median": 13.12,
-      "low": 8.13,
-      "count": 74
+      "median": 10.56,
+      "low": 5.56,
+      "count": 73
      },
      "sealed": {
-      "median": 12.95,
-      "low": 8.42,
+      "median": 12.05,
+      "low": 5.86,
       "count": 29
      }
     }
@@ -4409,9 +4441,6 @@
    "set": "bt21-2026",
    "number": "06",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/CngAAeSw6ttq7r0t/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/237168908739?_skw=mcdonalds+bt21+tata&hash=item37385e59c3:g:CngAAeSw6ttq7r0t",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 Tata BTS BT21 Figure McDonalds Happy Meal Kids Toy",
@@ -4459,6 +4488,10 @@
      "image": "https://i.ebayimg.com/images/g/2zoAAeSwrndqc9QL/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/CngAAeSw6ttq7r0t/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/237168908739?_skw=mcdonalds+bt21+tata&hash=item37385e59c3:g:CngAAeSw6ttq7r0t",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.04,
@@ -4484,9 +4517,6 @@
    "set": "bt21-2026",
    "number": "07",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/uXkAAeSwOcNqf7PZ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/940055373504?_skw=mcdonalds+bt21+cooky&hash=itemdadfaaa6c0:g:uXkAAeSwOcNqf7PZ",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald x BT21 Happy Meal Toy Collab Keychain Cooky Pink Bunny Jungkook",
@@ -4534,6 +4564,10 @@
      "image": "https://i.ebayimg.com/images/g/n5UAAeSwEdxq8Tpd/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/8mgAAeSwcG9q3~cp/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/840116140222?_skw=mcdonalds+bt21+cooky&hash=itemc39ad2f8be:g:8mgAAeSwcG9q3~cp",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.1,
@@ -4559,9 +4593,6 @@
    "set": "bt21-2026",
    "number": "08",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/0kkAAeSwKjZqqzKa/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/198646801893?_skw=mcdonalds+bt21+van&hash=item2e4045a5e5:g:0kkAAeSwKjZqqzKa",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald’s X BT21 BTS Happy Meal VAN Loose",
@@ -4569,7 +4600,7 @@
      "item": 2.36,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/237105715949?_skw=mcdonalds+bt21+van&hash=item37349a1aed:g:mNAAAeSwgwVqwm7g",
-     "below": 0.398,
+     "below": 0.393,
      "image": "https://i.ebayimg.com/images/g/mNAAAeSwgwVqwm7g/s-l225.jpg"
     },
     {
@@ -4578,7 +4609,7 @@
      "item": 7.95,
      "ship": 0.68,
      "url": "https://www.ebay.com/itm/940073782282?_skw=mcdonalds+bt21+van&hash=itemdae0c38c0a:g:1hUAAeSw6l9q74Tl",
-     "below": 0.375,
+     "below": 0.369,
      "image": "https://i.ebayimg.com/images/g/1hUAAeSw6l9q74Tl/s-l225.jpg"
     },
     {
@@ -4587,7 +4618,7 @@
      "item": 3.95,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/168706228005?_skw=mcdonalds+bt21+van&hash=item2747acbf25:g:nykAAeSwFXdqsgB7",
-     "below": 0.283,
+     "below": 0.276,
      "image": "https://i.ebayimg.com/images/g/nykAAeSwFXdqsgB7/s-l225.jpg"
     },
     {
@@ -4596,7 +4627,7 @@
      "item": 3.99,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/307202653244?_skw=mcdonalds+bt21+van&hash=item4786b47c3c:g:aioAAeSw9UpqucAx",
-     "below": 0.28,
+     "below": 0.273,
      "image": "https://i.ebayimg.com/images/g/aioAAeSw9UpqucAx/s-l225.jpg"
     },
     {
@@ -4605,16 +4636,20 @@
      "item": 4.0,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/237034181600?_skw=mcdonalds+bt21+van&hash=item37305693e0:g:nX8AAeSwtFxqkLx4",
-     "below": 0.28,
+     "below": 0.273,
      "image": "https://i.ebayimg.com/images/g/nX8AAeSwtFxqkLx4/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/1hUAAeSw6l9q74Tl/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/940073782282?_skw=mcdonalds+bt21+van&hash=itemdae0c38c0a:g:1hUAAeSw6l9q74Tl",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
-    "median": 13.81,
-    "p25": 11.19,
+    "median": 13.68,
+    "p25": 11.17,
     "low": 8.31,
-    "count": 124,
+    "count": 123,
     "cond": {
      "sealed": {
       "median": 14.22,
@@ -4624,7 +4659,7 @@
      "other": {
       "median": 13.45,
       "low": 8.31,
-      "count": 86
+      "count": 85
      }
     }
    }
@@ -4634,9 +4669,6 @@
    "set": "bt21-2026",
    "number": "09",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/hSEAAeSwR7pqhTC4/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/168624544044?_skw=mcdonalds+bt21+ship&hash=item2742ce592c:g:hSEAAeSwR7pqhTC4&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7lacJ2TaaVUoI6w7khDCCxswk3TUOrc3hw%2FVmS0qT2qbQPyYkT3b3HPKskCo62NC3dgB2gfu1YXpcAf%2Bvfdl5%2BwgCkYqEAAOA6SL03x%2FMEQ%2BqRC4YHizZe9C5rRYjxLjGJktTEZIeh4Zj3LOXEiLZOjQNRinG0usugTueQVJqE3peqcwY3jS2pp%2BK1tG%2Btlf8e%2FrqSOhUXPGUinwIIMCInuPS4cgZ%2BTDCcu1jeEAtCbQ7oHFtWQGTxm94P%2FGXYIaZw4om2IR3gv4%2FGut%2BHVrBL1EKKqfxUnHPbWJCFbLCsPYQ%3D%3D",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "*New* 2026 McDonald's BT21 Spaceship Happy Meal toy (unopened)",
@@ -4684,12 +4716,16 @@
      "image": "https://i.ebayimg.com/images/g/v8gAAeSwF3Bq8O9t/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/hSEAAeSwR7pqhTC4/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/168624544044?_skw=mcdonalds+bt21+spaceship&hash=item2742ce592c:g:hSEAAeSwR7pqhTC4&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7lacJ2TaaVUoI6w7khDCCxswk3TUOrc3hw%2FVmS0qT2qbQPyYkT3b3HPKskCo62NC3dgB2gfu1YXpcAf%2Bvfdl5%2BwgCkYqEAAOA6SL03x%2FMEQ%2BqRC4YHizZe9C5rRYjxLjGLEVQNtsmX9Zw%2FqCzuLB3HkoppF%2B7IJOFifx7XB0dlGHu6wNLLhVr5pWThOGaiQKypY1YEEDd2jJ%2FimgJz98ecb6bgia8UxL%2BWg25Z8SLs9uZN47W1KTyoXvw25qDv8JgdPFiWvfiBuHc2YhM60pcNDTxmxr%2BbWG6rRhnqA5U7lqA%3D%3D",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.94,
     "p25": 10.99,
     "low": 8.99,
-    "count": 91,
+    "count": 90,
     "cond": {
      "sealed": {
       "median": 13.98,
@@ -4699,7 +4735,7 @@
      "other": {
       "median": 13.49,
       "low": 8.99,
-      "count": 51
+      "count": 50
      }
     }
    }
@@ -4709,9 +4745,6 @@
    "set": "bt21-2026",
    "number": "10",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/AJ0AAeSwjJxqeX4q/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407340707475?_skw=mcdonalds+bt21+poster&hash=item5ed765ee93:g:AJ0AAeSwjJxqeX4q",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "BT21 BTS x McDonalds Poster ONLY",
@@ -4759,6 +4792,10 @@
      "image": "https://i.ebayimg.com/images/g/UncAAeSwa3RqzE95/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/o0gAAeSwopdqzQR5/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/206622075165?_skw=mcdonalds+bt21+poster&hash=item301ba2a91d:g:o0gAAeSwopdqzQR5",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 15.37,
@@ -4784,9 +4821,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "01",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/M5UAAeSw269qOzlo/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/366500064999?_skw=mcdonalds+world+cup+squishmallow+monty&hash=item55551b2ee7:g:M5UAAeSw269qOzlo",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald’s FIFA World Cup 2026 \"MONTY\" Squishmallows Happy Meal Toy | New No Box",
@@ -4834,6 +4868,10 @@
      "image": "https://i.ebayimg.com/images/g/NgsAAeSwUXxqZVIQ/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/M5UAAeSw269qOzlo/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/366500064999?_skw=mcdonalds+world+cup+squishmallow+monty&hash=item55551b2ee7:g:M5UAAeSw269qOzlo",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.95,
@@ -4859,9 +4897,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "02",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/jPAAAeSwHQVqL33e/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/227608049083?_skw=mcdonalds+world+cup+squishmallow+lindsay&hash=item34fe7f35bb:g:jPAAAeSwHQVqL33e",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald’s FIFA World Cup Squishmallows Happy Meal Toy - #10 Lindsay",
@@ -4873,6 +4908,10 @@
      "image": "https://i.ebayimg.com/images/g/FowAAeSwwoRqz-nw/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/jPAAAeSwHQVqL33e/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/227608049083?_skw=mcdonalds+world+cup+squishmallow+lindsay&hash=item34fe7f35bb:g:jPAAAeSwHQVqL33e",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.0,
@@ -4898,9 +4937,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "03",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/dWAAAeSwiAVq29~O/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/267822095064?_skw=mcdonalds+world+cup+squishmallow+clutch&hash=item3e5b70dad8:g:dWAAAeSwiAVq29~O&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nj%2Bxzwf8lvQn3pqm0SHqAzhDHGqYnm%2FnnCAwNj2A9d%2B66A5eorNAk3alphO16LhOogs9HHLNc2lPYpP%2FG81wKQ41HXNGhbZ5oeUU%2BatEXgDJSRXIwJocGJxh6%2BQH4bK688Mu6uJ922HR2XRO8KQw9f%2BwZW7eosrWYk9bW3j1z%2FkenlPK61UTX0TsrPIaCHVLVl1ypls3qSrw%2ByQEqUxM1YXpp1nSywxaC%2FB7Z%2FVB7wngObKTHPvHCw3vNqiWVHAScpEcypRJxcV7jfEv%2BIm1Ruxd1NZU4bGx6otkUdQ1YAodOQc51w2I5OHYkcNM77VQY%3D",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonalds Happy Meal FIFA World Cup Squishmallows Clutch No Box",
@@ -4948,6 +4984,10 @@
      "image": "https://i.ebayimg.com/images/g/qngAAeSwZHxqtT96/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/dWAAAeSwiAVq29~O/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/267822095064?_skw=mcdonalds+world+cup+squishmallow+clutch&hash=item3e5b70dad8:g:dWAAAeSwiAVq29~O&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nj%2Bxzwf8lvQn3pqm0SHqAzhDHGqYnm%2FnnCAwNj2A9d%2B66A5eorNAk3alphO16LhOogs9HHLNc2lPYpP%2FG81wKQ41HXNGhbZ5oeUU%2BatEXgDJSRXIwJocGJxh6%2BQH4bK6%2BtHhMavDBxw3xtbzi2SjM9DmP8yK7DIWCN7hxUQGAL9tZ1j%2FineG%2FmtLW%2BCLNZsE%2BmrZtJ6PfvSWCPLw%2F967BlMWFWqHpjG%2FQahQGM5bHz0cuJ28ADsVnfUaaUpNb3nTQCrWPgmgXb9ldR7XsV0s5WX1th284BrYoVLrW0stAyALv3RLDDqPboojb0sFgfSuY%3D",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.5,
@@ -4973,9 +5013,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "04",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/rj8AAeSwsQBqxtYE/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377553202913?_skw=mcdonalds+world+cup+squishmallow+zayu&hash=item57e7ecaee1:g:rj8AAeSwsQBqxtYE",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonalds Squishmallows Happy Meal Toy 2026 FIFA World Cup Zayu #4 Plush Cheetah",
@@ -5023,6 +5060,10 @@
      "image": "https://i.ebayimg.com/images/g/9JMAAeSw2hFq3pji/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/OpcAAeSwM89qlSN1/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/168652242345?_skw=mcdonalds+world+cup+squishmallow+zayu&hash=item274474fda9:g:OpcAAeSwM89qlSN1",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.34,
@@ -5048,9 +5089,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "05",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/Q7kAAeSwqrFqVWC0/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/168843261680?_skw=mcdonalds+world+cup+squishmallow+maple&hash=item274fd7b6f0:g:Q7kAAeSwqrFqVWC0",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Squishmallows Maple FIFA McDonald's Plush Toy New with Tag",
@@ -5098,6 +5136,10 @@
      "image": "https://i.ebayimg.com/images/g/GYoAAeSwrptqYnHL/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/Q7kAAeSwqrFqVWC0/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/168843261680?_skw=mcdonalds+world+cup+squishmallow+maple&hash=item274fd7b6f0:g:Q7kAAeSwqrFqVWC0",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.92,
@@ -5123,9 +5165,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "06",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/4dAAAeSwSQ9q8Qlu/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307273424891?_skw=mcdonalds+world+cup+squishmallow+boyle&hash=item478aec5ffb:g:4dAAAeSwSQ9q8Qlu",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Squishmallows Boyle McDonald's FIFA World Cup Plush Toy",
@@ -5173,6 +5212,10 @@
      "image": "https://i.ebayimg.com/images/g/O2cAAeSwan9qcrld/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/4dAAAeSwSQ9q8Qlu/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/307273424891?_skw=mcdonalds+world+cup+squishmallow+boyle&hash=item478aec5ffb:g:4dAAAeSwSQ9q8Qlu",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.39,
@@ -5198,9 +5241,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "07",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/6AoAAeSwjIRq50O5/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377612835898?_skw=mcdonalds+world+cup+squishmallow+barella&hash=item57eb7a9c3a:g:6AoAAeSwjIRq50O5",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald's Squishmallows FIFA World Cup Barella #7 Happy Meal Toy New",
@@ -5248,6 +5288,10 @@
      "image": "https://i.ebayimg.com/images/g/z0EAAeSwM3Jqqrpf/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/U8oAAeSwr6JqTqdZ/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/318559970782?_skw=mcdonalds+world+cup+squishmallow+barella&hash=item4a2ba765de:g:U8oAAeSwr6JqTqdZ",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.89,
@@ -5273,9 +5317,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "08",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/YaoAAeSwCZlq3S0L/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/227582094770?_skw=mcdonalds+world+cup+squishmallow+nya&hash=item34fcf32db2:g:YaoAAeSwCZlq3S0L",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's Happy Meal Squishmallows 2026 FIFA World Cup - #8 Nya The Leopard...",
@@ -5305,6 +5346,10 @@
      "image": "https://i.ebayimg.com/images/g/J24AAeSw9vtqTquL/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/J24AAeSw9vtqTquL/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/336678892271?_skw=mcdonalds+world+cup+squishmallow+nya&hash=item4e63a032ef:g:J24AAeSw9vtqTquL",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.9,
@@ -5330,9 +5375,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "09",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/-JkAAeSwZHxqtI~2/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/366688281701?_skw=mcdonalds+world+cup+squishmallow+gordon&hash=item5560532465:g:-JkAAeSwZHxqtI~2",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "🦈 2026 McDonald's Happy Meal Squishmallows Gordon #9 FIFA World Cup 26",
@@ -5357,7 +5399,7 @@
      "price": 9.99,
      "item": 2.99,
      "ship": 7.0,
-     "url": "https://www.ebay.com/itm/168836343706?_skw=mcdonalds+world+cup+squishmallow+gordon&hash=item274f6e279a:g:S1MAAeSwNhZq6oYa&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7neC9xE9KiSeZJLX78q5zmWmsfhbmNb4UYR89MZzeAwfjpIIwVAuW5e7EPS3reFwyxU6mnfWFsCt0aGiXdLMwzqHrNYdoennBdOF3Gg4ccnJtjzBcJkTJHOKZOlSVkd8fdMEE8j6OJHN%2FhmPl6gVa%2BLbC6ybRVSUAv7YLr620oYkxXLbM5zZPQCuAMrIHw8jC4PTJ%2BFNKo4K%2FuXjApNR3sqiaGT5U%2FkO9tle3%2FiwjTCDr2QAIeRCg9G8%2BC3Q2zWwtIPJ4gm%2BoVe60TCcQDsFBebwv3yXahz7ld1JhPCw10mC8%2BNS8I5inGAteCKtdsQkRU%3D",
+     "url": "https://www.ebay.com/itm/168836343706?_skw=mcdonalds+world+cup+squishmallow+gordon&hash=item274f6e279a:g:S1MAAeSwNhZq6oYa&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7neC9xE9KiSeZJLX78q5zmWmsfhbmNb4UYR89MZzeAwfjpIIwVAuW5e7EPS3reFwyxU6mnfWFsCt0aGiXdLMwzqHrNYdoennBdOF3Gg4ccnJtjzBcJkTJHOKZOlSVkd8feIWncOUhgL7PwaW1phw8vVBp%2B9hbq78T%2Fh7mhdWIoSQLWqHbbduTatIfx0eDUOkIhtVL4Dh3MpNdSp0pcAQEW6rFqDqp27JbrugTOfY4dS9ASPl2HV13pVU2iWVy5FnlKLUfti5opLjDR%2BHgref1yfKB%2B94OeR0sqZfZgAsD8ty96kfBts3pCT7lnVmBzgvkM%3D",
      "below": 0.283,
      "image": "https://i.ebayimg.com/images/g/S1MAAeSwNhZq6oYa/s-l225.jpg"
     },
@@ -5380,6 +5422,10 @@
      "image": "https://i.ebayimg.com/images/g/BjoAAeSwkOJqrGyE/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/6pQAAeSw8Rpq765Y/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/206687751545?_skw=mcdonalds+world+cup+squishmallow+gordon&hash=item301f8ccd79:g:6pQAAeSw8Rpq765Y",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.93,
@@ -5405,9 +5451,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "10",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/Q7kAAeSwrLtqSuH9/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/237166195596?_skw=mcdonalds+world+cup+squishmallow+jim&hash=item373834f38c:g:Q7kAAeSwrLtqSuH9&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nM%2F6Bth4rrI6VAVEKDxK%2B%2FKr8364HjmMomIfWLSMM8ONRjzImixxmhy47cfgCKE1IRud1KLqGYdw6Feh55dvmmbRRmHwd6%2FYRhd7FWnz5oGNZ5RF8QzdrbtnCwBEsttzWKjZ2afEQIU8xeIjtTh6rXG1vk%2FHLcrkagSwljsYimFvnweuaU1fNj69DskWtk6OW63MR4y810FMS6Qr0ObTjevGDV8pz9VNRebga5rWJfTg%2B5ErUBF2Zd0yy0ZfdWLxcrQVK%2BarFGaFjbP%2BorQUzmf3yioEytt0HbbMxKH4c7JePDd9E3uQelPC1WOAd5g58%3D",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald’s FIFA World Cup X Squishmallows Happy Meal Toys Jim",
@@ -5432,7 +5475,7 @@
      "price": 8.72,
      "item": 3.09,
      "ship": 5.63,
-     "url": "https://www.ebay.com/itm/327394330204?_skw=mcdonalds+world+cup+squishmallow+jim&hash=item4c3a39065c:g:44EAAeSwGNdqxzYU&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7kVlUuKvs3q49rPSvOFrvBbCr0XKdov%2BMNYNMVuSpBfbmVlCej%2FAvwuOx6zLSbXjkzg5KTu2tEoK61JQTLbtCw%2F4CuaIm1GEP1jq1XEuAZpVsyIPdbxGQmBoaNHOujHcrkuEMkgUaX6ocEo24YQRB4iOm9clIIp%2Fu8ZCyJfzdLdzFCP16wYLBM9GL1uo256%2BtoGQSXDX4kp%2FXQnO%2FpsvhN2kHZiYPVhzyQ%2BPgeaqqhLqown5jKrUxcSVOpRaAnzjEEOlMtbxgYAeL964CDvtQXDWzgiT5rcXMnIpALTs7goUOveQaD0uQ4f1%2Ba7owkcbeU%3D",
+     "url": "https://www.ebay.com/itm/327394330204?_skw=mcdonalds+world+cup+squishmallow+jim&hash=item4c3a39065c:g:44EAAeSwGNdqxzYU&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7kVlUuKvs3q49rPSvOFrvBbCr0XKdov%2BMNYNMVuSpBfbmVlCej%2FAvwuOx6zLSbXjkzg5KTu2tEoK61JQTLbtCw%2F4CuaIm1GEP1jq1XEuAZpVsyIPdbxGQmBoaNHOujHcrlmhuHyTIr9Dz29ggaftgjNZm7I%2Fkzf0sX2jvbpP%2Bb1gqOBaVAqnKJ9NRbuTnu3XjticcuXH1eHblbMM7KacS4OAjAwDcavpqL%2B%2FMrIslXfSDvEeM8NGvwycB1gAvyVLt2tugCeM3CVEUZ%2BuvC1MXalg4YY3mWP7%2BKgbJ8QnST2yf4alm6Zl0Zd6XXJuKVOyC8%3D",
      "below": 0.271,
      "image": "https://i.ebayimg.com/images/g/44EAAeSwGNdqxzYU/s-l225.jpg"
     },
@@ -5455,6 +5498,10 @@
      "image": "https://i.ebayimg.com/images/g/-wEAAeSwyYNqoFad/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/uywAAeSwXQNqNDeA/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/398407961336?_skw=mcdonalds+world+cup+squishmallow+jim&hash=item5cc2f70af8:g:uywAAeSwXQNqNDeA",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.96,
@@ -5480,9 +5527,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "11",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/Gh8AAeSw9tNq36Zs/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/920077028463?_skw=mcdonalds+world+cup+squishmallow+cam&hash=itemd638dd4c6f:g:Gh8AAeSw9tNq36Zs",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonald's Fifa World Cup Happy Meal Toy Original Squishmallows CAM",
@@ -5521,6 +5565,10 @@
      "image": "https://i.ebayimg.com/images/g/8sMAAeSwhmJq8HUQ/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/XlwAAeSwBZ1qMpUy/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/407008030397?_skw=mcdonalds+world+cup+squishmallow+cam&hash=item5ec391aebd:g:XlwAAeSwBZ1qMpUy",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 15.16,
@@ -5546,9 +5594,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "12",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/YbsAAeSwMcFq7-kC/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/940074556476?_skw=mcdonalds+world+cup+squishmallow+maui&hash=itemdae0cf5c3c:g:YbsAAeSwMcFq7-kC",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Squishmallows McDonald’s MAUI The Pineapple FIFA World Cup Happy Meal Toy No Box",
@@ -5578,6 +5623,10 @@
      "image": "https://i.ebayimg.com/images/g/7LMAAeSwnsxqsfeN/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/4q0AAeSwp~tqvly2/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/257776458626?_skw=mcdonalds+world+cup+squishmallow+maui&hash=item3c04ac9b82:g:4q0AAeSwp~tqvly2",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.59,
@@ -5603,9 +5652,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "13",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/LBsAAeSwwpVq8QSi/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307273398495?_skw=mcdonalds+world+cup+squishmallow+benny&hash=item478aebf8df:g:LBsAAeSwwpVq8QSi",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDONALD'S Fifa World Cup Squishmallows Plush HAPPY MEAL TOY Benny",
@@ -5653,6 +5699,10 @@
      "image": "https://i.ebayimg.com/images/g/hE4AAeSwfCZqwXNY/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/LBsAAeSwwpVq8QSi/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/307273398495?_skw=mcdonalds+world+cup+squishmallow+benny&hash=item478aebf8df:g:LBsAAeSwwpVq8QSi",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.46,
@@ -5678,9 +5728,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "14",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/WKoAAeSw3alqthCQ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/298705474298?_skw=mcdonalds+world+cup+squishmallow+debra&hash=item458c3bd2fa:g:WKoAAeSw3alqthCQ",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "World Cup Squishmallow FIFA Debra 2026 #14 New In Box Collectible McDonald’s Toy",
@@ -5728,6 +5775,10 @@
      "image": "https://i.ebayimg.com/images/g/MqUAAeSwW0ZqV4Zg/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/WKoAAeSw3alqthCQ/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/298705474298?_skw=mcdonalds+world+cup+squishmallow+debra&hash=item458c3bd2fa:g:WKoAAeSw3alqthCQ",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.89,
@@ -5753,9 +5804,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "15",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/YuQAAeSwhbJq8Qfs/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307273419556?_skw=mcdonalds+world+cup+squishmallow+avery&hash=item478aec4b24:g:YuQAAeSwhbJq8Qfs",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonalds Happy Meal Toy Squishmallows #15 Avery FIFA Soccer Plush w/Tag, NO BOX",
@@ -5794,6 +5842,10 @@
      "image": "https://i.ebayimg.com/images/g/-~wAAeSwW2dqqd~8/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/8xQAAeSw2~5qXQnD/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/398192416537?_skw=mcdonalds+world+cup+squishmallow+avery&hash=item5cb61e1719:g:8xQAAeSw2~5qXQnD",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 13.48,
@@ -5819,9 +5871,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "16",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/xqIAAeSwwvJqWECs/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/298508366691?_skw=mcdonalds+world+cup+squishmallow+monica&hash=item45807c3363:g:xqIAAeSwwvJqWECs",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "Monica #11 Axolotl FIFA World Cup Squishmallows McDonald’s Exclusive",
@@ -5851,6 +5900,10 @@
      "image": "https://i.ebayimg.com/images/g/X0cAAeSwj8NqlGOm/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/xqIAAeSwwvJqWECs/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/298508366691?_skw=mcdonalds+world+cup+squishmallow+monica&hash=item45807c3363:g:xqIAAeSwwvJqWECs",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 15.04,
@@ -5876,9 +5929,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "17",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/XNAAAeSwXOVqRqvp/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318572694104?_skw=mcdonalds+world+cup+squishmallow+donny&hash=item4a2c698a58:g:XNAAAeSwXOVqRqvp",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald’s FIFA World Cup Squishmallows Happy Meal Toy #17, \"Donny\" IN BOX",
@@ -5908,6 +5958,10 @@
      "image": "https://i.ebayimg.com/images/g/sx4AAeSw0-xqXDQb/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/Dr4AAeSwSGdqk2d8/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/188859449944?_skw=mcdonalds+world+cup+squishmallow+donny&hash=item2bf8e68258:g:Dr4AAeSwSGdqk2d8",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.0,
@@ -5933,9 +5987,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "18",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/DfIAAeSw6JVqa2Lh/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/358862384815?_skw=mcdonalds+world+cup+squishmallow+olma&hash=item538ddd6eaf:g:DfIAAeSw6JVqa2Lh",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald's Happy Meal Toy Squishmallows - FICA World Cup - Olma",
@@ -5965,6 +6016,10 @@
      "image": "https://i.ebayimg.com/images/g/NUoAAeSwGONqojkr/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/DfIAAeSw6JVqa2Lh/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/358862384815?_skw=mcdonalds+world+cup+squishmallow+olma&hash=item538ddd6eaf:g:DfIAAeSw6JVqa2Lh",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 14.25,
@@ -5985,9 +6040,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "19",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/rIAAAeSwcXdqXrLi/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318612000230?_skw=mcdonalds+world+cup+squishmallow+waverly&hash=item4a2ec14de6:g:rIAAAeSwcXdqXrLi",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonalds Squishmallows #19 Waverly Blue Butterfly Plush FIFA World Cup Soccer",
@@ -6035,6 +6087,10 @@
      "image": "https://i.ebayimg.com/images/g/YEIAAeSwh4tqRUm-/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/rIAAAeSwcXdqXrLi/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/318612000230?_skw=mcdonalds+world+cup+squishmallow+waverly&hash=item4a2ec14de6:g:rIAAAeSwcXdqXrLi",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.92,
@@ -6060,19 +6116,7 @@
    "set": "world-cup-squishmallows-2026",
    "number": "20",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/ulkAAeSw3y9q9Ll4/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/237177610132?_skw=mcdonalds+world+cup+squishmallow+jude&hash=item3738e31f94:g:ulkAAeSw3y9q9Ll4",
-   "imageCredit": "eBay listing photo",
    "deals": [
-    {
-     "title": "2026 McDonald's Squishmallows X FIFA World Cup #20 Jude Elephant Happy Meal Toy",
-     "price": 8.16,
-     "item": 2.99,
-     "ship": 5.17,
-     "url": "https://www.ebay.com/itm/860076169928?_skw=mcdonalds+world+cup+squishmallow+jude&hash=itemc84088dac8:g:6Q4AAeSwRTtqb43N",
-     "below": 0.329,
-     "image": "https://i.ebayimg.com/images/g/6Q4AAeSwRTtqb43N/s-l225.jpg"
-    },
     {
      "title": "2026 McDonald's Happy Meal Toy Squishmallows - FICA World Cup - Jude",
      "price": 8.16,
@@ -6081,6 +6125,15 @@
      "url": "https://www.ebay.com/itm/128082879471?_skw=mcdonalds+world+cup+squishmallow+jude&hash=item1dd255a3ef:g:YRkAAeSwR7Vqqrsa",
      "below": 0.329,
      "image": "https://i.ebayimg.com/images/g/YRkAAeSwR7Vqqrsa/s-l225.jpg"
+    },
+    {
+     "title": "2026 McDonald's Squishmallows X FIFA World Cup #20 Jude Elephant Happy Meal Toy",
+     "price": 8.16,
+     "item": 2.99,
+     "ship": 5.17,
+     "url": "https://www.ebay.com/itm/860076169928?_skw=mcdonalds+world+cup+squishmallow+jude&hash=itemc84088dac8:g:6Q4AAeSwRTtqb43N",
+     "below": 0.329,
+     "image": "https://i.ebayimg.com/images/g/6Q4AAeSwRTtqb43N/s-l225.jpg"
     },
     {
      "title": "McDonalds Squishmallow FIFA World Cup Happy Meal #20 Jude the Elephant No Box",
@@ -6110,6 +6163,10 @@
      "image": "https://i.ebayimg.com/images/g/3XYAAeSweHNqwtMe/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/fFYAAeSw24RqY9WK/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/800402369503?_skw=mcdonalds+world+cup+squishmallow+jude&hash=itemba5bb2ebdf:g:fFYAAeSw24RqY9WK&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7kMb6gdwmWgv5Fc5S7gxLrOn%2F1Q7O8vUbBbDVTCxVvfBO0hA0J%2BkVYHgsLSKWDb%2FhtYPlSO%2F509%2F7co9IHyoIChxR5VtI42yrtaOr%2FF%2BG8bE28TQt6ib1XFwllRxbmixUUtXQRfV%2Fn8V14a8ZKdrQeosOZ5%2Brw5ZEOROaC3FabLe0dYv5elbPs7BwFVH2WHz0oEAkI1dsAhpUba4wLIZZFGyDfcQ%2FeRvS%2BG2JMjbgzhi0JWHlt3PAbBaWYu%2Bf3J4DaUC%2BGNj5EMUBvX6XWx%2B1kq6j2XC7jKOHbbgqnKpht4okM52EoBrwm0AycPife5cJ8%3D",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 12.16,
@@ -6135,9 +6192,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "21",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/ArcAAeSw7dlqUSY6/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/358780467935?_skw=mcdonalds+world+cup+squishmallow+erica&hash=item5388fb7adf:g:ArcAAeSw7dlqUSY6",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonald's Happy Meal Toy Squishmallows - FICA World Cup - Erica",
@@ -6176,6 +6230,10 @@
      "image": "https://i.ebayimg.com/images/g/9BkAAeSwazxqemmR/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/ArcAAeSw7dlqUSY6/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/358780467935?_skw=mcdonalds+world+cup+squishmallow+erica&hash=item5388fb7adf:g:ArcAAeSw7dlqUSY6",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.9,
@@ -6201,9 +6259,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "22",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/vzgAAeSwvk9qjgdz/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/117377502526?_skw=mcdonalds+world+cup+squishmallow+dolan&hash=item1b543e8d3e:g:vzgAAeSwvk9qjgdz",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "2026 McDonalds Happy Meal FIFA World Cup Squishmallows Jersey 12 Dolan No Box",
@@ -6251,6 +6306,10 @@
      "image": "https://i.ebayimg.com/images/g/WnIAAeSw0-xqW6X2/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/JzMAAeSwSgFqS~Bk/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/257838573659?_skw=mcdonalds+world+cup+squishmallow+dolan&hash=item3c0860685b:g:JzMAAeSwSgFqS~Bk",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 9.98,
@@ -6276,9 +6335,6 @@
    "set": "world-cup-squishmallows-2026",
    "number": "23",
    "rarity": null,
-   "image": "https://i.ebayimg.com/images/g/3vUAAeSw58Nq5-9s/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/336874251179?_skw=mcdonalds+world+cup+squishmallow+winnie&hash=item4e6f4523ab:g:3vUAAeSw58Nq5-9s",
-   "imageCredit": "eBay listing photo",
    "deals": [
     {
      "title": "McDonalds Squishmallows Winnie the Walrus FIFA World Cup 26 Plush Toy #3 Purple",
@@ -6326,6 +6382,10 @@
      "image": "https://i.ebayimg.com/images/g/kToAAeSwtEFqdoN0/s-l225.jpg"
     }
    ],
+   "image": "https://i.ebayimg.com/images/g/WEIAAeSwo9lqYmmQ/s-l500.jpg",
+   "imageLink": "https://www.ebay.com/itm/880104136157?_skw=mcdonalds+world+cup+squishmallow+winnie&hash=itemccea4b5ddd:g:WEIAAeSwo9lqYmmQ",
+   "imageCredit": "eBay listing photo",
+   "imageV": 2,
    "latest": {
     "date": "2026-11-11",
     "median": 11.79,
@@ -6360,5 +6420,5 @@
   }
  ],
  "calendar": [],
- "updated": "2026-11-11T22:07:08+00:00"
+ "updated": "2026-11-11T22:28:35+00:00"
 }
