@@ -8,7 +8,7 @@
     "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+pokemon+2026+complete+set+15+cards"
    },
    "name": "Pokémon TCG cards",
-   "description": "Fifteen Pokémon TCG promo cards, two in every Happy Meal. Seven are holo foils, including Pikachu, Mimikyu and Jirachi. We price raw single cards only: no graded slabs, lots or sets.",
+   "description": "Fifteen Pokémon TCG promo cards, two in every Happy Meal. Seven are holo foils, including Pikachu, Mimikyu and Jirachi. The main price is for raw single cards; graded copies are priced separately.",
    "kind": "cards",
    "start": "2026-11-10",
    "end": "2026-12-14",
@@ -287,6 +287,21 @@
    "source": "eBay US active listings (median asking price)",
    "days": 1,
    "lastUpdate": "2026-11-11"
+  },
+  "world-cup-squishmallows-2026": {
+   "name": "FIFA World Cup Squishmallows",
+   "description": "Twenty-three mini Squishmallows in Canada, Mexico and USA jerseys, one in every Happy Meal. They include the three official World Cup mascots: Maple the Moose, Zayu the Jaguar and Clutch the Bald Eagle.",
+   "kind": "toys",
+   "franchise": "Squishmallows",
+   "start": "2026-06-09",
+   "end": "2026-07-13",
+   "note": "23 mini plush, numbered 1-23. Names from eBay listings (checklist order confirmed by majority of titles with #numbers); no official list found. End date assumed: the day before BT21 launched.",
+   "order": 6,
+   "refresh": "weekly",
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)",
+   "days": 0,
+   "lastUpdate": null
   }
  },
  "items": {
@@ -4096,6 +4111,144 @@
     "low": 6.26,
     "count": 69
    }
+  },
+  "world-cup-squishmallows-2026-01": {
+   "name": "Monty",
+   "set": "world-cup-squishmallows-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-02": {
+   "name": "Lindsay",
+   "set": "world-cup-squishmallows-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-03": {
+   "name": "Clutch",
+   "set": "world-cup-squishmallows-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-04": {
+   "name": "Zayu",
+   "set": "world-cup-squishmallows-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-05": {
+   "name": "Maple",
+   "set": "world-cup-squishmallows-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-06": {
+   "name": "Boyle",
+   "set": "world-cup-squishmallows-2026",
+   "number": "06",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-07": {
+   "name": "Barella",
+   "set": "world-cup-squishmallows-2026",
+   "number": "07",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-08": {
+   "name": "Nya",
+   "set": "world-cup-squishmallows-2026",
+   "number": "08",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-09": {
+   "name": "Gordon",
+   "set": "world-cup-squishmallows-2026",
+   "number": "09",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-10": {
+   "name": "Jim",
+   "set": "world-cup-squishmallows-2026",
+   "number": "10",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-11": {
+   "name": "Cam",
+   "set": "world-cup-squishmallows-2026",
+   "number": "11",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-12": {
+   "name": "Maui",
+   "set": "world-cup-squishmallows-2026",
+   "number": "12",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-13": {
+   "name": "Benny",
+   "set": "world-cup-squishmallows-2026",
+   "number": "13",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-14": {
+   "name": "Debra",
+   "set": "world-cup-squishmallows-2026",
+   "number": "14",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-15": {
+   "name": "Avery",
+   "set": "world-cup-squishmallows-2026",
+   "number": "15",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-16": {
+   "name": "Monica",
+   "set": "world-cup-squishmallows-2026",
+   "number": "16",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-17": {
+   "name": "Donny",
+   "set": "world-cup-squishmallows-2026",
+   "number": "17",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-18": {
+   "name": "Olma",
+   "set": "world-cup-squishmallows-2026",
+   "number": "18",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-19": {
+   "name": "Waverly",
+   "set": "world-cup-squishmallows-2026",
+   "number": "19",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-20": {
+   "name": "Jude",
+   "set": "world-cup-squishmallows-2026",
+   "number": "20",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-21": {
+   "name": "Erica",
+   "set": "world-cup-squishmallows-2026",
+   "number": "21",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-22": {
+   "name": "Dolan",
+   "set": "world-cup-squishmallows-2026",
+   "number": "22",
+   "rarity": null
+  },
+  "world-cup-squishmallows-2026-23": {
+   "name": "Winnie",
+   "set": "world-cup-squishmallows-2026",
+   "number": "23",
+   "rarity": null
   }
  },
  "groups": [
@@ -4110,13 +4263,6 @@
    "description": "Every Pokémon Happy Meal comes with one mini box toy and two TCG promo cards. The 15 mini boxes, one Pokémon each, double as bag charms. Seven of the 15 cards are holo foils, including Pikachu, Mimikyu and Jirachi."
   }
  ],
- "calendar": [
-  {
-   "name": "FIFA World Cup Squishmallows",
-   "start": "2026-06-09",
-   "kind": "toys",
-   "note": "Not tracked."
-  }
- ],
+ "calendar": [],
  "updated": "2026-11-11T21:16:49+00:00"
 }

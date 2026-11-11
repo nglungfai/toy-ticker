@@ -63,7 +63,7 @@ def summary(hist):
     if not hist:
         return None
     last, prev = hist[-1], (hist[-2] if len(hist) > 1 else None)
-    out = {k: last[k] for k in ("date", "median", "p25", "low", "count") if k in last}
+    out = {k: last[k] for k in ("date", "median", "p25", "low", "count", "watchers", "watched", "cond", "graded") if k in last}
     if prev and prev.get("median") and (date.fromisoformat(last["date"]) - date.fromisoformat(prev["date"])).days <= 2:
         out["d1"] = round(last["median"] / prev["median"] - 1, 4)  # weekly series have no 1-day change
     month_ago = [p for p in hist[:-1] if (date.fromisoformat(last["date"]) - date.fromisoformat(p["date"])).days <= 30]
@@ -129,7 +129,7 @@ def main():
     for order, s in enumerate(config["series"]):
         prev = data["sets"].get(s["id"], {})
         last_update = prev.get("lastUpdate")
-        data["sets"][s["id"]] = {**({"fullSet": prev["fullSet"]} if prev.get("fullSet") else {}),
+        data["sets"][s["id"]] = {**{k: prev[k] for k in ("fullSet", "insights") if prev.get(k)},
                                  **{k: s[k] for k in SERIES_KEYS if k in s}, "order": order,
                                  "refresh": "weekly" if is_weekly(s, today) else "daily",
                                  "currency": "USD", "source": "eBay US active listings (median asking price)"}
@@ -144,7 +144,7 @@ def main():
         print(f"{s['name']}: {len(s['items'])} items")
         try:
             results = ebay.snapshot(s, today)
-            calls += len(s["items"])
+            calls += len(s["items"]) * (2 if s.get("kind") == "cards" and s.get("graded") else 1)
         except Exception as e:  # noqa: BLE001
             print(f"! {s['id']}: {e}", file=sys.stderr)
             failures += 1
@@ -172,6 +172,7 @@ def main():
         try:
             led = listings.update(s["id"], today)
             calls += (led or {}).get("checked", 0)
+            data["sets"][s["id"]]["insights"] = listings.insights(s["id"], today)
         except Exception as e:  # noqa: BLE001
             print(f"! {s['id']} listing ledger: {e}", file=sys.stderr)
 

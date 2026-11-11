@@ -189,7 +189,7 @@
 
 <script>
 // Fill the live numbers and series list from the same data file the price page uses.
-const BAND = { "pokemon-happy-meal-2026": "#e3350d", "pokemon-2026": "#f2b705", "boo-buckets-2026": "#7a3fc0", "spongebob-onepiece-2026": "#0a8fc4" };
+const BAND = { "world-cup-squishmallows-2026": "#1f9d55", "pokemon-happy-meal-2026": "#e3350d", "pokemon-2026": "#f2b705", "boo-buckets-2026": "#7a3fc0", "spongebob-onepiece-2026": "#0a8fc4" };
 const fmt = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 fetch("data/index.json", { cache: "no-store" }).then(r => r.json()).then(d => {

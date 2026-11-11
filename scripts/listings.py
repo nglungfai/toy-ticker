@@ -95,6 +95,8 @@ def update(sid, today):
         active[lid] = {"key": key, "title": (it.get("title") or "")[:90], "legacy": it.get("legacyItemId"),
                        "listed": (it.get("itemCreationDate") or today)[:10], "first": old.get("first", today),
                        "seen": today, "price": round(price, 2), "ship": round(ship, 2), "total": total,
+                       **({"seller": it["seller"]["username"]} if (it.get("seller") or {}).get("username") else {}),
+                       **({"watch": ebay.watchers(it)} if ebay.watchers(it) is not None else {}),
                        **({"sold": old["sold"]} if "sold" in old else {})}
     # Still in the raw results (e.g. now rejected by a stricter rule): it's listed, so not missing.
     for lid in run["raw"] & active.keys():
@@ -145,3 +147,44 @@ def update(sid, today):
           f"{counts['sold']} sold, {counts['ended']} ended, {counts['gone']} gone, {counts['listed']} still listed"
           + (f", {counts['error']} errors" if counts["error"] else ""))
     return counts
+
+
+def insights(sid, today, window=30):
+    """Series facts from the ledger for the site: seller concentration and how fast listings sell.
+    Seller names never leave the ledger; the site only gets shares."""
+    active, events = load(sid)
+    live = [a for a in active.values() if a["seen"] == today]
+    out = {"since": min([a["first"] for a in active.values()] + [e["first"] for e in events], default=today)}
+    by_seller = {}
+    for a in live:
+        if a.get("seller"):
+            by_seller[a["seller"]] = by_seller.get(a["seller"], 0) + 1
+    if by_seller:
+        n = sum(by_seller.values())
+        top = sorted(by_seller.values(), reverse=True)
+        out["sellers"] = {"listings": n, "sellers": len(top), "top1": round(top[0] / n, 3),
+                          "top3": round(sum(top[:3]) / n, 3), "top10": round(sum(top[:10]) / n, 3),
+                          "one": round(sum(1 for c in top if c == 1) / len(top), 3)}
+    recent = [e for e in events if days(e["date"], today) <= window]
+    per = {}
+    for e in recent:
+        p = per.setdefault(e["key"], {"sold": 0, "ended": 0, "gone": 0, "days": []})
+        if e["kind"] == "sold":
+            p["sold"] += e.get("qty", 1) or 1
+            if e.get("listed"):
+                p["days"].append(max(0, days(e["listed"], e["date"])))
+        elif e["kind"] in ("ended", "gone"):
+            p[e["kind"]] += 1
+    def summ(p):
+        closed = p["sold"] + p["ended"] + p["gone"]
+        d = sorted(p["days"])
+        return {"sold": p["sold"], "closed": closed, **({"rate": round(p["sold"] / closed, 3)} if closed else {}),
+                **({"days": d[len(d) // 2]} if d else {})}
+    if per:
+        total = {"sold": 0, "ended": 0, "gone": 0, "days": []}
+        for p in per.values():
+            for k in ("sold", "ended", "gone"):
+                total[k] += p[k]
+            total["days"] += p["days"]
+        out["sales"] = {"window": window, **summ(total), "items": {k: summ(p) for k, p in per.items()}}
+    return out

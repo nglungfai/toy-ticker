@@ -19,6 +19,7 @@ THEMES = {  # gradient start, gradient end, text colour (keep in sync with index
     "hello-kitty-godzilla-2026": ("#d4537e", "#2f7a52", "#ffffff"),
     "bt21-2026": ("#7f77dd", "#d4537e", "#ffffff"),
     "pokemon-happy-meal-2026": ("#ffcb05", "#e3350d", "#1d1d1b"),
+    "world-cup-squishmallows-2026": ("#2bb673", "#1d4ed8", "#ffffff"),
 }
 DEFAULT = ("#d62300", "#ffb703", "#ffffff")
 

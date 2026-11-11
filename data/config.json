@@ -5,13 +5,13 @@
   {
    "id": "pokemon-2026",
    "name": "Pokémon TCG cards",
-   "description": "Fifteen Pokémon TCG promo cards, two in every Happy Meal. Seven are holo foils, including Pikachu, Mimikyu and Jirachi. We price raw single cards only: no graded slabs, lots or sets.",
+   "description": "Fifteen Pokémon TCG promo cards, two in every Happy Meal. Seven are holo foils, including Pikachu, Mimikyu and Jirachi. The main price is for raw single cards; graded copies are priced separately.",
    "kind": "cards",
    "current": true,
    "start": "2026-11-10",
    "end": "2026-12-14",
    "category": "183454",
-   "note": "15 promo cards (7 holo), 2 per Happy Meal. Raw single cards only.",
+   "note": "15 promo cards (7 holo), 2 per Happy Meal. Main price is raw single cards; graded copies (PSA/CGC/BGS) are priced separately.",
    "require": [
     [
      "mcdonald",
@@ -232,7 +232,8 @@
    "full_set": {
     "q": "mcdonalds pokemon 2026 complete set 15 cards",
     "size": 15
-   }
+   },
+   "graded": true
   },
   {
    "id": "pokemon-toys-2026",
@@ -997,6 +998,269 @@
     "q": "mcdonalds bt21 complete set",
     "size": 10
    }
+  },
+  {
+   "id": "world-cup-squishmallows-2026",
+   "name": "FIFA World Cup Squishmallows",
+   "description": "Twenty-three mini Squishmallows in Canada, Mexico and USA jerseys, one in every Happy Meal. They include the three official World Cup mascots: Maple the Moose, Zayu the Jaguar and Clutch the Bald Eagle.",
+   "kind": "toys",
+   "franchise": "Squishmallows",
+   "start": "2026-06-09",
+   "end": "2026-07-13",
+   "note": "23 mini plush, numbered 1-23. Names from eBay listings (checklist order confirmed by majority of titles with #numbers); no official list found. End date assumed: the day before BT21 launched.",
+   "require": [
+    [
+     "squishmallow",
+     "squishmallows"
+    ],
+    [
+     "world cup",
+     "fifa",
+     "soccer"
+    ],
+    [
+     "mcdonald",
+     "mcdonalds",
+     "mcd",
+     "happy meal"
+    ]
+   ],
+   "full_set": {
+    "q": "mcdonalds world cup squishmallows complete set",
+    "size": 23
+   },
+   "items": [
+    {
+     "number": "01",
+     "name": "Monty",
+     "q": "mcdonalds world cup squishmallow monty",
+     "match": [
+      [
+       "monty"
+      ]
+     ]
+    },
+    {
+     "number": "02",
+     "name": "Lindsay",
+     "q": "mcdonalds world cup squishmallow lindsay",
+     "match": [
+      [
+       "lindsay"
+      ]
+     ]
+    },
+    {
+     "number": "03",
+     "name": "Clutch",
+     "q": "mcdonalds world cup squishmallow clutch",
+     "match": [
+      [
+       "clutch"
+      ]
+     ]
+    },
+    {
+     "number": "04",
+     "name": "Zayu",
+     "q": "mcdonalds world cup squishmallow zayu",
+     "match": [
+      [
+       "zayu"
+      ]
+     ]
+    },
+    {
+     "number": "05",
+     "name": "Maple",
+     "q": "mcdonalds world cup squishmallow maple",
+     "match": [
+      [
+       "maple"
+      ]
+     ]
+    },
+    {
+     "number": "06",
+     "name": "Boyle",
+     "q": "mcdonalds world cup squishmallow boyle",
+     "match": [
+      [
+       "boyle"
+      ]
+     ]
+    },
+    {
+     "number": "07",
+     "name": "Barella",
+     "q": "mcdonalds world cup squishmallow barella",
+     "match": [
+      [
+       "barella"
+      ]
+     ]
+    },
+    {
+     "number": "08",
+     "name": "Nya",
+     "q": "mcdonalds world cup squishmallow nya",
+     "match": [
+      [
+       "nya"
+      ]
+     ]
+    },
+    {
+     "number": "09",
+     "name": "Gordon",
+     "q": "mcdonalds world cup squishmallow gordon",
+     "match": [
+      [
+       "gordon"
+      ]
+     ]
+    },
+    {
+     "number": "10",
+     "name": "Jim",
+     "q": "mcdonalds world cup squishmallow jim",
+     "match": [
+      [
+       "jim"
+      ]
+     ]
+    },
+    {
+     "number": "11",
+     "name": "Cam",
+     "q": "mcdonalds world cup squishmallow cam",
+     "match": [
+      [
+       "cam"
+      ]
+     ]
+    },
+    {
+     "number": "12",
+     "name": "Maui",
+     "q": "mcdonalds world cup squishmallow maui",
+     "match": [
+      [
+       "maui"
+      ]
+     ]
+    },
+    {
+     "number": "13",
+     "name": "Benny",
+     "q": "mcdonalds world cup squishmallow benny",
+     "match": [
+      [
+       "benny"
+      ]
+     ]
+    },
+    {
+     "number": "14",
+     "name": "Debra",
+     "q": "mcdonalds world cup squishmallow debra",
+     "match": [
+      [
+       "debra"
+      ]
+     ]
+    },
+    {
+     "number": "15",
+     "name": "Avery",
+     "q": "mcdonalds world cup squishmallow avery",
+     "match": [
+      [
+       "avery"
+      ]
+     ]
+    },
+    {
+     "number": "16",
+     "name": "Monica",
+     "q": "mcdonalds world cup squishmallow monica",
+     "match": [
+      [
+       "monica"
+      ]
+     ]
+    },
+    {
+     "number": "17",
+     "name": "Donny",
+     "q": "mcdonalds world cup squishmallow donny",
+     "match": [
+      [
+       "donny"
+      ]
+     ]
+    },
+    {
+     "number": "18",
+     "name": "Olma",
+     "q": "mcdonalds world cup squishmallow olma",
+     "match": [
+      [
+       "olma"
+      ]
+     ]
+    },
+    {
+     "number": "19",
+     "name": "Waverly",
+     "q": "mcdonalds world cup squishmallow waverly",
+     "match": [
+      [
+       "waverly"
+      ]
+     ]
+    },
+    {
+     "number": "20",
+     "name": "Jude",
+     "q": "mcdonalds world cup squishmallow jude",
+     "match": [
+      [
+       "jude"
+      ]
+     ]
+    },
+    {
+     "number": "21",
+     "name": "Erica",
+     "q": "mcdonalds world cup squishmallow erica",
+     "match": [
+      [
+       "erica"
+      ]
+     ]
+    },
+    {
+     "number": "22",
+     "name": "Dolan",
+     "q": "mcdonalds world cup squishmallow dolan",
+     "match": [
+      [
+       "dolan"
+      ]
+     ]
+    },
+    {
+     "number": "23",
+     "name": "Winnie",
+     "q": "mcdonalds world cup squishmallow winnie",
+     "match": [
+      [
+       "winnie"
+      ]
+     ]
+    }
+   ]
   }
  ],
  "groups": [
@@ -1012,13 +1276,6 @@
   }
  ],
  "_groups_help": "groups: series shown on the site as one (same promotion, e.g. a toy and cards in every Happy Meal). Each member keeps its own matching rules, prices and full-set search.",
- "calendar": [
-  {
-   "name": "FIFA World Cup Squishmallows",
-   "start": "2026-06-09",
-   "kind": "toys",
-   "note": "Not tracked."
-  }
- ],
+ "calendar": [],
  "_calendar_help": "calendar: untracked Happy Meals shown in the page's calendar. Add the next series only once McDonald's confirms it (name/start/end), and add it under series to track prices."
 }

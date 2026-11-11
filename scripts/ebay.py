@@ -48,6 +48,33 @@ EXCLUDE_CARDS = re.compile(
 )
 
 
+# Graded cards: "PSA 10", "CGC Gem Mint 9.5", "BGS 9". Grading words are stripped before the usual card rules run.
+GRADE = re.compile(r"\b(psa|cgc|bgs|beckett|sgc|tag)\s*(?:gem\s*mint|gem\s*mt|gem|mint|pristine|black label)?\s*(10|9\.5|9|8\.5|8|7\.5|7|6|5)\b")
+GRADE_WORDS = re.compile(r"\b(psa|cgc|bgs|beckett|sgc|tag|graded|slab(bed)?|gem\s*mint|gem\s*mt|gem|pristine|black label|pop\s*\d*)\b")
+# Toy condition from the title. Only explicit wording counts; plain "new" is too common to mean sealed.
+NEVER_OPENED = re.compile(r"\bnever (been )?opened\b")
+SEALED = re.compile(r"\b(sealed|unopened|un opened|new in (bag|package|packaging|pack|box|plastic)|still in (bag|package|packaging|plastic)|"
+                    r"in (original|orig) (bag|package|packaging|plastic)|nip|nib|mip|mib|nisp|nwt|new with tags?|factory sealed|never opened)\b")
+OPENED = re.compile(r"\b(opened|loose|out of (the )?(bag|package|packaging|plastic)|no (bag|package|packaging|plastic|tags?)|"
+                    r"unbagged|used|displayed|played with|removed from (the )?(bag|package|packaging))\b")
+
+
+def condition(title):
+    """'sealed', 'opened' or None (title doesn't say)."""
+    t = norm(title)
+    sealed = bool(SEALED.search(t))
+    opened = bool(OPENED.search(NEVER_OPENED.sub(" ", t)))
+    return "sealed" if sealed and not opened else "opened" if opened and not sealed else None
+
+
+def grade_of(title):
+    """'psa10', 'psa9' or 'other' for a graded card title, else None."""
+    m = GRADE.search(norm(title))
+    if not m:
+        return None
+    return {"psa10": "psa10", "psa9": "psa9"}.get(f"{m.group(1)}{m.group(2)}", "other")
+
+
 def norm(s):
     return re.sub(r"\s+", " ", s.lower().replace("’", "'").replace("‘", "'").replace("-", " "))
 
@@ -93,6 +120,15 @@ def reject_reason(title, series, item):
     # A title that also fully matches another item is a multi-item listing.
     other = next((o for o in series["items"] if o is not item and item_hits(t, o)), None)
     return f"also names {other['name']}" if other else None
+
+
+def graded_reason(title, series, item):
+    """None if the title is one graded copy of this card, otherwise why it was rejected."""
+    if not grade_of(title):
+        return "not graded"
+    if len(GRADE.findall(norm(title))) > 1:
+        return "several grades"
+    return reject_reason(GRADE_WORDS.sub(" ", norm(title)), series, item)
 
 
 def matches(title, series, item):
@@ -162,6 +198,13 @@ def search(tok, q, category=None, attempts=4, us_sellers=False):
 SHIP_TO_ZIP = "66044"  # a central US ZIP (Kansas): a fair middle for distance-based shipping
 
 
+def watchers(it):
+    try:
+        return int(it["watchCount"])
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
 def item_price(it):
     try:
         return float(it["price"]["value"])
@@ -202,6 +245,37 @@ def stats(prices):
         "low": round(prices[0], 2),
         "count": len(prices),
     }
+
+
+def sub_stats(rows, key_fn):
+    """{group: {median, low, count}} of delivered prices, split by key_fn(listing) (None = left out)."""
+    groups = {}
+    for it, _p, _sh, total, _k in rows:
+        k = key_fn(it.get("title", ""))
+        if k:
+            groups.setdefault(k, []).append(total)
+    return {k: {"median": round(statistics.median(v), 2), "low": round(min(v), 2), "count": len(v)} for k, v in groups.items()}
+
+
+def graded_point(tok, series, item, iid):
+    """Graded-card prices for one card: PSA 10, PSA 9 and other grades, from one extra search."""
+    q = f"{item['q']} (psa,cgc,bgs)"
+    items = search(tok, q, series.get("category"))
+    kept, rejected, seen_ids = [], [], set()
+    for it in items:
+        if it.get("itemId") in seen_ids:
+            continue
+        why = graded_reason(it.get("title", ""), series, item)
+        if why is None:
+            seen_ids.add(it.get("itemId")); kept.append(it)
+        else:
+            rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
+    rows = delivered(kept)
+    if os.environ.get("MATCH_REPORT"):
+        REPORT[f"{iid}-GRADED"] = {"name": f"{item['name']} graded", "query": q,
+                                    "kept": [{"title": it.get("title", ""), "grade": grade_of(it.get("title", "")), "total": t}
+                                             for it, _p, _sh, t, _k in rows], "rejected": rejected}
+    return sub_stats(rows, grade_of) or None
 
 
 def best_image(matched, item):
@@ -292,6 +366,23 @@ def snapshot(series, today):
             point = {"date": today, **stats(prices),
                      "itemMedian": round(statistics.median([p for _, p, *_ in rows]), 2),
                      "shipMedian": round(statistics.median([sh for _, _, sh, *_ in rows]), 2)}
+            # Demand: eBay's watcher counts on the matched listings (not every listing reports one).
+            watch = [watchers(it) for it, *_ in rows if watchers(it) is not None]
+            if watch:
+                point["watchers"], point["watched"] = sum(watch), len(watch)
+            # Toys: listings that say they're sealed vs all the others (few titles say "opened").
+            if series["kind"] == "toys":
+                cond = sub_stats(rows, lambda t: "sealed" if condition(t) == "sealed" else "other")
+                if cond:
+                    point["cond"] = cond
+        # Cards: graded copies (PSA 10, PSA 9, other grades) from one extra search.
+        if series["kind"] == "cards" and series.get("graded"):
+            try:
+                g = graded_point(tok, series, item, iid)
+                if g and point:  # graded prices ride along on the raw card's daily point
+                    point["graded"] = g
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! {iid} graded: {e}")
         meta["deals"] = deals(rows, point["median"]) if point else []
         print(f"  {iid} {item['name']}: {len(prices)}/{len(items)} listings kept"
               + (f", median ${point['median']} incl. shipping (item ${point['itemMedian']} + ship ${point['shipMedian']})" if point else ""))
