@@ -24,8 +24,13 @@ SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search"
 EXCLUDE_ANY = re.compile(
     r"\b(lot|lots|bundle|complete set|full set|sets?|set of|choose|pick|select|you pick|singles|your choice|"
     r"custom|fake|proxy|replica|x ?[2-9]|[2-9] ?x|\d+ ?(toys|cards|pcs|pieces|figures)|"
-    r"empty|box only|bag only|no toy|toy not included|japan|japanese)\b"
+    r"empty|box only|bag only|no toy|toy not included|japan|japanese|"
+    r"parody|fan made|fanmade|fan art|fanart|3d print(ed)?|print|poster print|decal|pin|pins|magnet|shirt|sticker sheet only)\b"
 )
+# Card numbers like "004/015": a different set size or card number means a different card.
+CARDNUM = re.compile(r"\b0*(\d{1,3})\s*/\s*0*(\d{2,3})\b")
+# Toy series: a listing about cards is a different product (cards are tracked separately or not at all).
+EXCLUDE_TOYS = re.compile(r"\b(cards?|tcg|trading card|holo|foil)\b")
 # "No box or cards" / "without cards" describe a toy-only listing; drop them before the card checks.
 NEGATED = re.compile(r"\b(no|without|w/o|not including|does not include)\s+(box\s+(or|and|&|nor)\s+)?(cards?|tcg)\b")
 YEAR = re.compile(r"\b(19[89]\d|20[0-3]\d)\b")
@@ -62,9 +67,16 @@ def reject_reason(title, series, item):
         return f"different year: {', '.join(sorted(years))}"
     if not hits(t, series.get("require", [])):
         return "missing series words"
+    if series["kind"] == "cards" and series.get("set_size"):
+        for num, size in CARDNUM.findall(t):
+            if int(size) != series["set_size"]:
+                return f"different card set: /{size}"
+            if str(item.get("number", "")).isdigit() and int(num) != int(item["number"]):
+                return f"different card number: {num}/{size}"
     if not item_hits(t, item):
         return "not this item"
-    m = EXCLUDE_ANY.search(t) or (series["kind"] == "cards" and EXCLUDE_CARDS.search(t))
+    m = (EXCLUDE_ANY.search(t) or (series["kind"] == "cards" and EXCLUDE_CARDS.search(t))
+         or (series["kind"] == "toys" and EXCLUDE_TOYS.search(t)))
     if m:
         return f"excluded word: {m.group(0)}"
     for w in series.get("exclude", []):
