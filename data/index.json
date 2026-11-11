@@ -1,6 +1,12 @@
 {
  "sets": {
   "pokemon-2026": {
+   "fullSet": {
+    "history": [],
+    "deals": [],
+    "size": 15,
+    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+pokemon+2026+complete+set+15+cards"
+   },
    "name": "Pokémon TCG cards",
    "kind": "cards",
    "start": "2026-11-10",
@@ -11,26 +17,54 @@
    "refresh": "daily",
    "currency": "USD",
    "source": "eBay US active listings (median asking price)",
-   "fullSet": {
-    "history": [
-     {
-      "date": "2026-11-11",
-      "median": 70.45,
-      "p25": 70.44,
-      "low": 70.44,
-      "count": 2,
-      "itemMedian": 70.45,
-      "shipMedian": 0.0
-     }
-    ],
-    "deals": [],
-    "size": 15,
-    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+pokemon+2026+complete+set+15+cards"
-   },
    "days": 1,
    "lastUpdate": "2026-11-11"
   },
   "boo-buckets-2026": {
+   "fullSet": {
+    "history": [
+     {
+      "date": "2026-11-11",
+      "median": 48.0,
+      "p25": 35.46,
+      "low": 22.99,
+      "count": 20,
+      "itemMedian": 40.0,
+      "shipMedian": 0.0
+     }
+    ],
+    "deals": [
+     {
+      "title": "McDonald's 2026 Disney  Villains Boo Bucket Complete Set Of 5 (SEE FULL DESCR.)",
+      "price": 22.99,
+      "item": 22.99,
+      "ship": 0.0,
+      "url": "https://www.ebay.com/itm/307272000420?_skw=mcdonalds+disney+villains+boo+bucket+set+of+5&hash=item478ad6a3a4:g:mBQAAeSwfYdq3KJX",
+      "below": 0.521,
+      "image": "https://i.ebayimg.com/images/g/mBQAAeSwfYdq3KJX/s-l225.jpg"
+     },
+     {
+      "title": "2026 McDonald's Disney Villains Boo Bucket Halloween Happy Meal Set of 5",
+      "price": 24.99,
+      "item": 24.99,
+      "ship": 0.0,
+      "url": "https://www.ebay.com/itm/366780077960?_skw=mcdonalds+disney+villains+boo+bucket+set+of+5&hash=item5565cbd788:g:iDUAAeSwXElq6T5b",
+      "below": 0.479,
+      "image": "https://i.ebayimg.com/images/g/iDUAAeSwXElq6T5b/s-l225.jpg"
+     },
+     {
+      "title": "2026 McDONALDS Disney Villains Boo Buckets Full Complete Set Of 5",
+      "price": 24.99,
+      "item": 24.99,
+      "ship": 0.0,
+      "url": "https://www.ebay.com/itm/128163550446?_skw=mcdonalds+disney+villains+boo+bucket+set+of+5&hash=item1dd72494ee:g:5KsAAeSw3rBq48yS",
+      "below": 0.479,
+      "image": "https://i.ebayimg.com/images/g/5KsAAeSw3rBq48yS/s-l225.jpg"
+     }
+    ],
+    "size": 5,
+    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+disney+villains+boo+bucket+set+of+5"
+   },
    "name": "Disney Villains Boo Buckets",
    "kind": "toys",
    "start": "2026-10-20",
@@ -40,54 +74,54 @@
    "refresh": "daily",
    "currency": "USD",
    "source": "eBay US active listings (median asking price)",
-   "fullSet": {
-    "history": [
-     {
-      "date": "2026-11-11",
-      "median": 43.5,
-      "p25": 33.21,
-      "low": 14.99,
-      "count": 22,
-      "itemMedian": 40.0,
-      "shipMedian": 0.0
-     }
-    ],
-    "deals": [
-     {
-      "title": "McDonald's Disney Villains Scar Boo Bucket Halloween Pail  2026 Complete New",
-      "price": 14.99,
-      "item": 14.99,
-      "ship": 0.0,
-      "url": "https://www.ebay.com/itm/336876152139?_skw=mcdonalds+disney+villains+boo+bucket+set+of+5&hash=item4e6f62254b:g:nwQAAeSw7odq6UAp",
-      "below": 0.655,
-      "image": "https://i.ebayimg.com/images/g/nwQAAeSw7odq6UAp/s-l225.jpg"
-     },
-     {
-      "title": "McDonald's 2026 Disney  Villains Boo Bucket Complete Set Of 5 (SEE FULL DESCR.)",
-      "price": 22.99,
-      "item": 22.99,
-      "ship": 0.0,
-      "url": "https://www.ebay.com/itm/307272000420?_skw=mcdonalds+disney+villains+boo+bucket+set+of+5&hash=item478ad6a3a4:g:mBQAAeSwfYdq3KJX",
-      "below": 0.471,
-      "image": "https://i.ebayimg.com/images/g/mBQAAeSwfYdq3KJX/s-l225.jpg"
-     },
-     {
-      "title": "2026 McDonald's Disney Villains Boo Bucket Halloween Happy Meal Set of 5",
-      "price": 24.99,
-      "item": 24.99,
-      "ship": 0.0,
-      "url": "https://www.ebay.com/itm/366780077960?_skw=mcdonalds+disney+villains+boo+bucket+set+of+5&hash=item5565cbd788:g:iDUAAeSwXElq6T5b",
-      "below": 0.426,
-      "image": "https://i.ebayimg.com/images/g/iDUAAeSwXElq6T5b/s-l225.jpg"
-     }
-    ],
-    "size": 5,
-    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+disney+villains+boo+bucket+set+of+5"
-   },
    "days": 1,
    "lastUpdate": "2026-11-11"
   },
   "spongebob-onepiece-2026": {
+   "fullSet": {
+    "history": [
+     {
+      "date": "2026-11-11",
+      "median": 85.99,
+      "p25": 62.75,
+      "low": 42.49,
+      "count": 39,
+      "itemMedian": 76.99,
+      "shipMedian": 7.5
+     }
+    ],
+    "deals": [
+     {
+      "title": "MCDONALDS 2026 HAPPY MEAL TOYS SPONGE BOB X ONE PIECE COMPLETE SET 15 NEW IN BOX",
+      "price": 42.49,
+      "item": 34.99,
+      "ship": 7.5,
+      "url": "https://www.ebay.com/itm/820336301545?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=itembeffda95e9:g:Q5gAAeSwveVq3rTd",
+      "below": 0.506,
+      "image": "https://i.ebayimg.com/images/g/Q5gAAeSwveVq3rTd/s-l225.jpg"
+     },
+     {
+      "title": "McDonalds One Piece X Spongebob Happy Meal Toy Complete Set Sealed 1-15🔥",
+      "price": 42.49,
+      "item": 34.99,
+      "ship": 7.5,
+      "url": "https://www.ebay.com/itm/267806865452?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=item3e5a88782c:g:DTEAAeSwtcpqyPNi",
+      "below": 0.506,
+      "image": "https://i.ebayimg.com/images/g/DTEAAeSwtcpqyPNi/s-l225.jpg"
+     },
+     {
+      "title": "spongebob one piece mcdonalds Complete Collection In Box. (15)",
+      "price": 47.49,
+      "item": 39.99,
+      "ship": 7.5,
+      "url": "https://www.ebay.com/itm/820180524834?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=itembef6919f22:g:DRwAAeSwkUhqqEpU&amdata=enc%3AAQALAAABEOf5zIIojhOf%2BkQK%2Bxzjn7kYW1Pn219mf%2BgN6mjyv5PVoyjjNWBK6VLlmLKe2Jno%2BVjY%2B04XbSsXKDEOAdbytaT2fkyrQhnI%2FhWsogf4wD7lyzN2msWCe9k74IIGgRr9dojm6l%2BBHsH5C0JTYtyM1rihNQsemCdHbk85EMIifJY0fLtBR3Mhg0DEaxIpuxRR1AcqQmxMT8%2FOHS5JbOBsS5qn5M0xgxdwDSDgxmXtAm5dpA2mTeMXBVGSkU2W%2BXPqPIvwUHLT4M607Ov4NgVT5nzigXq7ExBCgNfeQ30GaSh9Iy3nblcnPz9KBB392gGVilqK7pBaXdZMr6knKqmhyyBynX6tuCNMmwlzFgwtpTbF",
+      "below": 0.448,
+      "image": "https://i.ebayimg.com/images/g/DRwAAeSwkUhqqEpU/s-l225.jpg"
+     }
+    ],
+    "size": 15,
+    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+spongebob+one+piece+complete+set"
+   },
    "name": "SpongeBob × One Piece",
    "kind": "toys",
    "start": "2026-09-15",
@@ -97,54 +131,36 @@
    "refresh": "daily",
    "currency": "USD",
    "source": "eBay US active listings (median asking price)",
-   "fullSet": {
-    "history": [
-     {
-      "date": "2026-11-11",
-      "median": 89.21,
-      "p25": 64.61,
-      "low": 44.22,
-      "count": 45,
-      "itemMedian": 79.99,
-      "shipMedian": 9.22
-     }
-    ],
-    "deals": [
-     {
-      "title": "MCDONALDS 2026 HAPPY MEAL TOYS SPONGE BOB X ONE PIECE COMPLETE SET 15 NEW IN BOX",
-      "price": 44.22,
-      "item": 34.99,
-      "ship": 9.22,
-      "url": "https://www.ebay.com/itm/820336301545?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=itembeffda95e9:g:Q5gAAeSwveVq3rTd",
-      "below": 0.504,
-      "image": "https://i.ebayimg.com/images/g/Q5gAAeSwveVq3rTd/s-l225.jpg"
-     },
-     {
-      "title": "McDonalds One Piece X Spongebob Happy Meal Toy Complete Set Sealed 1-15🔥",
-      "price": 44.22,
-      "item": 34.99,
-      "ship": 9.22,
-      "url": "https://www.ebay.com/itm/267806865452?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=item3e5a88782c:g:DTEAAeSwtcpqyPNi",
-      "below": 0.504,
-      "image": "https://i.ebayimg.com/images/g/DTEAAeSwtcpqyPNi/s-l225.jpg"
-     },
-     {
-      "title": "spongebob one piece mcdonalds Complete Collection In Box. (15)",
-      "price": 49.22,
-      "item": 39.99,
-      "ship": 9.22,
-      "url": "https://www.ebay.com/itm/820180524834?_skw=mcdonalds+spongebob+one+piece+complete+set&hash=itembef6919f22:g:DRwAAeSwkUhqqEpU&amdata=enc%3AAQALAAABEOf5zIIojhOf%2BkQK%2Bxzjn7kYW1Pn219mf%2BgN6mjyv5PVoyjjNWBK6VLlmLKe2Jno%2BVjY%2B04XbSsXKDEOAdbytaT2fkyrQhnI%2FhWsogf4wD7lyzN2msWCe9k74IIGgRr9dojm6l%2BBHsH5C0JTYtyM1ri5dQYBbcaM0qHSucMSkaVa1vAyvv9j4dEiSn9jT%2ByoiZBEmpTp9yKKr%2F8C%2BNffXHgyLHh2r%2B50%2F%2Bl2F%2F5h%2BajYSxx1QfqW6RwnAT9cgSd5PT07uEvuaN72%2Bz3SfyUXmYmanTZpJwlGIWsLqVykz9W3MLtpfRFCmxQ2mKjzrsF9JzDcVxgR8O9iXhd0PIiMw2ksg2AcvylCyoyWYmOJ09Ip",
-      "below": 0.448,
-      "image": "https://i.ebayimg.com/images/g/DRwAAeSwkUhqqEpU/s-l225.jpg"
-     }
-    ],
-    "size": 15,
-    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+spongebob+one+piece+complete+set"
-   },
    "days": 1,
    "lastUpdate": "2026-11-11"
   },
   "pokemon-toys-2026": {
+   "fullSet": {
+    "history": [
+     {
+      "date": "2026-11-11",
+      "median": 179.0,
+      "p25": 150.0,
+      "low": 119.99,
+      "count": 7,
+      "itemMedian": 179.0,
+      "shipMedian": 0.0
+     }
+    ],
+    "deals": [
+     {
+      "title": "2026 Pokemon McDonald's Happy Meal Toys - FULL 15 SET",
+      "price": 119.99,
+      "item": 119.99,
+      "ship": 0.0,
+      "url": "https://www.ebay.com/itm/168853462526?_skw=mcdonalds+pokemon+2026+complete+set+15+toys&hash=item2750735dfe:g:C8YAAeSwXhlq88P1",
+      "below": 0.33,
+      "image": "https://i.ebayimg.com/images/g/C8YAAeSwXhlq88P1/s-l225.jpg"
+     }
+    ],
+    "size": 15,
+    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+pokemon+2026+complete+set+15+toys"
+   },
    "name": "Pokémon mini box toys",
    "kind": "toys",
    "start": "2026-11-10",
@@ -156,45 +172,54 @@
    "refresh": "daily",
    "currency": "USD",
    "source": "eBay US active listings (median asking price)",
-   "fullSet": {
-    "history": [
-     {
-      "date": "2026-11-11",
-      "median": 199.99,
-      "p25": 165.75,
-      "low": 150.0,
-      "count": 9,
-      "itemMedian": 199.99,
-      "shipMedian": 0.0
-     }
-    ],
-    "deals": [
-     {
-      "title": "2026 McDonald’s Pokémon Happy Meal Complete Set 15 Toys New - No Cards",
-      "price": 150.0,
-      "item": 150.0,
-      "ship": 0.0,
-      "url": "https://www.ebay.com/itm/237175878036?_skw=mcdonalds+pokemon+2026+complete+set+15+toys&hash=item3738c8b194:g:7I0AAeSwXxVq881G",
-      "below": 0.25,
-      "image": "https://i.ebayimg.com/images/g/7I0AAeSwXxVq881G/s-l225.jpg"
-     },
-     {
-      "title": " 2026 McDonald's Pokémon Happy Meal Complete Set 15 Toys  Brand New ",
-      "price": 152.5,
-      "item": 152.5,
-      "ship": 0.0,
-      "url": "https://www.ebay.com/itm/128183541285?_skw=mcdonalds+pokemon+2026+complete+set+15+toys&hash=item1dd8559e25:g:5tIAAeSwamJq8Ode",
-      "below": 0.237,
-      "image": "https://i.ebayimg.com/images/g/5tIAAeSwamJq8Ode/s-l225.jpg"
-     }
-    ],
-    "size": 15,
-    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+pokemon+2026+complete+set+15+toys"
-   },
    "days": 1,
    "lastUpdate": "2026-11-11"
   },
   "hello-kitty-godzilla-2026": {
+   "fullSet": {
+    "history": [
+     {
+      "date": "2026-11-11",
+      "median": 97.92,
+      "p25": 85.97,
+      "low": 67.97,
+      "count": 103,
+      "itemMedian": 89.0,
+      "shipMedian": 7.97
+     }
+    ],
+    "deals": [
+     {
+      "title": "MCDONALD’S HELLO KITTY AND FRIENDS X GODZILLA COMPLETE TOY SET ALL 8 TOTAL NEW",
+      "price": 67.97,
+      "item": 60.0,
+      "ship": 7.97,
+      "url": "https://www.ebay.com/itm/189043668885?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item2c03e17795:g:zWQAAeSwNoNqmgYf",
+      "below": 0.306,
+      "image": "https://i.ebayimg.com/images/g/zWQAAeSwNoNqmgYf/s-l225.jpg"
+     },
+     {
+      "title": "McDonald’s Happy Meal Hello Kitty x Godzilla Complete Set 2026",
+      "price": 72.96,
+      "item": 64.99,
+      "ship": 7.97,
+      "url": "https://www.ebay.com/itm/128155943830?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item1dd6b08396:g:iJgAAeSwN61q3jwT",
+      "below": 0.255,
+      "image": "https://i.ebayimg.com/images/g/iJgAAeSwN61q3jwT/s-l225.jpg"
+     },
+     {
+      "title": "2026 McDonald’s Hello Kitty x Godzilla Happy Meal Set of 8 Complete Collection",
+      "price": 72.97,
+      "item": 65.0,
+      "ship": 7.97,
+      "url": "https://www.ebay.com/itm/267828350624?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item3e5bd04ea0:g:Xt0AAeSwIMRqmHhv",
+      "below": 0.255,
+      "image": "https://i.ebayimg.com/images/g/Xt0AAeSwIMRqmHhv/s-l225.jpg"
+     }
+    ],
+    "size": 8,
+    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+hello+kitty+godzilla+complete+set"
+   },
    "name": "Hello Kitty × Godzilla",
    "kind": "toys",
    "start": "2026-08-18",
@@ -205,54 +230,45 @@
    "refresh": "daily",
    "currency": "USD",
    "source": "eBay US active listings (median asking price)",
-   "fullSet": {
-    "history": [
-     {
-      "date": "2026-11-11",
-      "median": 98.0,
-      "p25": 87.0,
-      "low": 16.49,
-      "count": 119,
-      "itemMedian": 90.0,
-      "shipMedian": 8.0
-     }
-    ],
-    "deals": [
-     {
-      "title": "mcdonalds hello kitty x godzilla 2026 #4, #5, #6, #8, complete set",
-      "price": 16.49,
-      "item": 8.49,
-      "ship": 8.0,
-      "url": "https://www.ebay.com/itm/128098639435?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item1dd3461e4b:g:TlYAAeSwlCJqtrh~",
-      "below": 0.832,
-      "image": "https://i.ebayimg.com/images/g/TlYAAeSwlCJqtrh~/s-l225.jpg"
-     },
-     {
-      "title": "MCDONALD’S HELLO KITTY AND FRIENDS X GODZILLA COMPLETE TOY SET ALL 8 TOTAL NEW",
-      "price": 68.0,
-      "item": 60.0,
-      "ship": 8.0,
-      "url": "https://www.ebay.com/itm/189043668885?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item2c03e17795:g:zWQAAeSwNoNqmgYf",
-      "below": 0.306,
-      "image": "https://i.ebayimg.com/images/g/zWQAAeSwNoNqmgYf/s-l225.jpg"
-     },
-     {
-      "title": "McDonald’s Happy Meal Hello Kitty x Godzilla Complete Set 2026",
-      "price": 72.99,
-      "item": 64.99,
-      "ship": 8.0,
-      "url": "https://www.ebay.com/itm/128155943830?_skw=mcdonalds+hello+kitty+godzilla+complete+set&hash=item1dd6b08396:g:iJgAAeSwN61q3jwT",
-      "below": 0.255,
-      "image": "https://i.ebayimg.com/images/g/iJgAAeSwN61q3jwT/s-l225.jpg"
-     }
-    ],
-    "size": 8,
-    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+hello+kitty+godzilla+complete+set"
-   },
    "days": 1,
    "lastUpdate": "2026-11-11"
   },
   "bt21-2026": {
+   "fullSet": {
+    "history": [
+     {
+      "date": "2026-11-11",
+      "median": 75.67,
+      "p25": 65.67,
+      "low": 25.67,
+      "count": 11,
+      "itemMedian": 69.99,
+      "shipMedian": 5.68
+     }
+    ],
+    "deals": [
+     {
+      "title": "2026 McDonald’s X BT21 BTS Happy Meal  Complete Set of 10 - New!",
+      "price": 25.67,
+      "item": 19.99,
+      "ship": 5.68,
+      "url": "https://www.ebay.com/itm/267749999978?_skw=mcdonalds+bt21+complete+set&hash=item3e5724c56a:g:fWYAAeSwoTxqdSub",
+      "below": 0.661,
+      "image": "https://i.ebayimg.com/images/g/fWYAAeSwoTxqdSub/s-l225.jpg"
+     },
+     {
+      "title": "2026 McDonald’s X BT21 BTS Happy Meal Toys  Complete set of 10",
+      "price": 55.68,
+      "item": 50.0,
+      "ship": 5.68,
+      "url": "https://www.ebay.com/itm/267758197118?_skw=mcdonalds+bt21+complete+set&hash=item3e57a1d97e:g:dnsAAeSwDzRqgJsQ",
+      "below": 0.264,
+      "image": "https://i.ebayimg.com/images/g/dnsAAeSwDzRqgJsQ/s-l225.jpg"
+     }
+    ],
+    "size": 10,
+    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+bt21+complete+set"
+   },
    "name": "BT21",
    "kind": "toys",
    "start": "2026-07-14",
@@ -263,50 +279,6 @@
    "refresh": "daily",
    "currency": "USD",
    "source": "eBay US active listings (median asking price)",
-   "fullSet": {
-    "history": [
-     {
-      "date": "2026-11-11",
-      "median": 75.58,
-      "p25": 60.57,
-      "low": 10.89,
-      "count": 17,
-      "itemMedian": 70.0,
-      "shipMedian": 5.58
-     }
-    ],
-    "deals": [
-     {
-      "title": "McDonald’s BT21 BTS 2026 Happy Meal Poster Sticker Set w/ Box Complete NEW",
-      "price": 10.89,
-      "item": 3.99,
-      "ship": 6.9,
-      "url": "https://www.ebay.com/itm/227547731942?_skw=mcdonalds+bt21+complete+set&hash=item34fae6d7e6:g:h~0AAeSwbAVqvn-h",
-      "below": 0.856,
-      "image": "https://i.ebayimg.com/images/g/h~0AAeSwbAVqvn-h/s-l225.jpg"
-     },
-     {
-      "title": "2026 McDonald’s X BT21 BTS Happy Meal  Complete Set of 10 - New!",
-      "price": 25.57,
-      "item": 19.99,
-      "ship": 5.58,
-      "url": "https://www.ebay.com/itm/267749999978?_skw=mcdonalds+bt21+complete+set&hash=item3e5724c56a:g:fWYAAeSwoTxqdSub",
-      "below": 0.662,
-      "image": "https://i.ebayimg.com/images/g/fWYAAeSwoTxqdSub/s-l225.jpg"
-     },
-     {
-      "title": "BT21 McDonald’s Happy Meal Box – Unused w/ Poster & Stickers (Complete Set)",
-      "price": 28.57,
-      "item": 22.99,
-      "ship": 5.58,
-      "url": "https://www.ebay.com/itm/178434725397?_skw=mcdonalds+bt21+complete+set&hash=item298b89d615:g:qR4AAeSwR7pqi3km",
-      "below": 0.622,
-      "image": "https://i.ebayimg.com/images/g/qR4AAeSwR7pqi3km/s-l225.jpg"
-     }
-    ],
-    "size": 10,
-    "search": "https://www.ebay.com/sch/i.html?_nkw=mcdonalds+bt21+complete+set"
-   },
    "days": 1,
    "lastUpdate": "2026-11-11"
   }
@@ -1083,7 +1055,7 @@
      "item": 1.4,
      "ship": 1.63,
      "url": "https://www.ebay.com/itm/920130878470?_skw=Eevee+mcdonalds+2026&hash=itemd63c12fc06:g:UR0AAeSwQPZq9IvF",
-     "below": 0.58,
+     "below": 0.588,
      "image": "https://i.ebayimg.com/images/g/UR0AAeSwQPZq9IvF/s-l225.jpg"
     },
     {
@@ -1092,7 +1064,7 @@
      "item": 2.81,
      "ship": 1.63,
      "url": "https://www.ebay.com/itm/880093716408?_skw=Eevee+mcdonalds+2026&hash=itemcce9ac5fb8:g:pQcAAeSw5KRq7mw3",
-     "below": 0.385,
+     "below": 0.397,
      "image": "https://i.ebayimg.com/images/g/pQcAAeSw5KRq7mw3/s-l225.jpg"
     },
     {
@@ -1101,7 +1073,7 @@
      "item": 2.98,
      "ship": 1.63,
      "url": "https://www.ebay.com/itm/880105476040?_skw=Eevee+mcdonalds+2026&hash=itemccea5fcfc8:g:At4AAeSwvZVq9Gb-",
-     "below": 0.361,
+     "below": 0.374,
      "image": "https://i.ebayimg.com/images/g/At4AAeSwvZVq9Gb-/s-l225.jpg"
     },
     {
@@ -1110,25 +1082,25 @@
      "item": 3.0,
      "ship": 1.63,
      "url": "https://www.ebay.com/itm/820340475196?_skw=Eevee+mcdonalds+2026&hash=itembf001a453c:g:ZXUAAeSwAQFq88HC",
-     "below": 0.359,
+     "below": 0.371,
      "image": "https://i.ebayimg.com/images/g/ZXUAAeSwAQFq88HC/s-l225.jpg"
     },
     {
-     "title": "Eevee 013/015 Holo Rare McDonald's 2026 70 HP Pokemon TCG Card English",
-     "price": 4.63,
-     "item": 3.0,
+     "title": "Eevee 013/015 Mcdonalds 2026 Pokemon",
+     "price": 4.98,
+     "item": 3.35,
      "ship": 1.63,
-     "url": "https://www.ebay.com/itm/860134669243?_skw=Eevee+mcdonalds+2026&hash=itemc844057bbb:g:99oAAeSw~75q9JmR",
-     "below": 0.359,
-     "image": "https://i.ebayimg.com/images/g/99oAAeSw~75q9JmR/s-l225.jpg"
+     "url": "https://www.ebay.com/itm/307273536228?_skw=Eevee+mcdonalds+2026&hash=item478aee12e4:g:ZzEAAeSw3EBq8SPX",
+     "below": 0.323,
+     "image": "https://i.ebayimg.com/images/g/ZzEAAeSw3EBq8SPX/s-l225.jpg"
     }
    ],
    "latest": {
     "date": "2026-11-11",
-    "median": 7.22,
-    "p25": 5.15,
+    "median": 7.36,
+    "p25": 5.41,
     "low": 3.03,
-    "count": 27
+    "count": 26
    }
   },
   "pokemon-2026-014": {
@@ -1622,7 +1594,7 @@
      "price": 11.99,
      "item": 6.0,
      "ship": 5.99,
-     "url": "https://www.ebay.com/itm/257819082247?_skw=mcdonalds+spongebob+one+piece+gear+5+luffy&hash=item3c0736fe07:g:CuoAAeSwybpq36RE&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nA9wajETpPE8njZ1ojBDHoM3terAE2iro9%2ByP6YGFErnCX1Y1cyN6KSMZcYDLLGm2fJAkTEoJ4IfvouuQqAkfHbuHYeJQmmFLHaC6UtB6fDsRDkN395RXiVGUH%2FtzAnYV%2BWavKsB2dEqezjVQ4xML%2F1WOaiyFN0JiLmDFF37Fj3dJznT0%2BsJYohS6xboI7eSQrvCU8DR8Rs7rsCoU0W%2Fumv0XRO9GINjKduazArf97jfYPsnBgm580%2BGmGg8X1%2Baa46qdYWTZ5V%2F1HUWVtmwzJH3Pa2hY%2B9uq71pUpC%2BHwKPZMf0R%2FE5oFKOiW7pJ2YGA%3D",
+     "url": "https://www.ebay.com/itm/257819082247?_skw=mcdonalds+spongebob+one+piece+gear+5+luffy&hash=item3c0736fe07:g:CuoAAeSwybpq36RE&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nA9wajETpPE8njZ1ojBDHoM3terAE2iro9%2ByP6YGFErnCX1Y1cyN6KSMZcYDLLGm2fJAkTEoJ4IfvouuQqAkfHbuHYeJQmmFLHaC6UtB6fDsRDkN395RXiVGUH%2FtzAnYXV7IPBMnbviYl5wT1w2R9DhMw6fHOAo3cvCc7FhiAezAvBEtNEccTOZTcdoBHkm9wk05mTo6PNNiXCWwWoKkPYqHo2%2Bphy9ZWftpws1d3FAw13qxnoK2gS7jLj98py%2ByKZwxuunm4Y2pISxCceT01t0zeKt1pI%2B7eXPW9R%2FBNefGG18y8L95cEhFXJz0oznkA%3D",
      "below": 0.294,
      "image": "https://i.ebayimg.com/images/g/CuoAAeSwybpq36RE/s-l225.jpg"
     },
@@ -1848,7 +1820,7 @@
     "median": 14.98,
     "p25": 12.99,
     "low": 10.28,
-    "count": 128
+    "count": 127
    }
   },
   "spongebob-onepiece-2026-06": {
@@ -1866,7 +1838,7 @@
      "item": 1.0,
      "ship": 5.82,
      "url": "https://www.ebay.com/itm/178499774334?_skw=mcdonalds+spongebob+one+piece+usopp&hash=item298f6a677e:g:vIMAAeSweQVqqZPh",
-     "below": 0.468,
+     "below": 0.46,
      "image": "https://i.ebayimg.com/images/g/vIMAAeSweQVqqZPh/s-l225.jpg"
     },
     {
@@ -1875,7 +1847,7 @@
      "item": 2.89,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/237125618405?_skw=mcdonalds+spongebob+one+piece+usopp&hash=item3735c9cae5:g:-s4AAeSwT6Bq0QtV",
-     "below": 0.31,
+     "below": 0.3,
      "image": "https://i.ebayimg.com/images/g/-s4AAeSwT6Bq0QtV/s-l225.jpg"
     },
     {
@@ -1884,7 +1856,7 @@
      "item": 3.16,
      "ship": 5.82,
      "url": "https://www.ebay.com/itm/237136529578?_skw=mcdonalds+spongebob+one+piece+usopp&hash=item37367048aa:g:Xu4AAeSwtaZq2TsM",
-     "below": 0.299,
+     "below": 0.288,
      "image": "https://i.ebayimg.com/images/g/Xu4AAeSwtaZq2TsM/s-l225.jpg"
     },
     {
@@ -1893,7 +1865,7 @@
      "item": 3.15,
      "ship": 6.0,
      "url": "https://www.ebay.com/itm/940043002850?_skw=mcdonalds+spongebob+one+piece+usopp&hash=itemdadeede3e2:g:CB4AAeSw8dVq31gB",
-     "below": 0.286,
+     "below": 0.275,
      "image": "https://i.ebayimg.com/images/g/CB4AAeSw8dVq31gB/s-l225.jpg"
     },
     {
@@ -1902,16 +1874,16 @@
      "item": 9.49,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/278379157500?_skw=mcdonalds+spongebob+one+piece+usopp&hash=item40d0b0d7fc:g:KYkAAeSwPOlqqe7~",
-     "below": 0.259,
+     "below": 0.248,
      "image": "https://i.ebayimg.com/images/g/KYkAAeSwPOlqqe7~/s-l225.jpg"
     }
    ],
    "latest": {
     "date": "2026-11-11",
-    "median": 12.81,
+    "median": 12.62,
     "p25": 10.81,
     "low": 6.82,
-    "count": 133
+    "count": 134
    }
   },
   "spongebob-onepiece-2026-07": {
@@ -3052,9 +3024,9 @@
    "latest": {
     "date": "2026-11-11",
     "median": 19.99,
-    "p25": 16.09,
+    "p25": 16.19,
     "low": 10.64,
-    "count": 31
+    "count": 32
    }
   },
   "hello-kitty-godzilla-2026-02": {
@@ -3304,9 +3276,9 @@
    "latest": {
     "date": "2026-11-11",
     "median": 16.24,
-    "p25": 14.98,
+    "p25": 14.97,
     "low": 9.95,
-    "count": 102
+    "count": 101
    }
   },
   "hello-kitty-godzilla-2026-06": {
@@ -3509,55 +3481,55 @@
    "deals": [
     {
      "title": "BT21 Koya RM BTS Backpack Clip Keychain McDonald's Happy Meal Toy",
-     "price": 5.98,
+     "price": 5.46,
      "item": 0.99,
-     "ship": 4.99,
+     "ship": 4.47,
      "url": "https://www.ebay.com/itm/377633952857?_skw=mcdonalds+bt21+koya&hash=item57ecbcd459:g:ZokAAeSwfKVqvFbO",
-     "below": 0.501,
+     "below": 0.524,
      "image": "https://i.ebayimg.com/images/g/ZokAAeSwfKVqvFbO/s-l225.jpg"
     },
     {
      "title": "2026 McDonald’s X BT21 BTS Happy Meal Single Koya",
-     "price": 7.59,
+     "price": 7.07,
      "item": 2.6,
-     "ship": 4.99,
+     "ship": 4.47,
      "url": "https://www.ebay.com/itm/398434772746?_skw=mcdonalds+bt21+koya&hash=item5cc490270a:g:ZW4AAeSwEhhquBec",
-     "below": 0.366,
+     "below": 0.384,
      "image": "https://i.ebayimg.com/images/g/ZW4AAeSwEhhquBec/s-l225.jpg"
     },
     {
      "title": "McDonald's 2026 BT21  Happy Meal Toy-Koya (Unopened)",
-     "price": 7.98,
+     "price": 7.46,
      "item": 2.99,
-     "ship": 4.99,
+     "ship": 4.47,
      "url": "https://www.ebay.com/itm/128084807718?_skw=mcdonalds+bt21+koya&hash=item1dd2731026:g:XwAAAeSwchBqrFLp",
-     "below": 0.334,
+     "below": 0.35,
      "image": "https://i.ebayimg.com/images/g/XwAAAeSwchBqrFLp/s-l225.jpg"
     },
     {
      "title": "Koya #1 ~ 2026 McDonald's Happy Meal Toy ~BTS BT21 ~ New in box ~",
-     "price": 7.99,
+     "price": 7.47,
      "item": 3.0,
-     "ship": 4.99,
+     "ship": 4.47,
      "url": "https://www.ebay.com/itm/147671971345?_skw=mcdonalds+bt21+koya&hash=item2261ef7611:g:ys4AAeSwQ1xq8JsP",
-     "below": 0.333,
+     "below": 0.349,
      "image": "https://i.ebayimg.com/images/g/ys4AAeSwQ1xq8JsP/s-l225.jpg"
     },
     {
      "title": "BT21 - KOYA - McDonald’s Happy Meal Toy 2026",
-     "price": 8.49,
+     "price": 7.97,
      "item": 3.5,
-     "ship": 4.99,
+     "ship": 4.47,
      "url": "https://www.ebay.com/itm/377470788226?_skw=mcdonalds+bt21+koya&hash=item57e3032282:g:7wYAAeSwieZqmuxD",
-     "below": 0.291,
+     "below": 0.305,
      "image": "https://i.ebayimg.com/images/g/7wYAAeSwieZqmuxD/s-l225.jpg"
     }
    ],
    "latest": {
     "date": "2026-11-11",
-    "median": 11.98,
-    "p25": 9.99,
-    "low": 5.98,
+    "median": 11.47,
+    "p25": 9.72,
+    "low": 5.46,
     "count": 107
    }
   },
@@ -3630,7 +3602,7 @@
      "item": 2.0,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/237080665417?_skw=mcdonalds+bt21+shooky&hash=item37331bdd49:g:NhoAAeSwyXtqsHOx",
-     "below": 0.748,
+     "below": 0.732,
      "image": "https://i.ebayimg.com/images/g/NhoAAeSwyXtqsHOx/s-l225.jpg"
     },
     {
@@ -3639,7 +3611,7 @@
      "item": 2.55,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/407183421580?_skw=mcdonalds+bt21+shooky&hash=item5ece05f08c:g:~9kAAeSwL3VqlfYr",
-     "below": 0.679,
+     "below": 0.659,
      "image": "https://i.ebayimg.com/images/g/~9kAAeSwL3VqlfYr/s-l225.jpg"
     },
     {
@@ -3648,7 +3620,7 @@
      "item": 2.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/168585017059?_skw=mcdonalds+bt21+shooky&hash=item27407336e3:g:87QAAeSwK8xqcEhH",
-     "below": 0.624,
+     "below": 0.6,
      "image": "https://i.ebayimg.com/images/g/87QAAeSwK8xqcEhH/s-l225.jpg"
     },
     {
@@ -3657,7 +3629,7 @@
      "item": 2.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/117510427102?_skw=mcdonalds+bt21+shooky&hash=item1b5c2ad1de:g:Y7QAAeSwWEVqoi37",
-     "below": 0.624,
+     "below": 0.6,
      "image": "https://i.ebayimg.com/images/g/Y7QAAeSwWEVqoi37/s-l225.jpg"
     },
     {
@@ -3666,16 +3638,16 @@
      "item": 2.99,
      "ship": 0.0,
      "url": "https://www.ebay.com/itm/128084812052?_skw=mcdonalds+bt21+shooky&hash=item1dd2732114:g:RrgAAeSw1XpqrFPH",
-     "below": 0.624,
+     "below": 0.6,
      "image": "https://i.ebayimg.com/images/g/RrgAAeSw1XpqrFPH/s-l225.jpg"
     }
    ],
    "latest": {
     "date": "2026-11-11",
-    "median": 7.95,
+    "median": 7.47,
     "p25": 5.0,
     "low": 2.0,
-    "count": 103
+    "count": 104
    }
   },
   "bt21-2026-04": {
@@ -3945,7 +3917,7 @@
      "item": 2.36,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/237105715949?_skw=mcdonalds+bt21+van&hash=item37349a1aed:g:mNAAAeSwgwVqwm7g",
-     "below": 0.393,
+     "below": 0.387,
      "image": "https://i.ebayimg.com/images/g/mNAAAeSwgwVqwm7g/s-l225.jpg"
     },
     {
@@ -3954,7 +3926,7 @@
      "item": 7.95,
      "ship": 0.68,
      "url": "https://www.ebay.com/itm/940073782282?_skw=mcdonalds+bt21+van&hash=itemdae0c38c0a:g:1hUAAeSw6l9q74Tl",
-     "below": 0.369,
+     "below": 0.364,
      "image": "https://i.ebayimg.com/images/g/1hUAAeSw6l9q74Tl/s-l225.jpg"
     },
     {
@@ -3963,7 +3935,7 @@
      "item": 3.95,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/168706228005?_skw=mcdonalds+bt21+van&hash=item2747acbf25:g:nykAAeSwFXdqsgB7",
-     "below": 0.276,
+     "below": 0.27,
      "image": "https://i.ebayimg.com/images/g/nykAAeSwFXdqsgB7/s-l225.jpg"
     },
     {
@@ -3972,7 +3944,7 @@
      "item": 3.99,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/307202653244?_skw=mcdonalds+bt21+van&hash=item4786b47c3c:g:aioAAeSw9UpqucAx",
-     "below": 0.273,
+     "below": 0.267,
      "image": "https://i.ebayimg.com/images/g/aioAAeSw9UpqucAx/s-l225.jpg"
     },
     {
@@ -3981,16 +3953,16 @@
      "item": 4.0,
      "ship": 5.95,
      "url": "https://www.ebay.com/itm/237034181600?_skw=mcdonalds+bt21+van&hash=item37305693e0:g:nX8AAeSwtFxqkLx4",
-     "below": 0.273,
+     "below": 0.266,
      "image": "https://i.ebayimg.com/images/g/nX8AAeSwtFxqkLx4/s-l225.jpg"
     }
    ],
    "latest": {
     "date": "2026-11-11",
-    "median": 13.68,
-    "p25": 11.17,
+    "median": 13.56,
+    "p25": 11.19,
     "low": 8.31,
-    "count": 123
+    "count": 124
    }
   },
   "bt21-2026-09": {
@@ -4134,5 +4106,5 @@
    "note": "Watch this space for the next Happy Meal toys."
   }
  ],
- "updated": "2026-11-11T17:26:22+00:00"
+ "updated": "2026-11-11T17:29:08+00:00"
 }
