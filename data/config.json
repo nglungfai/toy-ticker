@@ -1,0 +1,5 @@
+{
+  "_comment": "sets: TCGdex set IDs always tracked. auto_from_year: also track every 'McDonald's Collection YYYY' set from this year on, so the 2026 set is picked up as soon as TCGdex adds it.",
+  "sets": ["2024sv"],
+  "auto_from_year": 2025
+}

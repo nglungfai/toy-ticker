@@ -1,0 +1,315 @@
+{
+ "sets": {
+  "2024sv": {
+   "name": "McDonald's Collection 2024",
+   "releaseDate": "2024-12-04"
+  }
+ },
+ "cards": {
+  "2024sv-1": {
+   "name": "Charizard",
+   "set": "2024sv",
+   "number": "1",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802823
+  },
+  "2024sv-2": {
+   "name": "Pikachu",
+   "set": "2024sv",
+   "number": "2",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802824
+  },
+  "2024sv-3": {
+   "name": "Miraidon",
+   "set": "2024sv",
+   "number": "3",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802825
+  },
+  "2024sv-4": {
+   "name": "Jigglypuff",
+   "set": "2024sv",
+   "number": "4",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802826
+  },
+  "2024sv-5": {
+   "name": "Hatenna",
+   "set": "2024sv",
+   "number": "5",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802827
+  },
+  "2024sv-6": {
+   "name": "Dragapult",
+   "set": "2024sv",
+   "number": "6",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802828
+  },
+  "2024sv-7": {
+   "name": "Quagsire",
+   "set": "2024sv",
+   "number": "7",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802829
+  },
+  "2024sv-8": {
+   "name": "Koraidon",
+   "set": "2024sv",
+   "number": "8",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802830
+  },
+  "2024sv-9": {
+   "name": "Umbreon",
+   "set": "2024sv",
+   "number": "9",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802831
+  },
+  "2024sv-10": {
+   "name": "Hydreigon",
+   "set": "2024sv",
+   "number": "10",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802832
+  },
+  "2024sv-11": {
+   "name": "Roaring Moon",
+   "set": "2024sv",
+   "number": "11",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802833
+  },
+  "2024sv-12": {
+   "name": "Dragonite",
+   "set": "2024sv",
+   "number": "12",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802834
+  },
+  "2024sv-13": {
+   "name": "Eevee",
+   "set": "2024sv",
+   "number": "13",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802835
+  },
+  "2024sv-14": {
+   "name": "Rayquaza",
+   "set": "2024sv",
+   "number": "14",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802836
+  },
+  "2024sv-15": {
+   "name": "Drampa",
+   "set": "2024sv",
+   "number": "15",
+   "rarity": "None",
+   "image": null,
+   "cardmarketId": 802837
+  }
+ },
+ "history": {
+  "2024sv-1": [
+   {
+    "date": "2026-11-11",
+    "trend": 1.91,
+    "avg": 2.1,
+    "low": 0.2,
+    "avg1": 1.82,
+    "avg7": 1.98,
+    "avg30": 2.12,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-2": [
+   {
+    "date": "2026-11-11",
+    "trend": 1.7,
+    "avg": 1.7,
+    "low": 0.05,
+    "avg1": 2,
+    "avg7": 2.25,
+    "avg30": 1.67,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-3": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.41,
+    "avg": 0.36,
+    "low": 0.02,
+    "avg1": 0.19,
+    "avg7": 0.4,
+    "avg30": 0.37,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-4": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.08,
+    "avg": 0.1,
+    "low": 0.02,
+    "avg1": 0.23,
+    "avg7": 0.09,
+    "avg30": 0.1,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-5": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.06,
+    "avg": 0.06,
+    "low": 0.02,
+    "avg1": 0.1,
+    "avg7": 0.1,
+    "avg30": 0.06,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-6": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.08,
+    "avg": 0.09,
+    "low": 0.02,
+    "avg1": 0.05,
+    "avg7": 0.06,
+    "avg30": 0.09,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-7": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.07,
+    "avg": 0.07,
+    "low": 0.02,
+    "avg1": 0.1,
+    "avg7": 0.05,
+    "avg30": 0.07,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-8": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.33,
+    "avg": 0.36,
+    "low": 0.02,
+    "avg1": 0.55,
+    "avg7": 0.32,
+    "avg30": 0.37,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-9": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.35,
+    "avg": 0.46,
+    "low": 0.02,
+    "avg1": 0.35,
+    "avg7": 0.38,
+    "avg30": 0.47,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-10": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.44,
+    "avg": 0.45,
+    "low": 0.02,
+    "avg1": 0.15,
+    "avg7": 0.39,
+    "avg30": 0.45,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-11": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.7,
+    "avg": 0.64,
+    "low": 0.02,
+    "avg1": 0.3,
+    "avg7": 0.71,
+    "avg30": 0.67,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-12": [
+   {
+    "date": "2026-11-11",
+    "trend": 1.27,
+    "avg": 1.27,
+    "low": 0.13,
+    "avg1": 1.09,
+    "avg7": 1.28,
+    "avg30": 1.28,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-13": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.2,
+    "avg": 0.31,
+    "low": 0.02,
+    "avg1": 0.5,
+    "avg7": 0.25,
+    "avg30": 0.31,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-14": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.33,
+    "avg": 0.34,
+    "low": 0.02,
+    "avg1": 0.34,
+    "avg7": 0.24,
+    "avg30": 0.42,
+    "trend-holo": 0
+   }
+  ],
+  "2024sv-15": [
+   {
+    "date": "2026-11-11",
+    "trend": 0.8,
+    "avg": 0.43,
+    "low": 0.02,
+    "avg1": 0.3,
+    "avg7": 0.65,
+    "avg30": 0.44,
+    "trend-holo": 0
+   }
+  ]
+ },
+ "updated": "2026-11-11T01:04:33+00:00",
+ "currency": "EUR",
+ "source": "Cardmarket via TCGdex (api.tcgdex.net)"
+}

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Meal Card Prices</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #fafaf7; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #e6e5df;
+    --accent: #d62300; --accent-soft: #fde9e4; --up: #1a7f37; --down: #c62828; --gold: #f2b705;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --panel: #1e1e1c; --text: #ecebe6; --muted: #9b9a94; --line: #2f2f2c;
+      --accent: #ff6a4d; --accent-soft: #3a211b; --up: #4cc26a; --down: #ff6b6b; --gold: #f5c542;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413; --panel: #1e1e1c; --text: #ecebe6; --muted: #9b9a94; --line: #2f2f2c;
+    --accent: #ff6a4d; --accent-soft: #3a211b; --up: #4cc26a; --down: #ff6b6b; --gold: #f5c542;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
+  header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
+  header h1 span { color: var(--accent); }
+  .meta { color: var(--muted); font-size: 13px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 24px 0 12px; }
+  select { font: inherit; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line);
+           background: var(--panel); color: var(--text); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .stat small { color: var(--muted); }
+  .table-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted);
+       cursor: pointer; user-select: none; white-space: nowrap; }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover, tbody tr.sel { background: var(--accent-soft); }
+  tbody tr:last-child td { border-bottom: 0; }
+  .no { color: var(--muted); font-size: 12px; margin-right: 6px; }
+  .up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--muted); }
+  canvas.spark { width: 90px; height: 26px; display: block; margin-left: auto; }
+  .detail { background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+            padding: 16px; margin-top: 20px; }
+  .detail h2 { margin: 0 0 2px; font-size: 18px; }
+  .detail .chart-box { position: relative; height: 300px; margin-top: 12px; }
+  .note { color: var(--muted); font-size: 13px; margin-top: 8px; }
+  a { color: var(--accent); }
+  footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Happy Meal <span>Pokémon</span> card prices</h1>
+    <div class="meta" id="meta">Loading…</div>
+  </header>
+
+  <div class="controls">
+    <label>Set <select id="setSel"></select></label>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th data-k="name">Card</th>
+        <th data-k="price" class="num">Trend price</th>
+        <th data-k="d1" class="num">1-day</th>
+        <th data-k="d30" class="num">vs 30-day avg</th>
+        <th data-k="low" class="num">Lowest listing</th>
+        <th class="num">History</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <section class="detail" id="detail" hidden>
+    <h2 id="dTitle"></h2>
+    <div class="meta" id="dMeta"></div>
+    <div class="chart-box"><canvas id="dChart"></canvas></div>
+    <div class="note" id="dNote"></div>
+  </section>
+
+  <footer>
+    Prices are Cardmarket (EU) figures in EUR, collected daily from the free <a href="https://tcgdex.dev">TCGdex API</a>.
+    "Trend" is Cardmarket's smoothed sale price. Ungraded, near-mint singles only. Not financial advice.
+  </footer>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let DATA, sortKey = "price", sortDir = -1, selected = null, chart = null;
+
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const eur = (v) => v == null ? "—" : "€" + v.toFixed(2);
+const pct = (v) => v == null || !isFinite(v) ? "—" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
+const cls = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? "up" : "down";
+
+function rowsFor(setId) {
+  return Object.entries(DATA.cards)
+    .filter(([, c]) => c.set === setId)
+    .map(([id, c]) => {
+      const h = DATA.history[id] || [];
+      const last = h[h.length - 1] || {}, prev = h[h.length - 2];
+      const price = last.trend ?? last.avg ?? null;
+      const prevPrice = prev ? (prev.trend ?? prev.avg) : (last.avg1 ?? null);
+      return {
+        id, ...c, h, last, price, low: last.low ?? null,
+        d1: price != null && prevPrice ? price / prevPrice - 1 : null,
+        d30: price != null && last.avg30 ? price / last.avg30 - 1 : null,
+      };
+    });
+}
+
+function render() {
+  const setId = $("setSel").value;
+  const rows = rowsFor(setId).sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x == null) return 1; if (y == null) return -1;
+    return (typeof x === "string" ? x.localeCompare(y) : x - y) * sortDir;
+  });
+
+  const priced = rows.filter(r => r.price != null);
+  const total = priced.reduce((s, r) => s + r.price, 0);
+  const top = priced.slice().sort((a, b) => b.price - a.price)[0];
+  const mover = priced.filter(r => r.d30 != null).sort((a, b) => Math.abs(b.d30) - Math.abs(a.d30))[0];
+  $("stats").innerHTML = `
+    <div class="stat"><small>Full set (trend)</small><b>${eur(total)}</b><small>${priced.length} of ${rows.length} cards priced</small></div>
+    <div class="stat"><small>Most valuable</small><b>${top ? eur(top.price) : "—"}</b><small>${top ? top.name : ""}</small></div>
+    <div class="stat"><small>Biggest move vs 30-day avg</small><b class="${cls(mover?.d30)}">${mover ? pct(mover.d30) : "—"}</b><small>${mover ? mover.name : ""}</small></div>
+    <div class="stat"><small>Days tracked</small><b>${Math.max(0, ...rows.map(r => r.h.length))}</b><small>since ${rows[0]?.h[0]?.date ?? "—"}</small></div>`;
+
+  $("rows").innerHTML = rows.map(r => `
+    <tr data-id="${r.id}" class="${r.id === selected ? "sel" : ""}">
+      <td><span class="no">#${r.number ?? ""}</span>${r.name}</td>
+      <td class="num">${eur(r.price)}</td>
+      <td class="num ${cls(r.d1)}">${pct(r.d1)}</td>
+      <td class="num ${cls(r.d30)}">${pct(r.d30)}</td>
+      <td class="num">${eur(r.low)}</td>
+      <td class="num"><canvas class="spark" data-id="${r.id}"></canvas></td>
+    </tr>`).join("");
+
+  rows.forEach(r => spark(document.querySelector(`canvas.spark[data-id="${r.id}"]`), r));
+  document.querySelectorAll("#rows tr").forEach(tr => tr.onclick = () => showDetail(tr.dataset.id));
+  document.querySelectorAll("th[data-k]").forEach(th =>
+    th.textContent = th.textContent.replace(/ [▲▼]$/, "") + (th.dataset.k === sortKey ? (sortDir > 0 ? " ▲" : " ▼") : ""));
+}
+
+// Tiny sparkline: daily trend history; with < 2 days, falls back to Cardmarket's 30/7/1-day averages.
+function spark(cv, r) {
+  const dpr = window.devicePixelRatio || 1, w = 90, h = 26;
+  cv.width = w * dpr; cv.height = h * dpr;
+  const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
+  let pts = r.h.map(p => p.trend ?? p.avg).filter(v => v != null);
+  if (pts.length < 2) pts = [r.last.avg30, r.last.avg7, r.last.avg1, r.price].filter(v => v != null);
+  if (pts.length < 2) return;
+  const min = Math.min(...pts), max = Math.max(...pts), span = max - min || 1;
+  ctx.strokeStyle = pts[pts.length - 1] >= pts[0] ? css("--up") : css("--down");
+  ctx.lineWidth = 1.5; ctx.beginPath();
+  pts.forEach((v, i) => {
+    const x = 2 + (i / (pts.length - 1)) * (w - 4), y = h - 3 - ((v - min) / span) * (h - 6);
+    i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+  });
+  ctx.stroke();
+}
+
+function showDetail(id) {
+  selected = id;
+  const r = rowsFor(DATA.cards[id].set).find(x => x.id === id);
+  $("detail").hidden = false;
+  $("dTitle").textContent = `${r.name} #${r.number ?? ""}`;
+  $("dMeta").innerHTML = `${DATA.sets[r.set].name} · trend ${eur(r.price)} · 7-day avg ${eur(r.last.avg7)} · 30-day avg ${eur(r.last.avg30)}` +
+    (r.cardmarketId ? ` · <a href="https://www.cardmarket.com/en/Pokemon/Products?idProduct=${r.cardmarketId}" target="_blank" rel="noopener">Cardmarket</a>` : "");
+  const labels = r.h.map(p => p.date);
+  const line = (key, label, color, dash) => ({
+    label, data: r.h.map(p => p[key] ?? null), borderColor: color, backgroundColor: color,
+    borderDash: dash || [], tension: .25, pointRadius: r.h.length < 15 ? 3 : 0, spanGaps: true,
+  });
+  if (chart) chart.destroy();
+  Chart.defaults.color = css("--muted");
+  Chart.defaults.borderColor = css("--line");
+  chart = new Chart($("dChart"), {
+    type: "line",
+    data: { labels, datasets: [
+      line("trend", "Trend", css("--accent")),
+      line("avg", "Average sale", css("--gold")),
+      line("low", "Lowest listing", css("--muted"), [4, 4]),
+    ]},
+    options: {
+      maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+      scales: { y: { ticks: { callback: v => "€" + v } } },
+      plugins: { tooltip: { callbacks: { label: c => `${c.dataset.label}: ${eur(c.parsed.y)}` } } },
+    },
+  });
+  $("dNote").textContent = r.h.length < 3
+    ? "Only a few days collected so far. The chart fills in as the daily job runs."
+    : "";
+  render();
+  $("detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+fetch("data/prices.json", { cache: "no-store" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    const sets = Object.entries(d.sets).sort((a, b) => (b[1].releaseDate || "").localeCompare(a[1].releaseDate || ""));
+    $("setSel").innerHTML = sets.map(([id, s]) => `<option value="${id}">${s.name}</option>`).join("");
+    $("setSel").onchange = () => { selected = null; $("detail").hidden = true; render(); };
+    $("meta").textContent = `Updated ${new Date(d.updated).toLocaleString()} · ${d.source}`;
+    document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
+      sortDir = th.dataset.k === sortKey ? -sortDir : (th.dataset.k === "name" ? 1 : -1);
+      sortKey = th.dataset.k; render();
+    });
+    render();
+  })
+  .catch(e => { $("meta").textContent = "Couldn't load data/prices.json: " + e.message; });
+</script>
+</body>
+</html>
