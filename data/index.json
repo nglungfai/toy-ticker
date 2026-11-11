@@ -359,24 +359,15 @@
     "history": [
      {
       "date": "2026-11-11",
-      "median": 113.49,
-      "p25": 91.67,
-      "low": 10.0,
-      "count": 13,
-      "itemMedian": 99.0,
+      "median": 114.24,
+      "p25": 99.88,
+      "low": 82.5,
+      "count": 12,
+      "itemMedian": 99.5,
       "shipMedian": 13.5
      }
     ],
     "deals": [
-     {
-      "title": "McDonald’s FIFA World Cup 2026 Squishmallows Happy Meal Toys Complete Your Set",
-      "price": 10.0,
-      "item": 4.0,
-      "ship": 6.0,
-      "url": "https://www.ebay.com/itm/800185593605?_skw=mcdonalds+world+cup+squishmallows+complete+set&hash=itemba4ec72f05:g:e4kAAeSwcLlqMFFD",
-      "below": 0.912,
-      "image": "https://i.ebayimg.com/images/g/e4kAAeSwcLlqMFFD/s-l225.jpg"
-     },
      {
       "title": "McDonald’s FIFA Squishmallows Complete Set Of 23 Ready To Ship",
       "price": 82.5,
