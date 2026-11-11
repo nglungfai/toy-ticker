@@ -8,6 +8,8 @@ Standard library only (Python 3.9+).
 import json
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,10 +24,20 @@ FIELDS = ["trend", "avg", "low", "avg1", "avg7", "avg30",
           "trend-holo", "avg-holo", "low-holo"]
 
 
-def get(path):
+def get(path, attempts=5):
+    """GET a TCGdex endpoint, retrying temporary failures (5xx, timeouts) with backoff."""
     req = urllib.request.Request(API + path, headers={"User-Agent": "mcd-pokemon-price-tracker"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
+    for i in range(attempts):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or i == attempts - 1:
+                raise
+        except (urllib.error.URLError, TimeoutError):
+            if i == attempts - 1:
+                raise
+        time.sleep(2 ** i * 3)
 
 
 def pick_sets(config):
@@ -33,7 +45,12 @@ def pick_sets(config):
     wanted = list(config.get("sets", []))
     year_from = config.get("auto_from_year")
     if year_from:
-        for s in get("/sets"):
+        try:
+            all_sets = get("/sets")
+        except Exception as e:  # noqa: BLE001 - new-set discovery is optional
+            print(f"! couldn't list sets, tracking configured sets only: {e}", file=sys.stderr)
+            all_sets = []
+        for s in all_sets:
             m = re.match(r"McDonald's Collection (\d{4})$", s.get("name", ""))
             if m and int(m.group(1)) >= year_from and s["id"] not in wanted:
                 wanted.append(s["id"])
