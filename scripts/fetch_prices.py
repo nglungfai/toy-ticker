@@ -32,11 +32,12 @@ WEEKLY_AFTER_DAYS = 90
 
 
 def merge_meta(old, new):
-    """New item metadata, but keep an already-chosen image so it doesn't change every day."""
+    """New item metadata, but keep an already-chosen image so it doesn't change every day
+    (unless it was chosen by an older version of the photo picker)."""
     old = old or {}
     merged = {**new}
-    if old.get("image"):
-        for k in ("image", "imageLink", "imageCredit"):
+    if old.get("image") and old.get("imageV", 1) >= new.get("imageV", 1):
+        for k in ("image", "imageLink", "imageCredit", "imageV"):
             if k in old:
                 merged[k] = old[k]
     return merged
@@ -104,7 +105,7 @@ def is_weekly(series, today):
 
 def due(series, last_update, today):
     """Daily series are always due; weekly ones when their last snapshot is 7+ days old."""
-    return (not last_update or not is_weekly(series, today)
+    return (os.environ.get("REFRESH_ALL") == "1" or not last_update or not is_weekly(series, today)
             or (date.fromisoformat(today) - date.fromisoformat(last_update)).days >= 7)
 
 

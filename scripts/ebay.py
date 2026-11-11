@@ -41,6 +41,8 @@ CARDNUM = re.compile(r"\b0*(\d{1,3})\s*/\s*0*(\d{2,3})\b")
 EXCLUDE_TOYS = re.compile(r"\b(cards?|tcg|trading card|holo|foil)\b")
 # "No box or cards" / "without cards" describe a toy-only listing; drop them before the card checks.
 NEGATED = re.compile(r"\b(no|without|w/o|not including|does not include)\s+(box\s+(or|and|&|nor)\s+)?(cards?|tcg)\b")
+# Checklist numbers in titles: "#4", "No. 4", "number 4" (not card numbers like 004/015).
+CHECKNUM = re.compile(r"(?:#|\bno\.?\s*|\bnumber\s*)\s*0*(\d{1,2})(?![\d/])")
 YEAR = re.compile(r"\b(19[89]\d|20[0-3]\d)\b")
 # Extra exclusions for raw single cards.
 EXCLUDE_CARDS = re.compile(
@@ -110,6 +112,11 @@ def reject_reason(title, series, item):
                 return f"different card number: {num}/{size}"
     if not item_hits(t, item):
         return "not this item"
+    # Series whose titles use the official checklist number: naming a different number means a different toy.
+    if series.get("checklist_numbers") and item.get("checklist"):
+        nums = {int(n) for n in CHECKNUM.findall(t)}
+        if nums and int(item["checklist"]) not in nums:
+            return f"different checklist number: #{min(nums)}"
     m = (EXCLUDE_ANY.search(t) or (series["kind"] == "cards" and EXCLUDE_CARDS.search(t))
          or (series["kind"] == "toys" and (EXCLUDE_TOYS.search(t) or CARDNUM.search(t))))
     if m:
@@ -278,18 +285,45 @@ def graded_point(tok, series, item, iid):
     return sub_stats(rows, grade_of) or None
 
 
-def best_image(matched, item):
-    """Photo from a matched listing, preferring titles with an item's `prefer` text (e.g. 004/015)."""
-    withpic = [it for it in matched if it.get("image", {}).get("imageUrl")]
+IMAGE_VERSION = 2  # bump to re-pick every item's photo once
+SET_PHOTO_WORDS = re.compile(r"\b(complete|full|all|every|series|collection|variety|assorted|lot|set|pick|choose|select)\b")
+
+
+def photo_id(it):
+    """eBay's id for the picture itself (the same photo reused by several listings has one id)."""
+    m = re.search(r"/g/([^/]+)/", (it.get("image") or {}).get("imageUrl", ""))
+    return m.group(1) if m else None
+
+
+def best_image(matched, item, shared=frozenset()):
+    """Photo from a matched listing that most likely shows just this item.
+    Skips photos that sellers reuse for several different items (usually a whole-set shot), and prefers
+    titles that name the item's number or `prefer` text, single-item wording and no packaging-only words."""
     prefer = [norm(p) for p in item.get("prefer", [])]
-    withpic.sort(key=lambda it: not any(p in norm(it["title"]) for p in prefer))
+    num = int(item.get("checklist") or item.get("number") or 0)
+    def score(it):
+        t = norm(it.get("title", ""))
+        sc = 0
+        if photo_id(it) in shared:
+            sc -= 10
+        if any(p in t for p in prefer):
+            sc += 3
+        if num and num in {int(n) for n in CHECKNUM.findall(t)}:
+            sc += 2
+        if SET_PHOTO_WORDS.search(t):
+            sc -= 3
+        if re.search(r"\bbox\b", t) and not re.search(r"\b(no|without|w/o) box\b", t):
+            sc -= 1  # boxed listings often photograph the packaging, not the toy
+        return sc
+    withpic = [it for it in matched if photo_id(it)]
     if not withpic:
         return {}
-    it = withpic[0]
+    it = max(withpic, key=score)  # ties keep eBay's best-match order
     return {
         "image": re.sub(r"/s-l\d+\.", "/s-l500.", it["image"]["imageUrl"]),
         "imageLink": it.get("itemWebUrl"),
         "imageCredit": "eBay listing photo",
+        "imageV": IMAGE_VERSION,
     }
 
 
@@ -331,6 +365,7 @@ def snapshot(series, today):
     """Return {item_id: (item_meta, point_or_None)} for one configured series."""
     tok = get_token()
     out = {}
+    picks = []
     for item in series["items"]:
         iid = f"{series['id']}-{item['number']}"
         meta = item_meta(series, item)
@@ -360,7 +395,7 @@ def snapshot(series, today):
                                     for it, p, sh, t, k in rows],
                            "rejected": rejected}
         prices = [t for *_, t, _k in rows]
-        meta.update(best_image(matched, item))
+        picks.append((iid, meta, matched, item))
         point = None
         if prices:
             point = {"date": today, **stats(prices),
@@ -388,6 +423,14 @@ def snapshot(series, today):
               + (f", median ${point['median']} incl. shipping (item ${point['itemMedian']} + ship ${point['shipMedian']})" if point else ""))
         out[iid] = (meta, point)
         time.sleep(0.5)
+    # A photo used by listings of two or more different items is almost always a whole-set shot.
+    users = {}
+    for iid, _meta, matched, _item in picks:
+        for it in matched:
+            users.setdefault(photo_id(it), set()).add(iid)
+    shared = frozenset(p for p, ids in users.items() if p and len(ids) > 1)
+    for iid, meta, matched, item in picks:
+        meta.update(best_image(matched, item, shared))
     return out
 
 
@@ -466,5 +509,6 @@ def full_set(series, today):
 
 
 def item_meta(series, item):
-    return {"name": item["name"], "set": series["id"], "number": item["number"],
+    # The site shows the official checklist number where it differs from our item id's number.
+    return {"name": item["name"], "set": series["id"], "number": item.get("checklist", item["number"]),
             "rarity": "Holo" if item.get("holo") else None}

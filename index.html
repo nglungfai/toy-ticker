@@ -265,6 +265,19 @@
   .deal .deal-price { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 18px; }
   .deal .off { font-size: 12px; font-weight: 700; color: #17663b; background: #e3f1ea; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
   .deal small { display: block; color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .deal .flip { font-weight: 700; }
+  .deal .flip.up { color: var(--up); } .deal .flip.down { color: var(--down); }
+  .flipbar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 13px; color: var(--muted); margin: -4px 0 12px; }
+  .flipbar label { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .flipbar input { width: 4.6em; font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; text-align: right; }
+  .flipbar b { color: var(--text); }
+  .flip-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .flip-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); }
+  .flip-table td { padding: 8px 8px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .flip-table td small { display: block; color: var(--muted); font-size: 12px; }
+  .flip-table .num { text-align: right; }
+  .flip-table .up { color: var(--up); font-weight: 700; } .flip-table .down { color: var(--down); font-weight: 700; }
+  @media (max-width: 640px) { .flip-table .hide-sm { display: none; } }
   .deal .go { color: var(--accent); font-size: 13px; font-weight: 600; white-space: nowrap; }
   .item-deals { margin-top: 12px; }
   .item-deals h4 { margin: 0 0 8px; font-size: 15px; font-family: "Fredoka", sans-serif; }
@@ -541,6 +554,14 @@
 
   /* Ended-series panel */
   /* Insights tab */
+  .chase-top { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: inherit; color: var(--text); cursor: pointer;
+               background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px; margin: 2px 0 4px; }
+  .chase-top:hover { border-color: var(--accent); }
+  .chase-top .pic, .chase-top .ph { width: 64px; flex: none; }
+  .chase-top span { min-width: 0; }
+  .chase-top small { display: block; font-size: 12px; color: var(--muted); }
+  .chase-top b { display: block; font-family: "Fredoka", sans-serif; font-size: 19px; font-weight: 600; line-height: 1.2; }
+  .chase-top em { font-style: normal; font-size: 13px; color: var(--accent); font-weight: 600; }
   .ins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
   .ins { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; min-width: 0; }
   .ins.wide { grid-column: 1 / -1; }
@@ -704,6 +725,7 @@
   <div class="sec" data-sec="deals" hidden>
     <section class="deals-card" id="deals">
       <div class="ret-head"><h3>Deal finder<small id="dealsNote"></small></h3></div>
+      <div class="flipbar" id="flipBarDeals"></div>
       <div class="deal-grid" id="dealGrid"></div>
     </section>
   </div>
@@ -1567,6 +1589,56 @@ function variantPremium(sid) {
   }
   return out;
 }
+// ---------- Reseller math: what you'd take home after eBay fees and postage ----------
+// Defaults are rough: eBay's fee for this kind of item is about 13% of the total (item + shipping the buyer pays)
+// plus a small per-order charge, and fees vary by category and seller. Everything is editable and saved in this browser.
+const FLIP_DEFAULT = { fee: 13.25, order: 0.40, post: 5.00, setPost: 12.00, at: 90 };
+let FLIP = { ...FLIP_DEFAULT };
+try { FLIP = { ...FLIP_DEFAULT, ...JSON.parse(localStorage.getItem("flip") || "{}") }; } catch (e) {}
+// Take-home from selling at `asking` (a median delivered price), after fees and your own postage.
+const netSale = (asking, post = FLIP.post) => asking * FLIP.at / 100 * (1 - FLIP.fee / 100) - FLIP.order - post;
+const signUsd = (v) => (v >= 0 ? "+" : "−") + usd(Math.abs(v));
+function flipBar(id, withSet = false) {
+  const f = (k, label, step, pre = "", post = "") => `<label>${label} ${pre}<input type="number" min="0" step="${step}" data-flip="${k}" value="${FLIP[k]}">${post}</label>`;
+  $(id).innerHTML = `<b>If you resell:</b>${f("at", "sell at", 1, "", "% of median")}${f("fee", "eBay fees", 0.25, "", "%")}${f("order", "+", 0.05, "$", " per order")}${f("post", "postage", 0.25, "$")}${withSet ? f("setPost", "set postage", 0.5, "$") : ""}` +
+    `<button type="button" class="mine-clear" data-flip-reset>Reset</button>`;
+  $(id).querySelectorAll("[data-flip]").forEach(i => i.onchange = () => {
+    FLIP[i.dataset.flip] = Math.max(0, parseFloat(i.value) || 0);
+    try { localStorage.setItem("flip", JSON.stringify(FLIP)); } catch (e) {}
+    render();
+  });
+  $(id).querySelector("[data-flip-reset]").onclick = () => { FLIP = { ...FLIP_DEFAULT }; try { localStorage.removeItem("flip"); } catch (e) {} render(); };
+}
+// Complete sets vs singles, both ways: break a set up and sell the pieces, or buy the pieces and sell a set.
+function insFlip() {
+  const blocks = members(SID).map(id => {
+    const s = DATA.sets[id], fs = s.fullSet, last = fs?.history?.[fs.history.length - 1];
+    const rows = rowsFor(id), priced = rows.filter(r => r.price != null);
+    if (!last || priced.length < rows.length) return null;
+    const n = rows.length, word = s.kind === "cards" ? "cards" : "toys";
+    const setBuy = fs.deals?.[0]?.price ?? last.median;
+    const singlesNet = priced.reduce((t, r) => t + netSale(r.price), 0);
+    const breakProfit = singlesNet - setBuy;
+    const lows = priced.reduce((t, r) => t + (r.low ?? r.price), 0);
+    const setNet = netSale(last.median, FLIP.setPost);
+    const buildProfit = setNet - lows;
+    const row = (title, sub, buy, sell, profit, sales) => `<tr><td><b>${title}</b><small>${sub}</small></td>
+      <td class="num">${usd(buy)}</td><td class="num hide-sm">${usd(sell)}</td>
+      <td class="num ${profit >= 0 ? "up" : "down"}">${signUsd(profit)}<small>${buy ? (profit < 0 ? "−" : "") + Math.abs(Math.round(profit / buy * 100)) + "% return" : ""}</small></td>
+      <td class="num hide-sm">${sales}</td></tr>`;
+    return `${isGroup() ? `<p class="ins-sub">${word === "cards" ? "Cards" : "Toys"}</p>` : ""}
+      <table class="flip-table"><thead><tr><th>Play</th><th class="num">You pay</th><th class="num hide-sm">You take home</th><th class="num">Profit</th><th class="num hide-sm">Sales</th></tr></thead><tbody>
+      ${row("Break up a set", `Buy ${fs.deals?.length ? "the cheapest" : "a typical"} complete set, sell all ${n} ${word} one by one`, setBuy, singlesNet, breakProfit, n)}
+      ${row("Build a set", `Buy each of the ${n} ${word} at today's lowest price, sell as one set`, lows, setNet, buildProfit, 1)}
+      </tbody></table>`;
+  }).filter(Boolean);
+  if (!blocks.length) return "";
+  return `<div class="ins wide"><h4>Reseller math: sets vs singles</h4><p class="q">Is there money in splitting complete sets, or in assembling them?</p>
+    <div class="flipbar" id="flipBarIns"></div>
+    ${blocks.join("")}
+    <div class="foot">Take-home = median asking price incl. shipping × your "sell at" %, minus eBay fees and your postage (${usd(FLIP.post)} per single, ${usd(FLIP.setPost)} per set).
+      Fees are approximate and vary by category and seller. Asking prices run above what things sell for, and selling ${"many"} singles takes time. An estimate, not financial advice.</div></div>`;
+}
 // ---------- Insights: what the numbers mean for buyers, sellers and parents ----------
 const avg = (a) => a.length ? a.reduce((t, x) => t + x, 0) / a.length : null;
 const mealPrice = () => Math.max(0, parseFloat($("mealPaid").value) || 4.99);
@@ -1615,7 +1687,8 @@ function insChase() {
     const prem = holo.length && plain.length ? avg(holo.map(r => r.price)) / avg(plain.map(r => r.price)) : null;
     const word = DATA.sets[id].kind === "cards" ? "card" : "toy";
     return `${isGroup() ? `<p class="ins-sub">${word === "card" ? "Cards" : "Toys"}</p>` : ""}
-      <div class="big">${esc(top.name)}<small>${usd(top.price)}</small></div>
+      <button type="button" class="chase-top" data-open="${top.id}" title="Open ${esc(top.name)}">
+        ${thumb(top, "sm", false)}<span><small>Most valuable ${word}</small><b>#${esc(top.number)} ${esc(top.name)}</b><em>${usd(top.price)} · open prices →</em></span></button>
       <p>The most valuable ${word} is worth <b>${(top.price / a).toFixed(1)}×</b> the average ${word} (${usd(a)}). The top 3 make up <b>${Math.round(top3 * 100)}%</b> of the set's value.
       ${prem ? ` Holo cards average <b>${usd(avg(holo.map(r => r.price)))}</b> vs ${usd(avg(plain.map(r => r.price)))} for the rest: a <b>${prem.toFixed(1)}×</b> holo premium.` : ""}</p>`;
   }).join("");
@@ -1679,7 +1752,9 @@ function insSales() {
 }
 function renderInsights() {
   if (!DATA || !SID) return;
-  $("insights").innerHTML = insMeal() + insChase() + insDemand() + insSellers() + insSales();
+  $("insights").innerHTML = insFlip() + insMeal() + insChase() + insDemand() + insSellers() + insSales();
+  if ($("flipBarIns")) flipBar("flipBarIns", true);
+  $("insights").querySelectorAll("[data-open]").forEach(b => b.onclick = () => { KIND = "all"; showSection("items"); showDetail(b.dataset.open); });
 }
 
 // Chart event markers: a coloured line per event with a readable label pill at the top, e.g. "Promo ended".
@@ -1742,10 +1817,12 @@ function dealCard(d, r) {
     <div><b>${esc(r.name)}</b>
     <div class="deal-row"><span class="deal-price">${usd(d.price)}</span><span class="off">${Math.round(d.below * 100)}% under</span></div>
     <small>${d.ship != null ? (d.ship ? `${usd(d.item)} + ${usd(d.ship)} shipping` : "free shipping") : "incl. shipping"}</small>
+    ${r.price ? (() => { const p = netSale(r.price) - d.price; return `<small class="flip ${p >= 0 ? "up" : "down"}" title="Resell at ${FLIP.at}% of the ${usd(r.price)} median, minus ~${FLIP.fee}% fees + ${usd(FLIP.order)} and ${usd(FLIP.post)} postage">${p >= 0 ? `≈ ${signUsd(p)} if resold` : `≈ ${signUsd(p)} if resold (no flip)`}</small>`; })() : ""}
     <small>${esc(d.title)} · eBay ↗</small></div></a>`;
 }
 const list_count = (all) => all.reduce((n, r) => n + (r.deals || []).length, 0);
 function renderDeals(all) {
+  flipBar("flipBarDeals");
   const priced = all.some(r => r.price != null);
   const list = all.flatMap(r => (r.deals || []).map(d => ({ d, r }))).sort((a, b) => b.d.below - a.d.below);
   $("cDeals").textContent = list_count(all) || "";

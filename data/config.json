@@ -516,7 +516,7 @@
    "kind": "toys",
    "start": "2026-09-15",
    "end": "2026-10-19",
-   "note": "15 crossover figures. Toy list from Qz and Today; one pairing (Smitty × Brook) is from a single source.",
+   "note": "15 crossover figures. Toy list from Qz and Today; one pairing (Smitty × Brook) is from a single source. Official checklist numbers (shown on the site) come from a majority of eBay titles; item ids keep the original order.",
    "require": [
     [
      "spongebob",
@@ -548,7 +548,8 @@
       "gear 5",
       "gear5",
       "gear five"
-     ]
+     ],
+     "checklist": "01"
     },
     {
      "number": "02",
@@ -560,7 +561,8 @@
        "gear5",
        "gear five"
       ]
-     ]
+     ],
+     "checklist": "09"
     },
     {
      "number": "03",
@@ -571,7 +573,8 @@
        "patrick",
        "zoro"
       ]
-     ]
+     ],
+     "checklist": "04"
     },
     {
      "number": "04",
@@ -582,7 +585,8 @@
        "sandy",
        "nami"
       ]
-     ]
+     ],
+     "checklist": "07"
     },
     {
      "number": "05",
@@ -593,7 +597,8 @@
        "squidward",
        "sanji"
       ]
-     ]
+     ],
+     "checklist": "05"
     },
     {
      "number": "06",
@@ -604,7 +609,8 @@
        "plankton",
        "usopp"
       ]
-     ]
+     ],
+     "checklist": "02"
     },
     {
      "number": "07",
@@ -615,7 +621,8 @@
        "gary",
        "chopper"
       ]
-     ]
+     ],
+     "checklist": "12"
     },
     {
      "number": "08",
@@ -626,7 +633,8 @@
        "pearl",
        "robin"
       ]
-     ]
+     ],
+     "checklist": "14"
     },
     {
      "number": "09",
@@ -637,7 +645,8 @@
        "larry",
        "franky"
       ]
-     ]
+     ],
+     "checklist": "13"
     },
     {
      "number": "10",
@@ -648,7 +657,8 @@
        "brook",
        "smitty"
       ]
-     ]
+     ],
+     "checklist": "08"
     },
     {
      "number": "11",
@@ -660,7 +670,8 @@
        "jinbe",
        "jimbei"
       ]
-     ]
+     ],
+     "checklist": "10"
     },
     {
      "number": "12",
@@ -671,7 +682,8 @@
        "dutchman",
        "blackbeard"
       ]
-     ]
+     ],
+     "checklist": "15"
     },
     {
      "number": "13",
@@ -683,7 +695,8 @@
        "mrs. puff",
        "big mom"
       ]
-     ]
+     ],
+     "checklist": "03"
     },
     {
      "number": "14",
@@ -695,7 +708,8 @@
        "koby",
        "coby"
       ]
-     ]
+     ],
+     "checklist": "06"
     },
     {
      "number": "15",
@@ -706,13 +720,15 @@
        "mermaid man",
        "garp"
       ]
-     ]
+     ],
+     "checklist": "11"
     }
    ],
    "full_set": {
     "q": "mcdonalds spongebob one piece complete set",
     "size": 15
-   }
+   },
+   "checklist_numbers": true
   },
   {
    "id": "hello-kitty-godzilla-2026",
@@ -722,7 +738,7 @@
    "franchise": "Sanrio",
    "start": "2026-08-18",
    "end": "2026-09-14",
-   "note": "8 Sanrio characters dressed as Toho kaiju.",
+   "note": "8 Sanrio characters dressed as Toho kaiju. Official checklist numbers (shown on the site) come from a majority of eBay titles; item ids keep the original order.",
    "require": [
     [
      "hello kitty",
@@ -748,6 +764,15 @@
      "match": [
       [
        "hello kitty"
+      ],
+      [
+       "#1",
+       "# 1",
+       "#01",
+       "no 1",
+       "no. 1",
+       "number 1",
+       "as godzilla"
       ]
      ],
      "not": [
@@ -776,7 +801,8 @@
       "spacegodzilla",
       "toys",
       "variety"
-     ]
+     ],
+     "checklist": "01"
     },
     {
      "number": "02",
@@ -787,7 +813,8 @@
        "kuromi",
        "mechagodzilla"
       ]
-     ]
+     ],
+     "checklist": "05"
     },
     {
      "number": "03",
@@ -800,7 +827,8 @@
        "badtz",
        "rodan"
       ]
-     ]
+     ],
+     "checklist": "07"
     },
     {
      "number": "04",
@@ -811,7 +839,8 @@
        "my melody",
        "mothra"
       ]
-     ]
+     ],
+     "checklist": "03"
     },
     {
      "number": "05",
@@ -823,7 +852,8 @@
        "ghidorah",
        "king ghidorah"
       ]
-     ]
+     ],
+     "checklist": "02"
     },
     {
      "number": "06",
@@ -836,7 +866,8 @@
        "spacegodzilla",
        "space godzilla"
       ]
-     ]
+     ],
+     "checklist": "08"
     },
     {
      "number": "07",
@@ -847,7 +878,8 @@
        "cinnamoroll",
        "destoroyah"
       ]
-     ]
+     ],
+     "checklist": "06"
     },
     {
      "number": "08",
@@ -859,13 +891,15 @@
        "purin",
        "gigan"
       ]
-     ]
+     ],
+     "checklist": "04"
     }
    ],
    "full_set": {
     "q": "mcdonalds hello kitty godzilla complete set",
     "size": 8
-   }
+   },
+   "checklist_numbers": true
   },
   {
    "id": "bt21-2026",
