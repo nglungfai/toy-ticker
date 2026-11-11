@@ -89,6 +89,39 @@ def stats(prices):
     }
 
 
+def best_image(items, card, year, all_names):
+    """Photo from a matched listing, preferring titles with the exact card number (e.g. 004/015)."""
+    matched = [it for it in items
+               if it.get("image", {}).get("imageUrl") and matches(it.get("title", ""), card, year, all_names)]
+    num = str(card.get("number", "")).zfill(3)
+    matched.sort(key=lambda it: f"{num}/" not in it["title"])
+    if not matched:
+        return None
+    it = matched[0]
+    return {
+        "image": re.sub(r"/s-l\d+\.", "/s-l500.", it["image"]["imageUrl"]),
+        "imageLink": it.get("itemWebUrl"),
+        "imageCredit": "eBay listing photo",
+    }
+
+
+def images_for(cards, year):
+    """{card_id: image_info} for (card_id, card) pairs, one eBay search each."""
+    tok = token(os.environ["EBAY_CLIENT_ID"], os.environ["EBAY_CLIENT_SECRET"])
+    all_names = [c["name"].lower() for _, c in cards]
+    out = {}
+    for cid, card in cards:
+        try:
+            img = best_image(search(tok, f"{card['name']} mcdonalds {year}"), card, year, all_names)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ! image {cid}: {e}")
+            continue
+        if img:
+            out[cid] = img
+        time.sleep(0.5)
+    return out
+
+
 def snapshot(ebay_set, today):
     """Return {card_id: (card_meta, point_or_None)} for one configured set."""
     tok = token(os.environ["EBAY_CLIENT_ID"], os.environ["EBAY_CLIENT_SECRET"])
@@ -114,6 +147,7 @@ def snapshot(ebay_set, today):
                 prices.append(float(it["price"]["value"]))
             except (KeyError, ValueError):
                 pass
+        meta.update(best_image(items, card, year, all_names) or {})
         point = {"date": today, **stats(prices)} if prices else None
         print(f"  {cid} {card['name']}: {len(prices)}/{len(items)} listings kept"
               + (f", median ${point['median']}" if point else ""))

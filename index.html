@@ -53,6 +53,24 @@
   .note { color: var(--muted); font-size: 13px; margin-top: 8px; }
   a { color: var(--accent); }
   .holo { color: var(--gold); font-size: 12px; }
+  .cardcell { display: flex; align-items: center; gap: 10px; }
+  .pic, .ph { flex: none; border-radius: 4px; aspect-ratio: 63 / 88; }
+  .pic { object-fit: cover; background: var(--line); display: block; }
+  .pic.sm, .ph.sm { width: 34px; }
+  .pic.lg, .ph.lg { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+  .ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+        background: var(--bg); border: 1px dashed var(--line); color: var(--muted); font-size: 10px; }
+  .ph.lg { font-size: 22px; font-weight: 600; }
+  .ph.lg small { font-size: 13px; font-weight: 400; }
+  .ph .phnote { font-size: 11px; opacity: .8; }
+  .ph.holo-tile { background: linear-gradient(135deg, var(--accent-soft), var(--bg) 45%, var(--accent-soft)); border-style: solid; }
+  .detail-grid { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: start; }
+  .detail-main { min-width: 0; }
+  .credit { font-size: 11px; color: var(--muted); margin-top: 6px; text-align: center; }
+  @media (max-width: 640px) {
+    .detail-grid { grid-template-columns: 1fr; }
+    #dPic { max-width: 180px; margin: 0 auto; }
+  }
   .banner { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px;
             padding: 10px 14px; margin-bottom: 12px; }
   footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
@@ -87,10 +105,15 @@
   </div>
 
   <section class="detail" id="detail" hidden>
-    <h2 id="dTitle"></h2>
-    <div class="meta" id="dMeta"></div>
-    <div class="chart-box"><canvas id="dChart"></canvas></div>
-    <div class="note" id="dNote"></div>
+    <div class="detail-grid">
+      <div id="dPic"></div>
+      <div class="detail-main">
+        <h2 id="dTitle"></h2>
+        <div class="meta" id="dMeta"></div>
+        <div class="chart-box"><canvas id="dChart"></canvas></div>
+        <div class="note" id="dNote"></div>
+      </div>
+    </div>
   </section>
 
   <footer>
@@ -158,7 +181,7 @@ function render() {
 
   $("rows").innerHTML = rows.map(r => `
     <tr data-id="${r.id}" class="${r.id === selected ? "sel" : ""}">
-      <td><span class="no">#${r.number ?? ""}</span>${r.name}${/holo/i.test(r.rarity || "") ? ' <span class="holo" title="Holo">✦</span>' : ""}</td>
+      <td><div class="cardcell">${thumb(r, "sm")}<div><span class="no">#${r.number ?? ""}</span>${r.name}${/holo/i.test(r.rarity || "") ? ' <span class="holo" title="Holo">✦</span>' : ""}</div></div></td>
       <td class="num">${eur(r.price)}</td>
       <td class="num ${cls(r.d1)}">${pct(r.d1)}</td>
       <td class="num ${cls(r.d30)}">${pct(r.d30)}</td>
@@ -170,6 +193,17 @@ function render() {
   document.querySelectorAll("#rows tr").forEach(tr => tr.onclick = () => showDetail(tr.dataset.id));
   document.querySelectorAll("th[data-k]").forEach(th =>
     th.textContent = th.textContent.replace(/ [▲▼]$/, "") + (th.dataset.k === sortKey ? (sortDir > 0 ? " ▲" : " ▼") : ""));
+}
+
+// Card picture, or a placeholder tile with the card number when there's no photo yet.
+function thumb(r, size) {
+  const holo = /holo/i.test(r.rarity || "") ? " holo-tile" : "";
+  const ph = `<div class="ph ${size}${holo}"><span>#${r.number ?? ""}</span>${size === "lg" ? `<small>${r.name}</small><small class="phnote">Photo coming soon</small>` : ""}</div>`;
+  if (!r.image) return ph;
+  const img = `<img class="pic ${size}" src="${r.image}" alt="${r.name} card" loading="lazy" referrerpolicy="no-referrer"
+    onerror="this.outerHTML=this.dataset.ph" data-ph='${ph.replace(/'/g, "&#39;")}'>`;
+  return size === "lg" && r.imageLink
+    ? `<a href="${r.imageLink}" target="_blank" rel="noopener">${img}</a>` : img;
 }
 
 // Tiny sparkline: daily trend history; with < 2 days, falls back to Cardmarket's 30/7/1-day averages.
@@ -195,6 +229,8 @@ function showDetail(id) {
   const r = rowsFor(DATA.cards[id].set).find(x => x.id === id);
   $("detail").hidden = false;
   $("dTitle").textContent = `${r.name} #${r.number ?? ""}`;
+  $("dPic").innerHTML = thumb(r, "lg") +
+    (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${r.imageLink}" target="_blank" rel="noopener">${r.imageCredit}</a>` : r.imageCredit}</div>` : "");
   const ebayQ = encodeURIComponent(`${r.name} ${r.number}/015 mcdonalds 2026`);
   $("dMeta").innerHTML = isEbay()
     ? `${DATA.sets[r.set].name} · median ask ${eur(r.price)} · 25th percentile ${eur(r.last.p25)} · ${r.last.count ?? 0} listings · ` +

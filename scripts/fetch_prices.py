@@ -61,6 +61,17 @@ def pick_sets(config):
     return wanted
 
 
+def merge_meta(old, new):
+    """New card metadata, but keep an already-chosen image so it doesn't change every day."""
+    old = old or {}
+    merged = {**new}
+    if old.get("image"):
+        for k in ("image", "imageLink", "imageCredit"):
+            if k in old:
+                merged[k] = old[k]
+    return merged
+
+
 def main():
     config = json.loads(CONFIG_FILE.read_text())
     data = json.loads(DATA_FILE.read_text()) if DATA_FILE.exists() else {"sets": {}, "cards": {}, "history": {}}
@@ -86,14 +97,17 @@ def main():
                 failures += 1
                 continue
             cm = (card.get("pricing") or {}).get("cardmarket") or {}
-            data["cards"][card["id"]] = {
+            meta = {
                 "name": card["name"],
                 "set": set_id,
                 "number": card.get("localId"),
                 "rarity": card.get("rarity"),
-                "image": card.get("image"),
                 "cardmarketId": cm.get("idProduct"),
             }
+            if card.get("image"):  # TCGdex gives a base URL; quality/format are path suffixes
+                meta.update(image=card["image"] + "/high.webp", imageCredit="TCGdex",
+                            imageLink="https://tcgdex.dev")
+            data["cards"][card["id"]] = merge_meta(data["cards"].get(card["id"]), meta)
             if not cm:
                 continue
             point = {"date": today, **{k: cm.get(k) for k in FIELDS if cm.get(k) is not None}}
@@ -102,8 +116,24 @@ def main():
             hist.sort(key=lambda p: p["date"])
             data["history"][card["id"]] = hist
 
-    # Sets TCGdex doesn't have yet: eBay active-listing prices (USD).
     have_keys = bool(os.environ.get("EBAY_CLIENT_ID") and os.environ.get("EBAY_CLIENT_SECRET"))
+
+    # TCGdex has no scans for some promo sets: borrow an eBay listing photo, once per card.
+    if have_keys:
+        missing = {}
+        for cid, c in data["cards"].items():
+            year = (data["sets"].get(c["set"], {}).get("releaseDate") or "")[:4]
+            if not c.get("image") and data["sets"].get(c["set"], {}).get("currency") == "EUR" and year:
+                missing.setdefault(year, []).append((cid, c))
+        for year, cards in missing.items():
+            print(f"Looking up eBay photos for {len(cards)} cards from {year}")
+            try:
+                for cid, img in ebay.images_for(cards, int(year)).items():
+                    data["cards"][cid].update(img)
+            except Exception as e:  # noqa: BLE001
+                print(f"! eBay images: {e}", file=sys.stderr)
+
+    # Sets TCGdex doesn't have yet: eBay active-listing prices (USD).
     for es in config.get("ebay_sets", []):
         print(f"{es['name']} (eBay): {len(es['cards'])} cards")
         data["sets"][es["id"]] = {"name": es["name"], "releaseDate": es.get("releaseDate"),
@@ -123,7 +153,7 @@ def main():
             failures += 1
             continue
         for cid, (meta, point) in results.items():
-            data["cards"][cid] = meta
+            data["cards"][cid] = merge_meta(data["cards"].get(cid), meta)
             if point:
                 hist = [p for p in data["history"].get(cid, []) if p["date"] != today]
                 data["history"][cid] = sorted(hist + [point], key=lambda p: p["date"])
