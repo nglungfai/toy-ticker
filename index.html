@@ -1851,12 +1851,11 @@ const list_count = (all) => all.reduce((n, r) => n + (r.deals || []).length, 0);
 // Deal finder: one card per item (its best deal) with "+N more" for the rest, sorting, a profit filter,
 // an item picker, and pages of 9 items so the section never gets long.
 const DEALS_PER_PAGE = 9;
-let DEAL_SORT = "below", DEAL_PROFIT = false, DEAL_ITEM = "", DEAL_PAGE = 1;
+let DEAL_SORT = "profit", DEAL_PROFIT = false, DEAL_ITEM = "", DEAL_PAGE = 1;
 const DEAL_OPEN = new Set();
 const dealProfit = (d, r) => r.price ? netSale(r.price) - d.price : null;
 const DEAL_SORTS = {
-  below: { label: "Biggest discount", key: (x) => -x.d.below },
-  profit: { label: "Best resale profit", key: (x) => -(x.p ?? -1e9) },
+  profit: { label: "Best resale profit", key: (x) => -(x.p ?? -1e9) - x.d.below / 1000 },
   price: { label: "Lowest price", key: (x) => x.d.price },
 };
 function resetDeals() { DEAL_PAGE = 1; DEAL_ITEM = ""; DEAL_OPEN.clear(); }
