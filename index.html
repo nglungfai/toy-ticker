@@ -1122,92 +1122,111 @@ function valueSeries(pos) {
     return { date: d, v };
   }).filter(Boolean);
 }
-// opts: { accent, label, title, big, bigTone: "up"|"down"|null, line, values:[num], rows:[{sym,name,price,ch}], more, qr, footer }
-async function drawProfitCard(o) {
+// ---- Share card in the site's own style: a quote-header card, an items card, and a QR footer ----
+// opts: { sid, pill, title, value, sub, tiles:[{val, label, tone:"up"|"down"|"flat"}], rows:[{name, tag, price}], qr, footer }
+// Height adapts to the number of rows (1080 square up to 1080×1350 portrait).
+const TINT = {
+  up2: ["#b4dcc5", "#17663b"], up1: ["#e3f1ea", "#2e7d52"], down2: ["#f2b8b8", "#9b2222"], down1: ["#fbe4e4", "#b52a2a"], flat: ["#f0efea", "#5f5e5a"],
+};
+const toneOf = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? (v >= 0.15 ? "up2" : "up1") : (v <= -0.15 ? "down2" : "down1");
+async function drawQuoteCard(o) {
   await document.fonts.load('700 40px "Fredoka"').catch(() => {});
-  const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H;
-  const x = c.getContext("2d"), F = (w, s) => `${w} ${s}px "Fredoka", -apple-system, sans-serif`;
-  const UP = "#3ddc84", DOWN = "#ff6b6b", INK = "#f4f2ee", MUTED = "#9b9a94";
-  // Background: near-black with a glow in the series colour and faint chart gridlines.
-  x.fillStyle = "#0e1013"; x.fillRect(0, 0, W, H);
-  const glow = x.createRadialGradient(W * .85, 140, 40, W * .85, 140, 760);
-  glow.addColorStop(0, o.accent + "66"); glow.addColorStop(1, o.accent + "00");
-  x.fillStyle = glow; x.fillRect(0, 0, W, H);
-  x.strokeStyle = "rgba(255,255,255,.035)"; x.lineWidth = 1;
-  for (let gy = 90; gy < H; gy += 90) { x.beginPath(); x.moveTo(0, gy); x.lineTo(W, gy); x.stroke(); }
-  // Header
-  if (LOGO.complete && LOGO.naturalWidth) x.drawImage(LOGO, 64, 60, 68, 68);
-  x.fillStyle = INK; x.font = F(700, 40); x.textBaseline = "middle"; x.fillText("Toy Ticker", 148, 96);
+  const T = THEMES[o.sid] || DEFAULT_THEME, W = 1080, M = 64, R = (x, ...a) => x.roundRect ? x.roundRect(...a) : x.rect(...a.slice(0, 4));
+  const F = (w, s) => `${w} ${s}px "Fredoka", -apple-system, sans-serif`;
+  const BG = "#fafaf7", INK = "#1d1d1b", MUTED = "#6b6b66", LINE = "#e6e5df";
+  // Layout heights first, so the canvas fits the content.
+  // Up to 4 items: one roomy column. More: two compact columns so a whole collection fits.
+  const all = o.rows || [], two = all.length > 4, cols = two ? 2 : 1, rowH = two ? 62 : 78;
+  const headerH = 400 + (o.tiles?.length ? 150 : 0), footH = 190;
+  const lines = Math.max(1, Math.floor((1350 - 150 - headerH - 32 - 40 - footH - 70 - 44) / rowH));
+  const rows = all.slice(0, lines * cols), more = all.length - rows.length;
+  const itemsH = rows.length ? 70 + Math.ceil(rows.length / cols) * rowH + (more > 0 ? 44 : 0) : 0;
+  const H = Math.min(1350, Math.max(1080, 150 + headerH + (itemsH ? 32 + itemsH : 0) + 40 + footH));
+  const c = document.createElement("canvas"); c.width = W; c.height = H;
+  const x = c.getContext("2d");
+  x.fillStyle = BG; x.fillRect(0, 0, W, H);
+  // Top bar: logo, wordmark, date.
+  if (LOGO.complete && LOGO.naturalWidth) x.drawImage(LOGO, M, 52, 64, 64);
+  x.textBaseline = "middle"; x.font = F(700, 44); x.fillStyle = INK; x.fillText("Toy", M + 82, 86);
+  x.fillStyle = "#d62300"; x.fillText("Ticker", M + 82 + x.measureText("Toy ").width, 86);
   x.fillStyle = MUTED; x.font = F(600, 26); x.textAlign = "right";
-  x.fillText(new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }), W - 64, 96);
+  x.fillText(new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }), W - M, 86);
   x.textAlign = "left"; x.textBaseline = "alphabetic";
-  // Headline numbers
-  x.fillStyle = MUTED; x.font = F(700, 28); x.fillText(o.label.toUpperCase(), 64, 228);
-  x.fillStyle = INK; x.font = F(600, 46); x.fillText(o.title, 64, 290);
-  let size = 200; x.font = F(700, size);
-  while (x.measureText(o.big).width > W - 128 && size > 90) { size -= 10; x.font = F(700, size); }
-  x.fillStyle = o.bigTone === "up" ? UP : o.bigTone === "down" ? DOWN : INK; x.fillText(o.big, 58, 290 + size * .95);
-  let y = 290 + size * .95 + 70;
-  x.fillStyle = INK; x.font = F(600, 40); x.fillText(o.line, 64, y);
-  // Value chart
-  y += 40;
-  const vals = o.values || [];
-  if (vals.length >= 2) {
-    const top = y, h = 170, left = 64, w = W - 128, min = Math.min(...vals), max = Math.max(...vals), span = max - min || 1;
-    const pt = (i) => [left + (i / (vals.length - 1)) * w, top + h - ((vals[i] - min) / span) * (h - 12) - 6];
-    // Chart colour follows its own trend, unless the card asks for a neutral (series-coloured) line.
-    const tone = o.chartTone || (vals[vals.length - 1] >= vals[0] ? UP : DOWN);
-    const fill = x.createLinearGradient(0, top, 0, top + h); fill.addColorStop(0, tone + "55"); fill.addColorStop(1, tone + "00");
-    x.beginPath(); vals.forEach((_, i) => { const [px, py] = pt(i); i ? x.lineTo(px, py) : x.moveTo(px, py); });
-    x.lineTo(left + w, top + h); x.lineTo(left, top + h); x.closePath(); x.fillStyle = fill; x.fill();
-    x.beginPath(); vals.forEach((_, i) => { const [px, py] = pt(i); i ? x.lineTo(px, py) : x.moveTo(px, py); });
-    x.strokeStyle = tone; x.lineWidth = 6; x.lineJoin = "round"; x.stroke();
-    const [ex, ey] = pt(vals.length - 1); x.fillStyle = tone; x.beginPath(); x.arc(ex, ey, 11, 0, Math.PI * 2); x.fill();
-    y = top + h + 50;
-  } else y += 20;
-  // Positions
-  const footTop = H - 250, rowH = 74, maxRows = Math.max(0, Math.floor((footTop - 30 - (y + 34)) / rowH));
-  const rows = (o.rows || []).slice(0, maxRows), hidden = (o.rows || []).length - rows.length;
-  if (rows.length) {
-    x.fillStyle = MUTED; x.font = F(700, 24); x.fillText("POSITIONS", 64, y);
-    x.textAlign = "right"; x.fillText("PRICE · 30D", W - 64, y); x.textAlign = "left";
-    y += 20;
-    rows.forEach((r) => {
-      x.strokeStyle = "rgba(255,255,255,.08)"; x.lineWidth = 2; x.beginPath(); x.moveTo(64, y); x.lineTo(W - 64, y); x.stroke();
-      const cy = y + rowH / 2;
-      x.font = F(700, 24); const sw = x.measureText(r.sym).width + 24;
-      x.fillStyle = o.accent + "40"; x.beginPath(); x.roundRect ? x.roundRect(64, cy - 21, sw, 42, 10) : x.rect(64, cy - 21, sw, 42); x.fill();
-      x.fillStyle = INK; x.textBaseline = "middle"; x.fillText(r.sym, 76, cy + 1);
-      x.font = F(600, 30); let nm = r.name; const maxNm = W - 128 - sw - 330;
-      while (x.measureText(nm).width > maxNm && nm.length > 4) nm = nm.slice(0, -2).trimEnd() + "…";
-      x.fillText(nm, 64 + sw + 20, cy + 1);
-      x.textAlign = "right"; x.fillStyle = INK; x.font = F(700, 32); x.fillText(r.price, W - 64 - 150, cy + 1);
-      x.fillStyle = r.ch == null ? MUTED : r.ch >= 0 ? UP : DOWN; x.font = F(700, 28);
-      x.fillText(r.ch == null ? "—" : `${r.ch >= 0 ? "▲" : "▼"} ${Math.abs(r.ch * 100).toFixed(1)}%`, W - 64, cy + 1);
-      x.textAlign = "left"; x.textBaseline = "alphabetic";
-      y += rowH;
+  // Quote header card.
+  let y = 150;
+  x.save(); x.beginPath(); R(x, M, y, W - 2 * M, headerH, 32); x.clip();
+  x.fillStyle = "#fff"; x.fillRect(M, y, W - 2 * M, headerH);
+  const band = x.createLinearGradient(M, 0, W - M, 0); band.addColorStop(0, T.band[0]); band.addColorStop(1, T.band[1]);
+  x.fillStyle = band; x.fillRect(M, y, W - 2 * M, 16); x.restore();
+  x.strokeStyle = LINE; x.lineWidth = 2; x.beginPath(); R(x, M, y, W - 2 * M, headerH, 32); x.stroke();
+  const P = M + 44; let cy = y + 60;
+  x.font = F(700, 24); const pw = x.measureText(o.pill).width + 36;
+  x.fillStyle = T.pill; x.beginPath(); R(x, P, cy, pw, 46, 23); x.fill();
+  x.fillStyle = T.pillInk; x.textBaseline = "middle"; x.fillText(o.pill, P + 18, cy + 24); x.textBaseline = "alphabetic";
+  cy += 104; x.fillStyle = INK; x.font = F(600, 42); x.fillText(o.title, P, cy);
+  cy += 128; let vs = 130; x.font = F(700, vs);
+  while (x.measureText(o.value).width > W - 2 * P && vs > 80) { vs -= 8; x.font = F(700, vs); }
+  x.fillStyle = T.acc; x.fillText(o.value, P - 4, cy);
+  cy += 52; x.fillStyle = MUTED; x.font = F(500, 30); x.fillText(o.sub, P, cy);
+  if (o.tiles?.length) {
+    const n = o.tiles.length, gap = 16, tw = (W - 2 * P - gap * (n - 1)) / n, th = 116, ty = cy + 32;
+    o.tiles.forEach((t, i) => {
+      const [bg, fg] = TINT[t.tone] || TINT.flat, tx = P + i * (tw + gap);
+      x.fillStyle = bg; x.beginPath(); R(x, tx, ty, tw, th, 18); x.fill();
+      x.textAlign = "center"; x.fillStyle = fg; x.font = F(700, 44); x.fillText(t.val, tx + tw / 2, ty + 58);
+      x.fillStyle = INK; x.font = F(500, 24); x.fillText(t.label, tx + tw / 2, ty + 96); x.textAlign = "left";
     });
-    if (hidden > 0) { x.fillStyle = MUTED; x.font = F(600, 24); x.fillText(`+ ${hidden} more`, 64, y + 34); }
   }
-  // Footer: call to action + QR code to the site
-  x.strokeStyle = "rgba(255,255,255,.12)"; x.lineWidth = 2; x.beginPath(); x.moveTo(64, footTop); x.lineTo(W - 64, footTop); x.stroke();
-  const qrSize = 170, qx = W - 64 - qrSize, qy = footTop + 30;
+  y += headerH;
+  // Items card.
+  if (rows.length) {
+    y += 32;
+    x.fillStyle = "#fff"; x.beginPath(); R(x, M, y, W - 2 * M, itemsH, 28); x.fill();
+    x.strokeStyle = LINE; x.lineWidth = 2; x.stroke();
+    x.fillStyle = MUTED; x.font = F(700, 22); x.fillText("ITEM", P, y + 46); x.textAlign = "right"; x.fillText("PRICE INCL. SHIPPING", W - P, y + 46); x.textAlign = "left";
+    const colW = (W - 2 * P - (cols - 1) * 40) / cols, perCol = Math.ceil(rows.length / cols);
+    const nameSize = two ? 26 : 32, priceSize = two ? 28 : 34;
+    rows.forEach((r, i) => {
+      const col = Math.floor(i / perCol), cx = P + col * (colW + 40), ry0 = y + 70 + (i % perCol) * rowH;
+      x.strokeStyle = LINE; x.lineWidth = 2; x.beginPath(); x.moveTo(cx, ry0); x.lineTo(cx + colW, ry0); x.stroke();
+      const my = ry0 + rowH / 2; x.textBaseline = "middle";
+      x.fillStyle = seriesColor(o.sid); x.beginPath(); x.arc(cx + 8, my, 8, 0, Math.PI * 2); x.fill();
+      x.font = F(700, 18); const tagW = r.tag ? x.measureText(r.tag).width + 22 : 0;
+      x.font = F(700, priceSize); const pw = x.measureText(r.price).width;
+      x.fillStyle = INK; x.font = F(600, nameSize); let nm = r.name;
+      const maxNm = colW - 30 - (tagW ? tagW + 12 : 0) - pw - 20;
+      while (x.measureText(nm).width > maxNm && nm.length > 4) nm = nm.slice(0, -2).trimEnd() + "…";
+      x.fillText(nm, cx + 28, my + 1);
+      if (r.tag) {
+        const tx = cx + 28 + x.measureText(nm).width + 12; x.font = F(700, 18);
+        x.strokeStyle = LINE; x.fillStyle = BG; x.beginPath(); R(x, tx, my - 15, tagW, 30, 15); x.fill(); x.stroke();
+        x.fillStyle = MUTED; x.fillText(r.tag, tx + 11, my + 1);
+      }
+      x.textAlign = "right"; x.fillStyle = r.price === "—" ? MUTED : INK; x.font = F(700, priceSize); x.fillText(r.price, cx + colW, my + 1);
+      x.textAlign = "left"; x.textBaseline = "alphabetic";
+    });
+    let ry = y + 70 + perCol * rowH;
+    if (more > 0) { x.fillStyle = MUTED; x.font = F(600, 24); x.fillText(`+ ${more} more`, P, ry + 34); }
+    y += itemsH;
+  }
+  // Footer: call to action + QR code.
+  const fy = H - footH + 20, qs = 150;
+  x.fillStyle = INK; x.font = F(700, 38); x.fillText(o.footer || "What's your Happy Meal worth?", M, fy + 60);
+  x.fillStyle = MUTED; x.font = F(600, 26); x.fillText("Scan or visit nglungfai.github.io/toy-ticker", M, fy + 104);
+  x.font = F(500, 21); x.fillText("eBay asking prices incl. shipping. Just for fun, not financial advice.", M, fy + 146);
   const qr = await loadQR();
   if (qr) {
     const q = qr(0, "M"); q.addData(o.qr || SITE); q.make();
-    const n = q.getModuleCount(), cell = (qrSize - 20) / n;
-    x.fillStyle = "#ffffff"; x.beginPath(); x.roundRect ? x.roundRect(qx, qy, qrSize, qrSize, 14) : x.rect(qx, qy, qrSize, qrSize); x.fill();
-    x.fillStyle = "#0e1013";
+    const n = q.getModuleCount(), qx = W - M - qs, qy = fy + 10, cell = (qs - 20) / n;
+    x.fillStyle = "#fff"; x.beginPath(); R(x, qx, qy, qs, qs, 16); x.fill(); x.strokeStyle = LINE; x.lineWidth = 2; x.stroke();
+    x.fillStyle = INK;
     for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) if (q.isDark(r, col)) x.fillRect(qx + 10 + col * cell, qy + 10 + r * cell, cell + .5, cell + .5);
   }
-  x.fillStyle = INK; x.font = F(700, 38); x.fillText(o.footer || "What's your Happy Meal worth?", 64, footTop + 82);
-  x.fillStyle = MUTED; x.font = F(600, 28); x.fillText("Scan or visit nglungfai.github.io/toy-ticker", 64, footTop + 128);
-  x.font = F(500, 22); x.fillText("eBay asking prices incl. shipping. Just for fun, not financial advice.", 64, footTop + 178);
   return c;
 }
 let shareBlob = null;
 async function openShareImage(opts, filename, text) {
-  const c = await drawProfitCard(opts);
+  const c = await drawQuoteCard(opts);
   shareBlob = await new Promise(r => c.toBlob(r, "image/png"));
   const url = URL.createObjectURL(shareBlob);
   $("shareImg").src = url; $("shareSave").href = url; $("shareSave").download = filename;
@@ -1226,19 +1245,22 @@ function wireShareModal() {
 // Collection share: value of what you own, and how it moved over the last 30 days (or since tracking began).
 async function shareCollection() {
   await loadSeries(SID);
-  const all = rowsFor(SID), mine = all.filter(r => OWNED.has(r.id) && r.price != null), T = THEMES[SID] || DEFAULT_THEME;
-  const val = mine.reduce((t, r) => t + r.price, 0);
+  const all = rowsFor(SID), mine = all.filter(r => OWNED.has(r.id) && r.price != null);
+  const val = mine.reduce((t, r) => t + r.price, 0), owned = all.filter(r => OWNED.has(r.id)).length;
   const vs = valueSeries(mine.map(r => ({ r, n: 1 })));
   const cutoff = vs.length ? new Date(new Date(vs[vs.length - 1].date + "T12:00:00") - 30 * 864e5).toISOString().slice(0, 10) : "";
   const recent = vs.filter(p => p.date >= cutoff), ch = recent.length >= 2 ? recent[recent.length - 1].v / recent[0].v - 1 : null;
-  const owned = all.filter(r => OWNED.has(r.id)).length;
+  const top = [...mine].sort((a, b) => b.price - a.price)[0];
   openShareImage({
-    accent: T.chart, label: `My ${series().name} collection · ${recent.length > 25 ? "30-day" : "since tracking began"}`,
-    title: owned === all.length ? `Complete set · ${usd(val)}` : `${owned} of ${all.length} collected · ${usd(val)}`,
-    big: ch != null ? bigPct(ch) : usd(val), bigTone: ch == null ? null : ch >= 0 ? "up" : "down",
-    line: ch != null ? `${usd(recent[0].v)}  →  ${usd(val)}` : "at today's eBay median prices incl. shipping",
-    values: recent.map(p => p.v),
-    rows: [...mine].sort((a, b) => b.price - a.price).map(r => ({ sym: symbol(r.name), name: r.name, price: usd(r.price), ch: r.d30 })),
+    sid: SID, pill: "MY COLLECTION", title: series().name, value: usd(val),
+    sub: owned === all.length ? `Complete set · all ${all.length} ${isCards() ? "cards" : "toys"}` : `${owned} of ${all.length} ${isCards() ? "cards" : "toys"} collected`,
+    tiles: [
+      { val: `${owned}/${all.length}`, label: "collected", tone: owned === all.length ? "up2" : "flat" },
+      { val: ch != null ? bigPct(ch) : "–", label: recent.length > 25 ? "30-day change" : "since tracking", tone: toneOf(ch) },
+      { val: top ? usd(top.price) : "–", label: "most valuable", tone: "flat" },
+    ],
+    rows: [...all.filter(r => OWNED.has(r.id))].sort((a, b) => (b.price ?? -1) - (a.price ?? -1))
+      .map(r => ({ name: r.name, tag: r.rarity === "Holo" ? "HOLO" : "", price: r.price != null ? usd(r.price) : "—" })),
     qr: `${SITE}s/${SID}/`, footer: "Track your Happy Meal collection",
   }, `my-${SID}-collection.png`, `My ${series().name} Happy Meal collection on Toy Ticker`);
 }
@@ -1334,20 +1356,19 @@ function renderMealResult() {
     </div>
     <p class="mr-note">Today's median eBay prices including shipping. Sellers often accept less.</p>`;
   $("mealResult").querySelectorAll("[data-rm]").forEach(b => b.onclick = () => removePick(b.dataset.rm));
-  $("mealShare")?.addEventListener("click", async () => {
-    await Promise.all([...new Set(rows.map(({ r }) => r.set))].map(loadSeries));
-    const pos = mealRows(), T = THEMES[pos[0].r.set] || DEFAULT_THEME;
-    const vs = valueSeries(pos).slice(-30);
+  $("mealShare")?.addEventListener("click", () => {
+    const sid = sorted[0].r.set;
     openShareImage({
-      accent: T.chart, chartTone: T.chart, label: "My Happy Meal · return",
-      title: `${items} collectible${items > 1 ? "s" : ""} from ${meals} Happy Meal${meals > 1 ? "s" : ""}`,
-      big: paid ? bigPct(worth / paid - 1) : usd(worth), bigTone: paid ? (worth >= paid ? "up" : "down") : null,
-      line: paid ? `Paid ${usd(paid)}  →  Worth ${usd(worth)}` : `Worth ${usd(worth)}`,
-      values: vs.map(p => p.v),
-      rows: pos.sort((a, b) => (b.r.price || 0) - (a.r.price || 0))
-        .map(({ r, n }) => ({ sym: symbol(r.name), name: `${n > 1 ? n + "× " : ""}${pickName(r, pos)}`, price: usd(r.price), ch: r.d30 })),
+      sid, pill: "MY HAPPY MEAL", title: mixed ? "Pokémon toys + cards" : DATA.sets[sid].name, value: usd(worth),
+      sub: `${items} collectible${items > 1 ? "s" : ""} from ${meals} Happy Meal${meals > 1 ? "s" : ""} · paid ${usd(paid)}`,
+      tiles: paid ? [
+        { val: bigPct(worth / paid - 1), label: "return", tone: toneOf(worth / paid - 1) },
+        { val: `${(worth / paid).toFixed(1)}×`, label: "what I paid", tone: worth >= paid ? "up1" : "down1" },
+      ] : [],
+      rows: sorted.map(({ r, n }) => ({ name: `${n > 1 ? n + "× " : ""}${r.name}`, tag: mixed ? (DATA.sets[r.set].kind === "cards" ? "CARD" : "TOY") : "",
+        price: r.price != null ? usd(r.price * n) : "—" })),
       qr: SITE, footer: "What's your Happy Meal worth?",
-    }, "my-happy-meal.png", `My Happy Meal is worth ${usd(worth)} on Toy Ticker`);
+    }, "my-happy-meal.png", `My Happy Meal haul is worth ${usd(worth)} on Toy Ticker`);
   });
 }
 function wireMeal() {
