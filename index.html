@@ -532,7 +532,7 @@
         <div class="hero-meta" id="sMeta"></div>
       </div>
       <div class="hero-value">
-        <small>Full set at median asks</small>
+        <small>Full set · median price incl. shipping</small>
         <b id="sTotal">—</b>
         <span class="hero-change" id="sChange"></span>
         <small id="sPriced"></small>
@@ -625,7 +625,7 @@
 
   <section class="map-wrap" id="mapWrap" hidden>
     <div class="map-head">
-      <span>Whole market · block size = median ask · colour = 1-day change</span>
+      <span>Whole market · block size = median price incl. shipping · colour = 1-day change</span>
       <span class="map-legend">−4%+<i class="m-dn3"></i><i class="m-dn2"></i><i class="m-dn1"></i><i></i><i class="m-up1"></i><i class="m-up2"></i><i class="m-up3"></i>+4%+</span>
     </div>
     <div class="map" id="map"></div>
@@ -636,10 +636,10 @@
       <thead><tr>
         <th class="own-col" title="I own this">Own</th>
         <th data-k="name" id="thName">Item</th>
-        <th data-k="price" class="num">Median ask</th>
+        <th data-k="price" class="num" title="Median of today's listings, item + shipping to the US">Median incl. ship</th>
         <th data-k="d1" class="num">1-day</th>
         <th data-k="d30" class="num">vs 30-day avg</th>
-        <th data-k="low" class="num">Lowest ask</th>
+        <th data-k="low" class="num" title="Cheapest listing today, item + shipping">Lowest incl. ship</th>
         <th data-k="count" class="num">Listings</th>
         <th class="num">History</th>
       </tr></thead>
@@ -921,7 +921,7 @@ function go(sid) {
   $("sMeta").innerHTML = `${s.kind === "cards" ? "Cards" : "Toys"} · ${fmtDate(s.start)} – ${s.end ? fmtDate(s.end) : "now"}` +
     (s.note ? `<span class="hero-note"><br>${esc(s.note)}</span>` : "");
   $("thName").textContent = s.kind === "cards" ? "Card" : "Toy";
-  $("foot").innerHTML = `Prices are <b>asking prices</b> of active eBay US Buy It Now listings, collected daily with the eBay Browse API. ` +
+  $("foot").innerHTML = `Prices are <b>asking prices including shipping</b> (item + cheapest shipping to the US) of active eBay US Buy It Now listings, collected daily with the eBay Browse API. ` +
     (s.kind === "cards" ? "Lots, graded slabs and multi-card listings are filtered out. " : "Lots, full sets and multi-toy listings are filtered out. ") +
     `Shown is the median of what's left; asking prices usually run above what items actually sell for. Photos are from eBay listings and link to them. Not financial advice.`;
   renderNav();
@@ -1133,7 +1133,7 @@ async function drawProfitCard(o) {
   }
   x.fillStyle = INK; x.font = F(700, 38); x.fillText(o.footer || "What's your Happy Meal worth?", 64, footTop + 82);
   x.fillStyle = MUTED; x.font = F(600, 28); x.fillText("Scan or visit nglungfai.github.io/toy-ticker", 64, footTop + 128);
-  x.font = F(500, 22); x.fillText("Based on eBay asking prices. Just for fun, not financial advice.", 64, footTop + 178);
+  x.font = F(500, 22); x.fillText("eBay asking prices incl. shipping. Just for fun, not financial advice.", 64, footTop + 178);
   return c;
 }
 let shareBlob = null;
@@ -1167,7 +1167,7 @@ async function shareCollection() {
     accent: T.chart, label: `My ${series().name} collection · ${recent.length > 25 ? "30-day" : "since tracking began"}`,
     title: owned === all.length ? `Complete set · ${usd(val)}` : `${owned} of ${all.length} collected · ${usd(val)}`,
     big: ch != null ? bigPct(ch) : usd(val), bigTone: ch == null ? null : ch >= 0 ? "up" : "down",
-    line: ch != null ? `${usd(recent[0].v)}  →  ${usd(val)}` : "worth at today's eBay median asks",
+    line: ch != null ? `${usd(recent[0].v)}  →  ${usd(val)}` : "at today's eBay median prices incl. shipping",
     values: recent.map(p => p.v),
     rows: [...mine].sort((a, b) => b.price - a.price).map(r => ({ sym: symbol(r.name), name: r.name, price: usd(r.price), ch: r.d30 })),
     qr: `${SITE}s/${SID}/`, footer: "Track your Happy Meal collection",
@@ -1237,7 +1237,7 @@ function renderMealResult() {
     <p>${msg}</p>
     <p class="chosen">${rows.map(({ r, n }) => `${n > 1 ? n + "× " : ""}${esc(pickName(r, rows))} ${usd(r.price)} <a href="#" data-rm="${r.id}" aria-label="Remove ${esc(r.name)}">✕</a>`).join(" · ")}
       ${unpriced ? ` · ${unpriced} not priced yet` : ""}</p>
-    <p style="font-size:12px">Based on today's median eBay asking prices. Sellers often accept less.</p>
+    <p style="font-size:12px">Based on today's median eBay asking prices, including shipping. Sellers often accept less.</p>
     ${worth ? `<button class="share-btn" id="mealShare" type="button">📸 Share my Happy Meal</button>` : ""}`;
   $("mealResult").querySelectorAll("[data-rm]").forEach(a => a.onclick = (e) => { e.preventDefault(); removePick(a.dataset.rm); });
   $("mealShare")?.addEventListener("click", async () => {
@@ -1338,6 +1338,7 @@ function dealCard(d, r) {
   return `<a class="deal" href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title)}">${img}
     <div><b>${esc(r.name)}</b>
     <div class="deal-row"><span class="deal-price">${usd(d.price)}</span><span class="off">${Math.round(d.below * 100)}% under</span></div>
+    <small>${d.ship != null ? (d.ship ? `${usd(d.item)} + ${usd(d.ship)} shipping` : "free shipping") : "incl. shipping"}</small>
     <small>${esc(d.title)} · eBay ↗</small></div></a>`;
 }
 const list_count = (all) => all.reduce((n, r) => n + (r.deals || []).length, 0);
@@ -1362,7 +1363,7 @@ function renderComplete(all) {
   if (!missing.length) { $("complete").innerHTML = `🎉 <b>Set complete!</b> You own all ${all.length}.`; return; }
   const priced = missing.filter(r => r.low != null), cost = priced.reduce((s, r) => s + r.low, 0);
   $("complete").innerHTML = `<details><summary>Missing <b>${missing.length}</b> of ${all.length} · complete the set for about
-    <span class="big">${priced.length ? usd(cost) : "—"}</span> at today's lowest asks${priced.length < missing.length ? ` (${missing.length - priced.length} with no listing)` : ""}</summary>
+    <span class="big">${priced.length ? usd(cost) : "—"}</span> at today's lowest prices incl. shipping${priced.length < missing.length ? ` (${missing.length - priced.length} with no listing)` : ""}</summary>
     <div class="miss">${missing.sort((a, b) => (a.low ?? 1e9) - (b.low ?? 1e9)).map(r => r.low != null
       ? `<a href="${ebaySearch(r)}" target="_blank" rel="noopener"><span>#${esc(r.number)} ${esc(r.name)}</span><span>${usd(r.low)} ↗</span></a>`
       : `<span class="row"><span>#${esc(r.number)} ${esc(r.name)}</span><em>no listing</em></span>`).join("")}</div></details>`;
@@ -1680,7 +1681,9 @@ function showDetail(id) {
   const q = encodeURIComponent(`mcdonalds ${isCards() ? r.name + " " + r.number + "/015 2026" : series().name.replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`);
   const cf = confidence(r);
   $("dMeta").innerHTML = (cf ? `<span class="conf c${cf.lvl}">${cf.label} confidence</span><span class="conf-why">${esc(cf.why)}</span>` : "") +
-    `${esc(series().name)} · median ask ${usd(r.price)} · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
+    `${esc(series().name)} · median ${usd(r.price)} incl. shipping` +
+    (r.last.itemMedian != null ? ` (item ${usd(r.last.itemMedian)} + ship ${usd(r.last.shipMedian)})` : "") +
+    ` · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
     `<a href="https://www.ebay.com/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`;
   if (chart) chart.destroy();
   Chart.defaults.color = css("--muted");
@@ -1697,9 +1700,9 @@ function showDetail(id) {
   chart = new Chart($("dChart"), {
     type: "line",
     data: { labels: r.h.map(p => p.date), datasets: [
-      line("median", "Median ask", css("--accent")),
-      line("p25", "25th percentile ask", css("--gold")),
-      line("low", "Lowest ask", css("--muted"), [4, 4]),
+      line("median", "Median incl. shipping", css("--accent")),
+      line("p25", "25th percentile", css("--gold")),
+      line("low", "Lowest", css("--muted"), [4, 4]),
       { type: "bar", label: "Listings", data: counts, yAxisID: "vol", order: 10,
         backgroundColor: counts.map((_, i) => volColor(i)), borderWidth: 0, barPercentage: .9, categoryPercentage: 1 },
     ]},
@@ -1730,7 +1733,7 @@ fetch("data/index.json", { cache: "no-store" })
     DATA = { sets: d.sets, cards: d.items, history: {}, calendar: d.calendar || [], updated: d.updated };
     const first = DATA.sets[new URLSearchParams(location.search).get("s")] ? new URLSearchParams(location.search).get("s") : defaultSeries();
     await loadSeries(first);
-    $("meta").textContent = `Daily eBay asking prices for McDonald's Happy Meal toys and cards · updated ${new Date(d.updated).toLocaleString()}`;
+    $("meta").textContent = `Daily eBay prices, including shipping, for McDonald's Happy Meal toys and cards · updated ${new Date(d.updated).toLocaleString()}`;
     document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
       sortDir = th.dataset.k === sortKey ? -sortDir : (th.dataset.k === "name" ? 1 : -1);
       sortKey = th.dataset.k; render();

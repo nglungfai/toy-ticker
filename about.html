@@ -137,7 +137,7 @@
     <div class="steps">
       <div class="step"><h3>Scan eBay</h3><p>We search eBay US for every toy and card in each Happy Meal series and collect every Buy It Now listing.</p></div>
       <div class="step"><h3>Throw out the noise</h3><p>Lots, full sets, graded slabs, fakes and listings for other years are filtered out, leaving single, ungraded items.</p></div>
-      <div class="step"><h3>One fair price</h3><p>We take the median of what's left, so one silly $500 listing can't move the number, and save it to build a daily price history.</p></div>
+      <div class="step"><h3>One fair price</h3><p>We add each listing's shipping, take the median of what's left (so one silly $500 listing can't move the number), and save it to build a daily price history.</p></div>
     </div>
   </section>
 
@@ -145,11 +145,11 @@
     <h2>What the numbers mean</h2>
     <p class="lead">Toy Ticker borrows ideas from stock sites. Here's the cheat sheet.</p>
     <div class="terms">
-      <div class="term"><b>Median ask</b><span>The middle asking price of today's matching listings. Half ask more, half ask less.</span></div>
-      <div class="term"><b>Lowest ask</b><span>The cheapest listing today: roughly what you'd pay to buy one right now.</span></div>
+      <div class="term"><b>Median price</b><span>The middle price of today's matching listings, <b>including shipping</b> to the US. Half cost more, half cost less.</span></div>
+      <div class="term"><b>Lowest price</b><span>The cheapest listing today, shipping included: roughly what you'd pay to buy one right now.</span></div>
       <div class="term"><b>Listings ("volume")</b><span>How many copies are for sale. More listings usually means prices are about to soften.</span></div>
       <div class="term"><b>Returns</b><span>How much the price moved over 1 day, 1 week, 1 month and so on. "–" means not enough history yet.</span></div>
-      <div class="term"><b>Full set</b><span>The total of every item in a series at today's median ask: what a complete collection is worth.</span></div>
+      <div class="term"><b>Full set</b><span>The total of every item in a series at today's median price incl. shipping: what a complete collection is worth.</span></div>
       <div class="term"><b>Confidence</b><span>How much to trust a price. High means lots of listings that mostly agree; Low means only a few, so one listing can move it.</span></div>
       <div class="term"><b>Market map</b><span>Every item as a block: bigger means more valuable, greener or redder means a bigger daily move.</span></div>
     </div>
@@ -166,6 +166,8 @@
     <h2>Questions</h2>
     <details><summary>Why asking prices and not sold prices?</summary>
       <p>eBay only shares completed-sale data with a small number of approved partners. Asking prices are public, update daily and move in the same direction as sales, so they're a reliable signal of where the market is going.</p></details>
+    <details><summary>Do prices include shipping?</summary>
+      <p>Yes. Every listing counts as item price plus its cheapest shipping option to the US, so a $3.99 card with $1.25 shipping counts as $5.24 and free-shipping listings count as just the item. When a seller charges by distance we use the cost to a central US ZIP code; if eBay doesn't give a cost at all, we use the typical shipping of the other listings for that item. Item details show the split.</p></details>
     <details><summary>How often do prices update?</summary>
       <p>Once a day, early morning US time. Each update adds one point to every item's chart and returns.</p></details>
     <details><summary>Why is my toy missing a price or a photo?</summary>
@@ -180,7 +182,7 @@
 
   <footer>
     <p>Unofficial fan site. Not affiliated with or endorsed by McDonald’s, The Pokémon Company, Disney, Nickelodeon, Toei Animation, Shueisha or eBay. All trademarks belong to their owners.</p>
-    <p>Prices are eBay US asking prices collected with the eBay Browse API. Not financial advice.</p>
+    <p>Prices are eBay US asking prices including shipping, collected with the eBay Browse API. Not financial advice.</p>
   </footer>
 </div>
 

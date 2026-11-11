@@ -126,6 +126,8 @@ def search(tok, q, category=None, attempts=4):
     req = urllib.request.Request(f"{SEARCH_URL}?{urllib.parse.urlencode(params)}", headers={
         "Authorization": f"Bearer {tok}",
         "X-EBAY-C-MARKETPLACE-ID": "EBAY_US",
+        # Ship-to location, so listings that charge by distance return a real shipping cost.
+        "X-EBAY-C-ENDUSERCTX": "contextualLocation=" + urllib.parse.quote(f"country=US,zip={SHIP_TO_ZIP}"),
     })
     for i in range(attempts):
         try:
@@ -135,6 +137,40 @@ def search(tok, q, category=None, attempts=4):
             if e.code < 500 and e.code != 429 or i == attempts - 1:
                 raise
         time.sleep(2 ** i * 3)
+
+
+SHIP_TO_ZIP = "66044"  # a central US ZIP (Kansas): a fair middle for distance-based shipping
+
+
+def item_price(it):
+    try:
+        return float(it["price"]["value"])
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+def ship_cost(it):
+    """Cheapest US shipping cost for a listing (0 for free shipping), or None when eBay doesn't say."""
+    costs = []
+    for o in it.get("shippingOptions") or []:
+        if o.get("shippingCostType") == "FREE":
+            costs.append(0.0)
+        try:
+            costs.append(float(o["shippingCost"]["value"]))
+        except (KeyError, TypeError, ValueError):
+            pass
+    return min(costs) if costs else None
+
+
+def delivered(matched):
+    """[(listing, item_price, shipping, total)] where total = item + shipping to the US.
+    Listings whose shipping eBay doesn't report get the typical (median) shipping of the others."""
+    rows = [(it, item_price(it), ship_cost(it)) for it in matched]
+    rows = [r for r in rows if r[1] is not None]
+    known = [sh for _, _, sh in rows if sh is not None]
+    typical = statistics.median(known) if known else 0.0
+    return [(it, p, sh if sh is not None else typical, round(p + (sh if sh is not None else typical), 2), sh is not None)
+            for it, p, sh in rows]
 
 
 def stats(prices):
@@ -166,18 +202,14 @@ def best_image(matched, item):
 DEAL_CUTOFF = 0.80  # a "deal" asks at most 80% of today's median
 
 
-def deals(matched, median, limit=5):
-    """Today's cheapest matched listings that ask well under the median (with links back to eBay)."""
+def deals(rows, median, limit=5):
+    """Today's cheapest listings whose delivered price (item + shipping) is well under the median."""
     out = []
-    for it in matched:
-        try:
-            price = float(it["price"]["value"])
-        except (KeyError, ValueError):
-            continue
-        if price <= median * DEAL_CUTOFF and it.get("itemWebUrl"):
+    for it, price, ship, total, _ in rows:
+        if total <= median * DEAL_CUTOFF and it.get("itemWebUrl"):
             img = (it.get("image") or {}).get("imageUrl")
-            out.append({"title": it.get("title", "")[:120], "price": round(price, 2),
-                        "url": it["itemWebUrl"], "below": round(1 - price / median, 3),
+            out.append({"title": it.get("title", "")[:120], "price": total, "item": round(price, 2), "ship": round(ship, 2),
+                        "url": it["itemWebUrl"], "below": round(1 - total / median, 3),
                         **({"image": img} if img else {})})
     return sorted(out, key=lambda d: d["price"])[:limit]
 
@@ -224,21 +256,22 @@ def snapshot(series, today):
                 matched.append(it)
             else:
                 rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
+        rows = delivered(matched)  # prices are item + shipping to the US
         if os.environ.get("MATCH_REPORT"):
             REPORT[iid] = {"name": item["name"], "query": item["q"],
-                           "kept": [{"title": it.get("title", ""), "price": it["price"]["value"]} for it in matched if it.get("price")],
+                           "kept": [{"title": it.get("title", ""), "price": p, "ship": sh, "total": t, "shipKnown": k}
+                                    for it, p, sh, t, k in rows],
                            "rejected": rejected}
-        prices = []
-        for it in matched:
-            try:
-                prices.append(float(it["price"]["value"]))
-            except (KeyError, ValueError):
-                pass
+        prices = [t for *_, t, _k in rows]
         meta.update(best_image(matched, item))
-        point = {"date": today, **stats(prices)} if prices else None
-        meta["deals"] = deals(matched, point["median"]) if point else []
+        point = None
+        if prices:
+            point = {"date": today, **stats(prices),
+                     "itemMedian": round(statistics.median([p for _, p, *_ in rows]), 2),
+                     "shipMedian": round(statistics.median([sh for _, _, sh, *_ in rows]), 2)}
+        meta["deals"] = deals(rows, point["median"]) if point else []
         print(f"  {iid} {item['name']}: {len(prices)}/{len(items)} listings kept"
-              + (f", median ${point['median']}" if point else ""))
+              + (f", median ${point['median']} incl. shipping (item ${point['itemMedian']} + ship ${point['shipMedian']})" if point else ""))
         out[iid] = (meta, point)
         time.sleep(0.5)
     return out
