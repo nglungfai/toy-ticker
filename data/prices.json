@@ -1,411 +1,249 @@
 {
  "sets": {
-  "2024sv": {
-   "name": "McDonald's Collection 2024",
-   "releaseDate": "2024-12-04",
-   "currency": "EUR",
-   "source": "Cardmarket via TCGdex"
+  "pokemon-2026": {
+   "name": "Pokémon TCG cards",
+   "kind": "cards",
+   "start": "2026-11-10",
+   "end": "2026-12-14",
+   "current": true,
+   "note": "15 promo cards (7 holo), 2 per Happy Meal. Raw single cards only.",
+   "order": 0,
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)"
   },
-  "mcd2026": {
-   "name": "McDonald's Collection 2026",
-   "releaseDate": "2026-11-10",
+  "boo-buckets-2026": {
+   "name": "Disney Villains Boo Buckets",
+   "kind": "toys",
+   "start": "2026-10-20",
+   "end": "2026-11-09",
+   "note": "5 Halloween pails with villain lids and stickers.",
+   "order": 1,
+   "currency": "USD",
+   "source": "eBay US active listings (median asking price)"
+  },
+  "spongebob-onepiece-2026": {
+   "name": "SpongeBob × One Piece",
+   "kind": "toys",
+   "start": "2026-09-15",
+   "end": "2026-10-19",
+   "note": "15 crossover figures. Toy list from Qz and Today; one pairing (Smitty × Brook) is from a single source.",
+   "order": 2,
    "currency": "USD",
    "source": "eBay US active listings (median asking price)"
   }
  },
  "cards": {
-  "2024sv-1": {
-   "name": "Charizard",
-   "set": "2024sv",
-   "number": "1",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802823
-  },
-  "2024sv-2": {
-   "name": "Pikachu",
-   "set": "2024sv",
-   "number": "2",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802824
-  },
-  "2024sv-3": {
-   "name": "Miraidon",
-   "set": "2024sv",
-   "number": "3",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802825
-  },
-  "2024sv-4": {
-   "name": "Jigglypuff",
-   "set": "2024sv",
-   "number": "4",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802826
-  },
-  "2024sv-5": {
-   "name": "Hatenna",
-   "set": "2024sv",
-   "number": "5",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802827
-  },
-  "2024sv-6": {
-   "name": "Dragapult",
-   "set": "2024sv",
-   "number": "6",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802828
-  },
-  "2024sv-7": {
-   "name": "Quagsire",
-   "set": "2024sv",
-   "number": "7",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802829
-  },
-  "2024sv-8": {
-   "name": "Koraidon",
-   "set": "2024sv",
-   "number": "8",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802830
-  },
-  "2024sv-9": {
-   "name": "Umbreon",
-   "set": "2024sv",
-   "number": "9",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802831
-  },
-  "2024sv-10": {
-   "name": "Hydreigon",
-   "set": "2024sv",
-   "number": "10",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802832
-  },
-  "2024sv-11": {
-   "name": "Roaring Moon",
-   "set": "2024sv",
-   "number": "11",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802833
-  },
-  "2024sv-12": {
-   "name": "Dragonite",
-   "set": "2024sv",
-   "number": "12",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802834
-  },
-  "2024sv-13": {
-   "name": "Eevee",
-   "set": "2024sv",
-   "number": "13",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802835
-  },
-  "2024sv-14": {
-   "name": "Rayquaza",
-   "set": "2024sv",
-   "number": "14",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802836
-  },
-  "2024sv-15": {
-   "name": "Drampa",
-   "set": "2024sv",
-   "number": "15",
-   "rarity": "None",
-   "image": null,
-   "cardmarketId": 802837
-  },
-  "mcd2026-001": {
+  "pokemon-2026-001": {
    "name": "Decidueye",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "001",
-   "rarity": "Regular"
+   "rarity": null
   },
-  "mcd2026-002": {
+  "pokemon-2026-002": {
    "name": "Chandelure",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "002",
    "rarity": "Holo"
   },
-  "mcd2026-003": {
+  "pokemon-2026-003": {
    "name": "Palafin",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "003",
    "rarity": "Holo"
   },
-  "mcd2026-004": {
+  "pokemon-2026-004": {
    "name": "Pikachu",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "004",
    "rarity": "Holo"
   },
-  "mcd2026-005": {
+  "pokemon-2026-005": {
    "name": "Mimikyu",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "005",
    "rarity": "Holo"
   },
-  "mcd2026-006": {
+  "pokemon-2026-006": {
    "name": "Lucario",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "006",
    "rarity": "Holo"
   },
-  "mcd2026-007": {
+  "pokemon-2026-007": {
    "name": "Hawlucha",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "007",
-   "rarity": "Regular"
+   "rarity": null
   },
-  "mcd2026-008": {
+  "pokemon-2026-008": {
    "name": "Tyranitar",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "008",
    "rarity": "Holo"
   },
-  "mcd2026-009": {
+  "pokemon-2026-009": {
    "name": "Absol",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "009",
-   "rarity": "Regular"
+   "rarity": null
   },
-  "mcd2026-010": {
+  "pokemon-2026-010": {
    "name": "Zoroark",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "010",
-   "rarity": "Regular"
+   "rarity": null
   },
-  "mcd2026-011": {
+  "pokemon-2026-011": {
    "name": "Metagross",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "011",
-   "rarity": "Regular"
+   "rarity": null
   },
-  "mcd2026-012": {
+  "pokemon-2026-012": {
    "name": "Jirachi",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "012",
    "rarity": "Holo"
   },
-  "mcd2026-013": {
+  "pokemon-2026-013": {
    "name": "Eevee",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "013",
-   "rarity": "Regular"
+   "rarity": null
   },
-  "mcd2026-014": {
+  "pokemon-2026-014": {
    "name": "Snorlax",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "014",
-   "rarity": "Regular"
+   "rarity": null
   },
-  "mcd2026-015": {
+  "pokemon-2026-015": {
    "name": "Wooloo",
-   "set": "mcd2026",
+   "set": "pokemon-2026",
    "number": "015",
-   "rarity": "Regular"
+   "rarity": null
+  },
+  "boo-buckets-2026-01": {
+   "name": "Jafar (red)",
+   "set": "boo-buckets-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "boo-buckets-2026-02": {
+   "name": "Ursula (purple)",
+   "set": "boo-buckets-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "boo-buckets-2026-03": {
+   "name": "Scar (orange)",
+   "set": "boo-buckets-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "boo-buckets-2026-04": {
+   "name": "Cruella de Vil (white)",
+   "set": "boo-buckets-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "boo-buckets-2026-05": {
+   "name": "Maleficent (green)",
+   "set": "boo-buckets-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-01": {
+   "name": "SpongeBob × Luffy",
+   "set": "spongebob-onepiece-2026",
+   "number": "01",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-02": {
+   "name": "SpongeBob × Gear 5 Luffy",
+   "set": "spongebob-onepiece-2026",
+   "number": "02",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-03": {
+   "name": "Patrick × Zoro",
+   "set": "spongebob-onepiece-2026",
+   "number": "03",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-04": {
+   "name": "Sandy × Nami",
+   "set": "spongebob-onepiece-2026",
+   "number": "04",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-05": {
+   "name": "Squidward × Sanji",
+   "set": "spongebob-onepiece-2026",
+   "number": "05",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-06": {
+   "name": "Plankton × Usopp",
+   "set": "spongebob-onepiece-2026",
+   "number": "06",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-07": {
+   "name": "Gary × Chopper",
+   "set": "spongebob-onepiece-2026",
+   "number": "07",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-08": {
+   "name": "Pearl × Robin",
+   "set": "spongebob-onepiece-2026",
+   "number": "08",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-09": {
+   "name": "Larry × Franky",
+   "set": "spongebob-onepiece-2026",
+   "number": "09",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-10": {
+   "name": "Smitty × Brook",
+   "set": "spongebob-onepiece-2026",
+   "number": "10",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-11": {
+   "name": "Mr. Krabs × Jinbe",
+   "set": "spongebob-onepiece-2026",
+   "number": "11",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-12": {
+   "name": "Flying Dutchman × Blackbeard",
+   "set": "spongebob-onepiece-2026",
+   "number": "12",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-13": {
+   "name": "Mrs. Puff × Big Mom",
+   "set": "spongebob-onepiece-2026",
+   "number": "13",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-14": {
+   "name": "Barnacle Boy × Koby",
+   "set": "spongebob-onepiece-2026",
+   "number": "14",
+   "rarity": null
+  },
+  "spongebob-onepiece-2026-15": {
+   "name": "Mermaid Man × Garp",
+   "set": "spongebob-onepiece-2026",
+   "number": "15",
+   "rarity": null
   }
  },
- "history": {
-  "2024sv-1": [
-   {
-    "date": "2026-11-11",
-    "trend": 1.91,
-    "avg": 2.1,
-    "low": 0.2,
-    "avg1": 1.82,
-    "avg7": 1.98,
-    "avg30": 2.12,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-2": [
-   {
-    "date": "2026-11-11",
-    "trend": 1.7,
-    "avg": 1.7,
-    "low": 0.05,
-    "avg1": 2,
-    "avg7": 2.25,
-    "avg30": 1.67,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-3": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.41,
-    "avg": 0.36,
-    "low": 0.02,
-    "avg1": 0.19,
-    "avg7": 0.4,
-    "avg30": 0.37,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-4": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.08,
-    "avg": 0.1,
-    "low": 0.02,
-    "avg1": 0.23,
-    "avg7": 0.09,
-    "avg30": 0.1,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-5": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.06,
-    "avg": 0.06,
-    "low": 0.02,
-    "avg1": 0.1,
-    "avg7": 0.1,
-    "avg30": 0.06,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-6": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.08,
-    "avg": 0.09,
-    "low": 0.02,
-    "avg1": 0.05,
-    "avg7": 0.06,
-    "avg30": 0.09,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-7": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.07,
-    "avg": 0.07,
-    "low": 0.02,
-    "avg1": 0.1,
-    "avg7": 0.05,
-    "avg30": 0.07,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-8": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.33,
-    "avg": 0.36,
-    "low": 0.02,
-    "avg1": 0.55,
-    "avg7": 0.32,
-    "avg30": 0.37,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-9": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.35,
-    "avg": 0.46,
-    "low": 0.02,
-    "avg1": 0.35,
-    "avg7": 0.38,
-    "avg30": 0.47,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-10": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.44,
-    "avg": 0.45,
-    "low": 0.02,
-    "avg1": 0.15,
-    "avg7": 0.39,
-    "avg30": 0.45,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-11": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.7,
-    "avg": 0.64,
-    "low": 0.02,
-    "avg1": 0.3,
-    "avg7": 0.71,
-    "avg30": 0.67,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-12": [
-   {
-    "date": "2026-11-11",
-    "trend": 1.27,
-    "avg": 1.27,
-    "low": 0.13,
-    "avg1": 1.09,
-    "avg7": 1.28,
-    "avg30": 1.28,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-13": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.2,
-    "avg": 0.31,
-    "low": 0.02,
-    "avg1": 0.5,
-    "avg7": 0.25,
-    "avg30": 0.31,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-14": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.33,
-    "avg": 0.34,
-    "low": 0.02,
-    "avg1": 0.34,
-    "avg7": 0.24,
-    "avg30": 0.42,
-    "trend-holo": 0
-   }
-  ],
-  "2024sv-15": [
-   {
-    "date": "2026-11-11",
-    "trend": 0.8,
-    "avg": 0.43,
-    "low": 0.02,
-    "avg1": 0.3,
-    "avg7": 0.65,
-    "avg30": 0.44,
-    "trend-holo": 0
-   }
-  ]
- },
- "updated": "2026-11-11T01:16:45+00:00"
+ "history": {},
+ "updated": "2026-11-11T04:37:29+00:00"
 }

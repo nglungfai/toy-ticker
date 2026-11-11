@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Happy Meal Card Prices</title>
+<title>Happy Meal Prices</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
@@ -27,9 +27,14 @@
   header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
   header h1 span { color: var(--accent); }
   .meta { color: var(--muted); font-size: 13px; }
-  .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 24px 0 12px; }
-  select { font: inherit; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line);
-           background: var(--panel); color: var(--text); }
+  nav.series { display: flex; gap: 8px; margin: 24px 0 8px; overflow-x: auto; padding-bottom: 4px; }
+  nav.series a { flex: none; text-decoration: none; color: var(--text); background: var(--panel);
+                 border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-size: 14px; }
+  nav.series a[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  nav.series .tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+                    margin-left: 6px; opacity: .85; }
+  .series-head { margin: 16px 0 16px; }
+  .series-head h2 { margin: 0; font-size: 20px; }
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
   .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
   .stat b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
@@ -55,12 +60,13 @@
   .holo { color: var(--gold); font-size: 12px; }
   .cardcell { display: flex; align-items: center; gap: 10px; }
   .pic, .ph { flex: none; border-radius: 4px; aspect-ratio: 63 / 88; }
+  .toys .pic, .toys .ph { aspect-ratio: 1 / 1; }
   .pic { object-fit: cover; background: var(--line); display: block; }
   .pic.sm, .ph.sm { width: 34px; }
   .pic.lg, .ph.lg { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.15); }
   .ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-        background: var(--bg); border: 1px dashed var(--line); color: var(--muted); font-size: 10px; }
-  .ph.lg { font-size: 22px; font-weight: 600; }
+        background: var(--bg); border: 1px dashed var(--line); color: var(--muted); font-size: 10px; text-align: center; }
+  .ph.lg { font-size: 22px; font-weight: 600; padding: 8px; }
   .ph.lg small { font-size: 13px; font-weight: 400; }
   .ph .phnote { font-size: 11px; opacity: .8; }
   .ph.holo-tile { background: linear-gradient(135deg, var(--accent-soft), var(--bg) 45%, var(--accent-soft)); border-style: solid; }
@@ -79,25 +85,29 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>Happy Meal <span>Pokémon</span> card prices</h1>
+    <h1>Happy Meal <span>eBay</span> price tracker</h1>
     <div class="meta" id="meta">Loading…</div>
   </header>
 
-  <div class="controls">
-    <label>Set <select id="setSel"></select></label>
+  <nav class="series" id="nav" aria-label="Happy Meal series"></nav>
+
+  <div class="series-head">
+    <h2 id="sTitle"></h2>
+    <div class="meta" id="sMeta"></div>
   </div>
 
-  <div class="banner" id="empty" hidden>No prices collected for this set yet. They appear after the next daily update.</div>
+  <div class="banner" id="empty" hidden>No prices collected for this series yet. They appear after the next daily update.</div>
   <div class="stats" id="stats"></div>
 
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th data-k="name">Card</th>
-        <th data-k="price" class="num">Trend price</th>
+        <th data-k="name" id="thName">Item</th>
+        <th data-k="price" class="num">Median ask</th>
         <th data-k="d1" class="num">1-day</th>
         <th data-k="d30" class="num">vs 30-day avg</th>
-        <th data-k="low" class="num">Lowest listing</th>
+        <th data-k="low" class="num">Lowest ask</th>
+        <th data-k="count" class="num">Listings</th>
         <th class="num">History</th>
       </tr></thead>
       <tbody id="rows"></tbody>
@@ -116,46 +126,70 @@
     </div>
   </section>
 
-  <footer>
-    <span id="footSrc"></span> Ungraded singles only. Not financial advice.
-  </footer>
+  <footer id="foot"></footer>
 </div>
 
 <script>
 const $ = (id) => document.getElementById(id);
-let DATA, sortKey = "price", sortDir = -1, selected = null, chart = null;
+let DATA, SID, sortKey = "price", sortDir = -1, selected = null, chart = null;
 
 const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const curSet = () => DATA.sets[$("setSel").value] || {};
-const isEbay = (s) => (s || curSet()).currency === "USD";
-const eur = (v) => v == null ? "—" : (isEbay() ? "$" : "€") + v.toFixed(2);
+const usd = (v) => v == null ? "—" : "$" + v.toFixed(2);
 const mean = (a) => a.length ? a.reduce((s, x) => s + x, 0) / a.length : null;
 const pct = (v) => v == null || !isFinite(v) ? "—" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
 const cls = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? "up" : "down";
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmtDate = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
+const series = () => DATA.sets[SID];
+const isCards = () => series().kind === "cards";
 
-function rowsFor(setId) {
+function rowsFor(sid) {
+  const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
   return Object.entries(DATA.cards)
-    .filter(([, c]) => c.set === setId)
+    .filter(([, c]) => c.set === sid)
     .map(([id, c]) => {
       const h = DATA.history[id] || [];
       const last = h[h.length - 1] || {}, prev = h[h.length - 2];
-      const val = (p) => p ? (p.trend ?? p.median ?? p.avg ?? null) : null;
-      const price = val(last);
-      const prevPrice = prev ? val(prev) : (last.avg1 ?? null);
-      // 30-day reference: Cardmarket's own 30-day average, else the mean of our earlier snapshots.
-      const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
-      const ref30 = last.avg30 ?? mean(h.slice(0, -1).filter(p => p.date >= cutoff).map(val).filter(v => v != null));
+      const price = last.median ?? null;
+      const ref30 = mean(h.slice(0, -1).filter(p => p.date >= cutoff).map(p => p.median).filter(v => v != null));
       return {
-        id, ...c, h, last, price, low: last.low ?? null,
-        d1: price != null && prevPrice ? price / prevPrice - 1 : null,
+        id, ...c, h, last, price, low: last.low ?? null, count: last.count ?? null,
+        d1: price != null && prev?.median ? price / prev.median - 1 : null,
         d30: price != null && ref30 ? price / ref30 - 1 : null,
       };
     });
 }
 
+function renderNav() {
+  const list = Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order);
+  $("nav").innerHTML = list.map(([id, s]) =>
+    `<a href="?s=${id}" data-s="${id}" ${id === SID ? 'aria-current="page"' : ""}>${esc(s.name)}${s.current ? '<span class="tag">Now</span>' : ""}</a>`).join("");
+  $("nav").querySelectorAll("a").forEach(a => a.onclick = (e) => {
+    e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); go(a.dataset.s);
+  });
+  const cur = $("nav").querySelector('[aria-current="page"]');
+  if (cur) $("nav").scrollLeft = cur.offsetLeft - ($("nav").clientWidth - cur.offsetWidth) / 2;
+}
+
+function go(sid) {
+  SID = DATA.sets[sid] ? sid : Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order)[0][0];
+  selected = null; $("detail").hidden = true;
+  const s = series();
+  document.title = `${s.name} · Happy Meal Prices`;
+  document.body.classList.toggle("toys", s.kind === "toys");
+  $("sTitle").textContent = s.name;
+  $("sMeta").innerHTML = `${s.kind === "cards" ? "Cards" : "Toys"} · ${fmtDate(s.start)} – ${s.end ? fmtDate(s.end) : "now"}` +
+    (s.current ? " · in restaurants now" : "") + (s.note ? `<br>${esc(s.note)}` : "");
+  $("thName").textContent = s.kind === "cards" ? "Card" : "Toy";
+  $("foot").innerHTML = `Prices are <b>asking prices</b> of active eBay US Buy It Now listings, collected daily with the eBay Browse API. ` +
+    (s.kind === "cards" ? "Lots, graded slabs and multi-card listings are filtered out. " : "Lots, full sets and multi-toy listings are filtered out. ") +
+    `Shown is the median of what's left; asking prices usually run above what items actually sell for. Photos are from eBay listings and link to them. Not financial advice.`;
+  renderNav();
+  render();
+}
+
 function render() {
-  const setId = $("setSel").value;
-  const rows = rowsFor(setId).sort((a, b) => {
+  const rows = rowsFor(SID).sort((a, b) => {
     const x = a[sortKey], y = b[sortKey];
     if (x == null) return 1; if (y == null) return -1;
     return (typeof x === "string" ? x.localeCompare(y) : x - y) * sortDir;
@@ -165,27 +199,23 @@ function render() {
   const total = priced.reduce((s, r) => s + r.price, 0);
   const top = priced.slice().sort((a, b) => b.price - a.price)[0];
   const mover = priced.filter(r => r.d30 != null).sort((a, b) => Math.abs(b.d30) - Math.abs(a.d30))[0];
+  const days = Math.max(0, ...rows.map(r => r.h.length));
+  const first = rows.map(r => r.h[0]?.date).filter(Boolean).sort()[0];
   $("stats").innerHTML = `
-    <div class="stat"><small>Full set (${isEbay() ? "median ask" : "trend"})</small><b>${eur(total)}</b><small>${priced.length} of ${rows.length} cards priced</small></div>
-    <div class="stat"><small>Most valuable</small><b>${top ? eur(top.price) : "—"}</b><small>${top ? top.name : ""}</small></div>
-    <div class="stat"><small>Biggest move vs 30-day avg</small><b class="${cls(mover?.d30)}">${mover ? pct(mover.d30) : "—"}</b><small>${mover ? mover.name : ""}</small></div>
-    <div class="stat"><small>Days tracked</small><b>${Math.max(0, ...rows.map(r => r.h.length))}</b><small>since ${rows[0]?.h[0]?.date ?? "—"}</small></div>`;
-
-  const s = curSet();
-  document.querySelector('th[data-k="price"]').firstChild.textContent = isEbay() ? "Median ask" : "Trend price";
-  document.querySelector('th[data-k="low"]').firstChild.textContent = isEbay() ? "Lowest ask" : "Lowest listing";
-  $("footSrc").innerHTML = isEbay()
-    ? `Prices for this set are <b>asking prices</b> of active eBay US listings (USD), collected daily with the eBay Browse API. Lots, graded slabs and multi-card listings are filtered out; shown is the median of what's left. Asking prices usually run above what cards actually sell for.`
-    : `Prices for this set are Cardmarket (EU) figures in EUR, collected daily from the free <a href="https://tcgdex.dev">TCGdex API</a>. "Trend" is Cardmarket's smoothed sale price.`;
+    <div class="stat"><small>Full set (median asks)</small><b>${priced.length ? usd(total) : "—"}</b><small>${priced.length} of ${rows.length} priced</small></div>
+    <div class="stat"><small>Most valuable</small><b>${top ? usd(top.price) : "—"}</b><small>${top ? esc(top.name) : ""}</small></div>
+    <div class="stat"><small>Biggest move vs 30-day avg</small><b class="${cls(mover?.d30)}">${mover ? pct(mover.d30) : "—"}</b><small>${mover ? esc(mover.name) : ""}</small></div>
+    <div class="stat"><small>Days tracked</small><b>${days}</b><small>${first ? "since " + fmtDate(first) : "not started"}</small></div>`;
   $("empty").hidden = priced.length > 0;
 
   $("rows").innerHTML = rows.map(r => `
     <tr data-id="${r.id}" class="${r.id === selected ? "sel" : ""}">
-      <td><div class="cardcell">${thumb(r, "sm")}<div><span class="no">#${r.number ?? ""}</span>${r.name}${/holo/i.test(r.rarity || "") ? ' <span class="holo" title="Holo">✦</span>' : ""}</div></div></td>
-      <td class="num">${eur(r.price)}</td>
+      <td><div class="cardcell">${thumb(r, "sm")}<div><span class="no">#${esc(r.number)}</span>${esc(r.name)}${r.rarity === "Holo" ? ' <span class="holo" title="Holo">✦</span>' : ""}</div></div></td>
+      <td class="num">${usd(r.price)}</td>
       <td class="num ${cls(r.d1)}">${pct(r.d1)}</td>
       <td class="num ${cls(r.d30)}">${pct(r.d30)}</td>
-      <td class="num">${eur(r.low)}</td>
+      <td class="num">${usd(r.low)}</td>
+      <td class="num">${r.count ?? "—"}</td>
       <td class="num"><canvas class="spark" data-id="${r.id}"></canvas></td>
     </tr>`).join("");
 
@@ -195,24 +225,22 @@ function render() {
     th.textContent = th.textContent.replace(/ [▲▼]$/, "") + (th.dataset.k === sortKey ? (sortDir > 0 ? " ▲" : " ▼") : ""));
 }
 
-// Card picture, or a placeholder tile with the card number when there's no photo yet.
+// Item photo, or a placeholder tile with the item number when there's no photo yet.
 function thumb(r, size) {
-  const holo = /holo/i.test(r.rarity || "") ? " holo-tile" : "";
-  const ph = `<div class="ph ${size}${holo}"><span>#${r.number ?? ""}</span>${size === "lg" ? `<small>${r.name}</small><small class="phnote">Photo coming soon</small>` : ""}</div>`;
+  const holo = r.rarity === "Holo" ? " holo-tile" : "";
+  const ph = `<div class="ph ${size}${holo}"><span>#${esc(r.number)}</span>${size === "lg" ? `<small>${esc(r.name)}</small><small class="phnote">Photo coming soon</small>` : ""}</div>`;
   if (!r.image) return ph;
-  const img = `<img class="pic ${size}" src="${r.image}" alt="${r.name} card" loading="lazy" referrerpolicy="no-referrer"
-    onerror="this.outerHTML=this.dataset.ph" data-ph='${ph.replace(/'/g, "&#39;")}'>`;
+  const img = `<img class="pic ${size}" src="${esc(r.image)}" alt="${esc(r.name)}" loading="lazy" referrerpolicy="no-referrer"
+    onerror="this.outerHTML=this.dataset.ph" data-ph="${esc(ph)}">`;
   return size === "lg" && r.imageLink
-    ? `<a href="${r.imageLink}" target="_blank" rel="noopener">${img}</a>` : img;
+    ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${img}</a>` : img;
 }
 
-// Tiny sparkline: daily trend history; with < 2 days, falls back to Cardmarket's 30/7/1-day averages.
 function spark(cv, r) {
   const dpr = window.devicePixelRatio || 1, w = 90, h = 26;
   cv.width = w * dpr; cv.height = h * dpr;
   const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
-  let pts = r.h.map(p => p.trend ?? p.avg).filter(v => v != null);
-  if (pts.length < 2) pts = [r.last.avg30, r.last.avg7, r.last.avg1, r.price].filter(v => v != null);
+  const pts = r.h.map(p => p.median).filter(v => v != null);
   if (pts.length < 2) return;
   const min = Math.min(...pts), max = Math.max(...pts), span = max - min || 1;
   ctx.strokeStyle = pts[pts.length - 1] >= pts[0] ? css("--up") : css("--down");
@@ -226,45 +254,36 @@ function spark(cv, r) {
 
 function showDetail(id) {
   selected = id;
-  const r = rowsFor(DATA.cards[id].set).find(x => x.id === id);
+  const r = rowsFor(SID).find(x => x.id === id);
   $("detail").hidden = false;
-  $("dTitle").textContent = `${r.name} #${r.number ?? ""}`;
+  $("dTitle").textContent = `${r.name} #${r.number}`;
   $("dPic").innerHTML = thumb(r, "lg") +
-    (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${r.imageLink}" target="_blank" rel="noopener">${r.imageCredit}</a>` : r.imageCredit}</div>` : "");
-  const ebayQ = encodeURIComponent(`${r.name} ${r.number}/015 mcdonalds 2026`);
-  $("dMeta").innerHTML = isEbay()
-    ? `${DATA.sets[r.set].name} · median ask ${eur(r.price)} · 25th percentile ${eur(r.last.p25)} · ${r.last.count ?? 0} listings · ` +
-      `<a href="https://www.ebay.com/sch/i.html?_nkw=${ebayQ}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`
-    : `${DATA.sets[r.set].name} · trend ${eur(r.price)} · 7-day avg ${eur(r.last.avg7)} · 30-day avg ${eur(r.last.avg30)}` +
-      (r.cardmarketId ? ` · <a href="https://www.cardmarket.com/en/Pokemon/Products?idProduct=${r.cardmarketId}" target="_blank" rel="noopener">Cardmarket</a>` : "");
-  const labels = r.h.map(p => p.date);
+    (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${esc(r.imageCredit)}</a>` : esc(r.imageCredit)}</div>` : "");
+  const q = encodeURIComponent(`mcdonalds ${isCards() ? r.name + " " + r.number + "/015 2026" : series().name.replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`);
+  $("dMeta").innerHTML = `${esc(series().name)} · median ask ${usd(r.price)} · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
+    `<a href="https://www.ebay.com/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`;
+  if (chart) chart.destroy();
+  Chart.defaults.color = css("--muted");
+  Chart.defaults.borderColor = css("--line");
   const line = (key, label, color, dash) => ({
     label, data: r.h.map(p => p[key] ?? null), borderColor: color, backgroundColor: color,
     borderDash: dash || [], tension: .25, pointRadius: r.h.length < 15 ? 3 : 0, spanGaps: true,
   });
-  if (chart) chart.destroy();
-  Chart.defaults.color = css("--muted");
-  Chart.defaults.borderColor = css("--line");
   chart = new Chart($("dChart"), {
     type: "line",
-    data: { labels, datasets: isEbay() ? [
+    data: { labels: r.h.map(p => p.date), datasets: [
       line("median", "Median ask", css("--accent")),
       line("p25", "25th percentile ask", css("--gold")),
       line("low", "Lowest ask", css("--muted"), [4, 4]),
-    ] : [
-      line("trend", "Trend", css("--accent")),
-      line("avg", "Average sale", css("--gold")),
-      line("low", "Lowest listing", css("--muted"), [4, 4]),
     ]},
     options: {
       maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
-      scales: { y: { ticks: { callback: v => "€" + v } } },
-      plugins: { tooltip: { callbacks: { label: c => `${c.dataset.label}: ${eur(c.parsed.y)}` } } },
+      scales: { y: { ticks: { callback: v => "$" + v } } },
+      plugins: { tooltip: { callbacks: { label: c => `${c.dataset.label}: ${usd(c.parsed.y)}` } } },
     },
   });
-  $("dNote").textContent = r.h.length < 3
-    ? "Only a few days collected so far. The chart fills in as the daily job runs."
-    : "";
+  $("dNote").textContent = !r.h.length ? "No prices collected yet."
+    : r.h.length < 3 ? "Only a few days collected so far. The chart fills in as the daily job runs." : "";
   render();
   $("detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
@@ -273,15 +292,13 @@ fetch("data/prices.json", { cache: "no-store" })
   .then(r => r.json())
   .then(d => {
     DATA = d;
-    const sets = Object.entries(d.sets).sort((a, b) => (b[1].releaseDate || "").localeCompare(a[1].releaseDate || ""));
-    $("setSel").innerHTML = sets.map(([id, s]) => `<option value="${id}">${s.name}</option>`).join("");
-    $("setSel").onchange = () => { selected = null; $("detail").hidden = true; render(); };
-    $("meta").textContent = `Updated ${new Date(d.updated).toLocaleString()}`;
+    $("meta").textContent = `Daily eBay asking prices for McDonald's Happy Meal toys and cards · updated ${new Date(d.updated).toLocaleString()}`;
     document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
       sortDir = th.dataset.k === sortKey ? -sortDir : (th.dataset.k === "name" ? 1 : -1);
       sortKey = th.dataset.k; render();
     });
-    render();
+    window.onpopstate = () => go(new URLSearchParams(location.search).get("s"));
+    go(new URLSearchParams(location.search).get("s"));
   })
   .catch(e => { $("meta").textContent = "Couldn't load data/prices.json: " + e.message; });
 </script>

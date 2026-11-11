@@ -1,30 +1,506 @@
 {
-  "_comment": "sets: TCGdex set IDs always tracked (Cardmarket EUR). auto_from_year: also track any TCGdex 'McDonald's Collection YYYY' set from this year on. ebay_sets: sets TCGdex doesn't have yet, priced from eBay US active listings (needs EBAY_CLIENT_ID / EBAY_CLIENT_SECRET).",
-  "sets": ["2024sv"],
-  "auto_from_year": 2025,
-  "ebay_sets": [
+ "_comment": "Happy Meal series tracked on eBay (US, active Buy It Now listings). Each item: q = eBay search, match = title must hit one alternative from every group, not = words that rule a title out. Series require = groups every title must hit.",
+ "series": [
+  {
+   "id": "pokemon-2026",
+   "name": "Pokémon TCG cards",
+   "kind": "cards",
+   "current": true,
+   "start": "2026-11-10",
+   "end": "2026-12-14",
+   "category": "183454",
+   "note": "15 promo cards (7 holo), 2 per Happy Meal. Raw single cards only.",
+   "require": [
+    [
+     "mcdonald",
+     "mcdonalds",
+     "mcd",
+     "happy meal",
+     "m26"
+    ],
+    [
+     "2026"
+    ]
+   ],
+   "items": [
     {
-      "id": "mcd2026",
-      "name": "McDonald's Collection 2026",
-      "year": 2026,
-      "releaseDate": "2026-11-10",
-      "cards": [
-        {"number": "001", "name": "Decidueye"},
-        {"number": "002", "name": "Chandelure", "holo": true},
-        {"number": "003", "name": "Palafin", "holo": true},
-        {"number": "004", "name": "Pikachu", "holo": true},
-        {"number": "005", "name": "Mimikyu", "holo": true},
-        {"number": "006", "name": "Lucario", "holo": true},
-        {"number": "007", "name": "Hawlucha"},
-        {"number": "008", "name": "Tyranitar", "holo": true},
-        {"number": "009", "name": "Absol"},
-        {"number": "010", "name": "Zoroark"},
-        {"number": "011", "name": "Metagross"},
-        {"number": "012", "name": "Jirachi", "holo": true},
-        {"number": "013", "name": "Eevee"},
-        {"number": "014", "name": "Snorlax"},
-        {"number": "015", "name": "Wooloo"}
+     "number": "001",
+     "name": "Decidueye",
+     "q": "Decidueye mcdonalds 2026",
+     "match": [
+      [
+       "decidueye"
       ]
+     ],
+     "prefer": [
+      "001/015"
+     ]
+    },
+    {
+     "number": "002",
+     "name": "Chandelure",
+     "holo": true,
+     "q": "Chandelure mcdonalds 2026",
+     "match": [
+      [
+       "chandelure"
+      ]
+     ],
+     "prefer": [
+      "002/015"
+     ]
+    },
+    {
+     "number": "003",
+     "name": "Palafin",
+     "holo": true,
+     "q": "Palafin mcdonalds 2026",
+     "match": [
+      [
+       "palafin"
+      ]
+     ],
+     "prefer": [
+      "003/015"
+     ]
+    },
+    {
+     "number": "004",
+     "name": "Pikachu",
+     "holo": true,
+     "q": "Pikachu mcdonalds 2026",
+     "match": [
+      [
+       "pikachu"
+      ]
+     ],
+     "prefer": [
+      "004/015"
+     ]
+    },
+    {
+     "number": "005",
+     "name": "Mimikyu",
+     "holo": true,
+     "q": "Mimikyu mcdonalds 2026",
+     "match": [
+      [
+       "mimikyu"
+      ]
+     ],
+     "prefer": [
+      "005/015"
+     ]
+    },
+    {
+     "number": "006",
+     "name": "Lucario",
+     "holo": true,
+     "q": "Lucario mcdonalds 2026",
+     "match": [
+      [
+       "lucario"
+      ]
+     ],
+     "prefer": [
+      "006/015"
+     ]
+    },
+    {
+     "number": "007",
+     "name": "Hawlucha",
+     "q": "Hawlucha mcdonalds 2026",
+     "match": [
+      [
+       "hawlucha"
+      ]
+     ],
+     "prefer": [
+      "007/015"
+     ]
+    },
+    {
+     "number": "008",
+     "name": "Tyranitar",
+     "holo": true,
+     "q": "Tyranitar mcdonalds 2026",
+     "match": [
+      [
+       "tyranitar"
+      ]
+     ],
+     "prefer": [
+      "008/015"
+     ]
+    },
+    {
+     "number": "009",
+     "name": "Absol",
+     "q": "Absol mcdonalds 2026",
+     "match": [
+      [
+       "absol"
+      ]
+     ],
+     "prefer": [
+      "009/015"
+     ]
+    },
+    {
+     "number": "010",
+     "name": "Zoroark",
+     "q": "Zoroark mcdonalds 2026",
+     "match": [
+      [
+       "zoroark"
+      ]
+     ],
+     "prefer": [
+      "010/015"
+     ]
+    },
+    {
+     "number": "011",
+     "name": "Metagross",
+     "q": "Metagross mcdonalds 2026",
+     "match": [
+      [
+       "metagross"
+      ]
+     ],
+     "prefer": [
+      "011/015"
+     ]
+    },
+    {
+     "number": "012",
+     "name": "Jirachi",
+     "holo": true,
+     "q": "Jirachi mcdonalds 2026",
+     "match": [
+      [
+       "jirachi"
+      ]
+     ],
+     "prefer": [
+      "012/015"
+     ]
+    },
+    {
+     "number": "013",
+     "name": "Eevee",
+     "q": "Eevee mcdonalds 2026",
+     "match": [
+      [
+       "eevee"
+      ]
+     ],
+     "prefer": [
+      "013/015"
+     ]
+    },
+    {
+     "number": "014",
+     "name": "Snorlax",
+     "q": "Snorlax mcdonalds 2026",
+     "match": [
+      [
+       "snorlax"
+      ]
+     ],
+     "prefer": [
+      "014/015"
+     ]
+    },
+    {
+     "number": "015",
+     "name": "Wooloo",
+     "q": "Wooloo mcdonalds 2026",
+     "match": [
+      [
+       "wooloo"
+      ]
+     ],
+     "prefer": [
+      "015/015"
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "boo-buckets-2026",
+   "name": "Disney Villains Boo Buckets",
+   "kind": "toys",
+   "start": "2026-10-20",
+   "end": "2026-11-09",
+   "note": "5 Halloween pails with villain lids and stickers.",
+   "require": [
+    [
+     "boo bucket",
+     "boo buckets",
+     "bucket",
+     "buckets",
+     "pail"
+    ],
+    [
+     "mcdonald",
+     "mcdonalds",
+     "mcd",
+     "happy meal"
+    ]
+   ],
+   "items": [
+    {
+     "number": "01",
+     "name": "Jafar (red)",
+     "q": "mcdonalds boo bucket Jafar",
+     "match": [
+      [
+       "jafar"
+      ]
+     ]
+    },
+    {
+     "number": "02",
+     "name": "Ursula (purple)",
+     "q": "mcdonalds boo bucket Ursula",
+     "match": [
+      [
+       "ursula"
+      ]
+     ]
+    },
+    {
+     "number": "03",
+     "name": "Scar (orange)",
+     "q": "mcdonalds boo bucket Scar",
+     "match": [
+      [
+       "scar"
+      ]
+     ]
+    },
+    {
+     "number": "04",
+     "name": "Cruella de Vil (white)",
+     "q": "mcdonalds boo bucket Cruella",
+     "match": [
+      [
+       "cruella"
+      ]
+     ]
+    },
+    {
+     "number": "05",
+     "name": "Maleficent (green)",
+     "q": "mcdonalds boo bucket Maleficent",
+     "match": [
+      [
+       "maleficent"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "spongebob-onepiece-2026",
+   "name": "SpongeBob × One Piece",
+   "kind": "toys",
+   "start": "2026-09-15",
+   "end": "2026-10-19",
+   "note": "15 crossover figures. Toy list from Qz and Today; one pairing (Smitty × Brook) is from a single source.",
+   "require": [
+    [
+     "spongebob",
+     "sponge bob",
+     "one piece"
+    ],
+    [
+     "mcdonald",
+     "mcdonalds",
+     "mcd",
+     "happy meal"
+    ]
+   ],
+   "items": [
+    {
+     "number": "01",
+     "name": "SpongeBob × Luffy",
+     "q": "mcdonalds spongebob one piece luffy",
+     "match": [
+      [
+       "luffy"
+      ],
+      [
+       "spongebob",
+       "sponge bob"
+      ]
+     ],
+     "not": [
+      "gear 5",
+      "gear5",
+      "gear five"
+     ]
+    },
+    {
+     "number": "02",
+     "name": "SpongeBob × Gear 5 Luffy",
+     "q": "mcdonalds spongebob one piece gear 5 luffy",
+     "match": [
+      [
+       "gear 5",
+       "gear5",
+       "gear five"
+      ]
+     ]
+    },
+    {
+     "number": "03",
+     "name": "Patrick × Zoro",
+     "q": "mcdonalds spongebob one piece zoro",
+     "match": [
+      [
+       "patrick",
+       "zoro"
+      ]
+     ]
+    },
+    {
+     "number": "04",
+     "name": "Sandy × Nami",
+     "q": "mcdonalds spongebob one piece nami",
+     "match": [
+      [
+       "sandy",
+       "nami"
+      ]
+     ]
+    },
+    {
+     "number": "05",
+     "name": "Squidward × Sanji",
+     "q": "mcdonalds spongebob one piece sanji",
+     "match": [
+      [
+       "squidward",
+       "sanji"
+      ]
+     ]
+    },
+    {
+     "number": "06",
+     "name": "Plankton × Usopp",
+     "q": "mcdonalds spongebob one piece usopp",
+     "match": [
+      [
+       "plankton",
+       "usopp"
+      ]
+     ]
+    },
+    {
+     "number": "07",
+     "name": "Gary × Chopper",
+     "q": "mcdonalds spongebob one piece chopper",
+     "match": [
+      [
+       "gary",
+       "chopper"
+      ]
+     ]
+    },
+    {
+     "number": "08",
+     "name": "Pearl × Robin",
+     "q": "mcdonalds spongebob one piece robin",
+     "match": [
+      [
+       "pearl",
+       "robin"
+      ]
+     ]
+    },
+    {
+     "number": "09",
+     "name": "Larry × Franky",
+     "q": "mcdonalds spongebob one piece franky",
+     "match": [
+      [
+       "larry",
+       "franky"
+      ]
+     ]
+    },
+    {
+     "number": "10",
+     "name": "Smitty × Brook",
+     "q": "mcdonalds spongebob one piece brook",
+     "match": [
+      [
+       "brook",
+       "smitty"
+      ]
+     ]
+    },
+    {
+     "number": "11",
+     "name": "Mr. Krabs × Jinbe",
+     "q": "mcdonalds spongebob one piece jinbe",
+     "match": [
+      [
+       "krabs",
+       "jinbe",
+       "jimbei"
+      ]
+     ]
+    },
+    {
+     "number": "12",
+     "name": "Flying Dutchman × Blackbeard",
+     "q": "mcdonalds spongebob one piece blackbeard",
+     "match": [
+      [
+       "dutchman",
+       "blackbeard"
+      ]
+     ]
+    },
+    {
+     "number": "13",
+     "name": "Mrs. Puff × Big Mom",
+     "q": "mcdonalds spongebob one piece big mom",
+     "match": [
+      [
+       "mrs puff",
+       "mrs. puff",
+       "big mom"
+      ]
+     ]
+    },
+    {
+     "number": "14",
+     "name": "Barnacle Boy × Koby",
+     "q": "mcdonalds spongebob one piece koby",
+     "match": [
+      [
+       "barnacle boy",
+       "koby",
+       "coby"
+      ]
+     ]
+    },
+    {
+     "number": "15",
+     "name": "Mermaid Man × Garp",
+     "q": "mcdonalds spongebob one piece garp",
+     "match": [
+      [
+       "mermaid man",
+       "garp"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
 }

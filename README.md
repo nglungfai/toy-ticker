@@ -1,14 +1,19 @@
-# Happy Meal Pokémon card prices
+# Happy Meal eBay price tracker
 
-Daily price tracker for McDonald's Happy Meal Pokémon promo cards.
+Daily eBay prices for McDonald's Happy Meal collectibles: the current Pokémon TCG
+cards plus the two toy series before it (Disney Villains Boo Buckets, SpongeBob × One Piece).
 
-- **Data:** Cardmarket (EUR) prices from the free [TCGdex API](https://tcgdex.dev), saved to `data/prices.json`.
-- **Updates:** `.github/workflows/update-prices.yml` runs `scripts/fetch_prices.py` daily and commits the new prices.
-- **Sets tracked:** listed in `data/config.json`. Any "McDonald's Collection" set from `auto_from_year` on is added automatically when TCGdex publishes it.
+- **Site:** https://nglungfai.github.io/mcd-pokemon-prices/ (one page per series: `?s=<series id>`)
+- **Data:** asking prices of active eBay US Buy It Now listings (eBay Browse API), saved to `data/prices.json`.
+  Each item keeps the median, 25th percentile and lowest ask plus the listing count; lots, sets,
+  graded cards and multi-item listings are filtered out by title.
+- **Series and items:** `data/config.json`. Add a series there to start tracking it.
+- **Updates:** `.github/workflows/update-prices.yml` runs `scripts/fetch_prices.py` daily.
+  Needs repo secrets `EBAY_CLIENT_ID` and `EBAY_CLIENT_SECRET` (eBay developer Production keyset).
 
 Run locally:
 
 ```bash
-python3 scripts/fetch_prices.py
+EBAY_CLIENT_ID=... EBAY_CLIENT_SECRET=... python3 scripts/fetch_prices.py
 python3 -m http.server 8765   # then open http://localhost:8765
 ```
