@@ -1644,8 +1644,8 @@ function insSellers() {
 }
 function insDemand() {
   const rows = rowsFor(SID).filter(r => r.last?.watched >= 3);
-  if (rows.length < 3) return `<div class="ins"><h4>Most wanted</h4><p class="q">Which items buyers are watching</p>
-    <p class="wait">Watcher counts start with the next daily update.</p></div>`;
+  // eBay shares watcher counts only with apps it has approved; the panel stays hidden until they arrive.
+  if (rows.length < 3) return "";
   const per = rows.map(r => ({ r, v: r.last.watchers / r.last.watched })).sort((a, b) => b.v - a.v);
   const all = rows.reduce((t, r) => t + r.last.watchers, 0) / rows.reduce((t, r) => t + r.last.watched, 0);
   const label = (r) => `${r.name}${isGroup() ? (kindOf(r) === "cards" ? " card" : " toy") : ""}`;
