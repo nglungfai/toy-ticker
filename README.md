@@ -1,4 +1,6 @@
-# Happy Meal eBay price tracker
+# Toy Ticker
+
+Happy Meal eBay price tracker.
 
 Daily eBay prices for McDonald's Happy Meal collectibles: the current Pokémon TCG
 cards plus the two toy series before it (Disney Villains Boo Buckets, SpongeBob × One Piece).

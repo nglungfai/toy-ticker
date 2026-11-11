@@ -3,7 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Happy Meal Prices</title>
+<title>Toy Ticker · Happy Meal toy prices</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Daily eBay prices for McDonald's Happy Meal toys and Pokémon cards.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Toy Ticker · Happy Meal toy prices">
+<meta property="og:description" content="Daily eBay prices for McDonald's Happy Meal toys and Pokémon cards.">
+<meta property="og:image" content="https://nglungfai.github.io/mcd-toy-prices/og/site.png">
+<meta name="twitter:card" content="summary_large_image">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
@@ -21,6 +31,25 @@
     --accent: #ff6a4d; --accent-soft: #3a211b; --up: #4cc26a; --down: #ff6b6b; --gold: #f5c542;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  /* Display font + logo */
+  h1, h2, .hero h2, .hero-value b, .stat b, .tile-price, .since b, .mine .big, nav.series a, .tile-name {
+    font-family: "Fredoka", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  header h1 { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 30px; }
+  .tile-name { font-weight: 600; }
+  .logo { flex: none; width: 44px; height: 44px; transition: transform .3s; }
+  header h1:hover .logo { transform: rotate(-8deg) scale(1.06); }
+
+  /* Series switch: View Transitions where supported, simple rise-in otherwise */
+  ::view-transition-old(root) { animation: vt-out .18s ease-in both; }
+  ::view-transition-new(root) { animation: vt-in .32s cubic-bezier(.2,.8,.2,1) both; }
+  :root[data-dir="prev"]::view-transition-new(root) { animation-name: vt-in-prev; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-6px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateX(24px); } }
+  @keyframes vt-in-prev { from { opacity: 0; transform: translateX(-24px); } }
+  .enter > * { animation: rise .35s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
   body { margin: 0; background: var(--bg); color: var(--text);
          font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
@@ -80,28 +109,237 @@
   .banner { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px;
             padding: 10px 14px; margin-bottom: 12px; }
   footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
+
+  /* Hero banner, themed per series via --h1/--h2/--hink */
+  .hero { --h1: #d62300; --h2: #ffb703; --hink: #fff;
+          position: relative; overflow: hidden; display: flex; flex-wrap: wrap; gap: 20px;
+          justify-content: space-between; align-items: flex-end;
+          margin: 16px 0 16px; padding: 28px 24px; border-radius: 18px; color: var(--hink);
+          background: radial-gradient(120% 140% at 0% 0%, var(--h1) 0%, var(--h2) 100%); }
+  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .18;
+                 background-image: radial-gradient(currentColor 1.2px, transparent 1.3px);
+                 background-size: 18px 18px; mask-image: linear-gradient(90deg, transparent 30%, #000); }
+  .hero > * { position: relative; z-index: 1; }
+  .hero h2 { margin: 6px 0 4px; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; }
+  .hero-meta { font-size: 14px; opacity: .9; max-width: 560px; }
+  .hero-value { text-align: right; }
+  .hero-value b { display: block; font-size: 40px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .hero-value small { opacity: .85; font-size: 13px; }
+  .status { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+            padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.22); backdrop-filter: blur(4px); }
+  .status.live::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+                         background: #3ddc84; margin-right: 6px; box-shadow: 0 0 0 0 #3ddc84; animation: pulse 1.8s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  @media (max-width: 640px) { .hero h2 { font-size: 26px; } .hero-value { text-align: left; } .hero-value b { font-size: 32px; } }
+
+  .share-btn { margin-top: 10px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: inherit;
+               border: 1px solid currentColor; background: rgba(255,255,255,.15); border-radius: 999px; padding: 5px 14px; }
+  .share-btn:hover { background: rgba(255,255,255,.3); }
+
+  /* Toolbar */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .seg { display: inline-flex; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 3px; }
+  .seg button { font: inherit; font-size: 14px; border: 0; background: none; color: var(--muted);
+                padding: 5px 12px; border-radius: 7px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .sortby { font-size: 14px; color: var(--muted); }
+  select { font: inherit; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--line);
+           background: var(--panel); color: var(--text); margin-left: 6px; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+          cursor: pointer; transition: transform .2s, box-shadow .2s, border-color .2s; text-align: left;
+          font: inherit; color: inherit; display: flex; flex-direction: column; gap: 8px; }
+  .tile:hover, .tile:focus-visible { box-shadow: 0 10px 28px rgba(0,0,0,.12); border-color: transparent; outline: none; }
+  .tile.sel { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+  .tile .pic, .tile .ph { width: 100%; border-radius: 8px; }
+  .tile .ph { font-size: 20px; font-weight: 600; }
+  .tile-name { font-weight: 600; font-size: 14px; line-height: 1.3; }
+  .tile-row { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+  .tile-price { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .badge { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .badge.up { background: color-mix(in srgb, var(--up) 15%, transparent); }
+  .badge.down { background: color-mix(in srgb, var(--down) 15%, transparent); }
+  .badge.flat { background: var(--bg); }
+  .tile-sub { font-size: 12px; color: var(--muted); }
+
+  /* 3D tilt + holo shine */
+  .tilt { position: relative; border-radius: 8px; transform-style: preserve-3d; will-change: transform;
+          transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+          transition: transform .35s ease-out; }
+  .tilt.active { transition: transform .06s linear; }
+  .tilt.shine::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+          mix-blend-mode: color-dodge; opacity: .38;
+          background:
+            radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.55), transparent 45%),
+            linear-gradient(115deg, #ff0080 0%, #ffcc00 20%, #33ff99 40%, #00ccff 60%, #9966ff 80%, #ff0080 100%);
+          background-size: 100% 100%, 250% 250%;
+          background-position: center, var(--mx, 50%) var(--my, 50%);
+          transition: opacity .3s; }
+  .tilt.shine:not(.active)::after { animation: drift 6s ease-in-out infinite alternate; opacity: .22; }
+  @keyframes drift { from { background-position: center, 0% 0%; } to { background-position: center, 100% 100%; } }
+  /* Market map (heatmap) */
+  .map-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
+  .map-head { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .map-legend { display: inline-flex; align-items: center; gap: 6px; }
+  .map-legend i { display: inline-block; width: 22px; height: 10px; border-radius: 2px; }
+  .map { position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: #1d1d1b; }
+  .map-group { position: absolute; box-sizing: border-box; border: 1px solid #1d1d1b; }
+  .map-group.cur { outline: 2px solid #f2b705; outline-offset: -2px; z-index: 2; pointer-events: none; }
+  .map-gname { height: 22px; line-height: 22px; padding: 0 8px; font-size: 12px; font-weight: 700; color: #ecebe6;
+               text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #1d1d1b; }
+  .map-cell { position: absolute; border: 0; padding: 4px; margin: 1px; cursor: pointer; color: #fff; font: inherit;
+              display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; text-align: center;
+              overflow: hidden; transition: filter .15s; }
+  .map-cell:hover, .map-cell:focus-visible { filter: brightness(1.18); outline: 2px solid #fff; outline-offset: -2px; z-index: 3; }
+  .map-cell b { font-family: "Fredoka", sans-serif; font-size: 13px; line-height: 1.15; overflow: hidden; text-overflow: ellipsis;
+                white-space: nowrap; max-width: 100%; }
+  @media (max-width: 640px) { .map-cell b { font-size: 11px; } .map-cell span { font-size: 11px; } }
+  .map-cell span { font-size: 12px; opacity: .92; font-variant-numeric: tabular-nums; }
+
+  /* Top movers ticker */
+  .ticker { overflow: hidden; margin: 20px 0 0; border-radius: 10px; background: var(--panel);
+            border: 1px solid var(--line); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+  .ticker-track { display: flex; gap: 28px; width: max-content; padding: 8px 14px; animation: tick 40s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  .tick { border: 0; background: none; font: inherit; font-size: 13px; color: var(--text); cursor: pointer;
+          white-space: nowrap; padding: 0; display: inline-flex; gap: 6px; align-items: baseline; }
+  .tick .lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  .tick .ser { color: var(--muted); font-size: 12px; }
+
+  /* Ended-series panel */
+  .since { display: grid; grid-template-columns: minmax(220px, 1fr) 2fr; gap: 20px; align-items: center;
+           background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 20px; }
+  .since small { color: var(--muted); font-size: 13px; }
+  .since b { display: block; font-size: 30px; font-variant-numeric: tabular-nums; line-height: 1.2; }
+  .since-sub { font-size: 13px; color: var(--muted); }
+  .since-movers { font-size: 13px; margin-top: 8px; display: grid; gap: 2px; }
+  .since-chart { position: relative; height: 150px; min-width: 0; }
+  @media (max-width: 640px) {
+    .since { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .tile { padding: 8px; }
+    .tile-price { font-size: 18px; }
+    .tile .rank { font-size: 10px; padding: 2px 6px; }
+  }
+
+  /* My collection */
+  .mine { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between; align-items: center;
+          background: var(--panel); border: 1px dashed var(--line); border-radius: 14px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; }
+  .mine.has { border-style: solid; border-color: var(--accent); background: var(--accent-soft); }
+  .mine b { margin-right: 8px; }
+  .mine .big { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .own-filter { font-size: 13px; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+  .own-ex { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
+            background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; }
+  .own { position: absolute; top: 8px; right: 8px; z-index: 2; width: 30px; height: 30px; border-radius: 50%;
+         border: 0; cursor: pointer; font-size: 16px; font-weight: 700; line-height: 1;
+         background: rgba(255,255,255,.92); color: #1d1d1b; box-shadow: 0 2px 8px rgba(0,0,0,.2); transition: transform .15s; }
+  .own:hover { transform: scale(1.1); }
+  .own[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .tile { position: relative; }
+  .tile.owned { border-color: var(--accent); }
+  td .own { position: static; width: 24px; height: 24px; font-size: 13px; box-shadow: none; border: 1px solid var(--line); }
+  th.own-col { cursor: default; width: 40px; }
+
+  /* Value rank + share of set */
+  .rank { position: absolute; top: 8px; left: 8px; z-index: 2; font-size: 11px; font-weight: 700; padding: 3px 8px;
+          border-radius: 999px; background: #1d1d1b; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+  .rank.r1 { background: linear-gradient(135deg, #f7d774, #c99a06); color: #1d1d1b; }
+  .rank.r2 { background: linear-gradient(135deg, #e8e8e8, #a5a5a5); color: #1d1d1b; }
+  .rank.r3 { background: linear-gradient(135deg, #f0b27a, #a0612a); color: #fff; }
+  .share { height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .share i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root), ::view-transition-new(root), .enter > * { animation: none !important; }
+    .ticker-track { animation: none; flex-wrap: wrap; width: auto; }
+    .tilt { transform: none !important; transition: none; }
+    .tilt.shine::after { animation: none; }
+    .status.live::before { animation: none; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>Happy Meal <span>eBay</span> price tracker</h1>
+    <h1><img class="logo" src="assets/logo.svg" alt="" width="44" height="44">Toy <span>Ticker</span></h1>
     <div class="meta" id="meta">Loading…</div>
   </header>
 
+  <div class="ticker" id="ticker" hidden><div class="ticker-track" id="tickerTrack"></div></div>
+
   <nav class="series" id="nav" aria-label="Happy Meal series"></nav>
 
-  <div class="series-head">
-    <h2 id="sTitle"></h2>
-    <div class="meta" id="sMeta"></div>
-  </div>
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <span class="status" id="sStatus"></span>
+      <h2 id="sTitle"></h2>
+      <div class="hero-meta" id="sMeta"></div>
+    </div>
+    <div class="hero-value">
+      <small>Full set at median asks</small>
+      <b id="sTotal">—</b>
+      <small id="sPriced"></small>
+      <button class="share-btn" id="shareBtn" type="button">↗ Share</button>
+    </div>
+  </section>
 
   <div class="banner" id="empty" hidden>No prices collected for this series yet. They appear after the next daily update.</div>
   <div class="stats" id="stats"></div>
 
-  <div class="table-wrap">
+  <section class="since" id="since" hidden>
+    <div class="since-text">
+      <small id="sinceLabel">Since it left restaurants</small>
+      <b id="sinceChange"></b>
+      <div class="since-sub" id="sinceSub"></div>
+      <div class="since-movers" id="sinceMovers"></div>
+    </div>
+    <div class="since-chart"><canvas id="sinceChart"></canvas></div>
+  </section>
+
+  <section class="mine" id="mine">
+    <div>
+      <b>My collection</b>
+      <span id="mineText">Tap <span class="own-ex">＋</span> on the items you own to see what they're worth.</span>
+    </div>
+    <label class="own-filter"><input type="checkbox" id="ownedOnly"> Show only mine</label>
+  </section>
+
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="View">
+      <button data-view="gallery" aria-pressed="true">▦ Gallery</button>
+      <button data-view="list" aria-pressed="false">☰ List</button>
+      <button data-view="map" aria-pressed="false">▩ Market map</button>
+    </div>
+    <label class="sortby">Sort
+      <select id="sortSel">
+        <option value="price:-1">Price: high to low</option>
+        <option value="price:1">Price: low to high</option>
+        <option value="d1:-1">Biggest 1-day rise</option>
+        <option value="d1:1">Biggest 1-day drop</option>
+        <option value="number:1">Number</option>
+        <option value="name:1">Name</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="gallery" id="gallery"></div>
+
+  <section class="map-wrap" id="mapWrap" hidden>
+    <div class="map-head">
+      <span>Whole market · block size = median ask · colour = 1-day change</span>
+      <span class="map-legend"><i style="background:#b3261e"></i>−10%<i style="background:#8a8a85"></i>0<i style="background:#1e7a3c"></i>+10%</span>
+    </div>
+    <div class="map" id="map"></div>
+  </section>
+
+  <div class="table-wrap" id="tableWrap" hidden>
     <table>
       <thead><tr>
+        <th class="own-col" title="I own this">Own</th>
         <th data-k="name" id="thName">Item</th>
         <th data-k="price" class="num">Median ask</th>
         <th data-k="d1" class="num">1-day</th>
@@ -142,6 +380,18 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<"
 const fmtDate = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
 const series = () => DATA.sets[SID];
 const isCards = () => series().kind === "cards";
+let VIEW = "gallery";
+try { VIEW = localStorage.getItem("view") || "gallery"; } catch (e) {}
+let OWNED = new Set();
+try { OWNED = new Set(JSON.parse(localStorage.getItem("owned") || "[]")); } catch (e) {}
+
+// Hero colours per series: [gradient start, gradient end, text colour].
+const THEMES = {
+  "pokemon-2026": ["#ffcb05", "#f08a00", "#1d1d1b"],
+  "boo-buckets-2026": ["#ff7a1a", "#5b1f8f", "#ffffff"],
+  "spongebob-onepiece-2026": ["#0aa5d8", "#0b4f8a", "#ffffff"],
+};
+const DEFAULT_THEME = ["#d62300", "#ffb703", "#ffffff"];
 
 function rowsFor(sid) {
   const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
@@ -165,51 +415,107 @@ function renderNav() {
   $("nav").innerHTML = list.map(([id, s]) =>
     `<a href="?s=${id}" data-s="${id}" ${id === SID ? 'aria-current="page"' : ""}>${esc(s.name)}${s.current ? '<span class="tag">Now</span>' : ""}</a>`).join("");
   $("nav").querySelectorAll("a").forEach(a => a.onclick = (e) => {
-    e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); go(a.dataset.s);
+    e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); switchTo(a.dataset.s);
   });
   const cur = $("nav").querySelector('[aria-current="page"]');
   if (cur) $("nav").scrollLeft = cur.offsetLeft - ($("nav").clientWidth - cur.offsetWidth) / 2;
+}
+
+// Animated switch between series: slide in the direction of the tab, count numbers up.
+const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+function switchTo(sid, after) {
+  if (sid === SID) { after?.(); return; }
+  const order = (id) => DATA.sets[id]?.order ?? 0;
+  document.documentElement.dataset.dir = order(sid) < order(SID) ? "prev" : "next";
+  const run = () => { go(sid); after?.(); };
+  if (document.startViewTransition && !reduceMotion()) {
+    document.startViewTransition(run);
+  } else {
+    run();
+    const w = document.querySelector(".wrap");
+    w.classList.remove("enter"); void w.offsetWidth; w.classList.add("enter");
+  }
+}
+
+// Count every number in these elements up from 0, keeping its $ / % / sign formatting.
+function countUp() {
+  if (reduceMotion()) return;
+  const els = document.querySelectorAll("#sTotal, #stats b, .tile-price, #mine .big, #sinceChange");
+  const jobs = [...els].map(el => {
+    const m = el.textContent.match(/^([^\d-]*)(-?[\d,]*\.?\d+)(.*)$/);
+    if (!m) return null;
+    const to = parseFloat(m[2].replace(/,/g, "")), dec = (m[2].split(".")[1] || "").length;
+    return { el, pre: m[1], to, dec, post: m[3] };
+  }).filter(Boolean);
+  const t0 = performance.now(), dur = 750;
+  const step = (now) => {
+    const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    jobs.forEach(j => j.el.textContent = j.pre + (j.to * e).toLocaleString("en-US", { minimumFractionDigits: j.dec, maximumFractionDigits: j.dec }) + j.post);
+    if (k < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
 }
 
 function go(sid) {
   SID = DATA.sets[sid] ? sid : Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order)[0][0];
   selected = null; $("detail").hidden = true;
   const s = series();
-  document.title = `${s.name} · Happy Meal Prices`;
+  document.title = `${s.name} · Toy Ticker`;
   document.body.classList.toggle("toys", s.kind === "toys");
+  const [h1, h2, ink] = THEMES[SID] || DEFAULT_THEME;
+  const hero = $("hero").style;
+  hero.setProperty("--h1", h1); hero.setProperty("--h2", h2); hero.setProperty("--hink", ink);
+  const today = new Date().toISOString().slice(0, 10);
+  const live = s.current || (s.end && s.end >= today && s.start <= today);
+  $("sStatus").className = "status" + (live ? " live" : "");
+  $("sStatus").textContent = live ? "Now in restaurants" : s.end ? `Ended ${fmtDate(s.end)}` : "Past series";
   $("sTitle").textContent = s.name;
   $("sMeta").innerHTML = `${s.kind === "cards" ? "Cards" : "Toys"} · ${fmtDate(s.start)} – ${s.end ? fmtDate(s.end) : "now"}` +
-    (s.current ? " · in restaurants now" : "") + (s.note ? `<br>${esc(s.note)}` : "");
+    (s.note ? `<br>${esc(s.note)}` : "");
   $("thName").textContent = s.kind === "cards" ? "Card" : "Toy";
   $("foot").innerHTML = `Prices are <b>asking prices</b> of active eBay US Buy It Now listings, collected daily with the eBay Browse API. ` +
     (s.kind === "cards" ? "Lots, graded slabs and multi-card listings are filtered out. " : "Lots, full sets and multi-toy listings are filtered out. ") +
     `Shown is the median of what's left; asking prices usually run above what items actually sell for. Photos are from eBay listings and link to them. Not financial advice.`;
   renderNav();
   render();
+  countUp();
 }
 
 function render() {
-  const rows = rowsFor(SID).sort((a, b) => {
+  const all = rowsFor(SID);
+  // Value rank and share of the full set, among priced items.
+  const priced = all.filter(r => r.price != null);
+  const total = priced.reduce((s, r) => s + r.price, 0);
+  priced.slice().sort((a, b) => b.price - a.price).forEach((r, i) => { r.rank = i + 1; r.share = total ? r.price / total : 0; });
+
+  const onlyMine = $("ownedOnly").checked;
+  const rows = all.filter(r => !onlyMine || OWNED.has(r.id)).sort((a, b) => {
     const x = a[sortKey], y = b[sortKey];
     if (x == null) return 1; if (y == null) return -1;
     return (typeof x === "string" ? x.localeCompare(y) : x - y) * sortDir;
   });
 
-  const priced = rows.filter(r => r.price != null);
-  const total = priced.reduce((s, r) => s + r.price, 0);
   const top = priced.slice().sort((a, b) => b.price - a.price)[0];
   const mover = priced.filter(r => r.d30 != null).sort((a, b) => Math.abs(b.d30) - Math.abs(a.d30))[0];
-  const days = Math.max(0, ...rows.map(r => r.h.length));
-  const first = rows.map(r => r.h[0]?.date).filter(Boolean).sort()[0];
+  const days = Math.max(0, ...all.map(r => r.h.length));
+  const first = all.map(r => r.h[0]?.date).filter(Boolean).sort()[0];
+  $("sTotal").textContent = priced.length ? usd(total) : "—";
+  $("sPriced").textContent = `${priced.length} of ${all.length} ${isCards() ? "cards" : "toys"} priced`;
+  const listings = all.reduce((s, r) => s + (r.count || 0), 0);
   $("stats").innerHTML = `
-    <div class="stat"><small>Full set (median asks)</small><b>${priced.length ? usd(total) : "—"}</b><small>${priced.length} of ${rows.length} priced</small></div>
+    <div class="stat"><small>Listings tracked today</small><b>${listings || "—"}</b><small>active eBay US listings</small></div>
     <div class="stat"><small>Most valuable</small><b>${top ? usd(top.price) : "—"}</b><small>${top ? esc(top.name) : ""}</small></div>
     <div class="stat"><small>Biggest move vs 30-day avg</small><b class="${cls(mover?.d30)}">${mover ? pct(mover.d30) : "—"}</b><small>${mover ? esc(mover.name) : ""}</small></div>
     <div class="stat"><small>Days tracked</small><b>${days}</b><small>${first ? "since " + fmtDate(first) : "not started"}</small></div>`;
   $("empty").hidden = priced.length > 0;
+  renderMine(all);
+  renderSince(all);
+
+  const ownBtn = (r) => `<button class="own" data-own="${r.id}" aria-pressed="${OWNED.has(r.id)}" title="${OWNED.has(r.id) ? "Remove from" : "Add to"} my collection">${OWNED.has(r.id) ? "✓" : "＋"}</button>`;
 
   $("rows").innerHTML = rows.map(r => `
     <tr data-id="${r.id}" class="${r.id === selected ? "sel" : ""}">
+      <td>${ownBtn(r)}</td>
       <td><div class="cardcell">${thumb(r, "sm")}<div><span class="no">#${esc(r.number)}</span>${esc(r.name)}${r.rarity === "Holo" ? ' <span class="holo" title="Holo">✦</span>' : ""}</div></div></td>
       <td class="num">${usd(r.price)}</td>
       <td class="num ${cls(r.d1)}">${pct(r.d1)}</td>
@@ -219,21 +525,237 @@ function render() {
       <td class="num"><canvas class="spark" data-id="${r.id}"></canvas></td>
     </tr>`).join("");
 
+  $("gallery").innerHTML = rows.map(r => {
+    const ch = r.d1 ?? r.d30, label = r.d1 != null ? "1d" : r.d30 != null ? "30d" : "";
+    const rank = r.rank ? `<span class="rank${r.rank <= 3 ? " r" + r.rank : ""}">${r.rank === 1 ? "★ Most valuable" : "#" + r.rank + " in set"}</span>` : "";
+    return `
+    <div class="tile ${r.id === selected ? "sel" : ""} ${OWNED.has(r.id) ? "owned" : ""}" data-id="${r.id}" role="button" tabindex="0">
+      ${rank}${ownBtn(r)}
+      ${picBox(r, "tile")}
+      <div class="tile-name"><span class="no">#${esc(r.number)}</span>${esc(r.name)}${r.rarity === "Holo" ? ' <span class="holo" title="Holo">✦</span>' : ""}</div>
+      <div class="tile-row">
+        <span class="tile-price">${usd(r.price)}</span>
+        ${ch != null ? `<span class="badge ${cls(ch)}">${ch > 0 ? "▲" : ch < 0 ? "▼" : ""} ${pct(Math.abs(ch)).replace("+", "")} <small>${label}</small></span>` : ""}
+      </div>
+      ${r.share ? `<div class="share" title="${(r.share * 100).toFixed(1)}% of the full set's value"><i style="width:${Math.max(2, r.share * 100 / (top.share || 1))}%"></i></div>` : ""}
+      <div class="tile-sub">${r.count != null ? `${r.count} listings · ${(r.share * 100).toFixed(0)}% of set value` : "No price yet"}</div>
+    </div>`;
+  }).join("") || `<p class="note">Nothing here yet. Tap ＋ on items you own, or untick "Show only mine".</p>`;
+  $("gallery").hidden = VIEW !== "gallery";
+  $("tableWrap").hidden = VIEW !== "list";
+  $("mapWrap").hidden = VIEW !== "map";
+  $("sortSel").parentElement.style.visibility = VIEW === "map" ? "hidden" : "";
+  if (VIEW === "map") renderMap();
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === VIEW)));
+  $("sortSel").value = `${sortKey}:${sortDir}`;
+
   rows.forEach(r => spark(document.querySelector(`canvas.spark[data-id="${r.id}"]`), r));
-  document.querySelectorAll("#rows tr").forEach(tr => tr.onclick = () => showDetail(tr.dataset.id));
+  document.querySelectorAll("#rows tr, #gallery .tile").forEach(el => {
+    el.onclick = (e) => { if (!e.target.closest(".own")) showDetail(el.dataset.id); };
+    el.onkeydown = (e) => { if ((e.key === "Enter" || e.key === " ") && e.target === el) { e.preventDefault(); showDetail(el.dataset.id); } };
+  });
+  document.querySelectorAll("[data-own]").forEach(b => b.onclick = (e) => {
+    e.stopPropagation();
+    const id = b.dataset.own;
+    OWNED.has(id) ? OWNED.delete(id) : OWNED.add(id);
+    try { localStorage.setItem("owned", JSON.stringify([...OWNED])); } catch (err) {}
+    render();
+  });
   document.querySelectorAll("th[data-k]").forEach(th =>
     th.textContent = th.textContent.replace(/ [▲▼]$/, "") + (th.dataset.k === sortKey ? (sortDir > 0 ? " ▲" : " ▼") : ""));
 }
 
+// My collection: value of owned items in this series and across all series.
+function renderMine(all) {
+  const mine = all.filter(r => OWNED.has(r.id));
+  const val = mine.reduce((s, r) => s + (r.price || 0), 0);
+  let allVal = 0, allN = 0;
+  for (const id of OWNED) {
+    const h = DATA.history[id];
+    if (!DATA.cards[id]) continue;
+    allN++; allVal += h?.[h.length - 1]?.median || 0;
+  }
+  $("mine").classList.toggle("has", mine.length > 0);
+  $("mineText").innerHTML = mine.length
+    ? `You own <b>${mine.length}</b> of ${all.length} · worth <span class="big">${usd(val)}</span>` +
+      (allN > mine.length ? ` · all series: <b>${allN}</b> items, <b>${usd(allVal)}</b>` : "")
+    : `Tap <span class="own-ex">＋</span> on the items you own to see what they're worth.` +
+      (allN ? ` · all series: <b>${allN}</b> items, <b>${usd(allVal)}</b>` : "");
+}
+
+// Ended series: how the full-set value moved since the promo left restaurants.
+let sinceChart = null;
+function renderSince(all) {
+  const s = series();
+  const today = new Date().toISOString().slice(0, 10);
+  const ended = !s.current && s.end && s.end < today;
+  const dates = [...new Set(all.flatMap(r => r.h.map(p => p.date)))].sort();
+  $("since").hidden = !ended || dates.length < 2;
+  if ($("since").hidden) return;
+  // Only count items priced on every day, so the total isn't skewed by items appearing/disappearing.
+  const full = all.filter(r => dates.every(d => r.h.some(p => p.date === d && p.median != null)));
+  const totals = dates.map(d => full.reduce((sum, r) => sum + r.h.find(p => p.date === d).median, 0));
+  const startIdx = Math.max(0, dates.findIndex(d => d > s.end));
+  const from = totals[startIdx], to = totals[totals.length - 1], ch = from ? to / from - 1 : null;
+  $("sinceLabel").textContent = dates[startIdx] > s.end
+    ? `Full set since it left restaurants (${fmtDate(s.end)})` : "Full set since tracking began";
+  $("sinceChange").className = cls(ch);
+  $("sinceChange").textContent = pct(ch);
+  $("sinceSub").textContent = `${usd(from)} on ${fmtDate(dates[startIdx])} → ${usd(to)} now · ${full.length} items priced every day`;
+  const moves = full.map(r => {
+    const a = r.h.find(p => p.date === dates[startIdx]).median, b = r.last.median;
+    return { r, ch: b / a - 1 };
+  }).sort((a, b) => b.ch - a.ch);
+  const best = moves[0], worst = moves[moves.length - 1];
+  $("sinceMovers").innerHTML = best ? `
+    <span>Best: <b class="${cls(best.ch)}" style="display:inline;font-size:inherit">${pct(best.ch)}</b> ${esc(best.r.name)}</span>
+    <span>Worst: <b class="${cls(worst.ch)}" style="display:inline;font-size:inherit">${pct(worst.ch)}</b> ${esc(worst.r.name)}</span>` : "";
+  if (sinceChart) sinceChart.destroy();
+  const [h1] = THEMES[SID] || DEFAULT_THEME;
+  sinceChart = new Chart($("sinceChart"), {
+    type: "line",
+    data: { labels: dates.slice(startIdx).map(d => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" })), datasets: [{
+      data: totals.slice(startIdx), borderColor: h1, backgroundColor: h1 + "33", fill: true, tension: .3, pointRadius: 0,
+    }]},
+    options: {
+      maintainAspectRatio: false, plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: c => `Full set: ${usd(c.parsed.y)}` } } },
+      scales: { x: { ticks: { maxTicksLimit: 6 } }, y: { ticks: { callback: v => "$" + v } } },
+    },
+  });
+}
+
+// Squarified treemap: lays out items (each with .v) in the rectangle, keeping blocks close to square.
+function squarify(items, x, y, w, h) {
+  const total = items.reduce((s, i) => s + i.v, 0);
+  if (!total || w <= 0 || h <= 0) return [];
+  const scale = (w * h) / total;
+  const nodes = items.map(i => ({ ...i, a: i.v * scale })).sort((a, b) => b.a - a.a);
+  const out = [];
+  let row = [];
+  const worst = (r, side) => {
+    const s = r.reduce((t, n) => t + n.a, 0), mx = Math.max(...r.map(n => n.a)), mn = Math.min(...r.map(n => n.a));
+    return Math.max((side * side * mx) / (s * s), (s * s) / (side * side * mn));
+  };
+  const layoutRow = () => {
+    const s = row.reduce((t, n) => t + n.a, 0);
+    if (w >= h) {
+      const rw = s / h; let cy = y;
+      row.forEach(n => { const rh = n.a / rw; out.push({ ...n, x, y: cy, w: rw, h: rh }); cy += rh; });
+      x += rw; w -= rw;
+    } else {
+      const rh = s / w; let cx = x;
+      row.forEach(n => { const cw = n.a / rh; out.push({ ...n, x: cx, y, w: cw, h: rh }); cx += cw; });
+      y += rh; h -= rh;
+    }
+    row = [];
+  };
+  for (let i = 0; i < nodes.length;) {
+    const side = Math.min(w, h);
+    if (!row.length || worst([...row, nodes[i]], side) <= worst(row, side)) { row.push(nodes[i]); i++; }
+    else layoutRow();
+  }
+  if (row.length) layoutRow();
+  return out;
+}
+
+// Diverging colour for a % change: red ← grey → green, saturating at ±10%.
+function heat(ch) {
+  const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  const grey = [138, 138, 133], red = [179, 38, 30], green = [30, 122, 60];
+  if (ch == null) return "rgb(120,120,116)";
+  const t = Math.min(1, Math.abs(ch) / 0.10);
+  return `rgb(${mix(grey, ch < 0 ? red : green, t).join(",")})`;
+}
+
+// Market map (Finviz-style): every priced item in every series, grouped by series.
+function renderMap() {
+  const box = $("map");
+  const W = box.clientWidth, H = W < 640 ? 620 : 520;
+  box.style.height = H + "px";
+  const groups = Object.entries(DATA.sets).sort((a, b) => a[1].order - b[1].order).map(([sid, s]) => {
+    const items = rowsFor(sid).filter(r => r.price != null).map(r => ({ ...r, sid, v: r.price }));
+    return { sid, name: s.name, items, v: items.reduce((t, r) => t + r.v, 0) };
+  }).filter(g => g.v > 0);
+  if (!groups.length) { box.innerHTML = `<p class="note" style="padding:16px">No prices yet. The map fills in after the first daily eBay update.</p>`; return; }
+  let html = "";
+  for (const g of squarify(groups, 0, 0, W, H)) {
+    const head = g.h > 60 && g.w > 90 ? 22 : 0, pad = 2;
+    html += `<div class="map-group ${g.sid === SID ? "cur" : ""}" style="left:${g.x}px;top:${g.y}px;width:${g.w}px;height:${g.h}px">` +
+      (head ? `<div class="map-gname">${esc(g.name)}</div>` : "") + `</div>`;
+    for (const it of squarify(g.items, g.x + pad, g.y + head + pad, g.w - pad * 2, g.h - head - pad * 2)) {
+      const ch = it.d1 ?? it.d30, big = it.w > 90 && it.h > 54, mid = it.w > 54 && it.h > 30;
+      const label = mid ? `<b>${esc(it.name)}</b>${big ? `<span>${usd(it.price)}</span>` : ""}<span>${pct(ch)}</span>` : "";
+      html += `<button class="map-cell" data-sid="${it.sid}" data-id="${it.id}"
+        style="left:${it.x}px;top:${it.y}px;width:${Math.max(0, it.w - 2)}px;height:${Math.max(0, it.h - 2)}px;background:${heat(ch)}"
+        title="${esc(it.name)} · ${esc(DATA.sets[it.sid].name)} · ${usd(it.price)} · ${pct(ch)}">${label}</button>`;
+    }
+  }
+  box.innerHTML = html;
+  box.querySelectorAll(".map-cell").forEach(b => b.onclick = () => {
+    if (b.dataset.sid !== SID) history.pushState(null, "", `?s=${b.dataset.sid}`);
+    switchTo(b.dataset.sid, () => showDetail(b.dataset.id));
+  });
+}
+let mapResize;
+window.addEventListener("resize", () => {
+  clearTimeout(mapResize);
+  mapResize = setTimeout(() => { if (VIEW === "map" && DATA) renderMap(); }, 150);
+});
+
+// Top movers across every series, as a scrolling ticker.
+function renderTicker() {
+  const rows = Object.keys(DATA.sets).flatMap(sid => rowsFor(sid).map(r => ({ ...r, sid })))
+    .filter(r => r.d1 != null && Math.abs(r.d1) >= 0.005);
+  const up = rows.filter(r => r.d1 > 0).sort((a, b) => b.d1 - a.d1).slice(0, 3);
+  const down = rows.filter(r => r.d1 < 0).sort((a, b) => a.d1 - b.d1).slice(0, 3);
+  if (!up.length && !down.length) { $("ticker").hidden = true; return; }
+  const item = (r, lbl) => `<button class="tick" data-sid="${r.sid}" data-id="${r.id}">
+      <span class="lbl">${lbl}</span><b>${esc(r.name)}</b><span class="ser">${esc(DATA.sets[r.sid].name)}</span>
+      <span>${usd(r.price)}</span><span class="${cls(r.d1)}">${r.d1 > 0 ? "▲" : "▼"} ${pct(Math.abs(r.d1)).replace("+", "")}</span></button>`;
+  const html = up.map(r => item(r, "Riser")).join("") + down.map(r => item(r, "Faller")).join("");
+  $("tickerTrack").innerHTML = html + html; // doubled for a seamless loop
+  $("ticker").hidden = false;
+  $("tickerTrack").querySelectorAll(".tick").forEach(b => b.onclick = () => {
+    history.pushState(null, "", `?s=${b.dataset.sid}`);
+    switchTo(b.dataset.sid, () => showDetail(b.dataset.id));
+  });
+}
+
 // Item photo, or a placeholder tile with the item number when there's no photo yet.
-function thumb(r, size) {
+function thumb(r, size, link = true) {
   const holo = r.rarity === "Holo" ? " holo-tile" : "";
   const ph = `<div class="ph ${size}${holo}"><span>#${esc(r.number)}</span>${size === "lg" ? `<small>${esc(r.name)}</small><small class="phnote">Photo coming soon</small>` : ""}</div>`;
   if (!r.image) return ph;
   const img = `<img class="pic ${size}" src="${esc(r.image)}" alt="${esc(r.name)}" loading="lazy" referrerpolicy="no-referrer"
     onerror="this.outerHTML=this.dataset.ph" data-ph="${esc(ph)}">`;
-  return size === "lg" && r.imageLink
+  return size === "lg" && link && r.imageLink
     ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${img}</a>` : img;
+}
+
+// Photo inside a tilt wrapper; holo cards also get the rainbow shine.
+function picBox(r, size) {
+  const shine = r.rarity === "Holo" ? " shine" : "";
+  return `<div class="tilt${shine}">${thumb(r, size === "tile" ? "lg" : size, size !== "tile")}</div>`;
+}
+
+// Pointer-driven tilt + shine position for every .tilt element.
+document.addEventListener("pointermove", (e) => {
+  const el = e.target.closest?.(".tilt");
+  document.querySelectorAll(".tilt.active").forEach(t => { if (t !== el) resetTilt(t); });
+  if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const b = el.getBoundingClientRect();
+  const x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height;
+  el.classList.add("active");
+  el.style.setProperty("--ry", `${(x - .5) * 18}deg`);
+  el.style.setProperty("--rx", `${(.5 - y) * 18}deg`);
+  el.style.setProperty("--mx", `${x * 100}%`);
+  el.style.setProperty("--my", `${y * 100}%`);
+});
+document.addEventListener("pointerleave", () => document.querySelectorAll(".tilt.active").forEach(resetTilt));
+function resetTilt(t) {
+  t.classList.remove("active");
+  ["--rx", "--ry", "--mx", "--my"].forEach(p => t.style.removeProperty(p));
 }
 
 function spark(cv, r) {
@@ -257,7 +779,7 @@ function showDetail(id) {
   const r = rowsFor(SID).find(x => x.id === id);
   $("detail").hidden = false;
   $("dTitle").textContent = `${r.name} #${r.number}`;
-  $("dPic").innerHTML = thumb(r, "lg") +
+  $("dPic").innerHTML = `<div class="tilt${r.rarity === "Holo" ? " shine" : ""}">${thumb(r, "lg")}</div>` +
     (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${esc(r.imageCredit)}</a>` : esc(r.imageCredit)}</div>` : "");
   const q = encodeURIComponent(`mcdonalds ${isCards() ? r.name + " " + r.number + "/015 2026" : series().name.replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`);
   $("dMeta").innerHTML = `${esc(series().name)} · median ask ${usd(r.price)} · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings · ` +
@@ -269,17 +791,28 @@ function showDetail(id) {
     label, data: r.h.map(p => p[key] ?? null), borderColor: color, backgroundColor: color,
     borderDash: dash || [], tension: .25, pointRadius: r.h.length < 15 ? 3 : 0, spanGaps: true,
   });
+  // Listing counts as "volume" bars along the bottom, like a stock chart: up = more supply that day.
+  const counts = r.h.map(p => p.count ?? null);
+  const maxCount = Math.max(1, ...counts.filter(v => v != null));
+  const volColor = (i) => i && counts[i] != null && counts[i - 1] != null && counts[i] < counts[i - 1]
+    ? "rgba(198,40,40,.28)" : "rgba(26,127,55,.28)";
   chart = new Chart($("dChart"), {
     type: "line",
     data: { labels: r.h.map(p => p.date), datasets: [
       line("median", "Median ask", css("--accent")),
       line("p25", "25th percentile ask", css("--gold")),
       line("low", "Lowest ask", css("--muted"), [4, 4]),
+      { type: "bar", label: "Listings", data: counts, yAxisID: "vol", order: 10,
+        backgroundColor: counts.map((_, i) => volColor(i)), borderWidth: 0, barPercentage: .9, categoryPercentage: 1 },
     ]},
     options: {
       maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
-      scales: { y: { ticks: { callback: v => "$" + v } } },
-      plugins: { tooltip: { callbacks: { label: c => `${c.dataset.label}: ${usd(c.parsed.y)}` } } },
+      scales: {
+        y: { ticks: { callback: v => "$" + v } },
+        vol: { position: "right", beginAtZero: true, max: maxCount * 4, display: false, grid: { display: false } },
+      },
+      plugins: { tooltip: { callbacks: { label: c =>
+        c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}` : `${c.dataset.label}: ${usd(c.parsed.y)}` } } },
     },
   });
   $("dNote").textContent = !r.h.length ? "No prices collected yet."
@@ -297,7 +830,25 @@ fetch("data/prices.json", { cache: "no-store" })
       sortDir = th.dataset.k === sortKey ? -sortDir : (th.dataset.k === "name" ? 1 : -1);
       sortKey = th.dataset.k; render();
     });
-    window.onpopstate = () => go(new URLSearchParams(location.search).get("s"));
+    $("sortSel").onchange = () => {
+      const [k, d] = $("sortSel").value.split(":"); sortKey = k; sortDir = +d; render();
+    };
+    document.querySelectorAll(".seg button").forEach(b => b.onclick = () => {
+      VIEW = b.dataset.view; try { localStorage.setItem("view", VIEW); } catch (e) {}
+      render();
+    });
+    $("ownedOnly").onchange = render;
+    // Share the series' share page: it carries that series' link-preview image.
+    $("shareBtn").onclick = async () => {
+      const url = new URL(`s/${SID}/`, location.href).href, title = `${series().name} · Toy Ticker`;
+      try {
+        if (navigator.share) await navigator.share({ title, url });
+        else { await navigator.clipboard.writeText(url); $("shareBtn").textContent = "✓ Link copied"; }
+      } catch (e) { if (e.name !== "AbortError") prompt("Copy this link:", url); }
+      setTimeout(() => $("shareBtn").textContent = "↗ Share", 2000);
+    };
+    renderTicker();
+    window.onpopstate = () => switchTo(new URLSearchParams(location.search).get("s"));
     go(new URLSearchParams(location.search).get("s"));
   })
   .catch(e => { $("meta").textContent = "Couldn't load data/prices.json: " + e.message; });

@@ -75,6 +75,14 @@ def main():
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     DATA_FILE.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
     print(f"Saved {len(data['history'])} items with prices -> {DATA_FILE.relative_to(ROOT)}")
+
+    # Link-preview images and share pages (optional: needs Pillow).
+    try:
+        import og
+        built = og.build(data, ROOT, config.get("site_url", ""))
+        print(f"Link previews: og/site.png + {len(built)} series")
+    except ImportError:
+        print("! Pillow not installed: skipping link-preview images", file=sys.stderr)
     return 1 if failures == len(config["series"]) else 0
 
 
