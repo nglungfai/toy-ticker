@@ -34,7 +34,7 @@
   [hidden] { display: none !important; }
 
   /* Display font + logo */
-  h1, h2, .hero h2, .hero-value b, .stat b, .tile-price, .since b, .mine .big, nav.series a, .tile-name {
+  h1, h2, .hero h2, .hero-value b, .stat b, .tile-price, .since b, .mine .big, .tile-name {
     font-family: "Fredoka", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   header h1 { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 30px; }
   .tile-name { font-weight: 600; }
@@ -56,10 +56,30 @@
   header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
   header h1 span { color: var(--accent); }
   .meta { color: var(--muted); font-size: 13px; }
-  nav.series { display: flex; gap: 8px; margin: 24px 0 8px; overflow-x: auto; padding-bottom: 4px; }
-  nav.series .all-btn { flex: none; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--text);
-                        background: var(--bg); border: 1px dashed var(--muted); border-radius: 999px; padding: 7px 14px; }
-  nav.series .all-btn[aria-expanded="true"] { border-style: solid; border-color: var(--text); }
+  /* Series tabs: short names, colour dot per series, green live dot, edge fades + arrows when they overflow */
+  .nav-wrap { position: relative; margin: 22px 0 8px; }
+  nav.series { display: flex; gap: 6px; overflow-x: auto; padding: 2px; scrollbar-width: none; scroll-behavior: smooth; }
+  nav.series::-webkit-scrollbar { display: none; }
+  .nav-wrap.can-r nav.series { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+  .nav-wrap.can-l nav.series { -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%); mask-image: linear-gradient(90deg, transparent, #000 12%); }
+  .nav-wrap.can-l.can-r nav.series { -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+                                     mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+  nav.series a, nav.series .all-btn { flex: none; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+      font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-decoration: none; cursor: pointer;
+      color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px 9px 11px; }
+  nav.series a:hover, nav.series .all-btn:hover { border-color: var(--muted); }
+  nav.series a .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--dot); flex: none; }
+  nav.series a .live { width: 7px; height: 7px; border-radius: 50%; background: #1a9c4f; flex: none; animation: pulse 1.8s infinite; }
+  nav.series a[aria-current="page"] { background: var(--text); border-color: var(--text); color: var(--panel); }
+  nav.series a[aria-current="page"] .live { background: #3ddc84; }
+  nav.series .all-btn { color: var(--muted); padding-left: 14px; }
+  nav.series .all-btn[aria-expanded="true"] { color: var(--text); border-color: var(--text); }
+  .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; display: none; place-items: center;
+               width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--panel);
+               color: var(--text); cursor: pointer; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  .nav-arrow.l { left: -8px; } .nav-arrow.r { right: -8px; }
+  .nav-wrap.can-l .nav-arrow.l, .nav-wrap.can-r .nav-arrow.r { display: grid; }
+  @media (hover: none) { .nav-wrap .nav-arrow { display: none !important; } }
 
   /* Series browser */
   .browser { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin: 8px 0 16px; }
@@ -84,11 +104,6 @@
   .b-val { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; }
   .b-val span:first-child { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 18px; font-variant-numeric: tabular-nums; }
   .b-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
-  nav.series a { flex: none; text-decoration: none; color: var(--text); background: var(--panel);
-                 border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-size: 14px; }
-  nav.series a[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: #fff; }
-  nav.series .tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
-                    margin-left: 6px; opacity: .85; }
   .series-head { margin: 16px 0 16px; }
   .series-head h2 { margin: 0; font-size: 20px; }
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
@@ -539,7 +554,11 @@
     </div>
   </header>
 
-  <nav class="series" id="nav" aria-label="Happy Meal series"></nav>
+  <div class="nav-wrap" id="navWrap">
+    <button class="nav-arrow l" type="button" aria-label="Scroll series left">‹</button>
+    <nav class="series" id="nav" aria-label="Happy Meal series"></nav>
+    <button class="nav-arrow r" type="button" aria-label="Scroll series right">›</button>
+  </div>
 
   <section class="browser" id="browser" hidden aria-label="All Happy Meal series">
     <div class="browser-head">
@@ -741,17 +760,17 @@ try { OWNED = new Set(JSON.parse(localStorage.getItem("owned") || "[]")); } catc
 // Series colours. band = top stripe gradient; acc/pill/pillInk = text-safe colours on a light card
 // (all ≥ 4.5:1 contrast), with *D twins for dark mode. chart = line colour for that series' charts.
 const THEMES = {
-  "pokemon-2026": { short: "Pokémon", band: ["#ffcb05", "#f08a00"], acc: "#9a5200", pill: "#fff3c4", pillInk: "#6b4300",
+  "pokemon-2026": { tab: "Pokémon cards", short: "Pokémon", band: ["#ffcb05", "#f08a00"], acc: "#9a5200", pill: "#fff3c4", pillInk: "#6b4300",
     accD: "#ffcb05", pillD: "#4a3a00", pillInkD: "#ffe27a", chart: "#e08a00" },
-  "boo-buckets-2026": { short: "Boo Buckets", band: ["#ff7a1a", "#5b1f8f"], acc: "#5b1f8f", pill: "#eeedfe", pillInk: "#3c3489",
+  "boo-buckets-2026": { tab: "Boo Buckets", short: "Boo Buckets", band: ["#ff7a1a", "#5b1f8f"], acc: "#5b1f8f", pill: "#eeedfe", pillInk: "#3c3489",
     accD: "#c9a7ff", pillD: "#3b2a5c", pillInkD: "#ddd0ff", chart: "#7a3fc0" },
-  "spongebob-onepiece-2026": { short: "SpongeBob", band: ["#0aa5d8", "#0b4f8a"], acc: "#0b4f8a", pill: "#e0f2fb", pillInk: "#0b4f8a",
+  "spongebob-onepiece-2026": { tab: "SpongeBob × One Piece", short: "SpongeBob", band: ["#0aa5d8", "#0b4f8a"], acc: "#0b4f8a", pill: "#e0f2fb", pillInk: "#0b4f8a",
     accD: "#6fd0f5", pillD: "#123a52", pillInkD: "#bfe9fb", chart: "#0a8fc4" },
-  "pokemon-toys-2026": { short: "Pokémon toys", band: ["#ffcb05", "#e3350d"], acc: "#a32a0a", pill: "#fde3dc", pillInk: "#7a1f07",
+  "pokemon-toys-2026": { tab: "Pokémon toys", short: "Pokémon toys", band: ["#ffcb05", "#e3350d"], acc: "#a32a0a", pill: "#fde3dc", pillInk: "#7a1f07",
     accD: "#ffb199", pillD: "#4a1a10", pillInkD: "#ffd0c2", chart: "#e3350d" },
-  "hello-kitty-godzilla-2026": { short: "Hello Kitty", band: ["#ff6fa5", "#2f7a52"], acc: "#a3165a", pill: "#fde4ef", pillInk: "#7d1145",
+  "hello-kitty-godzilla-2026": { tab: "Hello Kitty × Godzilla", short: "Hello Kitty", band: ["#ff6fa5", "#2f7a52"], acc: "#a3165a", pill: "#fde4ef", pillInk: "#7d1145",
     accD: "#ff9cc4", pillD: "#4a1a30", pillInkD: "#ffc9df", chart: "#d4537e" },
-  "bt21-2026": { short: "BT21", band: ["#7f77dd", "#ff9ec4"], acc: "#534ab7", pill: "#eeedfe", pillInk: "#3c3489",
+  "bt21-2026": { tab: "BT21", short: "BT21", band: ["#7f77dd", "#ff9ec4"], acc: "#534ab7", pill: "#eeedfe", pillInk: "#3c3489",
     accD: "#b8b2f5", pillD: "#2e2a5c", pillInkD: "#dcd8ff", chart: "#7f77dd" },
 };
 const DEFAULT_THEME = { band: ["#d62300", "#ffb703"], acc: "#a31b00", pill: "#fde9e4", pillInk: "#7a1500",
@@ -811,7 +830,7 @@ function rowsFor(sid) {
 }
 
 // Tabs show the newest few series (plus the one you're on); everything else lives in the series browser.
-const NAV_TABS = 4;
+const NAV_TABS = 6;
 const seriesColor = (id) => THEMES[id]?.chart ||
   ["#d85a30", "#1d9e75", "#378add", "#d4537e", "#7f77dd", "#ba7517", "#639922"][[...id].reduce((h, ch) => h + ch.charCodeAt(0), 0) % 7];
 function renderNav() {
@@ -820,14 +839,31 @@ function renderNav() {
   if (!tabs.some(([id]) => id === SID)) tabs = [...tabs.slice(0, NAV_TABS - 1), list.find(([id]) => id === SID)];
   tabs.sort((a, b) => a[1].order - b[1].order);
   $("nav").innerHTML = tabs.map(([id, s]) =>
-    `<a href="?s=${id}" data-s="${id}" ${id === SID ? 'aria-current="page"' : ""}>${esc(s.name)}${s.current ? '<span class="tag">Now</span>' : ""}</a>`).join("") +
-    `<button class="all-btn" id="allBtn" aria-expanded="${!$("browser").hidden}" aria-controls="browser">All series (${list.length}) ▾</button>`;
+    `<a href="?s=${id}" data-s="${id}" ${id === SID ? 'aria-current="page"' : ""} title="${esc(s.name)}${s.current ? " · in restaurants now" : ""}" style="--dot:${seriesColor(id)}">` +
+    `<span class="dot"></span>${esc(THEMES[id]?.tab || s.name)}${s.current ? '<span class="live" aria-label="in restaurants now"></span>' : ""}</a>`).join("") +
+    `<button class="all-btn" id="allBtn" aria-expanded="${!$("browser").hidden}" aria-controls="browser">All ${list.length} ▾</button>`;
   $("nav").querySelectorAll("a").forEach(a => a.onclick = (e) => {
     e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); switchTo(a.dataset.s);
   });
   $("allBtn").onclick = () => toggleBrowser();
-  const cur = $("nav").querySelector('[aria-current="page"]');
-  if (cur) $("nav").scrollLeft = cur.offsetLeft - ($("nav").clientWidth - cur.offsetWidth) / 2;
+  const nav = $("nav"), cur = nav.querySelector('[aria-current="page"]');
+  if (cur) {
+    const N = nav.getBoundingClientRect(), C = cur.getBoundingClientRect();
+    if (C.left < N.left || C.right > N.right) { nav.style.scrollBehavior = "auto"; nav.scrollLeft += C.left - N.left - (N.width - C.width) / 2; nav.style.scrollBehavior = ""; }
+  }
+  updateNavEdges();
+}
+// Show edge fades / arrows only when there's more to scroll in that direction.
+function updateNavEdges() {
+  const nav = $("nav"), w = $("navWrap");
+  w.classList.toggle("can-l", nav.scrollLeft > 4);
+  w.classList.toggle("can-r", nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 4);
+}
+function wireNav() {
+  $("nav").addEventListener("scroll", updateNavEdges, { passive: true });
+  window.addEventListener("resize", updateNavEdges);
+  document.querySelector(".nav-arrow.l").onclick = () => $("nav").scrollBy({ left: -$("nav").clientWidth * .7 });
+  document.querySelector(".nav-arrow.r").onclick = () => $("nav").scrollBy({ left: $("nav").clientWidth * .7 });
 }
 
 // Section tabs under the quote header: Items (default), Deals, Trends, My collection.
@@ -1807,6 +1843,7 @@ fetch("data/index.json", { cache: "no-store" })
     document.querySelectorAll(".sections [data-sec]").forEach(b => b.onclick = () => showSection(b.dataset.sec));
     wireSearch();
     wireBrowser();
+    wireNav();
     wireMeal();
     wireShareModal();
     $("mineShare").onclick = shareCollection;
