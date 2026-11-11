@@ -81,7 +81,16 @@ def token(client_id, secret):
         body = e.read().decode("utf-8", "replace")[:300]
         hint = (" Check EBAY_CLIENT_ID is the App ID and EBAY_CLIENT_SECRET is the Cert ID (Production, no spaces),"
                 " and that the keyset is enabled in the eBay developer portal.") if e.code in (400, 401) else ""
-        raise RuntimeError(f"eBay sign-in failed: HTTP {e.code} {body}.{hint}") from None
+        raise RuntimeError(f"eBay sign-in failed: HTTP {e.code} {body}.{hint} {key_shape(client_id, secret)}") from None
+
+
+def key_shape(client_id, secret):
+    """Safe diagnostics about the keys' format (lengths and prefixes only, never the values)."""
+    def ws(v):
+        return "has whitespace" if any(c.isspace() for c in v) else "no whitespace"
+    return (f"[App ID: {len(client_id)} chars, '-PRD-' inside: {'-PRD-' in client_id}, {ws(client_id)}; "
+            f"Cert ID: {len(secret)} chars, starts 'PRD-': {secret.startswith('PRD-')}, {ws(secret)}; "
+            f"same value twice: {client_id == secret}]")
 
 
 def search(tok, q, category=None, attempts=4):
