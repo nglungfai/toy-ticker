@@ -110,31 +110,36 @@
             padding: 10px 14px; margin-bottom: 12px; }
   footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
 
-  /* Hero banner, themed per series via --h1/--h2/--hink */
-  .hero { --h1: #d62300; --h2: #ffb703; --hink: #fff;
+  /* Hero banner: light card; the series colour lives in the top band, status pill and price.
+     --h1/--h2 band gradient, --hacc accent text, --hpill/--hpill-ink pill (each has a dark-mode twin). */
+  .hero { --h1: #d62300; --h2: #ffb703;
+          --hacc-l: #a31b00; --hpill-l: #fde9e4; --hpill-ink-l: #7a1500;
+          --hacc-d: #ff8a70; --hpill-d: #4a1d14; --hpill-ink-d: #ffc9bc;
+          --hacc: var(--hacc-l); --hpill: var(--hpill-l); --hpill-ink: var(--hpill-ink-l);
           position: relative; overflow: hidden; display: flex; flex-wrap: wrap; gap: 20px;
           justify-content: space-between; align-items: flex-end;
-          margin: 16px 0 16px; padding: 28px 24px; border-radius: 18px; color: var(--hink);
-          background: radial-gradient(120% 140% at 0% 0%, var(--h1) 0%, var(--h2) 100%); }
-  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .18;
-                 background-image: radial-gradient(currentColor 1.2px, transparent 1.3px);
-                 background-size: 18px 18px; mask-image: linear-gradient(90deg, transparent 30%, #000); }
-  .hero > * { position: relative; z-index: 1; }
-  .hero h2 { margin: 6px 0 4px; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; }
-  .hero-meta { font-size: 14px; opacity: .9; max-width: 560px; }
+          margin: 16px 0 16px; padding: 30px 24px 22px; border-radius: 18px; color: var(--text);
+          background: var(--panel); border: 1px solid var(--line); }
+  .hero::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px;
+                  background: linear-gradient(90deg, var(--h1), var(--h2)); }
+  .hero h2 { margin: 8px 0 4px; font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: 0; }
+  .hero-meta { font-size: 14px; color: var(--muted); max-width: 560px; }
   .hero-value { text-align: right; }
-  .hero-value b { display: block; font-size: 40px; line-height: 1.1; font-variant-numeric: tabular-nums; }
-  .hero-value small { opacity: .85; font-size: 13px; }
+  .hero-value b { display: block; font-size: 40px; line-height: 1.1; font-weight: 600; color: var(--hacc); font-variant-numeric: tabular-nums; }
+  .hero-value small { color: var(--muted); font-size: 13px; }
   .status { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
-            padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.22); backdrop-filter: blur(4px); }
+            padding: 4px 10px; border-radius: 999px; background: var(--hpill); color: var(--hpill-ink); }
   .status.live::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
-                         background: #3ddc84; margin-right: 6px; box-shadow: 0 0 0 0 #3ddc84; animation: pulse 1.8s infinite; }
+                         background: #1a9c4f; margin-right: 6px; box-shadow: 0 0 0 0 #1a9c4f; animation: pulse 1.8s infinite; }
   @keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
   @media (max-width: 640px) { .hero h2 { font-size: 26px; } .hero-value { text-align: left; } .hero-value b { font-size: 32px; } }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero {
+    --hacc: var(--hacc-d); --hpill: var(--hpill-d); --hpill-ink: var(--hpill-ink-d); } }
+  :root[data-theme="dark"] .hero { --hacc: var(--hacc-d); --hpill: var(--hpill-d); --hpill-ink: var(--hpill-ink-d); }
 
-  .share-btn { margin-top: 10px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: inherit;
-               border: 1px solid currentColor; background: rgba(255,255,255,.15); border-radius: 999px; padding: 5px 14px; }
-  .share-btn:hover { background: rgba(255,255,255,.3); }
+  .share-btn { margin-top: 10px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--hacc);
+               border: 1px solid var(--hacc); background: transparent; border-radius: 999px; padding: 5px 14px; }
+  .share-btn:hover { background: var(--hpill); }
 
   /* Toolbar */
   .toolbar { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 12px; }
@@ -184,19 +189,29 @@
   .map-head { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
   .map-legend { display: inline-flex; align-items: center; gap: 6px; }
   .map-legend i { display: inline-block; width: 22px; height: 10px; border-radius: 2px; }
-  .map { position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: #1d1d1b; }
-  .map-group { position: absolute; box-sizing: border-box; border: 1px solid #1d1d1b; }
-  .map-group.cur { outline: 2px solid #f2b705; outline-offset: -2px; z-index: 2; pointer-events: none; }
-  .map-gname { height: 22px; line-height: 22px; padding: 0 8px; font-size: 12px; font-weight: 700; color: #ecebe6;
-               text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #1d1d1b; }
-  .map-cell { position: absolute; border: 0; padding: 4px; margin: 1px; cursor: pointer; color: #fff; font: inherit;
+  .map { position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: var(--line); }
+  .map-group { position: absolute; box-sizing: border-box; border: 2px solid var(--panel); }
+  .map-group.cur { outline: 2px solid var(--text); outline-offset: -2px; z-index: 2; pointer-events: none; }
+  .map-gname { height: 22px; line-height: 22px; padding: 0 8px; font-size: 12px; font-weight: 700; color: var(--muted);
+               text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: var(--panel); }
+  /* Stepped light tints, same shades as the returns grid: <0.5% flat, then <2%, 2–4%, >4% */
+  .map-cell, .map-legend i { --m-bg: #f0efea; --m-fg: #5f5e5a; }
+  .m-up1 { --m-bg: #e3f1ea; --m-fg: #2e7d52; } .m-up2 { --m-bg: #b4dcc5; --m-fg: #17663b; } .m-up3 { --m-bg: #5fb585; --m-fg: #ffffff; }
+  .m-dn1 { --m-bg: #fbe4e4; --m-fg: #b52a2a; } .m-dn2 { --m-bg: #f2b8b8; --m-fg: #9b2222; } .m-dn3 { --m-bg: #d9615d; --m-fg: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .map-cell, :root:not([data-theme="light"]) .map-legend i { --m-bg: #2c2c2a; --m-fg: #b4b2a9; }
+    :root:not([data-theme="light"]) .m-up1 { --m-bg: #1f3a2b; --m-fg: #95e0b2; } :root:not([data-theme="light"]) .m-up2 { --m-bg: #24503a; --m-fg: #b5f0cb; } :root:not([data-theme="light"]) .m-up3 { --m-bg: #2f7a52; --m-fg: #ffffff; }
+    :root:not([data-theme="light"]) .m-dn1 { --m-bg: #42221f; --m-fg: #ffb0a9; } :root:not([data-theme="light"]) .m-dn2 { --m-bg: #5a2a26; --m-fg: #ffc6c0; } :root:not([data-theme="light"]) .m-dn3 { --m-bg: #8e3a33; --m-fg: #ffffff; } }
+  .map-cell { position: absolute; border: 0; padding: 4px; margin: 1px; cursor: pointer; font: inherit; border-radius: 3px;
+              background: var(--m-bg); color: var(--m-fg);
               display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; text-align: center;
-              overflow: hidden; transition: filter .15s; }
-  .map-cell:hover, .map-cell:focus-visible { filter: brightness(1.18); outline: 2px solid #fff; outline-offset: -2px; z-index: 3; }
-  .map-cell b { font-family: "Fredoka", sans-serif; font-size: 13px; line-height: 1.15; overflow: hidden; text-overflow: ellipsis;
+              overflow: hidden; transition: filter .15s, box-shadow .15s; }
+  .map-cell:hover, .map-cell:focus-visible { filter: brightness(.96); box-shadow: inset 0 0 0 2px currentColor; outline: none; z-index: 3; }
+  .map-cell b { font-family: "Fredoka", sans-serif; font-size: 13px; font-weight: 600; line-height: 1.15; overflow: hidden; text-overflow: ellipsis;
                 white-space: nowrap; max-width: 100%; }
   @media (max-width: 640px) { .map-cell b { font-size: 11px; } .map-cell span { font-size: 11px; } }
-  .map-cell span { font-size: 12px; opacity: .92; font-variant-numeric: tabular-nums; }
+  .map-cell span { font-size: 12px; font-variant-numeric: tabular-nums; }
+  .map-legend i { background: var(--m-bg); border: 1px solid var(--line); }
 
   /* Top movers ticker */
   .ticker { overflow: hidden; margin: 20px 0 0; border-radius: 10px; background: var(--panel);
@@ -208,6 +223,32 @@
           white-space: nowrap; padding: 0; display: inline-flex; gap: 6px; align-items: baseline; }
   .tick .lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
   .tick .ser { color: var(--muted); font-size: 12px; }
+
+  /* Returns heat grid */
+  .returns-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 20px; }
+  .returns { margin-top: 12px; }
+  .ret-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; gap: 12px; }
+  .ret-head h3 { margin: 0; font-size: 17px; font-family: "Fredoka", sans-serif; }
+  .ret-head small { color: var(--muted); font-size: 12px; margin-left: 6px; font-weight: 400; font-family: inherit; }
+  .ret-tabs { display: inline-flex; gap: 14px; font-size: 14px; }
+  .ret-tabs button { border: 0; background: none; font: inherit; color: var(--text); cursor: pointer; padding: 2px 0;
+                     border-bottom: 2px solid transparent; }
+  .ret-tabs button[aria-pressed="true"] { color: #2f6fed; border-bottom-color: #2f6fed; }
+  .ret-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .returns-card .ret-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  @media (max-width: 640px) { .returns-card .ret-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .ret { border-radius: 8px; padding: 10px 6px; text-align: center; background: var(--ret-bg, var(--bg)); }
+  .ret b { display: block; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ret-fg, var(--muted)); }
+  .ret span { font-size: 13px; color: var(--text); }
+  .ret.na b { font-weight: 400; }
+  .ret.up1 { --ret-bg: #e3f1ea; --ret-fg: #2e8b57; } .ret.up2 { --ret-bg: #cfe8da; --ret-fg: #23784a; } .ret.up3 { --ret-bg: #b4dcc5; --ret-fg: #17663b; }
+  .ret.dn1 { --ret-bg: #fbe4e4; --ret-fg: #d64545; } .ret.dn2 { --ret-bg: #f7d0d0; --ret-fg: #c93636; } .ret.dn3 { --ret-bg: #f2b8b8; --ret-fg: #b52a2a; }
+  .ret.na { --ret-bg: #f0efea; --ret-fg: #8a8a85; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ret {
+    --ret-fg: #ecebe6; }
+    :root:not([data-theme="light"]) .ret.up1 { --ret-bg: #1f3a2b; --ret-fg: #7fd3a0; } :root:not([data-theme="light"]) .ret.up2 { --ret-bg: #24503a; --ret-fg: #95e0b2; } :root:not([data-theme="light"]) .ret.up3 { --ret-bg: #2b6a49; --ret-fg: #b5f0cb; }
+    :root:not([data-theme="light"]) .ret.dn1 { --ret-bg: #42221f; --ret-fg: #ff9a92; } :root:not([data-theme="light"]) .ret.dn2 { --ret-bg: #5a2a26; --ret-fg: #ffb0a9; } :root:not([data-theme="light"]) .ret.dn3 { --ret-bg: #73302b; --ret-fg: #ffc6c0; }
+    :root:not([data-theme="light"]) .ret.na { --ret-bg: #262624; --ret-fg: #9b9a94; } }
 
   /* Ended-series panel */
   .since { display: grid; grid-template-columns: minmax(220px, 1fr) 2fr; gap: 20px; align-items: center;
@@ -290,6 +331,8 @@
   <div class="banner" id="empty" hidden>No prices collected for this series yet. They appear after the next daily update.</div>
   <div class="stats" id="stats"></div>
 
+  <section class="returns-card" id="sReturns"></section>
+
   <section class="since" id="since" hidden>
     <div class="since-text">
       <small id="sinceLabel">Since it left restaurants</small>
@@ -331,7 +374,7 @@
   <section class="map-wrap" id="mapWrap" hidden>
     <div class="map-head">
       <span>Whole market · block size = median ask · colour = 1-day change</span>
-      <span class="map-legend"><i style="background:#b3261e"></i>−10%<i style="background:#8a8a85"></i>0<i style="background:#1e7a3c"></i>+10%</span>
+      <span class="map-legend">−4%+<i class="m-dn3"></i><i class="m-dn2"></i><i class="m-dn1"></i><i></i><i class="m-up1"></i><i class="m-up2"></i><i class="m-up3"></i>+4%+</span>
     </div>
     <div class="map" id="map"></div>
   </section>
@@ -358,6 +401,7 @@
       <div class="detail-main">
         <h2 id="dTitle"></h2>
         <div class="meta" id="dMeta"></div>
+        <div class="returns" id="dReturns"></div>
         <div class="chart-box"><canvas id="dChart"></canvas></div>
         <div class="note" id="dNote"></div>
       </div>
@@ -373,6 +417,8 @@ let DATA, SID, sortKey = "price", sortDir = -1, selected = null, chart = null;
 
 const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const usd = (v) => v == null ? "—" : "$" + v.toFixed(2);
+// Axis labels: at most 2 decimals, and none when the value is whole ($52.8, $52.75, $50).
+const money = (v) => "$" + (+v).toLocaleString("en-US", { maximumFractionDigits: 2 });
 const mean = (a) => a.length ? a.reduce((s, x) => s + x, 0) / a.length : null;
 const pct = (v) => v == null || !isFinite(v) ? "—" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
 const cls = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? "up" : "down";
@@ -385,13 +431,18 @@ try { VIEW = localStorage.getItem("view") || "gallery"; } catch (e) {}
 let OWNED = new Set();
 try { OWNED = new Set(JSON.parse(localStorage.getItem("owned") || "[]")); } catch (e) {}
 
-// Hero colours per series: [gradient start, gradient end, text colour].
+// Series colours. band = top stripe gradient; acc/pill/pillInk = text-safe colours on a light card
+// (all ≥ 4.5:1 contrast), with *D twins for dark mode. chart = line colour for that series' charts.
 const THEMES = {
-  "pokemon-2026": ["#ffcb05", "#f08a00", "#1d1d1b"],
-  "boo-buckets-2026": ["#ff7a1a", "#5b1f8f", "#ffffff"],
-  "spongebob-onepiece-2026": ["#0aa5d8", "#0b4f8a", "#ffffff"],
+  "pokemon-2026": { band: ["#ffcb05", "#f08a00"], acc: "#9a5200", pill: "#fff3c4", pillInk: "#6b4300",
+    accD: "#ffcb05", pillD: "#4a3a00", pillInkD: "#ffe27a", chart: "#e08a00" },
+  "boo-buckets-2026": { band: ["#ff7a1a", "#5b1f8f"], acc: "#5b1f8f", pill: "#eeedfe", pillInk: "#3c3489",
+    accD: "#c9a7ff", pillD: "#3b2a5c", pillInkD: "#ddd0ff", chart: "#7a3fc0" },
+  "spongebob-onepiece-2026": { band: ["#0aa5d8", "#0b4f8a"], acc: "#0b4f8a", pill: "#e0f2fb", pillInk: "#0b4f8a",
+    accD: "#6fd0f5", pillD: "#123a52", pillInkD: "#bfe9fb", chart: "#0a8fc4" },
 };
-const DEFAULT_THEME = ["#d62300", "#ffb703", "#ffffff"];
+const DEFAULT_THEME = { band: ["#d62300", "#ffb703"], acc: "#a31b00", pill: "#fde9e4", pillInk: "#7a1500",
+  accD: "#ff8a70", pillD: "#4a1d14", pillInkD: "#ffc9bc", chart: "#d62300" };
 
 function rowsFor(sid) {
   const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
@@ -462,9 +513,10 @@ function go(sid) {
   const s = series();
   document.title = `${s.name} · Toy Ticker`;
   document.body.classList.toggle("toys", s.kind === "toys");
-  const [h1, h2, ink] = THEMES[SID] || DEFAULT_THEME;
+  const T = THEMES[SID] || DEFAULT_THEME;
   const hero = $("hero").style;
-  hero.setProperty("--h1", h1); hero.setProperty("--h2", h2); hero.setProperty("--hink", ink);
+  for (const [k, v] of Object.entries({ "--h1": T.band[0], "--h2": T.band[1], "--hacc-l": T.acc, "--hpill-l": T.pill,
+    "--hpill-ink-l": T.pillInk, "--hacc-d": T.accD, "--hpill-d": T.pillD, "--hpill-ink-d": T.pillInkD })) hero.setProperty(k, v);
   const today = new Date().toISOString().slice(0, 10);
   const live = s.current || (s.end && s.end >= today && s.start <= today);
   $("sStatus").className = "status" + (live ? " live" : "");
@@ -510,6 +562,7 @@ function render() {
   $("empty").hidden = priced.length > 0;
   renderMine(all);
   renderSince(all);
+  renderSeriesReturns(all);
 
   const ownBtn = (r) => `<button class="own" data-own="${r.id}" aria-pressed="${OWNED.has(r.id)}" title="${OWNED.has(r.id) ? "Remove from" : "Add to"} my collection">${OWNED.has(r.id) ? "✓" : "＋"}</button>`;
 
@@ -611,7 +664,7 @@ function renderSince(all) {
     <span>Best: <b class="${cls(best.ch)}" style="display:inline;font-size:inherit">${pct(best.ch)}</b> ${esc(best.r.name)}</span>
     <span>Worst: <b class="${cls(worst.ch)}" style="display:inline;font-size:inherit">${pct(worst.ch)}</b> ${esc(worst.r.name)}</span>` : "";
   if (sinceChart) sinceChart.destroy();
-  const [h1] = THEMES[SID] || DEFAULT_THEME;
+  const h1 = (THEMES[SID] || DEFAULT_THEME).chart;
   sinceChart = new Chart($("sinceChart"), {
     type: "line",
     data: { labels: dates.slice(startIdx).map(d => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" })), datasets: [{
@@ -620,7 +673,7 @@ function renderSince(all) {
     options: {
       maintainAspectRatio: false, plugins: { legend: { display: false },
         tooltip: { callbacks: { label: c => `Full set: ${usd(c.parsed.y)}` } } },
-      scales: { x: { ticks: { maxTicksLimit: 6 } }, y: { ticks: { callback: v => "$" + v } } },
+      scales: { x: { ticks: { maxTicksLimit: 6 } }, y: { ticks: { callback: money } } },
     },
   });
 }
@@ -659,13 +712,11 @@ function squarify(items, x, y, w, h) {
   return out;
 }
 
-// Diverging colour for a % change: red ← grey → green, saturating at ±10%.
+// Stepped colour class for a % change: flat under 0.5%, then <2%, 2–4%, over 4% each way.
 function heat(ch) {
-  const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
-  const grey = [138, 138, 133], red = [179, 38, 30], green = [30, 122, 60];
-  if (ch == null) return "rgb(120,120,116)";
-  const t = Math.min(1, Math.abs(ch) / 0.10);
-  return `rgb(${mix(grey, ch < 0 ? red : green, t).join(",")})`;
+  if (ch == null || Math.abs(ch) < 0.005) return "";
+  const a = Math.abs(ch), lvl = a < 0.02 ? 1 : a < 0.04 ? 2 : 3;
+  return `m-${ch > 0 ? "up" : "dn"}${lvl}`;
 }
 
 // Market map (Finviz-style): every priced item in every series, grouped by series.
@@ -686,8 +737,8 @@ function renderMap() {
     for (const it of squarify(g.items, g.x + pad, g.y + head + pad, g.w - pad * 2, g.h - head - pad * 2)) {
       const ch = it.d1 ?? it.d30, big = it.w > 90 && it.h > 54, mid = it.w > 54 && it.h > 30;
       const label = mid ? `<b>${esc(it.name)}</b>${big ? `<span>${usd(it.price)}</span>` : ""}<span>${pct(ch)}</span>` : "";
-      html += `<button class="map-cell" data-sid="${it.sid}" data-id="${it.id}"
-        style="left:${it.x}px;top:${it.y}px;width:${Math.max(0, it.w - 2)}px;height:${Math.max(0, it.h - 2)}px;background:${heat(ch)}"
+      html += `<button class="map-cell ${heat(ch)}" data-sid="${it.sid}" data-id="${it.id}"
+        style="left:${it.x}px;top:${it.y}px;width:${Math.max(0, it.w - 2)}px;height:${Math.max(0, it.h - 2)}px"
         title="${esc(it.name)} · ${esc(DATA.sets[it.sid].name)} · ${usd(it.price)} · ${pct(ch)}">${label}</button>`;
     }
   }
@@ -702,6 +753,60 @@ window.addEventListener("resize", () => {
   clearTimeout(mapResize);
   mapResize = setTimeout(() => { if (VIEW === "map" && DATA) renderMap(); }, 150);
 });
+
+// Returns over standard periods from a [{date, v}] series (sorted by date).
+// A period shows "–" when the history doesn't reach back that far, like a stock's 5Y on a 2-year-old listing.
+const RET_PERIODS = [["1D", 1], ["1W", 7], ["1M", 30], ["3M", 91], ["YTD", "ytd"], ["All", "all"]];
+function periodReturns(pts) {
+  pts = pts.filter(p => p.v != null);
+  const last = pts[pts.length - 1];
+  return RET_PERIODS.map(([label, span]) => {
+    if (!last || pts.length < 2) return { label, r: null };
+    let base;
+    if (span === "all") base = pts[0];
+    else {
+      const target = span === "ytd" ? `${last.date.slice(0, 4)}-01-01`
+        : new Date(new Date(last.date + "T12:00:00") - span * 864e5).toISOString().slice(0, 10);
+      if (pts[0].date > target && span !== "ytd") return { label, r: null };
+      // YTD starts from the first price this year if tracking began after Jan 1.
+      base = span === "ytd" ? (pts.find(p => p.date >= target) || pts[0]) : [...pts].reverse().find(p => p.date <= target);
+    }
+    return { label, r: base && base !== last && base.v ? last.v / base.v - 1 : null };
+  });
+}
+function retTile({ label, r }) {
+  if (r == null) return `<div class="ret na"><b>–</b><span>${label}</span></div>`;
+  const a = Math.abs(r), lvl = a < 0.05 ? 1 : a < 0.15 ? 2 : 3;
+  const sign = r > 0.00005 ? "" : r < -0.00005 ? "−" : "";
+  return `<div class="ret ${r >= 0 ? "up" : "dn"}${lvl}"><b>${sign}${(a * 100).toFixed(2)}%</b><span>${label}</span></div>`;
+}
+let RET_KEY = "median";
+function returnsBlock(title, note, pts) {
+  return `<div class="ret-head"><h3>${title}${note ? `<small>${note}</small>` : ""}</h3>
+    <div class="ret-tabs" role="group" aria-label="Price measure">
+      <button data-ret="median" aria-pressed="${RET_KEY === "median"}">Median</button>
+      <button data-ret="low" aria-pressed="${RET_KEY === "low"}">Lowest</button>
+    </div></div>
+    <div class="ret-grid">${periodReturns(pts).map(retTile).join("")}</div>`;
+}
+function wireRetTabs(root, rerender) {
+  root.querySelectorAll("[data-ret]").forEach(b => b.onclick = (e) => { e.stopPropagation(); RET_KEY = b.dataset.ret; rerender(); });
+}
+
+// Full-set returns: sum of the chosen price over items priced on every day.
+function renderSeriesReturns(all) {
+  const dates = [...new Set(all.flatMap(r => r.h.map(p => p.date)))].sort();
+  const full = all.filter(r => dates.length && dates.every(d => r.h.some(p => p.date === d && p[RET_KEY] != null)));
+  const pts = full.length ? dates.map(d => ({ date: d, v: full.reduce((s, r) => s + r.h.find(p => p.date === d)[RET_KEY], 0) })) : [];
+  $("sReturns").innerHTML = returnsBlock("Returns", `full set · ${full.length} of ${all.length} priced every day`, pts);
+  wireRetTabs($("sReturns"), () => { render(); if (selected) renderItemReturns(selected); });
+}
+function renderItemReturns(id) {
+  const r = rowsFor(SID).find(x => x.id === id);
+  if (!r) return;
+  $("dReturns").innerHTML = returnsBlock("Returns", "", r.h.map(p => ({ date: p.date, v: p[RET_KEY] })));
+  wireRetTabs($("dReturns"), () => { render(); renderItemReturns(id); });
+}
 
 // Top movers across every series, as a scrolling ticker.
 function renderTicker() {
@@ -808,13 +913,14 @@ function showDetail(id) {
     options: {
       maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
       scales: {
-        y: { ticks: { callback: v => "$" + v } },
+        y: { ticks: { callback: money } },
         vol: { position: "right", beginAtZero: true, max: maxCount * 4, display: false, grid: { display: false } },
       },
       plugins: { tooltip: { callbacks: { label: c =>
         c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}` : `${c.dataset.label}: ${usd(c.parsed.y)}` } } },
     },
   });
+  renderItemReturns(id);
   $("dNote").textContent = !r.h.length ? "No prices collected yet."
     : r.h.length < 3 ? "Only a few days collected so far. The chart fills in as the daily job runs." : "";
   render();
