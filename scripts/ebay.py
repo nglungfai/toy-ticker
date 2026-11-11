@@ -73,8 +73,15 @@ def token(client_id, secret):
             "Content-Type": "application/x-www-form-urlencoded",
         },
     )
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)["access_token"]
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.load(r)["access_token"]
+    except urllib.error.HTTPError as e:
+        # eBay explains auth failures in the body (e.g. invalid_client); it never contains the keys.
+        body = e.read().decode("utf-8", "replace")[:300]
+        hint = (" Check EBAY_CLIENT_ID is the App ID and EBAY_CLIENT_SECRET is the Cert ID (Production, no spaces),"
+                " and that the keyset is enabled in the eBay developer portal.") if e.code in (400, 401) else ""
+        raise RuntimeError(f"eBay sign-in failed: HTTP {e.code} {body}.{hint}") from None
 
 
 def search(tok, q, category=None, attempts=4):
@@ -144,9 +151,20 @@ def deals(matched, median, limit=5):
     return sorted(out, key=lambda d: d["price"])[:limit]
 
 
+_TOKEN = None
+
+
+def get_token():
+    """One OAuth token per run (valid ~2 hours), instead of one per series."""
+    global _TOKEN
+    if _TOKEN is None:
+        _TOKEN = token(os.environ["EBAY_CLIENT_ID"].strip(), os.environ["EBAY_CLIENT_SECRET"].strip())
+    return _TOKEN
+
+
 def snapshot(series, today):
     """Return {item_id: (item_meta, point_or_None)} for one configured series."""
-    tok = token(os.environ["EBAY_CLIENT_ID"], os.environ["EBAY_CLIENT_SECRET"])
+    tok = get_token()
     out = {}
     for item in series["items"]:
         iid = f"{series['id']}-{item['number']}"
