@@ -1,4 +1,4 @@
-name: Update card prices
+name: Update Toy Ticker prices
 
 on:
   schedule:
@@ -23,7 +23,7 @@ jobs:
           EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
       - name: Commit new prices
         run: |
-          git config user.name "price-bot"
+          git config user.name "toy-ticker-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/prices.json og s
           git diff --cached --quiet || git commit -m "Prices for $(date -u +%F)"
