@@ -25,7 +25,7 @@ SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search"
 SEEN = {}
 
 
-def seen(series_id):
+def seen_for(series_id):
     return SEEN.setdefault(series_id, {"raw": set(), "rows": []})
 
 # Never a single item, whatever the series.
@@ -277,7 +277,7 @@ def snapshot(series, today):
             else:
                 rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
         rows = delivered(matched)  # prices are item + shipping to the US
-        led = seen(series["id"])
+        led = seen_for(series["id"])
         led["raw"].update(it.get("itemId") for it in items)
         led["rows"] += [(iid, *r[:4]) for r in rows]
         if os.environ.get("MATCH_REPORT"):
@@ -354,7 +354,7 @@ def full_set(series, today):
         else:
             rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
     rows = delivered(kept)
-    led = seen(series["id"])
+    led = seen_for(series["id"])
     led["raw"].update(it.get("itemId") for it in items)
     led["rows"] += [(f"{series['id']}-SET", *r[:4]) for r in rows]
     if os.environ.get("MATCH_REPORT"):
