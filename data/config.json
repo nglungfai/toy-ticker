@@ -734,7 +734,10 @@
       "choco cat",
       "chococat",
       "cinnamoroll",
+      "clearance",
+      "collection",
       "destoroyah",
+      "figures",
       "ghidorah",
       "gigan",
       "keroppi",
@@ -747,7 +750,9 @@
       "purin",
       "rodan",
       "space godzilla",
-      "spacegodzilla"
+      "spacegodzilla",
+      "toys",
+      "variety"
      ]
     },
     {
@@ -938,10 +943,12 @@
     {
      "number": "09",
      "name": "Group on ship",
-     "q": "mcdonalds bt21 ship",
+     "q": "mcdonalds bt21 spaceship",
      "match": [
       [
-       "ship",
+       "spaceship",
+       "space ship",
+       "ufo ship",
        "group"
       ]
      ]

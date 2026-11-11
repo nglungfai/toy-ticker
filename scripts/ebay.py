@@ -22,9 +22,13 @@ SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search"
 
 # Never a single item, whatever the series.
 EXCLUDE_ANY = re.compile(
-    r"\b(lot|lots|bundle|complete|full set|sets?|set of|choose|pick|select|you pick|"
-    r"custom|fake|proxy|replica|x ?[2-9]|[2-9] ?x|\d+ ?(toys|cards|pcs|pieces|figures))\b"
+    r"\b(lot|lots|bundle|complete set|full set|sets?|set of|choose|pick|select|you pick|singles|your choice|"
+    r"custom|fake|proxy|replica|x ?[2-9]|[2-9] ?x|\d+ ?(toys|cards|pcs|pieces|figures)|"
+    r"empty|box only|bag only|no toy|toy not included|japan|japanese)\b"
 )
+# "No box or cards" / "without cards" describe a toy-only listing; drop them before the card checks.
+NEGATED = re.compile(r"\b(no|without|w/o|not including|does not include)\s+(box\s+(or|and|&|nor)\s+)?(cards?|tcg)\b")
+YEAR = re.compile(r"\b(19[89]\d|20[0-3]\d)\b")
 # Extra exclusions for raw single cards.
 EXCLUDE_CARDS = re.compile(
     r"\b(psa|cgc|bgs|beckett|sgc|graded|slab|toy|toys|plush|figure|sealed|box)\b"
@@ -51,7 +55,11 @@ def item_hits(t, item):
 
 def reject_reason(title, series, item):
     """None if the title is a single copy of this item, otherwise why it was rejected."""
-    t = norm(title)
+    t = NEGATED.sub(" ", norm(title))
+    # Titles naming only other years are older (or mislabelled) releases of a similar toy.
+    years = set(YEAR.findall(t))
+    if years and series.get("start", "")[:4] not in years:
+        return f"different year: {', '.join(sorted(years))}"
     if not hits(t, series.get("require", [])):
         return "missing series words"
     if not item_hits(t, item):
@@ -181,7 +189,15 @@ def get_token():
     """One OAuth token per run (valid ~2 hours), instead of one per series."""
     global _TOKEN
     if _TOKEN is None:
-        _TOKEN = token(os.environ["EBAY_CLIENT_ID"].strip(), os.environ["EBAY_CLIENT_SECRET"].strip())
+        # eBay's sign-in occasionally fails once and then works; retry a few times before giving up.
+        for attempt in range(4):
+            try:
+                _TOKEN = token(os.environ["EBAY_CLIENT_ID"].strip(), os.environ["EBAY_CLIENT_SECRET"].strip())
+                break
+            except RuntimeError:
+                if attempt == 3:
+                    raise
+                time.sleep(5 * (attempt + 1))
     return _TOKEN
 
 
