@@ -64,7 +64,7 @@ def summary(hist):
     if not hist:
         return None
     last, prev = hist[-1], (hist[-2] if len(hist) > 1 else None)
-    out = {k: last[k] for k in ("date", "median", "p25", "low", "count", "watchers", "watched", "cond", "graded") if k in last}
+    out = {k: last[k] for k in ("date", "median", "p25", "low", "count", "watchers", "watched", "cond", "graded", "total", "supply") if k in last}
     if prev and prev.get("median") and (date.fromisoformat(last["date"]) - date.fromisoformat(prev["date"])).days <= 2:
         out["d1"] = round(last["median"] / prev["median"] - 1, 4)  # weekly series have no 1-day change
     month_ago = [p for p in hist[:-1] if (date.fromisoformat(last["date"]) - date.fromisoformat(p["date"])).days <= 30]
@@ -145,7 +145,7 @@ def main():
         print(f"{s['name']}: {len(s['items'])} items")
         try:
             results = ebay.snapshot(s, today)
-            calls += len(s["items"]) * (2 if s.get("kind") == "cards" and s.get("graded") else 1)
+            calls += len(s["items"]) * (3 if s.get("kind") == "cards" and s.get("graded") else 2)  # + auctions
         except Exception as e:  # noqa: BLE001
             print(f"! {s['id']}: {e}", file=sys.stderr)
             failures += 1

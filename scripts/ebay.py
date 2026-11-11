@@ -178,10 +178,13 @@ def key_shape(client_id, secret):
             f"same value twice: {client_id == secret}]")
 
 
-def search(tok, q, category=None, attempts=4, us_sellers=False):
+TOTALS = {}  # (query, buying option) -> eBay's total match count (we only fetch the first 200)
+
+
+def search(tok, q, category=None, attempts=4, us_sellers=False, buying="FIXED_PRICE"):
     params = {
         "q": q,
-        "filter": "buyingOptions:{FIXED_PRICE},priceCurrency:USD,deliveryCountry:US" + (",itemLocationCountry:US" if us_sellers else ""),
+        "filter": f"buyingOptions:{{{buying}}},priceCurrency:USD,deliveryCountry:US" + (",itemLocationCountry:US" if us_sellers else ""),
         "limit": "200",
     }
     if category:
@@ -195,7 +198,9 @@ def search(tok, q, category=None, attempts=4, us_sellers=False):
     for i in range(attempts):
         try:
             with urllib.request.urlopen(req, timeout=30) as r:
-                return json.load(r).get("itemSummaries", [])
+                body = json.load(r)
+                TOTALS[(q, buying)] = body.get("total")
+                return body.get("itemSummaries", [])
         except urllib.error.HTTPError as e:
             if e.code < 500 and e.code != 429 or i == attempts - 1:
                 raise
@@ -217,6 +222,23 @@ def item_price(it):
         return float(it["price"]["value"])
     except (KeyError, TypeError, ValueError):
         return None
+
+
+def bid_price(it):
+    """Current (or final) high bid of an auction listing."""
+    try:
+        return float(it["currentBidPrice"]["value"])
+    except (KeyError, TypeError, ValueError):
+        return item_price(it)
+
+
+def bid_count(it):
+    for k in ("bidCount", "uniqueBidderCount"):
+        try:
+            return int(it[k])
+        except (KeyError, TypeError, ValueError):
+            pass
+    return None
 
 
 def ship_cost(it):
@@ -386,6 +408,9 @@ def snapshot(series, today):
             else:
                 rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
         rows = delivered(matched)  # prices are item + shipping to the US
+        # Market depth: eBay's total for the query, and an estimate of how many of those are this item
+        # (the share of fetched results we kept, applied to the total).
+        total = TOTALS.get((item["q"], "FIXED_PRICE"))
         led = seen_for(series["id"])
         led["raw"].update(it.get("itemId") for it in items)
         led["rows"] += [(iid, *r[:4]) for r in rows]
@@ -402,6 +427,9 @@ def snapshot(series, today):
                      "itemMedian": round(statistics.median([p for _, p, *_ in rows]), 2),
                      "shipMedian": round(statistics.median([sh for _, _, sh, *_ in rows]), 2)}
             # Demand: eBay's watcher counts on the matched listings (not every listing reports one).
+            if total is not None:
+                point["total"] = total
+                point["supply"] = round(total * len(matched) / len(items)) if items else len(matched)
             watch = [watchers(it) for it, *_ in rows if watchers(it) is not None]
             if watch:
                 point["watchers"], point["watched"] = sum(watch), len(watch)
@@ -422,6 +450,13 @@ def snapshot(series, today):
         print(f"  {iid} {item['name']}: {len(prices)}/{len(items)} listings kept"
               + (f", median ${point['median']} incl. shipping (item ${point['itemMedian']} + ship ${point['shipMedian']})" if point else ""))
         out[iid] = (meta, point)
+        # Auctions: tracked in the ledger so their final prices become real sale prices once they end.
+        try:
+            auctions = search(tok, item["q"], series.get("category"), buying="AUCTION")
+            kept_a = [it for it in auctions if reject_reason(it.get("title", ""), series, item) is None]
+            seen_for(series["id"]).setdefault("auctions", []).extend((iid, it) for it in kept_a)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ! {iid} auctions: {e}")
         time.sleep(0.5)
     # A photo used by listings of two or more different items is almost always a whole-set shot.
     users = {}

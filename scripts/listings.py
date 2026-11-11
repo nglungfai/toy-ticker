@@ -15,12 +15,13 @@ The file is written one listing/event per line so daily git diffs stay small.
 """
 import json
 import os
+import statistics
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import ebay
@@ -37,20 +38,21 @@ def days(a, b):
     return (date.fromisoformat(b) - date.fromisoformat(a)).days
 
 
-def load(sid):
+def load(sid, with_auctions=False):
     f = DIR / f"{sid}.json"
-    if f.exists():
-        d = json.loads(f.read_text())
-        return d.get("active", {}), d.get("events", [])
-    return {}, []
+    d = json.loads(f.read_text()) if f.exists() else {}
+    out = (d.get("active", {}), d.get("events", []))
+    return (*out, d.get("auctions", {})) if with_auctions else out
 
 
-def save(sid, active, events, today):
+def save(sid, active, events, today, auctions=None):
     DIR.mkdir(parents=True, exist_ok=True)
     line = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":"))
     act = ",\n".join(f"  {line(k)}:{line(v)}" for k, v in sorted(active.items(), key=lambda kv: (kv[1]["key"], kv[0])))
     ev = ",\n".join(f"  {line(e)}" for e in events)
-    (DIR / f"{sid}.json").write_text(f'{{"series":{line(sid)},"updated":{line(today)},\n"active":{{\n{act}\n}},\n"events":[\n{ev}\n]}}\n')
+    auc = ",\n".join(f"  {line(k)}:{line(v)}" for k, v in sorted((auctions or {}).items(), key=lambda kv: (kv[1]["key"], kv[0])))
+    (DIR / f"{sid}.json").write_text(f'{{"series":{line(sid)},"updated":{line(today)},\n"active":{{\n{act}\n}},\n'
+                                      f'"auctions":{{\n{auc}\n}},\n"events":[\n{ev}\n]}}\n')
 
 
 def get_item(item_id):
@@ -86,7 +88,7 @@ def update(sid, today):
     run = ebay.SEEN.get(sid)
     if not run:
         return None
-    active, events = load(sid)
+    active, events, auctions = load(sid, with_auctions=True)
     for key, it, price, ship, total in run["rows"]:
         lid = it.get("itemId")
         if not lid:
@@ -140,13 +142,61 @@ def update(sid, today):
             counts["listed"] += 1
     for lid in [lid for lid, a in active.items() if days(a["seen"], today) > DROP_AFTER_DAYS]:
         del active[lid]
-    save(sid, active, events, today)
+    counts.update(update_auctions(run, auctions, events, today))
+    save(sid, active, events, today, auctions)
     if os.environ.get("MATCH_REPORT"):
         ebay.REPORT.setdefault("_ledger", {})[sid] = {**counts, "samples": samples}
     print(f"  {sid} ledger: {counts['tracked']} listings, {counts['checked']} looked up -> "
-          f"{counts['sold']} sold, {counts['ended']} ended, {counts['gone']} gone, {counts['listed']} still listed"
+          f"{counts['sold']} sold, {counts['ended']} ended, {counts['gone']} gone, {counts['listed']} still listed; "
+          f"auctions: {counts['auctions']} open, {counts['auction_sold']} sold, {counts['auction_unsold']} unsold"
           + (f", {counts['error']} errors" if counts["error"] else ""))
     return counts
+
+
+def update_auctions(run, auctions, events, today):
+    """Track matching auctions; once an auction's end time has passed, look it up for its final bid.
+    An auction that ended with bids (and no unmet reserve) is a real sale at that price."""
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    for key, it in run.get("auctions", []):
+        lid = it.get("itemId")
+        if not lid:
+            continue
+        ship = ebay.ship_cost(it)
+        old = auctions.get(lid, {})
+        auctions[lid] = {"key": key, "title": (it.get("title") or "")[:90], "legacy": it.get("legacyItemId"),
+                         "end": it.get("itemEndDate") or old.get("end"), "bid": ebay.bid_price(it), "bids": ebay.bid_count(it) or 0,
+                         "ship": ship if ship is not None else old.get("ship"), "first": old.get("first", today), "seen": today}
+    ended = [lid for lid, a in auctions.items() if a.get("end") and a["end"] < now]
+    ended = ended[:max(0, _budget["left"])]
+    _budget["left"] -= len(ended)
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        results = list(pool.map(get_item, ended))
+    c = {"auction_sold": 0, "auction_unsold": 0}
+    for lid, (code, it) in zip(ended, results):
+        a = auctions[lid]
+        if code not in (200, 404, 410):
+            continue  # try again next run
+        base = {"date": today, "key": a["key"], "legacy": a.get("legacy"), "title": a["title"], "first": a["first"], "seen": a["seen"], "ended": a["end"]}
+        if code == 200:
+            bids = ebay.bid_count(it) if ebay.bid_count(it) is not None else a["bids"]
+            price = ebay.bid_price(it) or a["bid"]
+            ship = ebay.ship_cost(it)
+            ship = ship if ship is not None else (a.get("ship") or 0)
+            sold = bids > 0 and it.get("reservePriceMet") is not False
+            est = False
+        else:  # no longer available: fall back to the last bid we saw
+            bids, price, ship, sold, est = a["bids"], a["bid"], a.get("ship") or 0, a["bids"] > 0, True
+        if sold and price:
+            events.append({**base, "kind": "auction", "total": round(price + ship, 2), "bids": bids, **({"est": True} if est else {})})
+            c["auction_sold"] += 1
+        else:
+            events.append({**base, "kind": "auction_unsold", "total": round((price or 0) + ship, 2), "bids": bids})
+            c["auction_unsold"] += 1
+        del auctions[lid]
+    for lid in [lid for lid, a in auctions.items() if days(a["seen"], today) > DROP_AFTER_DAYS]:
+        del auctions[lid]
+    c["auctions"] = len(auctions)
+    return c
 
 
 def insights(sid, today, window=30):
@@ -168,6 +218,8 @@ def insights(sid, today, window=30):
     recent = [e for e in events if days(e["date"], today) <= window]
     per = {}
     for e in recent:
+        if e["kind"] not in ("sold", "ended", "gone"):
+            continue  # auctions are summarised separately below
         p = per.setdefault(e["key"], {"sold": 0, "ended": 0, "gone": 0, "days": []})
         if e["kind"] == "sold":
             p["sold"] += e.get("qty", 1) or 1
@@ -180,6 +232,13 @@ def insights(sid, today, window=30):
         d = sorted(p["days"])
         return {"sold": p["sold"], "closed": closed, **({"rate": round(p["sold"] / closed, 3)} if closed else {}),
                 **({"days": d[len(d) // 2]} if d else {})}
+    auc = {}
+    for e in recent:
+        if e["kind"] == "auction":
+            auc.setdefault(e["key"], []).append(e["total"])
+    if auc:
+        out["auctions"] = {"window": window, "sold": sum(len(v) for v in auc.values()),
+                           "items": {k: {"n": len(v), "median": round(statistics.median(v), 2)} for k, v in auc.items()}}
     if per:
         total = {"sold": 0, "ended": 0, "gone": 0, "days": []}
         for p in per.values():
