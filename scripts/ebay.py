@@ -127,10 +127,10 @@ def key_shape(client_id, secret):
             f"same value twice: {client_id == secret}]")
 
 
-def search(tok, q, category=None, attempts=4):
+def search(tok, q, category=None, attempts=4, us_sellers=False):
     params = {
         "q": q,
-        "filter": "buyingOptions:{FIXED_PRICE},priceCurrency:USD,deliveryCountry:US",
+        "filter": "buyingOptions:{FIXED_PRICE},priceCurrency:USD,deliveryCountry:US" + (",itemLocationCountry:US" if us_sellers else ""),
         "limit": "200",
     }
     if category:
@@ -290,12 +290,15 @@ def snapshot(series, today):
 
 
 # ---------- Full-set listings ("Complete set of 15") ----------
-SET_MARK = re.compile(r"\b((complete|full)\s+(set|collection)|set of \d+|all \d+|complete)\b")
-SET_COUNT = re.compile(r"\b(?:set of|all|lot of)\s*(\d+)\b|\b(\d+)\s*(?:pc|pcs|piece|pieces|toys|cards|figures|buckets|pails)\b")
+SET_MARK = re.compile(r"\b((complete|full)\s+(\S+\s+){0,3}?(set|collection)|set of \d+|all \d+|set\s*#?1\s*(-|–|to)\s*\d+)\b")
+SET_COUNT = re.compile(r"\b(?:set of|all|lot of|s/)\s*\(?(\d+)\)?|\b(\d+)\s*(?:pc|pcs|piece|pieces|toys?|cards?|figures?|buckets?|pails?)\b"
+                       r"|#?\b1\s*(?:-|–|through|thru|to)\s*#?(\d+)\b")
+SET_MULTI = re.compile(r"\b(\d+|two|three|four|five)\s+(complete\s+|full\s+)?sets\b|\b(2|3)x\b")
 SET_REJECT = re.compile(
     r"\b(singles?|or set|or full|or complete|pick|choose|select|your choice|u pick|menu|variation|"
     r"incomplete|partial|missing|minus|except|doubles|duplicates|empty|box(es)? only|custom|fake|replica|parody|"
-    r"aus|australia|australian|uk|canada|canadian|japan|japanese|malaysia|europe|nz|new zealand|mexico|asia|korea|philippines)\b")
+    r"aus|australia|australian|uk|canada|canadian|japan|japanese|malaysia|europe|nz|new zealand|mexico|asia|korea|philippines|"
+    r"happy set|display|shelf|store|unused|poster sticker|sticker set|poster set|us limited|usa limited)\b")
 
 
 def set_reason(title, series, size):
@@ -311,7 +314,11 @@ def set_reason(title, series, size):
     m = SET_REJECT.search(t)
     if m:
         return f"excluded word: {m.group(0)}"
-    counts = {int(a or b) for a, b in SET_COUNT.findall(t)}
+    if SET_MULTI.search(t):
+        return "more than one set"
+    if len(re.findall(r"#\d+", t)) >= 2 and not re.search(r"#?\b1\s*(?:-|–|through|thru|to)\s*#?\d+", t):
+        return "lists some item numbers (partial set)"
+    counts = {int(a or b or c) for a, b, c in SET_COUNT.findall(t)}
     if counts and size not in counts:
         return f"wrong count: {sorted(counts)} (set has {size})"
     if series["kind"] == "toys" and EXCLUDE_TOYS.search(t):
@@ -325,7 +332,7 @@ def full_set(series, today):
     """Median delivered price of complete-set listings for one series (or None if none qualify)."""
     fs = series.get("full_set", {})
     size, q = fs.get("size", len(series["items"])), fs.get("q") or f"mcdonalds 2026 {series['name']} complete set"
-    items = search(get_token(), q, series.get("category"))
+    items = search(get_token(), q, series.get("category"), us_sellers=True)
     kept, rejected, seen = [], [], set()
     for it in items:
         if it.get("itemId") in seen:
