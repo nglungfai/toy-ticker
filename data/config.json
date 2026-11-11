@@ -999,13 +999,7 @@
    "start": "2026-06-09",
    "kind": "toys",
    "note": "Not tracked."
-  },
-  {
-   "name": "Next Happy Meal",
-   "start": null,
-   "tba": true,
-   "note": "Watch this space for the next Happy Meal toys."
   }
  ],
- "_calendar_help": "calendar: untracked or upcoming Happy Meals shown in the page's calendar. When the next one is confirmed, replace the tba entry with name/start/end (and add it under series to track prices)."
+ "_calendar_help": "calendar: untracked Happy Meals shown in the page's calendar. Add the next series only once McDonald's confirms it (name/start/end), and add it under series to track prices."
 }

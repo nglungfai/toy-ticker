@@ -344,6 +344,12 @@
   .cal { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 2px 14px; }
   .cal-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 96px 90px 18px; gap: 12px; align-items: center;
              padding: 10px 2px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--text); text-decoration: none; }
+  .cal-count { display: flex; align-items: center; gap: 14px; background: var(--panel); border: 1px solid var(--line);
+    border-left: 4px solid var(--accent); border-radius: 14px; padding: 12px 16px; margin-bottom: 10px; }
+  .cal-count b { font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; color: var(--accent); }
+  .cal-count b small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  .cal-count p { margin: 0; font-size: 14px; line-height: 1.4; }
+  .cal-count p span { display: block; color: var(--muted); font-size: 13px; }
   .cal-row:last-child { border-bottom: 0; }
   a.cal-row:hover { background: var(--bg); }
   .cal-when { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
@@ -734,6 +740,7 @@
 
   <section class="calendar">
     <div class="ret-head"><h3>Happy Meal calendar<small>2026 US promotions, newest first</small></h3></div>
+    <div class="cal-count" id="calCount" hidden></div>
     <div class="cal" id="cal"></div>
   </section>
 
@@ -1758,22 +1765,43 @@ function renderCalendar() {
   const short = (d) => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
   $("cal").innerHTML = all.reverse().map(e => {
     const live = e.current || (e.start && e.start <= today && (!e.end || e.end >= today));
-    const chip = e.tba ? `<span class="chip next">Coming next</span>` : live ? `<span class="chip now">Now</span>`
+    const left = live && e.end ? daysLeft(e.end) : null;
+    const chip = live ? `<span class="chip now">${left == null ? "Now" : left === 0 ? "Last day" : left + (left === 1 ? " day left" : " days left")}</span>`
       : e.id ? `<span class="chip">Ended</span>` : `<span class="chip">Not tracked</span>`;
-    const when = e.tba ? "Date TBA" : `${short(e.start)}${e.end ? " – " + short(e.end) : ""}`;
+    const when = `${short(e.start)}${e.end ? " – " + short(e.end) : ""}`;
     let val = "—";
     if (e.id) { const m = seriesSummary(e.id); if (m.priced) val = `${usd(m.total)}${m.d1 != null ? `<small class="${cls(m.d1)}">${pct(m.d1)}</small>` : ""}`; }
     const body = `<span class="cal-when">${when}</span>
       <span class="cal-name"><i></i><span>${esc(e.name)}</span></span>${chip}
       <span class="cal-val">${val}</span><span class="cal-go">${e.id ? "→" : ""}</span>`;
     return e.id ? `<a class="cal-row" href="?s=${e.id}" data-s="${e.id}" style="--cal:${e.color}" title="View ${esc(e.name)} prices">${body}</a>`
-      : `<div class="cal-row" style="--cal:${e.tba ? "var(--accent)" : "var(--line)"}">${body}</div>`;
+      : `<div class="cal-row" style="--cal:var(--line)">${body}</div>`;
   }).join("");
+  renderCountdown(all.filter(e => e.id && (e.current || (e.start <= today && e.end >= today)) && e.end), short);
   $("cal").querySelectorAll("a[data-s]").forEach(a => a.onclick = (ev) => {
     ev.preventDefault(); history.pushState(null, "", a.getAttribute("href")); switchTo(a.dataset.s); window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
+
+// Whole days from today until a promotion's last day (0 on the last day).
+function daysLeft(end) {
+  const t = new Date(); t.setHours(12, 0, 0, 0);
+  return Math.max(0, Math.round((new Date(end + "T12:00:00") - t) / 864e5));
+}
+
+// Countdown to the end of the current Happy Meal: after that, eBay is the only place to get the toys.
+function renderCountdown(live, short) {
+  const box = $("calCount");
+  if (!live.length) { box.hidden = true; return; }
+  const end = live.map(e => e.end).sort()[0], left = daysLeft(end);
+  const names = live.filter(e => e.end === end).map(e => esc(e.name));
+  const list = names.length > 1 ? names.slice(0, -1).join(", ") + " and " + names.at(-1) : names[0];
+  box.innerHTML = `<b>${left}<small>${left === 1 ? "day left" : "days left"}</small></b>
+    <p>${list} ${names.length > 1 ? "are" : "is"} in restaurants until ${short(end)}.
+    <span>After that, eBay is the only place to get them.</span></p>`;
+  box.hidden = false;
+}
 
 // Item photo, or a placeholder tile with the item number when there's no photo yet.
 function thumb(r, size, link = true) {
