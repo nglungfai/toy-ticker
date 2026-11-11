@@ -289,6 +289,69 @@ def snapshot(series, today):
     return out
 
 
+# ---------- Full-set listings ("Complete set of 15") ----------
+SET_MARK = re.compile(r"\b((complete|full)\s+(set|collection)|set of \d+|all \d+|complete)\b")
+SET_COUNT = re.compile(r"\b(?:set of|all|lot of)\s*(\d+)\b|\b(\d+)\s*(?:pc|pcs|piece|pieces|toys|cards|figures|buckets|pails)\b")
+SET_REJECT = re.compile(
+    r"\b(singles?|or set|or full|or complete|pick|choose|select|your choice|u pick|menu|variation|"
+    r"incomplete|partial|missing|minus|except|doubles|duplicates|empty|box(es)? only|custom|fake|replica|parody|"
+    r"aus|australia|australian|uk|canada|canadian|japan|japanese|malaysia|europe|nz|new zealand|mexico|asia|korea|philippines)\b")
+
+
+def set_reason(title, series, size):
+    """None if the title is one complete set of this series, otherwise why it was rejected."""
+    t = NEGATED.sub(" ", norm(title))
+    years = set(YEAR.findall(t))
+    if years and series.get("start", "")[:4] not in years:
+        return f"different year: {', '.join(sorted(years))}"
+    if not hits(t, series.get("require", [])):
+        return "missing series words"
+    if not SET_MARK.search(t):
+        return "not described as a full set"
+    m = SET_REJECT.search(t)
+    if m:
+        return f"excluded word: {m.group(0)}"
+    counts = {int(a or b) for a, b in SET_COUNT.findall(t)}
+    if counts and size not in counts:
+        return f"wrong count: {sorted(counts)} (set has {size})"
+    if series["kind"] == "toys" and EXCLUDE_TOYS.search(t):
+        return "includes cards"
+    if series["kind"] == "cards" and re.search(r"\b(toy|toys|figure|figures|charm|keychain)\b", t):
+        return "includes toys"
+    return None
+
+
+def full_set(series, today):
+    """Median delivered price of complete-set listings for one series (or None if none qualify)."""
+    fs = series.get("full_set", {})
+    size, q = fs.get("size", len(series["items"])), fs.get("q") or f"mcdonalds 2026 {series['name']} complete set"
+    items = search(get_token(), q, series.get("category"))
+    kept, rejected, seen = [], [], set()
+    for it in items:
+        if it.get("itemId") in seen:
+            continue
+        why = set_reason(it.get("title", ""), series, size)
+        if why is None:
+            seen.add(it.get("itemId")); kept.append(it)
+        else:
+            rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
+    rows = delivered(kept)
+    if os.environ.get("MATCH_REPORT"):
+        REPORT[f"{series['id']}-SET"] = {"name": f"{series['name']} complete set", "query": q,
+                                          "kept": [{"title": it.get("title", ""), "price": p, "ship": sh, "total": t, "shipKnown": k}
+                                                   for it, p, sh, t, k in rows], "rejected": rejected}
+    print(f"  {series['id']} full set: {len(rows)}/{len(items)} listings kept"
+          + (f", median ${statistics.median([r[3] for r in rows]):.2f} incl. shipping" if rows else ""))
+    if not rows:
+        return None
+    totals = [r[3] for r in rows]
+    point = {"date": today, **stats(totals),
+             "itemMedian": round(statistics.median([r[1] for r in rows]), 2),
+             "shipMedian": round(statistics.median([r[2] for r in rows]), 2)}
+    return {"point": point, "deals": deals(rows, point["median"], limit=3), "size": size,
+            "search": "https://www.ebay.com/sch/i.html?" + urllib.parse.urlencode({"_nkw": q})}
+
+
 def item_meta(series, item):
     return {"name": item["name"], "set": series["id"], "number": item["number"],
             "rarity": "Holo" if item.get("holo") else None}

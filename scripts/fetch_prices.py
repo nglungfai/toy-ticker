@@ -125,8 +125,10 @@ def main():
 
     failures = calls = 0
     for order, s in enumerate(config["series"]):
-        last_update = data["sets"].get(s["id"], {}).get("lastUpdate")
-        data["sets"][s["id"]] = {**{k: s[k] for k in SERIES_KEYS if k in s}, "order": order,
+        prev = data["sets"].get(s["id"], {})
+        last_update = prev.get("lastUpdate")
+        data["sets"][s["id"]] = {**({"fullSet": prev["fullSet"]} if prev.get("fullSet") else {}),
+                                 **{k: s[k] for k in SERIES_KEYS if k in s}, "order": order,
                                  "refresh": "weekly" if is_weekly(s, today) else "daily",
                                  "currency": "USD", "source": "eBay US active listings (median asking price)"}
         if not have_keys:
@@ -150,6 +152,20 @@ def main():
             if point:
                 hist = [p for p in data["history"].get(iid, []) if p["date"] != today]
                 data["history"][iid] = sorted(hist + [point], key=lambda p: p["date"])
+        # Complete-set listings: one extra search per series, kept as a small daily history on the series.
+        try:
+            fs = ebay.full_set(s, today)
+            calls += 1
+            prev_fs = data["sets"][s["id"]].get("fullSet", {})
+            hist = [p for p in prev_fs.get("history", []) if p["date"] != today]
+            if fs:
+                hist.append(fs["point"])
+                data["sets"][s["id"]]["fullSet"] = {"history": sorted(hist, key=lambda p: p["date"]), "deals": fs["deals"],
+                                                    "size": fs["size"], "search": fs["search"]}
+            elif prev_fs:
+                data["sets"][s["id"]]["fullSet"] = {**prev_fs, "history": hist, "deals": []}
+        except Exception as e:  # noqa: BLE001
+            print(f"! {s['id']} full set: {e}", file=sys.stderr)
 
     # Happy Meal calendar: tracked series come from data["sets"]; this adds untracked and upcoming ones.
     data["calendar"] = config.get("calendar", [])

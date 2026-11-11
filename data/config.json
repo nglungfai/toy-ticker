@@ -227,7 +227,11 @@
      ]
     }
    ],
-   "set_size": 15
+   "set_size": 15,
+   "full_set": {
+    "q": "mcdonalds pokemon 2026 complete set 15 cards",
+    "size": 15
+   }
   },
   {
    "id": "pokemon-toys-2026",
@@ -416,7 +420,11 @@
       ]
      ]
     }
-   ]
+   ],
+   "full_set": {
+    "q": "mcdonalds pokemon 2026 complete set 15 toys",
+    "size": 15
+   }
   },
   {
    "id": "boo-buckets-2026",
@@ -491,7 +499,11 @@
       ]
      ]
     }
-   ]
+   ],
+   "full_set": {
+    "q": "mcdonalds disney villains boo bucket set of 5",
+    "size": 5
+   }
   },
   {
    "id": "spongebob-onepiece-2026",
@@ -691,7 +703,11 @@
       ]
      ]
     }
-   ]
+   ],
+   "full_set": {
+    "q": "mcdonalds spongebob one piece complete set",
+    "size": 15
+   }
   },
   {
    "id": "hello-kitty-godzilla-2026",
@@ -839,7 +855,11 @@
       ]
      ]
     }
-   ]
+   ],
+   "full_set": {
+    "q": "mcdonalds hello kitty godzilla complete set",
+    "size": 8
+   }
   },
   {
    "id": "bt21-2026",
@@ -966,7 +986,11 @@
       ]
      ]
     }
-   ]
+   ],
+   "full_set": {
+    "q": "mcdonalds bt21 complete set",
+    "size": 10
+   }
   }
  ],
  "calendar": [
