@@ -14,6 +14,11 @@
 <meta property="og:description" content="Daily eBay prices for McDonald's Happy Meal toys and Pokémon cards.">
 <meta property="og:image" content="https://nglungfai.github.io/toy-ticker/og/site.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://nglungfai.github.io/toy-ticker/">
+<!-- seo:jsonld -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Toy Ticker", "url": "https://nglungfai.github.io/toy-ticker/", "description": "Daily eBay prices for McDonald's Happy Meal toys and cards."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Toy Ticker: daily eBay prices for McDonald's Happy Meal toys and cards", "description": "Daily median, 25th-percentile and lowest eBay US Buy It Now asking prices (shipping included) and listing counts for every toy and card in recent McDonald's Happy Meal series, 91 items across 7 series.", "url": "https://nglungfai.github.io/toy-ticker/", "isAccessibleForFree": true, "dateModified": "2026-11-11", "temporalCoverage": "2026-06-09/..", "keywords": ["Happy Meal toys", "McDonald's toys", "toy prices", "eBay prices", "collectibles"], "creator": {"@type": "Organization", "name": "Toy Ticker", "url": "https://nglungfai.github.io/toy-ticker/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://nglungfai.github.io/toy-ticker/data/index.json"}]}</script>
+<!-- /seo:jsonld -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
@@ -836,6 +841,9 @@
   <footer>
     <p id="foot"></p>
     <p class="disclaimer">Unofficial fan site, not affiliated with McDonald’s or The Pokémon Company. <a href="about.html">About Toy Ticker</a></p>
+    <!-- seo:links -->
+<p class="disclaimer">Price lists: <a href="s/pokemon-happy-meal-2026/">Pokémon toys &amp; cards (2026)</a> · <a href="s/boo-buckets-2026/">Disney Villains Boo Buckets (2026)</a> · <a href="s/spongebob-onepiece-2026/">SpongeBob × One Piece (2026)</a> · <a href="s/hello-kitty-godzilla-2026/">Hello Kitty × Godzilla (2026)</a> · <a href="s/bt21-2026/">BT21 (2026)</a> · <a href="s/world-cup-squishmallows-2026/">FIFA World Cup Squishmallows (2026)</a></p>
+<!-- /seo:links -->
   </footer>
 </div>
 
@@ -1163,6 +1171,8 @@ function go(sid) {
   selected = null; $("detail").hidden = true;
   const s = series();
   document.title = `${s.name} · Toy Ticker`;
+  // Search engines that run JS: the static series page is the one to index.
+  document.querySelector('link[rel="canonical"]').href = `https://nglungfai.github.io/toy-ticker/s/${SID}/`;
   document.body.classList.toggle("toys", s.kind === "toys");
   const T = THEMES[SID] || DEFAULT_THEME;
   const hero = $("hero").style;

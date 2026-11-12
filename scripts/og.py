@@ -1,10 +1,8 @@
 """Link-preview images (Open Graph, 1200x630 PNG) and share pages for each series.
 
-Writes og/<series>.png, og/site.png and s/<series>/index.html. The share pages carry
-the series' preview tags (crawlers don't run JavaScript, so ?s=... links can't) and
-send people on to the normal page. Needs Pillow.
+Writes og/<series>.png and og/site.png (the series pages that use them come from seo.py).
+Needs Pillow.
 """
-import html
 from datetime import date
 from pathlib import Path
 
@@ -209,28 +207,6 @@ def site_image(units_, F, site_label):
     return img
 
 
-SHARE_PAGE = """<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title}</title>
-<meta name="description" content="{desc}">
-<meta property="og:type" content="website">
-<meta property="og:title" content="{title}">
-<meta property="og:description" content="{desc}">
-<meta property="og:image" content="{image}">
-<meta property="og:url" content="{url}">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="{target}">
-<meta http-equiv="refresh" content="0; url=../../?s={sid}">
-<style>body{{font:16px system-ui,sans-serif;margin:40px;color:#1d1d1b;background:#fafaf7}}</style>
-</head><body>
-<p>Opening <a href="../../?s={sid}">{name}</a>…</p>
-<script>location.replace("../../?s={sid}");</script>
-</body></html>
-"""
-
-
 def build(data, root, site_url):
     root = Path(root)
     F = Fonts(root / "assets" / "fonts" / "Fredoka.ttf")
@@ -239,20 +215,9 @@ def build(data, root, site_url):
     (root / "og").mkdir(exist_ok=True)
     order = sorted(data["sets"], key=lambda k: data["sets"][k].get("order", 0))
     shown = units(data)
-    # Every series and group gets an image and share page (old links to a group's members keep working).
+    # Every series and group gets an image (old links to a group's members keep working).
     pages = shown + [(sid, data["sets"][sid], series_rows(data, sid)) for sid in order if sid not in {u[0] for u in shown}]
     for sid, s, rows in pages:
         series_image(s, sid, rows, today, F, site_label).save(root / "og" / f"{sid}.png", optimize=True)
-        priced = [p for _, p in rows if p is not None]
-        desc = (f"Full set {money(sum(priced))} at today's median eBay asking prices. " if priced else "") + \
-            (f"Daily eBay prices for all {len(rows)} toys and cards from the McDonald's {s.get('tab', s['name'])} Happy Meal."
-             if s.get("kind") == "mixed" else
-             f"Daily eBay prices for all {len(rows)} McDonald's {s['name']} Happy Meal {kind_word(s)}.") + \
-            (f" {s['description']}" if s.get("description") else "")
-        page = root / "s" / sid / "index.html"
-        page.parent.mkdir(parents=True, exist_ok=True)
-        page.write_text(SHARE_PAGE.format(
-            title=html.escape(f"{s['name']} · Toy Ticker"), desc=html.escape(desc), name=html.escape(s["name"]),
-            image=f"{site_url}og/{sid}.png", url=f"{site_url}s/{sid}/", target=f"{site_url}?s={sid}", sid=sid))
     site_image(shown, F, site_label).save(root / "og" / "site.png", optimize=True)
     return [u[0] for u in pages]

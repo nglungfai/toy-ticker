@@ -40,6 +40,6 @@ jobs:
         run: |
           git config user.name "toy-ticker-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data og s assets/toys
+          git add -A data og s i assets/toys sitemap.xml index.html about.html
           git diff --cached --quiet || git commit -m "Prices for $(date -u +%F)"
           git push

@@ -204,6 +204,11 @@ def main():
         print(f"Link previews: og/site.png + {len(built)} series")
     except ImportError:
         print("! Pillow not installed: skipping link-preview images", file=sys.stderr)
+
+    # Search pages (static HTML per series and item, sitemap, JSON-LD).
+    import seo
+    n_series, n_items = seo.build(data, ROOT, config.get("site_url", ""))
+    print(f"Search pages: {n_series} series + {n_items} items -> s/, i/, sitemap.xml")
     return 1 if failures and failures == len(config["series"]) else 0
 
 
