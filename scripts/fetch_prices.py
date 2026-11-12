@@ -131,7 +131,7 @@ def main():
     for order, s in enumerate(config["series"]):
         prev = data["sets"].get(s["id"], {})
         last_update = prev.get("lastUpdate")
-        data["sets"][s["id"]] = {**{k: prev[k] for k in ("fullSet", "insights") if prev.get(k)},
+        data["sets"][s["id"]] = {**{k: prev[k] for k in ("fullSet", "insights", "backfill") if prev.get(k)},
                                  **{k: s[k] for k in SERIES_KEYS if k in s}, "order": order,
                                  "refresh": "weekly" if is_weekly(s, today) else "daily",
                                  "currency": "USD", "source": "eBay US active listings (median asking price)"}

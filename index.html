@@ -963,10 +963,18 @@ const LOADED = new Set(), LOADING = {};
 function loadSeries(sid) {
   if (isGroup(sid)) return Promise.all(members(sid).map(loadSeries));
   if (!DATA.sets[sid] || LOADED.has(sid)) return Promise.resolve();
-  return LOADING[sid] ||= fetch(`data/series/${sid}.json`, { cache: "no-store" })
-    .then(r => r.ok ? r.json() : { history: {} })
-    .then(d => { Object.assign(DATA.history, d.history || {}); LOADED.add(sid); })
-    .catch(() => { LOADED.add(sid); });
+  // Past sold prices imported from Terapeak (scripts/import_terapeak.py), only for series that have them.
+  const backfill = () => DATA.sets[sid].backfill
+    ? fetch(`data/backfill/${sid}.json`, { cache: "no-store" }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    : Promise.resolve({});
+  return LOADING[sid] ||= Promise.all([
+    fetch(`data/series/${sid}.json`, { cache: "no-store" }).then(r => r.ok ? r.json() : { history: {} }),
+    backfill(),
+  ]).then(([d, b]) => {
+    Object.assign(DATA.history, d.history || {});
+    for (const [id, v] of Object.entries(b.items || {})) DATA.sold[id] = v.weeks || [];
+    LOADED.add(sid);
+  }).catch(() => { LOADED.add(sid); });
 }
 function rowsFor(sid) {
   if (isGroup(sid)) return members(sid).flatMap(rowsFor);
@@ -2243,18 +2251,28 @@ function showDetail(id) {
   if (chart) chart.destroy();
   Chart.defaults.color = css("--muted");
   Chart.defaults.borderColor = css("--line");
+  // Weekly sold medians from a Terapeak backfill share the x-axis with the daily asking prices.
+  const sold = DATA.sold[id] || [];
+  const days = [...new Set([...r.h.map(p => p.date), ...sold.map(p => p.date)])].sort();
+  const byDay = Object.fromEntries(r.h.map(p => [p.date, p]));
+  const soldByDay = Object.fromEntries(sold.map(p => [p.date, p]));
   const line = (key, label, color, dash) => ({
-    label, data: r.h.map(p => p[key] ?? null), borderColor: color, backgroundColor: color,
+    label, data: days.map(d => byDay[d]?.[key] ?? null), borderColor: color, backgroundColor: color,
     borderDash: dash || [], tension: .25, pointRadius: r.h.length < 15 ? 3 : 0, spanGaps: true,
   });
+  const soldLine = sold.length ? [{
+    label: "Sold median (weekly, Terapeak)", data: days.map(d => soldByDay[d]?.median ?? null),
+    borderColor: css("--up"), backgroundColor: css("--up"), tension: .25, pointRadius: 3, pointStyle: "rectRot", spanGaps: true,
+  }] : [];
   // Listing counts as "volume" bars along the bottom, like a stock chart: up = more supply that day.
-  const counts = r.h.map(p => p.count ?? null);
+  const counts = days.map(d => byDay[d]?.count ?? null);
   const maxCount = Math.max(1, ...counts.filter(v => v != null));
   const volColor = (i) => i && counts[i] != null && counts[i - 1] != null && counts[i] < counts[i - 1]
     ? "rgba(198,40,40,.28)" : "rgba(26,127,55,.28)";
   chart = new Chart($("dChart"), {
     type: "line",
-    data: { labels: r.h.map(p => p.date), datasets: [
+    data: { labels: days, datasets: [
+      ...soldLine,
       line("median", "Median incl. shipping", css("--accent")),
       line("p25", "25th percentile", css("--gold")),
       line("low", "Lowest", css("--muted"), [4, 4]),
@@ -2268,15 +2286,19 @@ function showDetail(id) {
         vol: { position: "right", beginAtZero: true, max: maxCount * 4, display: false, grid: { display: false } },
       },
       plugins: { tooltip: { callbacks: { label: c =>
-        c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}` : `${c.dataset.label}: ${usd(c.parsed.y)}` } },
-        eventMarkers: { dates: r.h.map(p => p.date), items: chartEvents(SID) } },
+        c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}`
+          : c.dataset === soldLine[0] ? `Sold, week of ${fmtDate(days[c.dataIndex])}: ${usd(c.parsed.y)} median of ${soldByDay[days[c.dataIndex]].count}`
+          : `${c.dataset.label}: ${usd(c.parsed.y)}` } },
+        eventMarkers: { dates: days, items: chartEvents(SID) } },
     },
   });
   renderItemReturns(id);
   $("dDeals").innerHTML = (r.deals || []).length
     ? `<h4>Deals today</h4><div class="deal-grid">${r.deals.map(d => dealCard(d, r)).join("")}</div>` : "";
-  $("dNote").textContent = !r.h.length ? "No prices collected yet."
-    : r.h.length < 3 ? "Only a few days collected so far. The chart fills in as the daily job runs." : "";
+  $("dNote").textContent = (sold.length
+    ? `Green diamonds are past sold prices incl. shipping (weekly medians from eBay's Terapeak, ${fmtDate(sold[0].date)} to ${fmtDate(sold[sold.length - 1].date)}). The other lines are asking prices on live listings, a different measure. `
+    : "") + (!r.h.length ? "No asking prices collected yet."
+    : r.h.length < 3 && !sold.length ? "Only a few days collected so far. The chart fills in as the daily job runs." : "");
   render();
   $("detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
@@ -2285,7 +2307,7 @@ const defaultSeries = () => shownSets().sort((a, b) => a[1].order - b[1].order)[
 fetch("data/index.json", { cache: "no-store" })
   .then(r => r.json())
   .then(async d => {
-    DATA = { sets: d.sets, cards: d.items, history: {}, calendar: d.calendar || [], updated: d.updated };
+    DATA = { sets: d.sets, cards: d.items, history: {}, sold: {}, calendar: d.calendar || [], updated: d.updated };
     setupGroups(d.groups);
     const asked = new URLSearchParams(location.search).get("s");
     const first = DATA.sets[asked] ? shownId(asked) : defaultSeries();

@@ -99,7 +99,13 @@
    "currency": "USD",
    "source": "eBay US active listings (median asking price)",
    "days": 1,
-   "lastUpdate": "2026-11-11"
+   "lastUpdate": "2026-11-11",
+   "backfill": {
+    "source": "Terapeak",
+    "from": "2026-10-27",
+    "to": "2026-11-11",
+    "sales": 356
+   }
   },
   "spongebob-onepiece-2026": {
    "fullSet": {
