@@ -237,6 +237,7 @@
   },
   {
    "id": "pokemon-toys-2026",
+   "official_images": "https://www.happymeal.com/",
    "name": "Pokémon mini box toys",
    "description": "Fifteen mini Happy Meal boxes, one Pokémon each, that double as bag charms. One comes with every Happy Meal, alongside the TCG cards. The lineup runs from Pikachu and the Kanto starters to Sprigatito, Umbreon and Sobble.",
    "kind": "toys",
@@ -431,6 +432,7 @@
   },
   {
    "id": "boo-buckets-2026",
+   "official_images": "https://www.happymeal.com/",
    "name": "Disney Villains Boo Buckets",
    "description": "The Halloween Boo Buckets came back as five Disney Villains pails, each with its own coloured lid and stickers: Jafar, Ursula, Scar, Cruella de Vil and Maleficent.",
    "kind": "toys",
@@ -511,6 +513,7 @@
   },
   {
    "id": "spongebob-onepiece-2026",
+   "official_images": "https://www.happymeal.com/",
    "name": "SpongeBob × One Piece",
    "description": "Fifteen crossover figures that pair Bikini Bottom with the One Piece cast, from SpongeBob × Luffy and Patrick × Zoro to Mermaid Man × Garp. SpongeBob appears twice, with Luffy and with Gear 5 Luffy.",
    "kind": "toys",
@@ -634,7 +637,8 @@
        "robin"
       ]
      ],
-     "checklist": "14"
+     "checklist": "14",
+     "official": "2026/09/Type9.png"
     },
     {
      "number": "09",
@@ -683,7 +687,8 @@
        "blackbeard"
       ]
      ],
-     "checklist": "15"
+     "checklist": "15",
+     "official": "2026/09/Type12.png"
     },
     {
      "number": "13",
@@ -696,7 +701,8 @@
        "big mom"
       ]
      ],
-     "checklist": "03"
+     "checklist": "03",
+     "official": "2026/09/Type13.png"
     },
     {
      "number": "14",
@@ -732,6 +738,7 @@
   },
   {
    "id": "hello-kitty-godzilla-2026",
+   "official_images": "https://www.happymeal.com/",
    "name": "Hello Kitty × Godzilla",
    "description": "Eight Sanrio characters dressed as Toho monsters: Hello Kitty as Godzilla, Kuromi as Mechagodzilla, My Melody as Mothra, Pompompurin as Gigan and more.",
    "kind": "toys",
@@ -903,6 +910,7 @@
   },
   {
    "id": "bt21-2026",
+   "official_images": "https://www.happymeal.com/",
    "name": "BT21",
    "description": "Seven BT21 characters on ring clips (KOYA, RJ, SHOOKY, MANG, CHIMMY, TATA and COOKY), plus VAN, the whole group on a ship, and a poster with stickers: 10 items in all.",
    "kind": "toys",
@@ -1013,7 +1021,8 @@
        "ufo ship",
        "group"
       ]
-     ]
+     ],
+     "official": "2026/06/Seven-BT21-characters-in-a-spaceship.png"
     },
     {
      "number": "10",
@@ -1025,7 +1034,8 @@
        "sticker",
        "stickers"
       ]
-     ]
+     ],
+     "official": "2026/06/All-eight-BT21-characters-on-a-poster-surrounding-a-McDonalds-Happy-Meal-box-and-the-BT21-logo-and-a-roll-of-BT21-character-stickers.png"
     }
    ],
    "full_set": {
@@ -1035,6 +1045,7 @@
   },
   {
    "id": "world-cup-squishmallows-2026",
+   "official_images": "https://www.happymeal.com/",
    "name": "FIFA World Cup Squishmallows",
    "description": "Twenty-three mini Squishmallows in Canada, Mexico and USA jerseys, one in every Happy Meal. They include the three official World Cup mascots: Maple the Moose, Zayu the Jaguar and Clutch the Bald Eagle.",
    "kind": "toys",

@@ -20,6 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ebay  # noqa: E402
 import listings  # noqa: E402
+import official_images  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -176,6 +177,12 @@ def main():
             data["sets"][s["id"]]["insights"] = listings.insights(s["id"], today)
         except Exception as e:  # noqa: BLE001
             print(f"! {s['id']} listing ledger: {e}", file=sys.stderr)
+
+    # Official toy photos (series with "official_images") take priority over eBay listing photos.
+    for s in config["series"]:
+        for iid, m in official_images.collect(s).items():
+            if iid in data["cards"]:
+                data["cards"][iid].update(m)
 
     # Happy Meal calendar: tracked series come from data["sets"]; this adds untracked and upcoming ones.
     data["calendar"] = config.get("calendar", [])

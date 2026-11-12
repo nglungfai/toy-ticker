@@ -1468,9 +1468,9 @@
      "image": "https://i.ebayimg.com/images/g/Po8AAeSwx3Fq7lE5/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/8XgAAeSwD6Jq8mr1/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407351937056?_skw=mcdonalds+boo+bucket+Jafar&hash=item5ed8114820:g:8XgAAeSwD6Jq8mr1",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/boo-buckets-2026-01.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1487,7 +1487,8 @@
     },
     "total": 151,
     "supply": 104
-   }
+   },
+   "imageSource": "official"
   },
   "boo-buckets-2026-02": {
    "name": "Ursula (purple)",
@@ -1541,9 +1542,9 @@
      "image": "https://i.ebayimg.com/images/g/9EMAAeSwaTdq74n6/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/Z6QAAeSw0phq2Sp7/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/860070153712?_skw=mcdonalds+boo+bucket+Ursula&hash=itemc8402d0df0:g:Z6QAAeSw0phq2Sp7",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/boo-buckets-2026-02.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1560,7 +1561,8 @@
     },
     "total": 78,
     "supply": 20
-   }
+   },
+   "imageSource": "official"
   },
   "boo-buckets-2026-03": {
    "name": "Scar (orange)",
@@ -1614,9 +1616,9 @@
      "image": "https://i.ebayimg.com/images/g/6ygAAeSwSS9q8Nsd/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/6ygAAeSwSS9q8Nsd/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/287714612643?_skw=mcdonalds+boo+bucket+Scar&hash=item42fd2095a3:g:6ygAAeSwSS9q8Nsd",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/boo-buckets-2026-03.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1633,7 +1635,8 @@
     },
     "total": 107,
     "supply": 78
-   }
+   },
+   "imageSource": "official"
   },
   "boo-buckets-2026-04": {
    "name": "Cruella de Vil (white)",
@@ -1651,9 +1654,9 @@
      "image": "https://i.ebayimg.com/images/g/ABgAAeSwy25q8jjY/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/3rEAAeSwQ~xq7XP3/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307238409200?_skw=mcdonalds+boo+bucket+Cruella&hash=item4788d613f0:g:3rEAAeSwQ~xq7XP3",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/boo-buckets-2026-04.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1670,7 +1673,8 @@
     },
     "total": 54,
     "supply": 38
-   }
+   },
+   "imageSource": "official"
   },
   "boo-buckets-2026-05": {
    "name": "Maleficent (green)",
@@ -1724,9 +1728,9 @@
      "image": "https://i.ebayimg.com/images/g/HO4AAeSw8eFq54hH/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/jO4AAeSwkYpq3sVC/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/336863265645?_skw=mcdonalds+boo+bucket+Maleficent&hash=item4e6e9d836d:g:jO4AAeSwkYpq3sVC",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/boo-buckets-2026-05.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1743,7 +1747,8 @@
     },
     "total": 199,
     "supply": 151
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-01": {
    "name": "SpongeBob × Luffy",
@@ -1797,9 +1802,9 @@
      "image": "https://i.ebayimg.com/images/g/SLQAAeSwiRtq5jwr/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/m6QAAeSwZbdq7i-e/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/800886049245?_skw=mcdonalds+spongebob+one+piece+luffy&hash=itemba788749dd:g:m6QAAeSwZbdq7i-e",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-01.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1821,7 +1826,8 @@
     },
     "total": 680,
     "supply": 296
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-02": {
    "name": "SpongeBob × Gear 5 Luffy",
@@ -1875,9 +1881,9 @@
      "image": "https://i.ebayimg.com/images/g/lBwAAeSwi8lqrI9D/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/lqgAAeSwNsRqrNZa/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377505102674?_skw=mcdonalds+spongebob+one+piece+gear+5+luffy&hash=item57e50ebb52:g:lqgAAeSwNsRqrNZa",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-02.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1899,7 +1905,8 @@
     },
     "total": 231,
     "supply": 152
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-03": {
    "name": "Patrick × Zoro",
@@ -1953,9 +1960,9 @@
      "image": "https://i.ebayimg.com/images/g/vMkAAeSwKcdqqT5l/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/qE4AAeSwghlq8kHi/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/137917014616?_skw=mcdonalds+spongebob+one+piece+zoro&hash=item201c7ea258:g:qE4AAeSwghlq8kHi",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-03.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -1977,7 +1984,8 @@
     },
     "total": 239,
     "supply": 148
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-04": {
    "name": "Sandy × Nami",
@@ -2031,9 +2039,9 @@
      "image": "https://i.ebayimg.com/images/g/rbUAAeSwiw9q76sp/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/xcQAAeSwTx1qs8Rl/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/237085970555?_skw=mcdonalds+spongebob+one+piece+nami&hash=item37336cd07b:g:xcQAAeSwTx1qs8Rl",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-04.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2055,7 +2063,8 @@
     },
     "total": 228,
     "supply": 144
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-05": {
    "name": "Squidward × Sanji",
@@ -2109,9 +2118,9 @@
      "image": "https://i.ebayimg.com/images/g/PccAAeSwEPJq8iLl/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/f1cAAeSwSkFqqYGE/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147598944154?_skw=mcdonalds+spongebob+one+piece+sanji&hash=item225d95279a:g:f1cAAeSwSkFqqYGE",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-05.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2133,7 +2142,8 @@
     },
     "total": 248,
     "supply": 156
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-06": {
    "name": "Plankton × Usopp",
@@ -2187,9 +2197,9 @@
      "image": "https://i.ebayimg.com/images/g/KYkAAeSwPOlqqe7~/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/eAQAAeSw1xJq8kJt/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/137917016375?_skw=mcdonalds+spongebob+one+piece+usopp&hash=item201c7ea937:g:eAQAAeSw1xJq8kJt",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-06.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2211,7 +2221,8 @@
     },
     "total": 377,
     "supply": 251
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-07": {
    "name": "Gary × Chopper",
@@ -2265,9 +2276,9 @@
      "image": "https://i.ebayimg.com/images/g/NyAAAeSwsSdqwmU2/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/1MEAAeSwVZVq36eW/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407318185253?_skw=mcdonalds+spongebob+one+piece+chopper&hash=item5ed60e4525:g:1MEAAeSwVZVq36eW",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-07.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2289,7 +2300,8 @@
     },
     "total": 200,
     "supply": 118
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-08": {
    "name": "Pearl × Robin",
@@ -2343,9 +2355,9 @@
      "image": "https://i.ebayimg.com/images/g/GOIAAeSwXRRq55ne/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/3EYAAeSwE9Zq6ke0/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147664814853?_skw=mcdonalds+spongebob+one+piece+robin&hash=item2261824305:g:3EYAAeSwE9Zq6ke0",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-08.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2367,7 +2379,8 @@
     },
     "total": 155,
     "supply": 88
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-09": {
    "name": "Larry × Franky",
@@ -2421,9 +2434,9 @@
      "image": "https://i.ebayimg.com/images/g/OusAAeSwEu1qkcMf/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/NEgAAeSwQuhq6kgK/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147664818107?_skw=mcdonalds+spongebob+one+piece+franky&hash=item2261824fbb:g:NEgAAeSwQuhq6kgK",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-09.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2445,7 +2458,8 @@
     },
     "total": 155,
     "supply": 90
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-10": {
    "name": "Smitty × Brook",
@@ -2499,9 +2513,9 @@
      "image": "https://i.ebayimg.com/images/g/hOUAAeSwUnNq4avS/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/H8gAAeSw4tJq0sbb/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/257802100117?_skw=mcdonalds+spongebob+one+piece+brook&hash=item3c0633dd95:g:H8gAAeSw4tJq0sbb",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-10.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2523,7 +2537,8 @@
     },
     "total": 191,
     "supply": 118
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-11": {
    "name": "Mr. Krabs × Jinbe",
@@ -2577,9 +2592,9 @@
      "image": "https://i.ebayimg.com/images/g/X1IAAeSwmhhqzUuz/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/2h4AAeSwtnRquJir/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318923235019?_skw=mcdonalds+spongebob+one+piece+jinbe&hash=item4a414e5ecb:g:2h4AAeSwtnRquJir",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-11.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2601,7 +2616,8 @@
     },
     "total": 211,
     "supply": 137
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-12": {
    "name": "Flying Dutchman × Blackbeard",
@@ -2655,9 +2671,9 @@
      "image": "https://i.ebayimg.com/images/g/YOUAAeSwyExqyifk/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/HFcAAeSwy6lq6kal/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147664811171?_skw=mcdonalds+spongebob+one+piece+blackbeard&hash=item22618234a3:g:HFcAAeSwy6lq6kal",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-12.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2679,7 +2695,8 @@
     },
     "total": 130,
     "supply": 82
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-13": {
    "name": "Mrs. Puff × Big Mom",
@@ -2697,9 +2714,9 @@
      "image": "https://i.ebayimg.com/images/g/CY8AAeSw40FqtF4A/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/6Y0AAeSwD1Jqwn15/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/920007613827?_skw=mcdonalds+spongebob+one+piece+big+mom&hash=itemd634ba1d83:g:6Y0AAeSwD1Jqwn15",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-13.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2721,7 +2738,8 @@
     },
     "total": 110,
     "supply": 17
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-14": {
    "name": "Barnacle Boy × Koby",
@@ -2775,9 +2793,9 @@
      "image": "https://i.ebayimg.com/images/g/ElYAAeSwTxFq0kWL/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/iJUAAeSwok1q8pCS/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407352156595?_skw=mcdonalds+spongebob+one+piece+koby&hash=item5ed814a1b3:g:iJUAAeSwok1q8pCS",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-14.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2799,7 +2817,8 @@
     },
     "total": 187,
     "supply": 132
-   }
+   },
+   "imageSource": "official"
   },
   "spongebob-onepiece-2026-15": {
    "name": "Mermaid Man × Garp",
@@ -2853,9 +2872,9 @@
      "image": "https://i.ebayimg.com/images/g/V5cAAeSw03Nq55v8/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/7wkAAeSwvOBquJhF/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318923233123?_skw=mcdonalds+spongebob+one+piece+garp&hash=item4a414e5763:g:7wkAAeSwvOBquJhF",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/spongebob-onepiece-2026-15.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2877,7 +2896,8 @@
     },
     "total": 185,
     "supply": 125
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-01": {
    "name": "Pikachu",
@@ -2931,9 +2951,9 @@
      "image": "https://i.ebayimg.com/images/g/bnIAAeSwRP9q859v/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/I2kAAeSwLUZq9Mhw/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/840118735519?_skw=mcdonalds+pokemon+2026+toy+Pikachu&hash=itemc39afa929f:g:I2kAAeSwLUZq9Mhw&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7kj2ZNJH15%2BcRycWz1%2B%2B3mYCxEQaGoko31uHZ1n%2FeKX%2F%2BHZATrzyS%2Ba2YhUFh5SECaiiT2a2bRUhPhbS7Q%2BFxmS%2BwzzDFaMo913PQuLQ3SsVkLPixZ2%2F0tRPt9mcmWErrtFtyqzgRTDiC0gSWS2Aobeo000hb8VbyxkM43o4nwWa%2FA3wIwFhS7agSoA1UJVS4yrWl2V85baWZouOkavsa4PkkBQcCKf2Okf3v6gHKhaO5mbzdLViPKMX5XCVtzaan4%2FE%2FUzEPkiYyWntf42z21STt71jvSKYyNXpZBtuxcsFdE0NzGetaf8EIJYlI69DbY%3D",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-01.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2955,7 +2975,8 @@
     },
     "total": 240,
     "supply": 70
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-02": {
    "name": "Bulbasaur",
@@ -2973,9 +2994,9 @@
      "image": "https://i.ebayimg.com/images/g/c~8AAeSwd-Nq6lVr/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/YE8AAeSw-Udq89Mu/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377637719208?_skw=mcdonalds+pokemon+2026+toy+Bulbasaur&hash=item57ecf64ca8:g:YE8AAeSw-Udq89Mu",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-02.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -2992,14 +3013,19 @@
     },
     "total": 200,
     "supply": 4
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-03": {
    "name": "Charmander",
    "set": "pokemon-toys-2026",
    "number": "03",
    "rarity": null,
-   "deals": []
+   "deals": [],
+   "image": "assets/toys/pokemon-toys-2026-03.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
+   "imageSource": "official"
   },
   "pokemon-toys-2026-04": {
    "name": "Squirtle",
@@ -3035,9 +3061,9 @@
      "image": "https://i.ebayimg.com/images/g/apUAAeSw38Nq8ozm/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/5dAAAeSwZvtq9ND2/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/880106599383?_skw=mcdonalds+pokemon+2026+toy+Squirtle&hash=itemccea70f3d7:g:5dAAAeSwZvtq9ND2",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-04.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3059,7 +3085,8 @@
     },
     "total": 219,
     "supply": 13
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-05": {
    "name": "Rowlet",
@@ -3077,9 +3104,9 @@
      "image": "https://i.ebayimg.com/images/g/HhQAAeSwsqtq88sm/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/HhQAAeSwsqtq88sm/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/227608670597?_skw=mcdonalds+pokemon+2026+toy+Rowlet&hash=item34fe88b185:g:HhQAAeSwsqtq88sm",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-05.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3096,7 +3123,8 @@
     },
     "total": 334,
     "supply": 3
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-06": {
    "name": "Sprigatito",
@@ -3104,9 +3132,9 @@
    "number": "06",
    "rarity": null,
    "deals": [],
-   "image": "https://i.ebayimg.com/images/g/0LwAAeSwziRq9Opn/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/940084692642?_skw=mcdonalds+pokemon+2026+toy+Sprigatito&hash=itemdae16a06a2:g:0LwAAeSwziRq9Opn",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-06.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3123,7 +3151,8 @@
     },
     "total": 149,
     "supply": 1
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-07": {
    "name": "Eevee",
@@ -3131,9 +3160,9 @@
    "number": "07",
    "rarity": null,
    "deals": [],
-   "image": "https://i.ebayimg.com/images/g/Q3UAAeSw14tq9Azl/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/840116781309?_skw=mcdonalds+pokemon+2026+toy+Eevee&hash=itemc39adcc0fd:g:Q3UAAeSw14tq9Azl",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-07.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3150,7 +3179,8 @@
     },
     "total": 195,
     "supply": 1
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-08": {
    "name": "Weedle",
@@ -3204,9 +3234,9 @@
      "image": "https://i.ebayimg.com/images/g/5LcAAeSw1xpq85~Q/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/ZgoAAeSwZllq801t/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/287719169429?_skw=mcdonalds+pokemon+2026+toy+Weedle&hash=item42fd661d95:g:ZgoAAeSwZllq801t",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-08.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3228,7 +3258,8 @@
     },
     "total": 123,
     "supply": 62
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-09": {
    "name": "Umbreon",
@@ -3282,9 +3313,9 @@
      "image": "https://i.ebayimg.com/images/g/qIYAAeSwPddq9KqW/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/mQwAAeSwFPZq9Bo9/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/206691425230?_skw=mcdonalds+pokemon+2026+toy+Umbreon&hash=item301fc4dbce:g:mQwAAeSwFPZq9Bo9",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-09.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3306,7 +3337,8 @@
     },
     "total": 127,
     "supply": 45
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-10": {
    "name": "Torchic",
@@ -3360,9 +3392,9 @@
      "image": "https://i.ebayimg.com/images/g/G4cAAeSw6eJq9NXd/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/6ToAAeSwELFq8sB8/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407352423232?_skw=mcdonalds+pokemon+2026+toy+Torchic&hash=item5ed818b340:g:6ToAAeSwELFq8sB8",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-10.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3384,7 +3416,8 @@
     },
     "total": 94,
     "supply": 37
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-11": {
    "name": "Piplup",
@@ -3392,9 +3425,9 @@
    "number": "11",
    "rarity": null,
    "deals": [],
-   "image": "https://i.ebayimg.com/images/g/oz8AAeSwlXRq76kT/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/327445150917?_skw=mcdonalds+pokemon+2026+toy+Piplup&hash=item4c3d407cc5:g:oz8AAeSwlXRq76kT",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-11.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3416,7 +3449,8 @@
     },
     "total": 60,
     "supply": 5
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-12": {
    "name": "Munchlax",
@@ -3470,9 +3504,9 @@
      "image": "https://i.ebayimg.com/images/g/UMAAAeSwy59q9Mu1/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/UpQAAeSwSk1q8~MP/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407354586256?_skw=mcdonalds+pokemon+2026+toy+Munchlax&hash=item5ed839b490:g:UpQAAeSwSk1q8~MP",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-12.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3494,7 +3528,8 @@
     },
     "total": 129,
     "supply": 63
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-13": {
    "name": "Minccino",
@@ -3502,9 +3537,9 @@
    "number": "13",
    "rarity": null,
    "deals": [],
-   "image": "https://i.ebayimg.com/images/g/1lAAAeSwalVq9OrF/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/940084694391?_skw=mcdonalds+pokemon+2026+toy+Minccino&hash=itemdae16a0d77:g:1lAAAeSwalVq9OrF",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-13.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3521,7 +3556,8 @@
     },
     "total": 14,
     "supply": 1
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-14": {
    "name": "Espurr",
@@ -3529,9 +3565,9 @@
    "number": "14",
    "rarity": null,
    "deals": [],
-   "image": "https://i.ebayimg.com/images/g/NjIAAeSw~n1q9CnP/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/840117299377?_skw=mcdonalds+pokemon+2026+toy+Espurr&hash=itemc39ae4a8b1:g:NjIAAeSw~n1q9CnP",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-14.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3548,7 +3584,8 @@
     },
     "total": 14,
     "supply": 1
-   }
+   },
+   "imageSource": "official"
   },
   "pokemon-toys-2026-15": {
    "name": "Sobble",
@@ -3602,9 +3639,9 @@
      "image": "https://i.ebayimg.com/images/g/Z4UAAeSwJPdq85MS/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/tUUAAeSw~iRq87Yf/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/327450290753?_skw=mcdonalds+pokemon+2026+toy+Sobble&hash=item4c3d8eea41:g:tUUAAeSw~iRq87Yf",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/pokemon-toys-2026-15.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3626,7 +3663,8 @@
     },
     "total": 85,
     "supply": 33
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-01": {
    "name": "Hello Kitty × Godzilla",
@@ -3634,9 +3672,9 @@
    "number": "01",
    "rarity": null,
    "deals": [],
-   "image": "https://i.ebayimg.com/images/g/Fj4AAeSwJS9qvgPQ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/198679557560?_skw=mcdonalds+hello+kitty+godzilla+hello+kitty&hash=item2e423975b8:g:Fj4AAeSwJS9qvgPQ",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-01.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3658,7 +3696,8 @@
     },
     "total": 3796,
     "supply": 285
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-02": {
    "name": "Kuromi × Mechagodzilla",
@@ -3712,9 +3751,9 @@
      "image": "https://i.ebayimg.com/images/g/q80AAeSwE7dq7nSj/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/RxIAAeSwZGpq7z7G/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/880092489828?_skw=mcdonalds+hello+kitty+godzilla+kuromi&hash=itemcce999a864:g:RxIAAeSwZGpq7z7G",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-02.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3736,7 +3775,8 @@
     },
     "total": 592,
     "supply": 314
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-03": {
    "name": "Badtz-Maru × Rodan",
@@ -3790,9 +3830,9 @@
      "image": "https://i.ebayimg.com/images/g/snEAAeSwldpq59nn/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/gDMAAeSwtjZqvUDv/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/267834601966?_skw=mcdonalds+hello+kitty+godzilla+badtz+maru&hash=item3e5c2fb1ee:g:gDMAAeSwtjZqvUDv",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-03.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3814,7 +3854,8 @@
     },
     "total": 218,
     "supply": 108
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-04": {
    "name": "My Melody × Mothra",
@@ -3868,9 +3909,9 @@
      "image": "https://i.ebayimg.com/images/g/B6AAAeSwk~Vq80Tc/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/C~IAAeSws-Fq2cYM/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/237137300751?_skw=mcdonalds+hello+kitty+godzilla+my+melody&hash=item37367c0d0f:g:C~IAAeSws-Fq2cYM",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-04.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3892,7 +3933,8 @@
     },
     "total": 518,
     "supply": 316
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-05": {
    "name": "Keroppi × King Ghidorah",
@@ -3946,9 +3988,9 @@
      "image": "https://i.ebayimg.com/images/g/uLwAAeSwQSJq81Gt/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/mGQAAeSwQe1qhI14/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407153908330?_skw=mcdonalds+hello+kitty+godzilla+keroppi&hash=item5ecc439a6a:g:mGQAAeSwQe1qhI14",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-05.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -3970,7 +4012,8 @@
     },
     "total": 428,
     "supply": 214
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-06": {
    "name": "Chococat × SpaceGodzilla",
@@ -4024,9 +4067,9 @@
      "image": "https://i.ebayimg.com/images/g/eTsAAeSw6IlquHWD/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/bD0AAeSwDW5qpyc~/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147591436166?_skw=mcdonalds+hello+kitty+godzilla+chococat&hash=item225d229786:g:bD0AAeSwDW5qpyc~",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-06.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4048,7 +4091,8 @@
     },
     "total": 554,
     "supply": 330
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-07": {
    "name": "Cinnamoroll × Destoroyah",
@@ -4102,9 +4146,9 @@
      "image": "https://i.ebayimg.com/images/g/diYAAeSwnsxqpvkZ/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/8NEAAeSwwtFqmv7U/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407193118025?_skw=mcdonalds+hello+kitty+godzilla+cinnamoroll&hash=item5ece99e549:g:8NEAAeSwwtFqmv7U",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-07.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4126,7 +4170,8 @@
     },
     "total": 413,
     "supply": 242
-   }
+   },
+   "imageSource": "official"
   },
   "hello-kitty-godzilla-2026-08": {
    "name": "Pompompurin × Gigan",
@@ -4180,9 +4225,9 @@
      "image": "https://i.ebayimg.com/images/g/-sgAAeSwJIxq1rGQ/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/VncAAeSwhENq8sQg/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/267839371228?_skw=mcdonalds+hello+kitty+godzilla+pompompurin&hash=item3e5c7877dc:g:VncAAeSwhENq8sQg",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/hello-kitty-godzilla-2026-08.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4204,7 +4249,8 @@
     },
     "total": 699,
     "supply": 391
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-01": {
    "name": "KOYA",
@@ -4258,9 +4304,9 @@
      "image": "https://i.ebayimg.com/images/g/7wYAAeSwieZqmuxD/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/ys4AAeSwQ1xq8JsP/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/147671971345?_skw=mcdonalds+bt21+koya&hash=item2261ef7611:g:ys4AAeSwQ1xq8JsP",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-01.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4282,7 +4328,8 @@
     },
     "total": 316,
     "supply": 167
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-02": {
    "name": "RJ",
@@ -4327,9 +4374,9 @@
      "image": "https://i.ebayimg.com/images/g/WKYAAeSwDp1qdUsR/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/WKYAAeSwDp1qdUsR/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/800473424888?_skw=mcdonalds+bt21+rj&hash=itemba5fef23f8:g:WKYAAeSwDp1qdUsR",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-02.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4351,7 +4398,8 @@
     },
     "total": 260,
     "supply": 129
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-03": {
    "name": "SHOOKY",
@@ -4405,9 +4453,9 @@
      "image": "https://i.ebayimg.com/images/g/RrgAAeSw1XpqrFPH/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/vkUAAeSwU7xqYhh6/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/236958123948?_skw=mcdonalds+bt21+shooky&hash=item372bce07ac:g:vkUAAeSwU7xqYhh6",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-03.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4429,7 +4477,8 @@
     },
     "total": 342,
     "supply": 178
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-04": {
    "name": "MANG",
@@ -4483,9 +4532,9 @@
      "image": "https://i.ebayimg.com/images/g/XXEAAeSwi21qy9Ax/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/R~sAAeSwNBBq3mNw/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/377597130549?_skw=mcdonalds+bt21+mang&hash=item57ea8af735:g:R~sAAeSwNBBq3mNw",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-04.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4507,7 +4556,8 @@
     },
     "total": 215,
     "supply": 110
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-05": {
    "name": "CHIMMY",
@@ -4561,9 +4611,9 @@
      "image": "https://i.ebayimg.com/images/g/b~EAAeSwGs1qc-78/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/6rcAAeSwVHJq81bZ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/128187257508?_skw=mcdonalds+bt21+chimmy&hash=item1dd88e52a4:g:6rcAAeSwVHJq81bZ",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-05.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4585,7 +4635,8 @@
     },
     "total": 251,
     "supply": 128
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-06": {
    "name": "TATA",
@@ -4639,9 +4690,9 @@
      "image": "https://i.ebayimg.com/images/g/2zoAAeSwrndqc9QL/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/CngAAeSw6ttq7r0t/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/237168908739?_skw=mcdonalds+bt21+tata&hash=item37385e59c3:g:CngAAeSw6ttq7r0t",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-06.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4663,7 +4714,8 @@
     },
     "total": 266,
     "supply": 118
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-07": {
    "name": "COOKY",
@@ -4717,9 +4769,9 @@
      "image": "https://i.ebayimg.com/images/g/n5UAAeSwEdxq8Tpd/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/8mgAAeSwcG9q3~cp/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/840116140222?_skw=mcdonalds+bt21+cooky&hash=itemc39ad2f8be:g:8mgAAeSwcG9q3~cp",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-07.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4741,7 +4793,8 @@
     },
     "total": 140,
     "supply": 47
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-08": {
    "name": "VAN",
@@ -4795,9 +4848,9 @@
      "image": "https://i.ebayimg.com/images/g/nX8AAeSwtFxqkLx4/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/1hUAAeSw6l9q74Tl/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/940073782282?_skw=mcdonalds+bt21+van&hash=itemdae0c38c0a:g:1hUAAeSw6l9q74Tl",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-08.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4819,7 +4872,8 @@
     },
     "total": 252,
     "supply": 155
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-09": {
    "name": "Group on ship",
@@ -4873,9 +4927,9 @@
      "image": "https://i.ebayimg.com/images/g/v8gAAeSwF3Bq8O9t/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/hSEAAeSwR7pqhTC4/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/168624544044?_skw=mcdonalds+bt21+spaceship&hash=item2742ce592c:g:hSEAAeSwR7pqhTC4&amdata=enc%3AAQALAAAA8Of5zIIojhOf%2BkQK%2Bxzjn7lacJ2TaaVUoI6w7khDCCxswk3TUOrc3hw%2FVmS0qT2qbQPyYkT3b3HPKskCo62NC3dgB2gfu1YXpcAf%2Bvfdl5%2BwgCkYqEAAOA6SL03x%2FMEQ%2BqRC4YHizZe9C5rRYjxLjGLEVQNtsmX9Zw%2FqCzuLB3HkoppF%2B7IJOFifx7XB0dlGHu6wNLLhVr5pWThOGaiQKypY1YEEDd2jJ%2FimgJz98ecb6bgia8UxL%2BWg25Z8SLs9uZN47W1KTyoXvw25qDv8JgdPFiWvfiBuHc2YhM60pcNDTxmxr%2BbWG6rRhnqA5U7lqA%3D%3D",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-09.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4897,7 +4951,8 @@
     },
     "total": 261,
     "supply": 116
-   }
+   },
+   "imageSource": "official"
   },
   "bt21-2026-10": {
    "name": "Poster and stickers",
@@ -4951,9 +5006,9 @@
      "image": "https://i.ebayimg.com/images/g/UncAAeSwa3RqzE95/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/o0gAAeSwopdqzQR5/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/206622075165?_skw=mcdonalds+bt21+poster&hash=item301ba2a91d:g:o0gAAeSwopdqzQR5",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/bt21-2026-10.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -4975,7 +5030,8 @@
     },
     "total": 158,
     "supply": 69
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-01": {
    "name": "Monty",
@@ -5029,9 +5085,9 @@
      "image": "https://i.ebayimg.com/images/g/NgsAAeSwUXxqZVIQ/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/M5UAAeSw269qOzlo/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/366500064999?_skw=mcdonalds+world+cup+squishmallow+monty&hash=item55551b2ee7:g:M5UAAeSw269qOzlo",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-01.png",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5051,7 +5107,8 @@
       "count": 32
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-02": {
    "name": "Lindsay",
@@ -5069,9 +5126,9 @@
      "image": "https://i.ebayimg.com/images/g/FowAAeSwwoRqz-nw/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/jPAAAeSwHQVqL33e/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/227608049083?_skw=mcdonalds+world+cup+squishmallow+lindsay&hash=item34fe7f35bb:g:jPAAAeSwHQVqL33e",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-02.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5091,7 +5148,8 @@
       "count": 28
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-03": {
    "name": "Clutch",
@@ -5145,9 +5203,9 @@
      "image": "https://i.ebayimg.com/images/g/qngAAeSwZHxqtT96/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/dWAAAeSwiAVq29~O/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/267822095064?_skw=mcdonalds+world+cup+squishmallow+clutch&hash=item3e5b70dad8:g:dWAAAeSwiAVq29~O&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7nj%2Bxzwf8lvQn3pqm0SHqAzhDHGqYnm%2FnnCAwNj2A9d%2B66A5eorNAk3alphO16LhOogs9HHLNc2lPYpP%2FG81wKQ41HXNGhbZ5oeUU%2BatEXgDJSRXIwJocGJxh6%2BQH4bK6%2BtHhMavDBxw3xtbzi2SjM9DmP8yK7DIWCN7hxUQGAL9tZ1j%2FineG%2FmtLW%2BCLNZsE%2BmrZtJ6PfvSWCPLw%2F967BlMWFWqHpjG%2FQahQGM5bHz0cuJ28ADsVnfUaaUpNb3nTQCrWPgmgXb9ldR7XsV0s5WX1th284BrYoVLrW0stAyALv3RLDDqPboojb0sFgfSuY%3D",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-03.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5167,7 +5225,8 @@
       "count": 18
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-04": {
    "name": "Zayu",
@@ -5221,9 +5280,9 @@
      "image": "https://i.ebayimg.com/images/g/9JMAAeSw2hFq3pji/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/OpcAAeSwM89qlSN1/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/168652242345?_skw=mcdonalds+world+cup+squishmallow+zayu&hash=item274474fda9:g:OpcAAeSwM89qlSN1",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-04.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5243,7 +5302,8 @@
       "count": 3
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-05": {
    "name": "Maple",
@@ -5297,9 +5357,9 @@
      "image": "https://i.ebayimg.com/images/g/GYoAAeSwrptqYnHL/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/Q7kAAeSwqrFqVWC0/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/168843261680?_skw=mcdonalds+world+cup+squishmallow+maple&hash=item274fd7b6f0:g:Q7kAAeSwqrFqVWC0",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-05.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5319,7 +5379,8 @@
       "count": 13
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-06": {
    "name": "Boyle",
@@ -5373,9 +5434,9 @@
      "image": "https://i.ebayimg.com/images/g/O2cAAeSwan9qcrld/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/4dAAAeSwSQ9q8Qlu/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307273424891?_skw=mcdonalds+world+cup+squishmallow+boyle&hash=item478aec5ffb:g:4dAAAeSwSQ9q8Qlu",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-06.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5395,7 +5456,8 @@
       "count": 4
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-07": {
    "name": "Barella",
@@ -5449,9 +5511,9 @@
      "image": "https://i.ebayimg.com/images/g/z0EAAeSwM3Jqqrpf/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/U8oAAeSwr6JqTqdZ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318559970782?_skw=mcdonalds+world+cup+squishmallow+barella&hash=item4a2ba765de:g:U8oAAeSwr6JqTqdZ",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-07.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5471,7 +5533,8 @@
       "count": 12
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-08": {
    "name": "Nya",
@@ -5507,9 +5570,9 @@
      "image": "https://i.ebayimg.com/images/g/J24AAeSw9vtqTquL/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/J24AAeSw9vtqTquL/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/336678892271?_skw=mcdonalds+world+cup+squishmallow+nya&hash=item4e63a032ef:g:J24AAeSw9vtqTquL",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-08.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5529,7 +5592,8 @@
       "count": 9
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-09": {
    "name": "Gordon",
@@ -5583,9 +5647,9 @@
      "image": "https://i.ebayimg.com/images/g/BjoAAeSwkOJqrGyE/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/6pQAAeSw8Rpq765Y/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/206687751545?_skw=mcdonalds+world+cup+squishmallow+gordon&hash=item301f8ccd79:g:6pQAAeSw8Rpq765Y",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-09.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5605,7 +5669,8 @@
       "count": 3
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-10": {
    "name": "Jim",
@@ -5659,9 +5724,9 @@
      "image": "https://i.ebayimg.com/images/g/-wEAAeSwyYNqoFad/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/uywAAeSwXQNqNDeA/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/398407961336?_skw=mcdonalds+world+cup+squishmallow+jim&hash=item5cc2f70af8:g:uywAAeSwXQNqNDeA",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-10.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5681,7 +5746,8 @@
       "count": 15
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-11": {
    "name": "Cam",
@@ -5726,9 +5792,9 @@
      "image": "https://i.ebayimg.com/images/g/8sMAAeSwhmJq8HUQ/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/XlwAAeSwBZ1qMpUy/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/407008030397?_skw=mcdonalds+world+cup+squishmallow+cam&hash=item5ec391aebd:g:XlwAAeSwBZ1qMpUy",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-11.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5748,7 +5814,8 @@
       "count": 2
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-12": {
    "name": "Maui",
@@ -5784,9 +5851,9 @@
      "image": "https://i.ebayimg.com/images/g/7LMAAeSwnsxqsfeN/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/4q0AAeSwp~tqvly2/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/257776458626?_skw=mcdonalds+world+cup+squishmallow+maui&hash=item3c04ac9b82:g:4q0AAeSwp~tqvly2",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-12.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5806,7 +5873,8 @@
       "count": 6
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-13": {
    "name": "Benny",
@@ -5860,9 +5928,9 @@
      "image": "https://i.ebayimg.com/images/g/hE4AAeSwfCZqwXNY/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/LBsAAeSwwpVq8QSi/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/307273398495?_skw=mcdonalds+world+cup+squishmallow+benny&hash=item478aebf8df:g:LBsAAeSwwpVq8QSi",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-13.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5882,7 +5950,8 @@
       "count": 4
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-14": {
    "name": "Debra",
@@ -5936,9 +6005,9 @@
      "image": "https://i.ebayimg.com/images/g/MqUAAeSwW0ZqV4Zg/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/WKoAAeSw3alqthCQ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/298705474298?_skw=mcdonalds+world+cup+squishmallow+debra&hash=item458c3bd2fa:g:WKoAAeSw3alqthCQ",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-14.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -5958,7 +6027,8 @@
       "count": 18
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-15": {
    "name": "Avery",
@@ -6003,9 +6073,9 @@
      "image": "https://i.ebayimg.com/images/g/-~wAAeSwW2dqqd~8/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/8xQAAeSw2~5qXQnD/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/398192416537?_skw=mcdonalds+world+cup+squishmallow+avery&hash=item5cb61e1719:g:8xQAAeSw2~5qXQnD",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-15.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6025,7 +6095,8 @@
       "count": 4
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-16": {
    "name": "Monica",
@@ -6061,9 +6132,9 @@
      "image": "https://i.ebayimg.com/images/g/X0cAAeSwj8NqlGOm/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/xqIAAeSwwvJqWECs/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/298508366691?_skw=mcdonalds+world+cup+squishmallow+monica&hash=item45807c3363:g:xqIAAeSwwvJqWECs",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-16.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6083,7 +6154,8 @@
       "count": 4
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-17": {
    "name": "Donny",
@@ -6119,9 +6191,9 @@
      "image": "https://i.ebayimg.com/images/g/sx4AAeSw0-xqXDQb/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/Dr4AAeSwSGdqk2d8/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/188859449944?_skw=mcdonalds+world+cup+squishmallow+donny&hash=item2bf8e68258:g:Dr4AAeSwSGdqk2d8",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-17.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6141,7 +6213,8 @@
       "count": 5
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-18": {
    "name": "Olma",
@@ -6177,9 +6250,9 @@
      "image": "https://i.ebayimg.com/images/g/NUoAAeSwGONqojkr/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/DfIAAeSw6JVqa2Lh/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/358862384815?_skw=mcdonalds+world+cup+squishmallow+olma&hash=item538ddd6eaf:g:DfIAAeSw6JVqa2Lh",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-18.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6194,7 +6267,8 @@
       "count": 29
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-19": {
    "name": "Waverly",
@@ -6248,9 +6322,9 @@
      "image": "https://i.ebayimg.com/images/g/YEIAAeSwh4tqRUm-/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/rIAAAeSwcXdqXrLi/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/318612000230?_skw=mcdonalds+world+cup+squishmallow+waverly&hash=item4a2ec14de6:g:rIAAAeSwcXdqXrLi",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-19.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6270,7 +6344,8 @@
       "count": 39
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-20": {
    "name": "Jude",
@@ -6324,9 +6399,9 @@
      "image": "https://i.ebayimg.com/images/g/3XYAAeSweHNqwtMe/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/fFYAAeSw24RqY9WK/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/800402369503?_skw=mcdonalds+world+cup+squishmallow+jude&hash=itemba5bb2ebdf:g:fFYAAeSw24RqY9WK&amdata=enc%3AAQALAAABAOf5zIIojhOf%2BkQK%2Bxzjn7kMb6gdwmWgv5Fc5S7gxLrOn%2F1Q7O8vUbBbDVTCxVvfBO0hA0J%2BkVYHgsLSKWDb%2FhtYPlSO%2F509%2F7co9IHyoIChxR5VtI42yrtaOr%2FF%2BG8bE28TQt6ib1XFwllRxbmixUUtXQRfV%2Fn8V14a8ZKdrQeosOZ5%2Brw5ZEOROaC3FabLe0dYv5elbPs7BwFVH2WHz0oEAkI1dsAhpUba4wLIZZFGyDfcQ%2FeRvS%2BG2JMjbgzhi0JWHlt3PAbBaWYu%2Bf3J4DaUC%2BGNj5EMUBvX6XWx%2B1kq6j2XC7jKOHbbgqnKpht4okM52EoBrwm0AycPife5cJ8%3D",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-20.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6346,7 +6421,8 @@
       "count": 7
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-21": {
    "name": "Erica",
@@ -6391,9 +6467,9 @@
      "image": "https://i.ebayimg.com/images/g/9BkAAeSwazxqemmR/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/ArcAAeSw7dlqUSY6/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/358780467935?_skw=mcdonalds+world+cup+squishmallow+erica&hash=item5388fb7adf:g:ArcAAeSw7dlqUSY6",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-21.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6413,7 +6489,8 @@
       "count": 10
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-22": {
    "name": "Dolan",
@@ -6467,9 +6544,9 @@
      "image": "https://i.ebayimg.com/images/g/WnIAAeSw0-xqW6X2/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/JzMAAeSwSgFqS~Bk/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/257838573659?_skw=mcdonalds+world+cup+squishmallow+dolan&hash=item3c0860685b:g:JzMAAeSwSgFqS~Bk",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-22.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6489,7 +6566,8 @@
       "count": 3
      }
     }
-   }
+   },
+   "imageSource": "official"
   },
   "world-cup-squishmallows-2026-23": {
    "name": "Winnie",
@@ -6543,9 +6621,9 @@
      "image": "https://i.ebayimg.com/images/g/kToAAeSwtEFqdoN0/s-l225.jpg"
     }
    ],
-   "image": "https://i.ebayimg.com/images/g/WEIAAeSwo9lqYmmQ/s-l500.jpg",
-   "imageLink": "https://www.ebay.com/itm/880104136157?_skw=mcdonalds+world+cup+squishmallow+winnie&hash=itemccea4b5ddd:g:WEIAAeSwo9lqYmmQ",
-   "imageCredit": "eBay listing photo",
+   "image": "assets/toys/world-cup-squishmallows-2026-23.webp",
+   "imageLink": "https://www.happymeal.com/",
+   "imageCredit": "Official photo: happymeal.com",
    "imageV": 2,
    "latest": {
     "date": "2026-11-11",
@@ -6565,7 +6643,8 @@
       "count": 3
      }
     }
-   }
+   },
+   "imageSource": "official"
   }
  },
  "groups": [
