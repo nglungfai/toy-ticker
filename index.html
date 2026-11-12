@@ -61,6 +61,7 @@
   .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
   header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
   header h1 span { color: var(--accent); }
+  header h1 a.home { display: inherit; align-items: inherit; gap: inherit; color: inherit; text-decoration: none; }
   .meta { color: var(--muted); font-size: 13px; }
   /* Series tabs: short names, colour dot per series, green live dot, edge fades + arrows when they overflow */
   .nav-wrap { position: relative; margin: 22px 0 8px; }
@@ -657,7 +658,7 @@
 <div class="wrap">
   <header>
     <a class="about-link" href="about.html">About</a>
-    <h1><img class="logo" src="assets/logo.svg" alt="" width="44" height="44">Toy <span>Ticker</span></h1>
+    <h1><a class="home" href="./" aria-label="Toy Ticker home"><img class="logo" src="assets/logo.svg" alt="" width="44" height="44">Toy <span>Ticker</span></a></h1>
     <div class="meta" id="meta">Loading…</div>
     <div class="search" role="search">
       <input id="q" type="search" placeholder="Search toys and cards…" autocomplete="off" aria-label="Search toys and cards"
@@ -2319,6 +2320,12 @@ fetch("data/index.json", { cache: "no-store" })
       setTimeout(() => $("shareBtn").textContent = "↗ Share", 2000);
     };
     window.onpopstate = () => switchTo(new URLSearchParams(location.search).get("s"));
+    document.querySelector("header h1 a.home").addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;  // let new-tab clicks through
+      e.preventDefault();
+      if (location.search) history.pushState(null, "", "./");
+      switchTo(null); window.scrollTo({ top: 0, behavior: "smooth" });
+    });
     go(new URLSearchParams(location.search).get("s"));
   })
   .catch(e => { $("meta").textContent = "Couldn't load price data: " + e.message; });
