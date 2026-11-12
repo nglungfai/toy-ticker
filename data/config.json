@@ -1,6 +1,7 @@
 {
  "_comment": "Happy Meal series tracked on eBay (US, active Buy It Now listings). Each item: q = eBay search, match = title must hit one alternative from every group, not = words that rule a title out. Series require = groups every title must hit.",
  "site_url": "https://nglungfai.github.io/toy-ticker/",
+ "epn_campaign_id": "5339247181",
  "series": [
   {
    "id": "pokemon-2026",

@@ -14,6 +14,7 @@ import html
 import json
 import re
 import shutil
+import urllib.parse
 from datetime import date
 from pathlib import Path
 
@@ -23,6 +24,19 @@ HISTORY_ROWS = 14
 DEALS = 5
 
 esc = html.escape
+EPN_CAMPAIGN = json.loads((ROOT / "data" / "config.json").read_text()).get("epn_campaign_id")
+
+
+def aff(url, label="static"):
+    """Tag an ebay.com link with our eBay Partner Network campaign (same parameters as aff() in index.html)."""
+    u = urllib.parse.urlsplit(url or "")
+    if not EPN_CAMPAIGN or not re.search(r"(^|\.)ebay\.com$", u.hostname or ""):
+        return url
+    q = [(k, v) for k, v in urllib.parse.parse_qsl(u.query, keep_blank_values=True)
+         if k not in ("mkcid", "mkrid", "siteid", "campid", "customid", "toolid", "mkevt")]
+    q += [("mkcid", "1"), ("mkrid", "711-53200-19255-0"), ("siteid", "0"), ("campid", EPN_CAMPAIGN),
+          ("customid", label), ("toolid", "10001"), ("mkevt", "1")]
+    return urllib.parse.urlunsplit(u._replace(query=urllib.parse.urlencode(q)))
 
 
 def money(v):
@@ -183,7 +197,7 @@ PAGE = """<!doctype html>
 {body}
 <footer>
 <p>Prices are eBay US Buy It Now <b>asking</b> prices including shipping, collected daily with the eBay Browse API. Lots, sets and graded copies are filtered out. Not financial advice. <a href="../../about.html">Methodology</a></p>
-<p>Unofficial fan site. Not affiliated with or endorsed by McDonald’s, eBay or any toy brand. All trademarks belong to their owners.</p>
+<p>Unofficial fan site. Not affiliated with or endorsed by McDonald’s, eBay or any toy brand. All trademarks belong to their owners. As an eBay Partner, Toy Ticker may earn a commission from qualifying purchases made through its eBay links.</p>
 </footer>
 </div>
 </body></html>
@@ -339,7 +353,7 @@ def item_page(site, iid, today):
     deals = [x for x in (c.get("deals") or []) if x.get("url") and x.get("price") is not None][:DEALS]
     if deals:
         body.append("<h2>Cheapest listings right now</h2><ul>"
-                    + "".join(f'<li><a href="{esc(x["url"])}" rel="nofollow noopener" target="_blank">{esc(x.get("title") or "eBay listing")}</a> – {money(x["price"])}</li>' for x in deals)
+                    + "".join(f'<li><a href="{esc(aff(x["url"], "static-deal"))}" rel="sponsored noopener" target="_blank">{esc(x.get("title") or "eBay listing")}</a> – {money(x["price"])}</li>' for x in deals)
                     + "</ul>")
     siblings = [i for i in site.items[sid] if i != iid]
     if siblings:

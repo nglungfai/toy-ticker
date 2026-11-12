@@ -841,7 +841,7 @@
 
   <footer>
     <p id="foot"></p>
-    <p class="disclaimer">Unofficial fan site, not affiliated with McDonald’s or The Pokémon Company. <a href="about.html">About Toy Ticker</a></p>
+    <p class="disclaimer">Unofficial fan site, not affiliated with McDonald’s or The Pokémon Company. As an eBay Partner, Toy Ticker may earn a commission from qualifying purchases made through its eBay links. <a href="about.html">About Toy Ticker</a></p>
     <!-- seo:links -->
 <p class="disclaimer">Price lists: <a href="s/pokemon-happy-meal-2026/">Pokémon toys &amp; cards (2026)</a> · <a href="s/boo-buckets-2026/">Disney Villains Boo Buckets (2026)</a> · <a href="s/spongebob-onepiece-2026/">SpongeBob × One Piece (2026)</a> · <a href="s/hello-kitty-godzilla-2026/">Hello Kitty × Godzilla (2026)</a> · <a href="s/bt21-2026/">BT21 (2026)</a> · <a href="s/world-cup-squishmallows-2026/">FIFA World Cup Squishmallows (2026)</a></p>
 <!-- /seo:links -->
@@ -861,6 +861,18 @@ const daysBetween = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a
 const pct = (v) => v == null || !isFinite(v) ? "—" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
 const cls = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? "up" : "down";
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// eBay Partner Network: tag every ebay.com link with our campaign so purchases earn commission.
+// customid labels where the click came from (see EPN reports). Keep in sync with epn_campaign_id in data/config.json.
+const EPN_CAMPAIGN = "5339247181";
+function aff(url, label = "site") {
+  try {
+    const u = new URL(url);
+    if (!/(^|\.)ebay\.com$/.test(u.hostname) || u.searchParams.has("campid")) return url;
+    for (const [k, v] of Object.entries({ mkcid: "1", mkrid: "711-53200-19255-0", siteid: "0", campid: EPN_CAMPAIGN,
+      customid: label, toolid: "10001", mkevt: "1" })) u.searchParams.set(k, v);
+    return u.toString();
+  } catch { return url; }
+}
 const fmtDate = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
 const series = () => DATA.sets[SID];
 const isCards = () => series().kind === "cards";
@@ -1052,8 +1064,8 @@ function setBlock(sid) {
     ${save == null ? `<span class="sb-save flat">Set price only</span>`
       : `<span class="sb-save ${save >= 0.02 ? "up" : save <= -0.02 ? "down" : "flat"}">${save >= 0.02 ? `Save ${Math.round(save * 100)}% with a set`
         : save <= -0.02 ? `Singles ${Math.round(-save * 100)}% cheaper` : "About the same"}</span>`}
-    <div class="sb-links">${(fs.deals || []).length ? `Cheapest set: <a href="${esc(fs.deals[0].url)}" target="_blank" rel="noopener">${usd(fs.deals[0].price)} on eBay ↗</a> · ` : ""}
-      <a href="${esc(fs.search)}" target="_blank" rel="noopener">All complete-set listings ↗</a></div></div>`;
+    <div class="sb-links">${(fs.deals || []).length ? `Cheapest set: <a href="${esc(aff(fs.deals[0].url, "set-cheapest"))}" target="_blank" rel="sponsored noopener">${usd(fs.deals[0].price)} on eBay ↗</a> · ` : ""}
+      <a href="${esc(aff(fs.search, "set-search"))}" target="_blank" rel="sponsored noopener">All complete-set listings ↗</a></div></div>`;
 }
 
 // Section tabs under the quote header: Items (default), Deals, Trends, My collection.
@@ -1851,7 +1863,7 @@ const ebaySearch = (r) => `https://www.ebay.com/sch/i.html?_nkw=${encodeURICompo
   `mcdonalds ${r.set === "pokemon-2026" ? r.name + " " + r.number + "/015 2026" : (DATA.sets[r.set]?.name || "").replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`)}`;
 function dealCard(d, r) {
   const img = d.image ? `<img src="${esc(d.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : `<div class="ph sm"><span>#${esc(r.number)}</span></div>`;
-  return `<a class="deal" href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title)}">${img}
+  return `<a class="deal" href="${esc(aff(d.url, "deal"))}" target="_blank" rel="sponsored noopener" title="${esc(d.title)}">${img}
     <div><b>${esc(r.name)}</b>
     <div class="deal-row"><span class="deal-price">${usd(d.price)}</span><span class="off">${Math.round(d.below * 100)}% under</span></div>
     <small>${d.ship != null ? (d.ship ? `${usd(d.item)} + ${usd(d.ship)} shipping` : "free shipping") : "incl. shipping"}</small>
@@ -1900,7 +1912,7 @@ function renderDeals(all) {
   $("dealsNote").textContent = every.length
     ? `${every.length} listing${every.length > 1 ? "s" : ""} for ${withDeals.length} item${withDeals.length > 1 ? "s" : ""} asking 20%+ under today's median${flips ? ` · ${flips} would flip for a profit` : ""} · prices change fast, check before you buy`
     : "nothing 20%+ under today's median right now";
-  const extraRow = ({ d, p }) => `<a href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title)}">
+  const extraRow = ({ d, p }) => `<a href="${esc(aff(d.url, "deal-more"))}" target="_blank" rel="sponsored noopener" title="${esc(d.title)}">
       <b>${usd(d.price)}</b><span class="muted">${Math.round(d.below * 100)}% under</span><span class="t">${esc(d.title)}</span>
       ${p != null ? `<span class="${p >= 0 ? "up" : "down"}">${signUsd(p)}</span>` : "<span></span>"}</a>`;
   const page = groups.slice((DEAL_PAGE - 1) * DEALS_PER_PAGE, DEAL_PAGE * DEALS_PER_PAGE);
@@ -1950,7 +1962,7 @@ function renderComplete(all) {
           ${thumb(r, "sm", false)}
           <span class="mr-name"><b>${esc(r.name)}</b><small>${kindTag(r)}#${esc(r.number)}${r.low == null ? " · no listings yet" : r.price ? ` · usually ${usd(r.price)}` : ""}</small></span>
           <span class="mr-p ${r.low == null ? "na" : ""}">${r.low == null ? "—" : usd(r.low)}</span>
-          ${r.low == null ? "<span></span>" : `<a class="miss-go" href="${ebaySearch(r)}" target="_blank" rel="noopener" aria-label="Find ${esc(r.name)} on eBay">Find ↗</a>`}
+          ${r.low == null ? "<span></span>" : `<a class="miss-go" href="${esc(aff(ebaySearch(r), "missing"))}" target="_blank" rel="sponsored noopener" aria-label="Find ${esc(r.name)} on eBay">Find ↗</a>`}
         </div>`).join("")}
       <div class="mr-row miss-row mr-total" role="row"><span></span><span>Complete the set${priced.length < missing.length ? `<small>${missing.length - priced.length} with no listing yet</small>` : ""}</span>
         <span class="mr-p">${priced.length ? usd(cost) : "—"}</span><span></span></div>
@@ -2165,7 +2177,7 @@ function thumb(r, size, link = true) {
   const img = `<img class="pic ${size}" src="${esc(r.image)}" alt="${esc(r.name)}" loading="lazy" referrerpolicy="no-referrer"
     onerror="this.outerHTML=this.dataset.ph" data-ph="${esc(ph)}">`;
   return size === "lg" && link && r.imageLink
-    ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${img}</a>` : img;
+    ? `<a href="${esc(aff(r.imageLink, "photo"))}" target="_blank" rel="noopener">${img}</a>` : img;
 }
 
 // Photo inside a tilt wrapper; holo cards also get the rainbow shine.
@@ -2215,7 +2227,7 @@ function showDetail(id) {
   $("detail").hidden = false;
   $("dTitle").textContent = `${r.name}${isGroup() ? (kindOf(r) === "cards" ? " card" : " toy") : ""} #${r.number}`;
   $("dPic").innerHTML = `<div class="tilt${r.rarity === "Holo" ? " shine" : ""}">${thumb(r, "lg")}</div>` +
-    (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${esc(r.imageLink)}" target="_blank" rel="noopener">${esc(r.imageCredit)}</a>` : esc(r.imageCredit)}</div>` : "");
+    (r.image && r.imageCredit ? `<div class="credit">${r.imageLink ? `<a href="${esc(aff(r.imageLink, "photo"))}" target="_blank" rel="noopener">${esc(r.imageCredit)}</a>` : esc(r.imageCredit)}</div>` : "");
   const own = DATA.sets[r.set];
   const q = encodeURIComponent(`mcdonalds ${own.kind === "cards" ? r.name + " " + r.number + "/015 2026" : own.name.replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`);
   const cf = confidence(r);
@@ -2224,7 +2236,7 @@ function showDetail(id) {
     (r.last.itemMedian != null ? ` (item ${usd(r.last.itemMedian)} + ship ${usd(r.last.shipMedian)})` : "") +
     ` · 25th percentile ${usd(r.last.p25)} · ${r.count ?? 0} listings` +
     (r.last.supply > (r.count ?? 0) ? ` (about ${r.last.supply.toLocaleString()} on eBay in all)` : "") + ` · ` +
-    `<a href="https://www.ebay.com/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener">eBay sold listings</a>`;
+    `<a href="${esc(aff(`https://www.ebay.com/sch/i.html?_nkw=${q}&LH_Sold=1&LH_Complete=1`, "sold"))}" target="_blank" rel="sponsored noopener">eBay sold listings</a>`;
   renderVariants(r);
   renderAuction(r);
   if (chart) chart.destroy();
