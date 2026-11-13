@@ -300,10 +300,21 @@
   .deal b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .deal .deal-row { display: flex; align-items: center; gap: 8px; margin: 1px 0; }
   .deal .deal-price { font-family: var(--display); font-weight: 600; font-size: 18px; }
+  .resell { margin: 14px 0; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; line-height: 1.45; }
+  .resell[hidden] { display: none; }
+  .resell h4 { margin: 0 0 6px; font-family: var(--display); font-weight: 600; font-size: 15px; display: flex; gap: 8px; align-items: baseline; }
+  .resell h4 small { font-family: var(--body); font-weight: 500; font-size: 12px; color: #8a4b00; background: #fdf0d8; border-radius: 999px; padding: 1px 8px; }
+  .resell ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+  .resell .foot { margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .deal .scarce { font-size: 12px; font-weight: 700; color: #8a4b00; background: #fdf0d8; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
   .deal .off { font-size: 12px; font-weight: 700; color: #17663b; background: #e3f1ea; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
   .deal small { display: block; color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .deal .flip { font-weight: 700; }
   .deal .flip.up { color: var(--up); } .deal .flip.down { color: var(--down); }
+  .deal-take { display: grid; gap: 6px; margin: 0 0 14px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; line-height: 1.45; }
+  .deal-take[hidden] { display: none; }
+  .deal-take p { margin: 0; }
+  .deal-take b.who { font-family: var(--display); font-weight: 600; margin-right: 4px; }
   .flipbar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 13px; color: var(--muted); margin: -4px 0 12px; }
   .flipbar label { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
   .flipbar input { width: 4.6em; font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; text-align: right; }
@@ -356,12 +367,15 @@
   .hero-foot { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: center;
                margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
   .hero-foot .share-btn { margin-top: 0; }
+  .hero-value .save { color: #17663b; font-weight: 700; }
+  .hero-value .hero-links { display: block; margin-top: 2px; }
+  .hero-value .hero-links[hidden] { display: none; }
   @media (max-width: 640px) {
     .hero { padding: 24px 16px 14px; }
     .hero-note { display: none; }
     .hero-top { gap: 10px; }
     .hero-value { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 12px; }
-    .hero-value small:first-child, .hero-value #sPriced { grid-column: 1 / -1; }
+    .hero-value small:first-child, .hero-value #sPriced, .hero-value .hero-links { grid-column: 1 / -1; }
     .hero-returns { margin-top: 12px; }
     .hero-returns .ret-grid { gap: 4px; }
     .hero-returns .ret { padding: 6px 2px; border-radius: 6px; }
@@ -704,10 +718,11 @@
         <p class="hero-desc" id="sDesc" hidden></p>
       </div>
       <div class="hero-value">
-        <small>Full set · median price incl. shipping</small>
+        <small id="sLabel">Full set · median price incl. shipping</small>
         <b id="sTotal">—</b>
         <span class="hero-change" id="sChange"></span>
         <small id="sPriced"></small>
+        <small class="hero-links" id="sLinks" hidden></small>
       </div>
     </div>
     <div class="hero-returns" id="sReturns"></div>
@@ -744,6 +759,7 @@
   <div class="sec" data-sec="deals" hidden>
     <section class="deals-card" id="deals">
       <div class="ret-head"><h3>Deal finder<small id="dealsNote"></small></h3></div>
+      <div class="deal-take" id="dealsTake" hidden></div>
       <div class="flipbar" id="flipBarDeals"></div>
       <div class="deal-ctrls" id="dealCtrls"></div>
       <div class="deal-grid" id="dealGrid"></div>
@@ -818,6 +834,7 @@
         <div class="variants" id="dVariants" hidden></div>
         <div class="variants" id="dAuction" hidden></div>
         <div class="returns" id="dReturns"></div>
+        <div class="resell" id="dResell" hidden></div>
         <div class="item-deals" id="dDeals"></div>
         <div class="chart-box"><canvas id="dChart"></canvas></div>
         <div class="note" id="dNote"></div>
@@ -1241,9 +1258,13 @@ function render() {
   });
 
   const days = Math.max(0, ...full.map(r => r.h.length));
-  const first = full.map(r => r.h[0]?.date).filter(Boolean).sort()[0];
   const listings = full.reduce((s, r) => s + (r.count || 0), 0);
   const m = seriesSummary(SID);
+  const fs = !isGroup() && DATA.sets[SID].fullSet, fsH = fs?.history || [], fsLast = fsH[fsH.length - 1];
+  if (fsLast) { setHero(fs, fsH, fsLast, m); renderSeriesReturns(full, fsH); }
+  else {
+  $("sLabel").textContent = "Full set · median price incl. shipping";
+  $("sLinks").hidden = true; $("sSet").classList.remove("folded");
   $("sTotal").textContent = m.priced ? usd(m.total) : "—";
   $("sChange").className = "hero-change " + cls(m.d1);
   $("sChange").textContent = m.d1 != null ? `${m.d1 > 0 ? "▲" : m.d1 < 0 ? "▼" : ""} ${pct(m.d1)} today` : "";
@@ -1252,14 +1273,16 @@ function render() {
       return `<span class="split">${k} <b>${x.priced ? usd(x.total) : "—"}</b>${x.d1 != null ? ` <span class="${cls(x.d1)}">${pct(x.d1)}</span>` : ""}</span>`;
     }).join("") : `${m.priced} of ${m.n} ${kindWord(series())} priced`;
   renderSetBox();
+  renderSeriesReturns(full);
+  }
   $("sFacts").textContent = [listings ? `${listings} eBay listings today` : "",
-    days ? `${days} day${days > 1 ? "s" : ""} of prices since ${fmtDate(first)}` : "Price tracking starts with the next daily update",
+    days ? "" : "Price tracking starts with the next daily update",
     series().refresh === "weekly" ? "updated weekly" : ""].filter(Boolean).join(" · ");
   $("empty").hidden = m.priced > 0;
   renderSince(all);
-  renderSeriesReturns(full);
   renderDeals(all);
   if (SECTION === "market") renderInsights();
+  if (selected && !$("detail").hidden) renderResell(selected);
   const owned = full.filter(r => owns(r.id)).length;
   $("cMine").textContent = owned ? `${owned}/${full.length}` : "";
   showSection(SECTION, false);
@@ -1879,11 +1902,27 @@ function chartEvents(sid) {
 // Deal finder: today's listings asking at least 20% under the median, across this series.
 const ebaySearch = (r) => `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(
   `mcdonalds ${r.set === "pokemon-2026" ? r.name + " " + r.number + "/015 2026" : (DATA.sets[r.set]?.name || "").replace(/[×()]/g, " ") + " " + r.name.replace(/[×()]/g, " ")}`)}`;
+// An item is scarce when it has under 40% of the typical listings for the rest of its set (4+ items, 20+ typical),
+// on both counts we have: the listings we priced, and eBay's estimated supply. Either alone misleads: a broad search
+// (e.g. "Hello Kitty Godzilla") only gets its first 200 results priced, and the estimate swings with how wide a query is.
+function scarcity(sid) {
+  const rows = rowsFor(sid).filter(r => r.count != null);
+  const low = (r, f) => {
+    const others = rows.filter(x => x !== r && kindOf(x) === kindOf(r)).map(f).filter(v => v != null).sort((a, b) => a - b);
+    const typical = others.length >= 3 ? others[Math.floor(others.length / 2)] : null;
+    return f(r) != null && typical >= 20 && f(r) < typical * 0.4 ? typical : null;
+  };
+  return new Map(rows.map(r => {
+    const typical = low(r, x => x.count), est = low(r, x => x.last?.supply ?? x.count);
+    return [r.id, typical && est ? { n: r.count, typical } : null];
+  }).filter(([, v]) => v));
+}
+let SCARCE = new Map();
 function dealCard(d, r) {
   const img = d.image ? `<img src="${esc(d.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : `<div class="ph sm"><span>#${esc(r.number)}</span></div>`;
   return `<a class="deal" href="${esc(aff(d.url, "deal"))}" target="_blank" rel="sponsored noopener" title="${esc(d.title)}">${img}
     <div><b>${esc(r.name)}</b>
-    <div class="deal-row"><span class="deal-price">${usd(d.price)}</span><span class="off">${Math.round(d.below * 100)}% under</span></div>
+    <div class="deal-row"><span class="deal-price">${usd(d.price)}</span><span class="off">${Math.round(d.below * 100)}% under</span>${SCARCE.has(r.id) ? `<span class="scarce" title="${SCARCE.get(r.id).n} listings today vs about ${SCARCE.get(r.id).typical} for each of the others">Only ${SCARCE.get(r.id).n} listed</span>` : ""}</div>
     <small>${d.ship != null ? (d.ship ? `${usd(d.item)} + ${usd(d.ship)} shipping` : "free shipping") : "incl. shipping"}</small>
     ${r.price ? (() => { const p = netSale(r.price) - d.price; return `<small class="flip ${p >= 0 ? "up" : "down"}" title="Resell at ${FLIP.at}% of the ${usd(r.price)} median, minus ~${FLIP.fee}% fees + ${usd(FLIP.order)} and ${usd(FLIP.post)} postage">${p >= 0 ? `≈ ${signUsd(p)} if resold` : `≈ ${signUsd(p)} if resold (no flip)`}</small>`; })() : ""}
     <small>${esc(d.title)} · eBay ↗</small></div></a>`;
@@ -1899,12 +1938,61 @@ const DEAL_SORTS = {
   profit: { label: "Best resale profit", key: (x) => -(x.p ?? -1e9) - x.d.below / 1000 },
   price: { label: "Lowest price", key: (x) => x.d.price },
 };
+// One line each for collectors and resellers: what today's listings mean for them.
+function dealTakeaways(all, every) {
+  const name = (r) => esc(r.name), lines = [];
+  // Collectors: is a complete set cheaper than gathering the singles? Otherwise, the biggest discount today.
+  const sets = KIND === "all" ? members(SID) : members(SID).filter(id => DATA.sets[id].kind === KIND);
+  // Medians on both sides, the same comparison as the header; the cheapest set is the link to act on.
+  const setLine = sets.map(id => {
+    const fs = DATA.sets[id].fullSet, last = fs?.history?.[fs.history.length - 1], rows = rowsFor(id);
+    if (!last || rows.some(r => r.price == null)) return null;
+    const set = last.median, singles = rows.reduce((t, r) => t + r.price, 0), n = rows.length;
+    const word = DATA.sets[id].kind === "cards" ? "cards" : "toys", cheap = fs.deals?.[0];
+    const link = cheap && cheap.price < set ? ` The cheapest sets start at <a href="${esc(aff(cheap.url, "set-cheapest"))}" target="_blank" rel="sponsored noopener">${usd(cheap.price)} ↗</a>; check they're complete.` : "";
+    return set < singles
+      ? `A complete ${isGroup() ? word.slice(0, -1) + " " : ""}set typically costs <b>${usd(set)}</b>, ${usd(singles - set)} less than buying all ${n} separately.${link}`
+      : `Buying all ${n} ${word} separately typically costs <b>${usd(singles)}</b>, ${usd(set - singles)} less than a complete set (${usd(set)}).`;
+  }).filter(Boolean);
+  const best = every.slice().sort((a, b) => b.d.below - a.d.below)[0];
+  const covered = new Set(every.map(x => x.r.id)).size;
+  lines.push(["Collectors", setLine.length ? setLine.join(" ")
+    : best ? `The deepest discount is <b>${name(best.r)} at ${usd(best.d.price)}</b>, ${Math.round(best.d.below * 100)}% under its usual ${usd(best.r.price)}. ${covered} of ${all.length} have a listing 20%+ under.`
+    : `Nothing is listed well under the going price today. Check back after the next update.`]);
+  // Resellers: does any single deal, or breaking up a set, pay after fees and postage?
+  const flips = every.filter(x => x.p > 0).sort((a, b) => b.p - a.p);
+  const breakUp = sets.map(id => {
+    const fs = DATA.sets[id].fullSet, buy = fs?.history?.[fs.history.length - 1]?.median, rows = rowsFor(id);
+    if (!buy || rows.some(r => r.price == null)) return null;
+    return { id, p: rows.reduce((t, r) => t + netSale(r.price), 0) - buy, n: rows.length };
+  }).filter(Boolean).sort((a, b) => b.p - a.p)[0];
+  let resell = flips.length
+    ? `${flips.length} cheap listing${flips.length > 1 ? "s" : ""} would resell at a profit after fees and postage. Best: <b>${name(flips[0].r)} at ${usd(flips[0].d.price)}, about ${signUsd(flips[0].p)}</b>.`
+    : every.length ? `No cheap single resells at a profit after fees and postage; these are buys to keep, not to flip.`
+    : `No cheap listings to flip today.`;
+  if (breakUp) resell += breakUp.p > 0
+    ? ` Splitting a typically priced set into singles makes about <b>${signUsd(breakUp.p)}</b> across ${breakUp.n} sales.`
+    : ` Splitting a set into singles loses about ${usd(-breakUp.p)}.`;
+  // Scarcity: the item with the fewest listings for its set, when it stands well apart from the rest.
+  const sc = all.filter(r => SCARCE.has(r.id)).sort((a, b) => SCARCE.get(a.id).n / SCARCE.get(a.id).typical - SCARCE.get(b.id).n / SCARCE.get(b.id).typical)[0];
+  if (sc) {
+    const x = SCARCE.get(sc.id), deal = every.filter(e => e.r.id === sc.id).sort((a, b) => b.p - a.p)[0];
+    const priciest = all.filter(r => kindOf(r) === kindOf(sc) && r.price != null).every(r => r.price <= sc.price);
+    resell += ` <b>${name(sc)}</b> is the scarce one: ${x.n} listed vs about ${x.typical} for each of the others${priciest ? ", with the highest median" : ""}.` +
+      (deal ? deal.p > 0 ? ` Its ${usd(deal.d.price)} listing pays today, about ${signUsd(deal.p)}.` : ` Its ${usd(deal.d.price)} listing doesn't pay today, but it's the one to watch.` : " It's the one to watch.");
+  }
+  lines.push(["Resellers", resell]);
+  return lines.map(([who, t]) => `<p><b class="who">${who}:</b> ${t}</p>`).join("");
+}
 function resetDeals() { DEAL_PAGE = 1; DEAL_ITEM = ""; DEAL_OPEN.clear(); }
 function renderDeals(all) {
   flipBar("flipBarDeals", true);
   $("dealsFlip").innerHTML = insFlip();
   const priced = all.some(r => r.price != null);
   const every = all.flatMap(r => (r.deals || []).map(d => ({ d, r, p: dealProfit(d, r) })));
+  SCARCE = scarcity(SID);
+  $("dealsTake").innerHTML = priced ? dealTakeaways(all, every) : "";
+  $("dealsTake").hidden = !priced;
   $("cDeals").textContent = list_count(all) || "";
   if (!priced) {
     $("dealsNote").textContent = ""; $("dealCtrls").innerHTML = ""; $("dealMore").hidden = true;
@@ -2058,7 +2146,7 @@ function periodReturns(pts) {
       // Weekly series have gaps: only use a snapshot reasonably close to the period start (1D needs yesterday).
       if (base && span !== "ytd" && daysBetween(base.date, target) > Math.max(1, Math.round(span * 0.3))) base = null;
     }
-    return { label, r: base && base !== last && base.v ? last.v / base.v - 1 : null };
+    return { label, base: base?.date, r: base && base !== last && base.v ? last.v / base.v - 1 : null };
   });
 }
 function retTile({ label, r }) {
@@ -2067,32 +2155,58 @@ function retTile({ label, r }) {
   const sign = r > 0.00005 ? "" : r < -0.00005 ? "−" : "";
   return `<div class="ret ${r >= 0 ? "up" : "dn"}${lvl}"><b>${sign}${(a * 100).toFixed(2)}%</b><span>${label}</span></div>`;
 }
-let RET_KEY = "median";
-function returnsBlock(title, note, pts) {
-  return `<div class="ret-head"><h3>${title}${note ? `<small>${note}</small>` : ""}</h3>
-    <div class="ret-tabs" role="group" aria-label="Price measure">
-      <button data-ret="median" aria-pressed="${RET_KEY === "median"}">Median</button>
-      <button data-ret="low" aria-pressed="${RET_KEY === "low"}">Lowest</button>
-    </div></div>
-    <div class="ret-grid">${periodReturns(pts).map(retTile).join("")}</div>`;
+const RET_KEY = "median";
+// Only periods the history reaches, and each starting point once: with two days of data 1D, YTD and All are the same number.
+function returnTiles(pts) {
+  const seen = new Set();
+  return periodReturns(pts).filter(t => t.r != null && !seen.has(t.base) && seen.add(t.base));
 }
-function wireRetTabs(root, rerender) {
-  root.querySelectorAll("[data-ret]").forEach(b => b.onclick = (e) => { e.stopPropagation(); RET_KEY = b.dataset.ret; rerender(); });
+function returnsBlock(title, note, tiles) {
+  return `<div class="ret-head"><h3>${title}${note ? `<small>${note}</small>` : ""}</h3></div>
+    <div class="ret-grid" style="--n:${tiles.length}">${tiles.map(retTile).join("")}</div>`;
 }
 
-// Full-set returns: sum of the chosen price over items priced on every day.
-function renderSeriesReturns(all) {
+// Headline for a single series: what a complete set costs, compared with buying every item separately.
+function setHero(fs, fsH, last, m) {
+  const prev = fsH[fsH.length - 2], d1 = prev?.median ? last.median / prev.median - 1 : null;
+  $("sLabel").textContent = "Complete set on eBay · median incl. shipping";
+  $("sTotal").textContent = usd(last.median);
+  $("sChange").className = "hero-change " + cls(d1);
+  $("sChange").textContent = d1 != null ? `${d1 > 0 ? "▲" : d1 < 0 ? "▼" : ""} ${pct(d1)} today` : "";
+  const save = m.priced === m.n && m.total ? 1 - last.median / m.total : null, word = kindWord(series());
+  $("sPriced").innerHTML = save == null ? `${m.priced} of ${m.n} ${word} priced separately so far`
+    : save >= 0.02 ? `<span class="save">${Math.round(save * 100)}% less</span> than buying all ${m.n} separately (${usd(m.total)})`
+    : save <= -0.02 ? `Buying all ${m.n} separately is ${Math.round(-save * 100)}% cheaper (${usd(m.total)})`
+    : `About the same as buying all ${m.n} separately (${usd(m.total)})`;
+  $("sLinks").hidden = false;
+  $("sLinks").innerHTML = `${last.count} listing${last.count > 1 ? "s" : ""}` +
+    ((fs.deals || []).length ? ` · cheapest <a href="${esc(aff(fs.deals[0].url, "set-cheapest"))}" target="_blank" rel="sponsored noopener">${usd(fs.deals[0].price)} ↗</a>` : "") +
+    ` · <a href="${esc(aff(fs.search, "set-search"))}" target="_blank" rel="sponsored noopener">all sets ↗</a>`;
+  $("sSet").hidden = true;
+}
+
+// Series returns: the complete-set price when there is one, else the sum of medians over items priced every day.
+function renderSeriesReturns(all, fsH) {
+  if (fsH) {
+    const tiles = returnTiles(fsH.map(p => ({ date: p.date, v: p.median })));
+    // A lone 1D tile repeats "today" under the headline price.
+    const only1D = tiles.length === 1 && tiles[0].label === "1D";
+    $("sReturns").hidden = !tiles.length || only1D;
+    $("sReturns").innerHTML = only1D ? "" : returnsBlock("Returns", "complete set", tiles);
+    return;
+  }
+  $("sReturns").hidden = false;
   const dates = [...new Set(all.flatMap(r => r.h.map(p => p.date)))].sort();
   const full = all.filter(r => dates.length && dates.every(d => r.h.some(p => p.date === d && p[RET_KEY] != null)));
   const pts = full.length ? dates.map(d => ({ date: d, v: full.reduce((s, r) => s + r.h.find(p => p.date === d)[RET_KEY], 0) })) : [];
-  $("sReturns").innerHTML = returnsBlock("Returns", `full set · ${full.length} of ${all.length} priced every day`, pts);
-  wireRetTabs($("sReturns"), () => { render(); if (selected) renderItemReturns(selected); });
+  $("sReturns").innerHTML = returnsBlock("Returns", full.length < all.length ? `full set · ${full.length} of ${all.length} priced every day` : "full set", returnTiles(pts));
 }
 function renderItemReturns(id) {
   const r = rowsFor(SID).find(x => x.id === id);
   if (!r) return;
-  $("dReturns").innerHTML = returnsBlock("Returns", "", r.h.map(p => ({ date: p.date, v: p[RET_KEY] })));
-  wireRetTabs($("dReturns"), () => { render(); renderItemReturns(id); });
+  const tiles = returnTiles(r.h.map(p => ({ date: p.date, v: p.median })));
+  $("dReturns").hidden = !tiles.length;
+  $("dReturns").innerHTML = returnsBlock("Returns", "", tiles);
 }
 
 // Search across every item in every series. "/" focuses the box; arrows + Enter pick a result.
@@ -2345,6 +2459,7 @@ function showDetail(id) {
   let weeks;
   ({ chart, weeks } = priceChart($("dChart"), r.h, sold, soldTo, chartEvents(SID)));
   renderItemReturns(id);
+  renderResell(id);
   $("dDeals").innerHTML = (r.deals || []).length
     ? `<h4>Deals today</h4><div class="deal-grid">${r.deals.map(d => dealCard(d, r)).join("")}</div>` : "";
   $("dNote").textContent = (sold.length
@@ -2355,6 +2470,54 @@ function showDetail(id) {
     : r.h.length < 3 && !sold.length ? "Only a few days collected so far. The chart fills in as the daily job runs." : "");
   render();
   $("detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+// "For resellers": facts from this item's own numbers, each shown only when there's enough data behind it.
+// No buy/hold advice: the break-even price and the evidence, and the reader decides.
+const takeHome = (sale) => sale * (1 - FLIP.fee / 100) - FLIP.order - FLIP.post;
+function renderResell(id) {
+  const r = rowsFor(SID).find(x => x.id === id), box = $("dResell");
+  if (!r || r.price == null) { box.hidden = true; return; }
+  const own = DATA.sets[r.set], lines = [];
+  // What it sells for: the last 4 weeks of sold medians, weighted by sales.
+  const weeks = (DATA.sold[id] || []).slice(-4), nSold = weeks.reduce((t, w) => t + (w.count || 0), 0);
+  const sold = nSold ? weeks.reduce((t, w) => t + w.median * (w.count || 0), 0) / nSold : null;
+  const sale = sold ?? r.price * FLIP.at / 100, early = nSold < 5;
+  const be = takeHome(sale);
+  lines.push(be > 0
+    ? `<b>Pays to resell if you buy at ${usd(be)} or less</b>, shipping included. That's selling at ${sold ? `the ${usd(sold)} it has been selling for` : `${FLIP.at}% of the ${usd(r.price)} asking median`}, after ~${FLIP.fee}% fees, ${usd(FLIP.order)} per order and ${usd(FLIP.post)} postage.` +
+      (r.low != null ? ` The cheapest listing today is ${usd(r.low)}${r.low <= be ? ", under that" : `, ${usd(r.low - be)} over`}.` : "")
+    : `<b>Doesn't pay to resell on its own:</b> at about ${usd(sale)} a sale, fees and ${usd(FLIP.post)} postage take it all. Sell it in a lot or a set.`);
+  if (sold) lines.push(`Sells for about <b>${usd(sold)}</b> (${nSold} sale${nSold > 1 ? "s" : ""}), ${Math.abs(Math.round((1 - sold / r.price) * 100))}% ${sold < r.price ? "under" : "over"} what sellers ask (${usd(r.price)}).`);
+  // Rank within its set (same kind), against the average of the others.
+  const peers = rowsFor(r.set).filter(x => x.price != null && kindOf(x) === kindOf(r));
+  if (peers.length >= 4) {
+    const others = peers.filter(x => x !== r), avgO = others.reduce((t, x) => t + x.price, 0) / others.length;
+    const rank = peers.filter(x => x.price > r.price).length + 1, diff = r.price / avgO - 1;
+    lines.push(rank === 1 ? `Priciest of the ${peers.length}, about ${Math.round(diff * 100)}% above the others' average.`
+      : rank === peers.length ? `Cheapest of the ${peers.length}, about ${Math.round(-diff * 100)}% below the others' average.`
+      : `#${rank} of ${peers.length} by price, ${Math.abs(Math.round(diff * 100))}% ${diff >= 0 ? "above" : "below"} the others' average.`);
+  }
+  // How fast it sells: listings Toy Ticker followed until they closed.
+  const st = own.insights?.sales?.items?.[id];
+  if (st?.closed >= 3) lines.push(`${st.sold} of ${st.closed} followed listings sold${st.days ? `, in about ${st.days} day${st.days > 1 ? "s" : ""}` : ""}: ${st.rate >= .7 ? "sells fast" : st.rate >= .4 ? "sells steadily" : "slow to sell"}.`);
+  else if (st?.closed) lines.push(`${st.sold} of ${st.closed} followed listing${st.closed > 1 ? "s" : ""} sold so far. Too few to say how fast it sells.`);
+  // Sealed premium, once there are enough sealed listings to trust it.
+  const c = r.last.cond;
+  if (c?.sealed?.count >= 5 && c.other?.median) {
+    const prem = c.sealed.median / c.other.median - 1;
+    if (Math.abs(prem) >= .05) lines.push(`Sealed asks ${Math.abs(Math.round(prem * 100))}% ${prem > 0 ? "more" : "less"} (${usd(c.sealed.median)} vs ${usd(c.other.median)}, ${c.sealed.count} sealed listings).`);
+  }
+  // Trend: needs about 3 weeks of sold prices.
+  const all = DATA.sold[id] || [];
+  if (all.length >= 3) {
+    const a = all[all.length - 3].median, b = all[all.length - 1].median, t = b / a - 1;
+    lines.push(`Sold prices over the last 3 weeks: ${Math.abs(t) < .05 ? "steady" : `${t > 0 ? "up" : "down"} ${Math.abs(Math.round(t * 100))}%`} (${usd(a)} → ${usd(b)}).`);
+  } else lines.push(`Too early to tell which way prices are heading: that takes about 3 weeks of sales.`);
+  box.hidden = false;
+  box.innerHTML = `<h4>For resellers${early ? `<small>Early read: ${nSold ? `${nSold} sale${nSold > 1 ? "s" : ""}` : "no sales yet"}</small>` : ""}</h4>
+    <ul>${lines.map(l => `<li>${l}</li>`).join("")}</ul>
+    <div class="foot">Uses the resale settings on the Deals tab. Estimates from eBay data, not financial advice.</div>`;
 }
 
 const defaultSeries = () => shownSets().sort((a, b) => a[1].order - b[1].order)[0][0];
