@@ -1861,7 +1861,11 @@ Chart.register({
 const shortName = (id) => THEMES[id]?.short || DATA.sets[id].name.split(/ × | /)[0];
 // Extra room above the data (top only) so event labels never sit on the price lines.
 // Narrow charts stack labels into more rows, so they get more room.
+// The y-axis always spans at least 30% of the price, so a 20-cent move on a $33 toy reads as flat, not a crash.
+const MIN_SPAN = .3;
 const headroom = (k) => ({ afterDataLimits(sc) {
+  const mid = (sc.max + sc.min) / 2, span = Math.max(sc.max - sc.min, mid * MIN_SPAN);
+  if (span > sc.max - sc.min) { sc.min = Math.max(0, mid - span / 2); sc.max = sc.min + span; }
   sc.max += (sc.max - sc.min || sc.max || 1) * k * (sc.chart.width < 500 ? 1.8 : 1); } });
 function chartEvents(sid) {
   const s = DATA.sets[sid], own = (THEMES[sid] || DEFAULT_THEME).chart, ev = [];
