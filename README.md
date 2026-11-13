@@ -19,3 +19,16 @@ Run locally:
 EBAY_CLIENT_ID=... EBAY_CLIENT_SECRET=... python3 scripts/fetch_prices.py
 python3 -m http.server 8765   # then open http://localhost:8765
 ```
+
+## Backfilling past sold prices (Terapeak)
+
+Daily data only goes back to when tracking began. To fill in a past series, export its sold listings from
+eBay Seller Hub > Research > Product research (Sold tab), one search per item or one for the whole series,
+and import them:
+
+```bash
+python3 scripts/import_terapeak.py boo-buckets-2026 ~/Downloads/terapeak-*.csv --report /tmp/report.txt
+```
+
+Rows go through the same title rules as the daily prices; check the report for what was skipped.
+The result goes to `data/backfill/<series>.json` and shows as weekly sold medians on each item's chart.
