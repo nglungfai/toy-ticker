@@ -37,8 +37,10 @@ class Fonts:
         if key not in self.cache:
             f = ImageFont.truetype(str(self.path), size)
             try:
-                axes = [a["name"] for a in f.get_variation_axes()]
-                f.set_variation_by_axes([weight if n == b"Weight" else 100 for n in axes])
+                # Weight as asked, optical size to match the text size (px -> pt), other axes at their default.
+                want = {b"Weight": weight, b"Optical size": size * 0.75}
+                f.set_variation_by_axes([min(max(want.get(a["name"], a["default"]), a["minimum"]), a["maximum"])
+                                         for a in f.get_variation_axes()])
             except Exception:  # noqa: BLE001 - static font fallback
                 pass
             self.cache[key] = f
@@ -209,7 +211,7 @@ def site_image(units_, F, site_label):
 
 def build(data, root, site_url):
     root = Path(root)
-    F = Fonts(root / "assets" / "fonts" / "Fredoka.ttf")
+    F = Fonts(root / "assets" / "fonts" / "BricolageGrotesque.ttf")
     site_label = "Toy Ticker"
     today = date.today().isoformat()
     (root / "og").mkdir(exist_ok=True)
