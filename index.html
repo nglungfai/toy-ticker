@@ -7,7 +7,7 @@
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta name="description" content="Daily eBay prices for McDonald's Happy Meal toys and Pokémon cards.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Toy Ticker · Happy Meal toy prices">
@@ -22,6 +22,8 @@
 <!-- /seo:jsonld -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
+  :root { --display: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   :root {
     --bg: #fafaf7; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #e6e5df;
     --accent: #d62300; --accent-soft: #fde9e4; --up: #1a7f37; --down: #c62828; --gold: #f2b705;
@@ -41,7 +43,7 @@
 
   /* Display font + logo */
   h1, h2, .hero h2, .hero-value b, .stat b, .tile-price, .since b, .mine .big, .tile-name {
-    font-family: "Fredoka", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    font-family: var(--display); }
   header h1 { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 30px; }
   .tile-name { font-weight: 600; }
   .logo { flex: none; width: 44px; height: 44px; transition: transform .3s; }
@@ -57,7 +59,7 @@
   .enter > * { animation: rise .35s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
   body { margin: 0; background: var(--bg); color: var(--text);
-         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+         font: 15px/1.5 var(--body); }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
   header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
   header h1 span { color: var(--accent); }
@@ -72,7 +74,7 @@
   .nav-wrap.can-l.can-r nav.series { -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
                                      mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
   nav.series a, nav.series .all-btn { flex: none; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
-      font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-decoration: none; cursor: pointer;
+      font: 600 14px/1 var(--body); text-decoration: none; cursor: pointer;
       color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px 9px 11px; }
   nav.series a:hover, nav.series .all-btn:hover { border-color: var(--muted); }
   nav.series a .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--dot); flex: none; }
@@ -91,7 +93,7 @@
   /* Series browser */
   .browser { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin: 8px 0 16px; }
   .browser-head { display: flex; flex-wrap: wrap; gap: 10px 16px; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .browser-head h3 { margin: 0; font-family: "Fredoka", sans-serif; font-size: 19px; }
+  .browser-head h3 { margin: 0; font-family: var(--display); font-size: 19px; }
   .browser-head small { color: var(--muted); font-size: 13px; font-weight: 400; font-family: inherit; }
   .browser-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .chips { display: inline-flex; gap: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
@@ -100,16 +102,16 @@
   #bFilter { font: inherit; font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line);
              background: var(--bg); color: var(--text); width: 170px; }
   .b-close { font: inherit; border: 0; background: none; color: var(--muted); font-size: 16px; cursor: pointer; padding: 4px 8px; }
-  .b-year { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 15px; color: var(--muted); margin: 14px 0 8px; }
+  .b-year { font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--muted); margin: 14px 0 8px; }
   .b-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
   .b-card { display: block; text-align: left; font: inherit; color: var(--text); cursor: pointer; background: var(--bg);
             border: 1px solid var(--line); border-left: 6px solid var(--bc, var(--line)); border-radius: 0 12px 12px 0; padding: 12px 14px; }
   .b-card:hover, .b-card:focus-visible { background: var(--panel); box-shadow: 0 6px 18px rgba(0,0,0,.08); outline: none; }
   .b-card.cur { box-shadow: 0 0 0 2px var(--text); }
-  .b-card b { display: block; font-family: "Fredoka", sans-serif; font-size: 16px; font-weight: 600; }
+  .b-card b { display: block; font-family: var(--display); font-size: 16px; font-weight: 600; }
   .b-card small { display: block; color: var(--muted); font-size: 12px; }
   .b-val { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; }
-  .b-val span:first-child { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .b-val span:first-child { font-family: var(--display); font-weight: 600; font-size: 18px; font-variant-numeric: tabular-nums; }
   .b-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
   .series-head { margin: 16px 0 16px; }
   .series-head h2 { margin: 0; font-size: 20px; }
@@ -165,7 +167,7 @@
   .meal-btn:hover { filter: brightness(1.08); }
   .meal { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin: 0 0 16px; }
   .meal-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-  .meal-head h3 { margin: 0; font-family: "Fredoka", sans-serif; font-size: 20px; }
+  .meal-head h3 { margin: 0; font-family: var(--display); font-size: 20px; }
   .meal-hint { color: var(--muted); font-size: 14px; margin: 4px 0 12px; }
   .mine-all { font-size: 13px; color: var(--muted); }
   .mine-all b { color: var(--text); }
@@ -191,7 +193,7 @@
   .mr-grid { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(0, 1.6fr); gap: 20px; align-items: start; }
   .mr-sum { text-align: center; padding: 8px 4px; }
   .mr-sum small { color: var(--muted); font-size: 13px; }
-  .meal-result .worth { font-family: "Fredoka", sans-serif; font-size: 40px; font-weight: 600; line-height: 1.1; margin: 2px 0 6px; }
+  .meal-result .worth { font-family: var(--display); font-size: 40px; font-weight: 600; line-height: 1.1; margin: 2px 0 6px; }
   .meal-result .x { display: inline-block; font-weight: 700; font-size: 15px; padding: 3px 12px; border-radius: 999px; }
   .meal-result .x.up { background: #e3f1ea; color: #17663b; } .meal-result .x.down { background: #fbe4e4; color: #b52a2a; }
   .mr-msg { margin: 10px 0 4px; font-size: 14px; }
@@ -215,7 +217,7 @@
   .mr-rm { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 14px; padding: 4px; border-radius: 6px; }
   .mr-rm:hover { color: var(--down); background: var(--bg); }
   .mr-total { border-bottom: 0; font-weight: 700; }
-  .mr-total .mr-p { font-family: "Fredoka", sans-serif; font-size: 16px; }
+  .mr-total .mr-p { font-family: var(--display); font-size: 16px; }
   .mr-note { margin: 12px 0 0; text-align: center; color: var(--muted); font-size: 12px; }
   .mr-qty { display: none; font-weight: 700; color: var(--text); }
   @media (max-width: 760px) { .mr-grid { grid-template-columns: 1fr; gap: 12px; } }
@@ -297,7 +299,7 @@
   .deal div { min-width: 0; flex: 1; }
   .deal b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .deal .deal-row { display: flex; align-items: center; gap: 8px; margin: 1px 0; }
-  .deal .deal-price { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 18px; }
+  .deal .deal-price { font-family: var(--display); font-weight: 600; font-size: 18px; }
   .deal .off { font-size: 12px; font-weight: 700; color: #17663b; background: #e3f1ea; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
   .deal small { display: block; color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .deal .flip { font-weight: 700; }
@@ -315,7 +317,7 @@
   @media (max-width: 640px) { .flip-table .hide-sm { display: none; } }
   .deal .go { color: var(--accent); font-size: 13px; font-weight: 600; white-space: nowrap; }
   .item-deals { margin-top: 12px; }
-  .item-deals h4 { margin: 0 0 8px; font-size: 15px; font-family: "Fredoka", sans-serif; }
+  .item-deals h4 { margin: 0 0 8px; font-size: 15px; font-family: var(--display); }
   .item-deals .deal-grid { grid-template-columns: 1fr; }
 
   /* Set completion */
@@ -323,7 +325,7 @@
   .miss-card { margin-top: 14px; padding: 16px; border-radius: 14px; background: var(--bg); }
   .miss-card.done { text-align: center; font-size: 16px; }
   .miss-head { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4px 10px; }
-  .miss-head b { font-family: "Fredoka", sans-serif; font-size: 18px; font-weight: 600; }
+  .miss-head b { font-family: var(--display); font-size: 18px; font-weight: 600; }
   .miss-head span { color: var(--muted); font-size: 13px; }
   .mr-row.miss-row { grid-template-columns: 34px minmax(0, 1fr) 90px 64px; }
   .miss-row .pic, .miss-row .ph { opacity: .75; }
@@ -386,7 +388,7 @@
   .setbox[hidden] { display: none; }
   .setbox .sb { display: grid; grid-template-columns: 1fr auto 1fr auto; gap: 8px 16px; align-items: center; }
   .setbox .sb-col small { display: block; color: var(--muted); font-size: 12px; }
-  .setbox .sb-col b { font-family: "Fredoka", sans-serif; font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .setbox .sb-col b { font-family: var(--display); font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .setbox .sb-col .conf { margin-left: 6px; }
   .setbox .sb-vs { color: var(--muted); font-size: 13px; font-weight: 600; }
   .setbox .sb-save { font-weight: 700; font-size: 14px; padding: 5px 12px; border-radius: 999px; white-space: nowrap; text-align: center; }
@@ -527,7 +529,7 @@
   .variants h5 { grid-column: 1 / -1; margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
   .variant { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; }
   .variant small { display: block; color: var(--muted); font-size: 12px; }
-  .variant b { display: block; font-family: "Fredoka", sans-serif; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .variant b { display: block; font-family: var(--display); font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .variant em { font-style: normal; font-size: 12px; font-weight: 600; }
   .variants p { grid-column: 1 / -1; margin: 0; font-size: 12px; color: var(--muted); }
   .conf-why { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; }
@@ -551,7 +553,7 @@
   .returns-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 20px; }
   .returns { margin-top: 12px; }
   .ret-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; gap: 12px; }
-  .ret-head h3 { margin: 0; font-size: 17px; font-family: "Fredoka", sans-serif; }
+  .ret-head h3 { margin: 0; font-size: 17px; font-family: var(--display); }
   .ret-head small { color: var(--muted); font-size: 12px; margin-left: 6px; font-weight: 400; font-family: inherit; }
   .ret-tabs { display: inline-flex; gap: 14px; font-size: 14px; }
   .ret-tabs button { border: 0; background: none; font: inherit; color: var(--text); cursor: pointer; padding: 2px 0;
@@ -579,14 +581,14 @@
   .chase-top .pic, .chase-top .ph { width: 64px; flex: none; }
   .chase-top span { min-width: 0; }
   .chase-top small { display: block; font-size: 12px; color: var(--muted); }
-  .chase-top b { display: block; font-family: "Fredoka", sans-serif; font-size: 19px; font-weight: 600; line-height: 1.2; }
+  .chase-top b { display: block; font-family: var(--display); font-size: 19px; font-weight: 600; line-height: 1.2; }
   .chase-top em { font-style: normal; font-size: 13px; color: var(--accent); font-weight: 600; }
   .ins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
   .ins { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; min-width: 0; }
   .ins.wide { grid-column: 1 / -1; }
-  .ins h4 { margin: 0 0 2px; font-family: "Fredoka", sans-serif; font-size: 17px; font-weight: 600; }
+  .ins h4 { margin: 0 0 2px; font-family: var(--display); font-size: 17px; font-weight: 600; }
   .ins .q { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
-  .ins .big { font-family: "Fredoka", sans-serif; font-size: 30px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .ins .big { font-family: var(--display); font-size: 30px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
   .ins .big small { font-size: 14px; color: var(--muted); font-weight: 500; margin-left: 6px; font-family: inherit; }
   .ins p { margin: 8px 0 0; font-size: 14px; line-height: 1.45; }
   .ins .foot { margin-top: 12px; font-size: 12px; color: var(--muted); line-height: 1.4; }
@@ -603,13 +605,17 @@
   .legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: 12px; color: var(--muted); }
   .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
   .ins-sub { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 14px 0 0; }
-  .since { display: grid; grid-template-columns: minmax(220px, 1fr) 2fr; gap: 20px; align-items: center;
+  .since { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center;
            background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 20px; }
   .since small { color: var(--muted); font-size: 13px; }
   .since b { display: block; font-size: 30px; font-variant-numeric: tabular-nums; line-height: 1.2; }
   .since-sub { font-size: 13px; color: var(--muted); }
   .since-movers { font-size: 13px; margin-top: 8px; display: grid; gap: 2px; }
-  .since-chart { position: relative; height: 150px; min-width: 0; }
+  .set-chart { margin-top: 18px; }
+  .set-chart h3 { margin: 0 0 2px; font-size: 17px; }
+  .set-chart .sub { color: var(--muted); font-size: 13px; }
+  .set-chart .chart-box { position: relative; height: 300px; margin-top: 10px; }
+  .set-chart .note { font-size: 13px; color: var(--muted); margin-top: 8px; }
   @media (max-width: 640px) {
     .since { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -719,25 +725,19 @@
   <nav class="sections" role="tablist" aria-label="Series sections">
     <button role="tab" data-sec="items" aria-selected="true">Items</button>
     <button role="tab" data-sec="deals" aria-selected="false">Deals <span class="count" id="cDeals"></span></button>
-    <button role="tab" data-sec="trends" aria-selected="false">Trends</button>
-    <button role="tab" data-sec="insights" aria-selected="false">Insights</button>
+    <button role="tab" data-sec="market" aria-selected="false">Market</button>
     <button role="tab" data-sec="mine" aria-selected="false">🎁 My Happy Meals <span class="count" id="cMine"></span></button>
   </nav>
 
-  <div class="sec" data-sec="trends" hidden>
+  <div class="sec" data-sec="market" hidden>
+    <div id="setCharts"></div>
     <section class="since" id="since" hidden>
       <div class="since-text">
-        <small id="sinceLabel">Since it left restaurants</small>
-        <b id="sinceChange"></b>
-        <div class="since-sub" id="sinceSub"></div>
+        <small id="sinceLabel">Biggest movers</small>
         <div class="since-movers" id="sinceMovers"></div>
       </div>
-      <div class="since-chart"><canvas id="sinceChart"></canvas></div>
     </section>
-    <p class="note" id="trendsEmpty" hidden>Trends appear once there are at least two days of prices.</p>
-  </div>
-
-  <div class="sec" data-sec="insights" hidden>
+    <p class="note" id="trendsEmpty" hidden>Movers appear once there are at least two days of prices.</p>
     <div class="ins-grid" id="insights"></div>
   </div>
 
@@ -749,6 +749,7 @@
       <div class="deal-grid" id="dealGrid"></div>
       <div class="deal-more" id="dealMore" hidden></div>
     </section>
+    <div class="ins-grid" id="dealsFlip"></div>
   </div>
 
   <div class="sec" data-sec="mine" hidden>
@@ -766,6 +767,7 @@
     <div class="meal-result" id="mealResult"></div>
     <div class="complete" id="complete" hidden></div>
   </section>
+  <div class="ins-grid" id="mineMeal"></div>
   </div>
 
   <div class="sec" data-sec="items">
@@ -874,6 +876,7 @@ function aff(url, label = "site") {
     return u.toString();
   } catch { return url; }
 }
+const fmtShort = (d) => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
 const fmtDate = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
 const series = () => DATA.sets[SID];
 const isCards = () => series().kind === "cards";
@@ -972,7 +975,11 @@ function loadSeries(sid) {
     backfill(),
   ]).then(([d, b]) => {
     Object.assign(DATA.history, d.history || {});
-    for (const [id, v] of Object.entries(b.items || {})) DATA.sold[id] = v.weeks || [];
+    // One sold line per item: Terapeak's weekly medians up to the export, then the ledger's own weekly
+    // medians from the next day on (listings.sold_weeks), so the two never overlap.
+    for (const [id, v] of Object.entries(b.items || {})) DATA.sold[id] = (v.weeks || []).map(w => ({ ...w, src: "terapeak" }));
+    if (b.fullSet?.weeks) DATA.sold[`${sid}-SET`] = b.fullSet.weeks.map(w => ({ ...w, src: "terapeak" }));
+    for (const [id, w] of Object.entries(d.sold || {})) DATA.sold[id] = [...(DATA.sold[id] || []), ...w];
     LOADED.add(sid);
   }).catch(() => { LOADED.add(sid); });
 }
@@ -1090,8 +1097,7 @@ function showSection(sec, scroll = true) {
   }
   document.querySelectorAll(".sec[data-sec]").forEach(d => d.hidden = d.dataset.sec !== sec);
   if (sec !== "items") $("detail").hidden = true;
-  if (sec === "trends") sinceChart?.resize();
-  if (sec === "insights") renderInsights();
+  if (sec === "market") { SET_CHARTS.forEach(c => c.resize()); renderInsights(); }
   if (sec === "mine") renderMineTab();
   if (scroll) document.querySelector(".sections").scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
@@ -1253,7 +1259,7 @@ function render() {
   renderSince(all);
   renderSeriesReturns(full);
   renderDeals(all);
-  if (SECTION === "insights") renderInsights();
+  if (SECTION === "market") renderInsights();
   const owned = full.filter(r => owns(r.id)).length;
   $("cMine").textContent = owned ? `${owned}/${full.length}` : "";
   showSection(SECTION, false);
@@ -1351,9 +1357,9 @@ const TINT = {
 };
 const toneOf = (v) => v == null || Math.abs(v) < 0.005 ? "flat" : v > 0 ? (v >= 0.15 ? "up2" : "up1") : (v <= -0.15 ? "down2" : "down1");
 async function drawQuoteCard(o) {
-  await document.fonts.load('700 40px "Fredoka"').catch(() => {});
+  await document.fonts.load('700 40px "Bricolage Grotesque"').catch(() => {});
   const T = THEMES[o.sid] || DEFAULT_THEME, W = 1080, M = 64, R = (x, ...a) => x.roundRect ? x.roundRect(...a) : x.rect(...a.slice(0, 4));
-  const F = (w, s) => `${w} ${s}px "Fredoka", -apple-system, sans-serif`;
+  const F = (w, s) => `${w} ${s}px "Bricolage Grotesque", -apple-system, sans-serif`;
   const BG = "#fafaf7", INK = "#1d1d1b", MUTED = "#6b6b66", LINE = "#e6e5df";
   // Layout heights first, so the canvas fits the content.
   // Up to 4 items: one roomy column. More: two compact columns so a whole collection fits.
@@ -1503,6 +1509,7 @@ function renderMineTab() {
   $("mineClear").hidden = !here;
   renderMineResult(full);
   renderComplete(full);
+  $("mineMeal").innerHTML = insMeal();
 }
 // Keep the picker's scroll position while counts change.
 function afterOwnChange() {
@@ -1578,7 +1585,7 @@ async function shareCollection() {
   }, `my-${SID}-happy-meals.png`, `My ${series().name} Happy Meal haul is worth ${usd(worth)} on Toy Ticker`);
 }
 function wireMine() {
-  $("mealPaid").oninput = () => { renderMineResult(rowsFor(SID)); try { localStorage.setItem("mealPaid", $("mealPaid").value); } catch (e) {} };
+  $("mealPaid").oninput = () => { renderMineResult(rowsFor(SID)); $("mineMeal").innerHTML = insMeal(); try { localStorage.setItem("mealPaid", $("mealPaid").value); } catch (e) {} };
   try { const v = localStorage.getItem("mealPaid"); if (v) $("mealPaid").value = v; } catch (e) {}
   $("mineClear").onclick = () => {
     if (!confirm(`Remove all your ${series().name} items from this browser?`)) return;
@@ -1686,8 +1693,7 @@ function insFlip() {
       </tbody></table>`;
   }).filter(Boolean);
   if (!blocks.length) return "";
-  return `<div class="ins wide"><h4>Reseller math: sets vs singles</h4><p class="q">Is there money in splitting complete sets, or in assembling them?</p>
-    <div class="flipbar" id="flipBarIns"></div>
+  return `<div class="ins wide"><h4>Reseller math: sets vs singles</h4><p class="q">Is there money in splitting complete sets, or in assembling them? Uses the resale settings above.</p>
     ${blocks.join("")}
     <div class="foot">Take-home = median asking price incl. shipping × your "sell at" %, minus eBay fees and your postage (${usd(FLIP.post)} per single, ${usd(FLIP.setPost)} per set).
       Fees are approximate and vary by category and seller. Asking prices run above what things sell for, and selling ${"many"} singles takes time. An estimate, not financial advice.</div></div>`;
@@ -1728,7 +1734,7 @@ function insMeal() {
       : `<b>${Math.round(m.beat * 100)}%</b> of possible ${esc(series().name)} Happy Meals are worth more than the meal itself (from ${usd(m.min)} to ${usd(m.max)}).`}</p>
     <p class="ins-sub">All 2026 series, per meal</p>
     ${insBars(rank.map(r => ({ label: THEMES[r.id]?.short || r.s.name, v: r.m.ev, cur: r.id === SID, c: seriesColor(r.id) })), usd)}
-    <div class="foot">Assumes every item is equally likely and uses today's median asking prices incl. shipping. A seller pockets less after eBay fees and postage. Change the meal price in the 🎁 My Happy Meals tab.</div></div>`;
+    <div class="foot">Assumes every item is equally likely and uses today's median asking prices incl. shipping. A seller pockets less after eBay fees and postage. Change the meal price above.</div></div>`;
 }
 function insChase() {
   const blocks = members(SID).map(id => {
@@ -1811,8 +1817,7 @@ function insSales() {
 }
 function renderInsights() {
   if (!DATA || !SID) return;
-  $("insights").innerHTML = insFlip() + insMeal() + insChase() + insDemand() + insSellers() + insSales();
-  if ($("flipBarIns")) flipBar("flipBarIns", true);
+  $("insights").innerHTML = insChase() + insSellers() + insDemand() + insSales();
   $("insights").querySelectorAll("[data-open]").forEach(b => b.onclick = () => { KIND = "all"; showSection("items"); showDetail(b.dataset.open); });
 }
 
@@ -1827,7 +1832,7 @@ Chart.register({
     const { ctx, chartArea: a, scales: { x } } = c;
     const H = 20, rows = [];
     ctx.save();
-    ctx.font = "600 12px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.font = `600 12px ${css("--body")}`;
     ctx.textBaseline = "middle";
     for (const ev of items) {
       if (ev.date < dates[0] || ev.date > dates[dates.length - 1]) continue;
@@ -1892,7 +1897,8 @@ const DEAL_SORTS = {
 };
 function resetDeals() { DEAL_PAGE = 1; DEAL_ITEM = ""; DEAL_OPEN.clear(); }
 function renderDeals(all) {
-  flipBar("flipBarDeals");
+  flipBar("flipBarDeals", true);
+  $("dealsFlip").innerHTML = insFlip();
   const priced = all.some(r => r.price != null);
   const every = all.flatMap(r => (r.deals || []).map(d => ({ d, r, p: dealProfit(d, r) })));
   $("cDeals").textContent = list_count(all) || "";
@@ -1982,7 +1988,6 @@ function renderComplete(all) {
 }
 
 // Ended series: how the full-set value moved since the promo left restaurants.
-let sinceChart = null;
 function renderSince(all) {
   const s = series();
   const today = new Date().toISOString().slice(0, 10);
@@ -1990,17 +1995,14 @@ function renderSince(all) {
   const dates = [...new Set(all.flatMap(r => r.h.map(p => p.date)))].sort();
   $("since").hidden = dates.length < 2;
   $("trendsEmpty").hidden = !$("since").hidden;
-  if ($("since").hidden) return;
+  if ($("since").hidden) return renderSetCharts();
   // Only count items priced on every day, so the total isn't skewed by items appearing/disappearing.
   const full = all.filter(r => dates.every(d => r.h.some(p => p.date === d && p.median != null)));
   const totals = dates.map(d => full.reduce((sum, r) => sum + r.h.find(p => p.date === d).median, 0));
   const startIdx = Math.max(0, dates.findIndex(d => d > s.end));
   const from = totals[startIdx], to = totals[totals.length - 1], ch = from ? to / from - 1 : null;
   $("sinceLabel").textContent = dates[startIdx] > s.end
-    ? `Full set since it left restaurants (${fmtDate(s.end)})` : "Full set since tracking began";
-  $("sinceChange").className = cls(ch);
-  $("sinceChange").textContent = pct(ch);
-  $("sinceSub").textContent = `${usd(from)} on ${fmtDate(dates[startIdx])} → ${usd(to)} now · ${full.length} items priced every day`;
+    ? `Biggest movers since it left restaurants (${fmtDate(s.end)})` : `Biggest movers since tracking began (${fmtDate(dates[startIdx])})`;
   const moves = full.map(r => {
     const a = r.h.find(p => p.date === dates[startIdx]).median, b = r.last.median;
     return { r, ch: b / a - 1 };
@@ -2009,22 +2011,30 @@ function renderSince(all) {
   $("sinceMovers").innerHTML = best ? `
     <span>Best: <b class="${cls(best.ch)}" style="display:inline;font-size:inherit">${pct(best.ch)}</b> ${esc(best.r.name)}</span>
     <span>Worst: <b class="${cls(worst.ch)}" style="display:inline;font-size:inherit">${pct(worst.ch)}</b> ${esc(worst.r.name)}</span>` : "";
-  if (sinceChart) sinceChart.destroy();
-  const h1 = (THEMES[SID] || DEFAULT_THEME).chart;
-  sinceChart = new Chart($("sinceChart"), {
-    type: "line",
-    data: { labels: dates.slice(startIdx).map(d => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" })), datasets: [{
-      data: totals.slice(startIdx), borderColor: h1, backgroundColor: h1 + "33", fill: true, tension: .3, pointRadius: 0,
-    }]},
-    options: {
-      maintainAspectRatio: false, plugins: { legend: { display: false },
-        tooltip: { callbacks: { label: c => `Full set: ${usd(c.parsed.y)}` } },
-        eventMarkers: { dates: dates.slice(startIdx), items: chartEvents(SID).filter(e => e.label !== "Promo ended") } },
-      scales: { x: { ticks: { maxTicksLimit: 6 } }, y: { ...headroom(.6), ticks: { callback: money } } },
-    },
-  });
+  renderSetCharts();
 }
 
+// Trends: each complete set on the same chart as an item: what whole sets sold for (green), what
+// complete-set listings ask (red line and band), and how many are listed (bars).
+let SET_CHARTS = [];
+function renderSetCharts() {
+  SET_CHARTS.forEach(c => c.destroy());
+  SET_CHARTS = [];
+  const sets = members(SID).map(sid => [sid, DATA.sets[sid]]).filter(([, s]) => s?.fullSet?.history?.length);
+  $("setCharts").innerHTML = sets.map(([sid, s]) => `<section class="set-chart">
+      <h3>Complete ${esc(s.name)} set</h3>
+      <div class="sub">All ${s.fullSet.size} in one listing, shipping included · today ${usd(s.fullSet.history.at(-1).median)} median asking, ${s.fullSet.history.at(-1).count} listed</div>
+      <div class="chart-box"><canvas id="setChart-${sid}"></canvas></div>
+      <p class="note" id="setNote-${sid}"></p></section>`).join("");
+  for (const [sid, s] of sets) {
+    const sold = DATA.sold[`${sid}-SET`] || [], soldTo = s.backfill?.to;
+    const { chart: c, weeks } = priceChart($(`setChart-${sid}`), s.fullSet.history, sold, soldTo, chartEvents(sid));
+    SET_CHARTS.push(c);
+    $(`setNote-${sid}`).textContent = weeks.length
+      ? `Green: what complete sets actually sold for each week${weeks.some(w => w.src === "terapeak") ? ` (eBay's Terapeak up to ${fmtDate(soldTo)}, then sales Toy Ticker detects)` : " (sales Toy Ticker detects)"}. Red line and band: asking prices on complete-set listings today. Bars: how many are listed.`
+      : `Red line and band: asking prices on complete-set listings. Bars: how many are listed. Sold prices for whole sets appear here once Toy Ticker detects sales.`;
+  }
+}
 // Returns over standard periods from a [{date, v}] series (sorted by date).
 // A period shows "–" when the history doesn't reach back that far, like a stock's 5Y on a 2-year-old listing.
 const RET_PERIODS = [["1D", 1], ["1W", 7], ["1M", 30], ["3M", 91], ["YTD", "ytd"], ["All", "all"]];
@@ -2230,6 +2240,84 @@ function spark(cv, r) {
   ctx.stroke();
 }
 
+// The price chart used for an item and for a complete set: weekly sold medians (green steps), the asking
+// median (red) with the middle half of asking prices as a band, and listing counts as bars.
+//   h: daily asking points [{date, median, p25, p75, count}]; sold: weekly sold medians (Terapeak and/or ledger);
+//   soldTo: last day of the Terapeak export, if any; events: chartEvents() markers.
+function priceChart(canvas, h, sold, soldTo, events) {
+  Chart.defaults.font.family = css("--body");
+  Chart.defaults.color = css("--muted");
+  Chart.defaults.borderColor = css("--line");
+  // Weekly sold medians from a Terapeak backfill share the x-axis with the daily asking prices.
+  // A weekly median belongs to no single day, so it's drawn as a flat step across the days it
+  // covers (week start to week end, or to the export's last day for the current week).
+  const plusDays = (d, n) => new Date(Date.parse(d + "T12:00:00Z") + n * 864e5).toISOString().slice(0, 10);
+  const weeks = sold.map(p => {
+    if (p.end) return p;
+    let end = plusDays(p.date, 6);
+    if (soldTo && end > soldTo) end = soldTo;
+    return { ...p, end };
+  });
+  const known = [...h.map(p => p.date), ...weeks.flatMap(w => [w.date, w.end])].sort();
+  const days = [];
+  if (known.length) for (let d = known[0]; d <= known[known.length - 1]; d = plusDays(d, 1)) days.push(d);
+  const byDay = Object.fromEntries(h.map(p => [p.date, p]));
+  const weekOf = (d) => weeks.find(w => w.date <= d && d <= w.end);
+  const line = (key, label, color, dash) => ({
+    label, data: days.map(d => byDay[d]?.[key] ?? null), borderColor: color, backgroundColor: color,
+    borderDash: dash || [], tension: .25, pointRadius: h.length < 15 ? 3 : 0, spanGaps: true,
+  });
+  const soldLine = weeks.length ? [{
+    label: "Sold median (what people paid, weekly)", data: days.map(d => weekOf(d)?.median ?? null),
+    borderColor: css("--up"), backgroundColor: css("--up"), borderWidth: 3, stepped: true, tension: 0,
+    pointRadius: 0, pointHoverRadius: 4, spanGaps: false,
+  }] : [];
+  // Listing counts as "volume" bars along the bottom, like a stock chart: up = more supply that day.
+  const counts = days.map(d => byDay[d]?.count ?? null);
+  const maxCount = Math.max(1, ...counts.filter(v => v != null));
+  const volColor = (i) => i && counts[i] != null && counts[i - 1] != null && counts[i] < counts[i - 1]
+    ? "rgba(198,40,40,.28)" : "rgba(26,127,55,.28)";
+  // Two prices: sold (green steps) and asking (red median line), with a shaded band for the middle half of
+  // asking prices (25th-75th percentile). Points recorded before p75 existed show no band.
+  const alpha = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
+  const askColor = css("--accent");
+  const datasets = [
+    ...soldLine,
+    line("median", "Asking median (what sellers want)", askColor),
+    { ...line("p25", "_p25", "transparent"), pointRadius: 0, pointHoverRadius: 0, borderWidth: 0,
+      data: days.map(d => byDay[d]?.p75 != null ? byDay[d].p25 : null) },
+    { ...line("p75", "Middle half of asking prices", "transparent"), pointRadius: 0, pointHoverRadius: 0, borderWidth: 0,
+      backgroundColor: alpha(askColor, .16), fill: "-1" },
+    { type: "bar", label: "Listings", data: counts, yAxisID: "vol", order: 10,
+      backgroundColor: counts.map((_, i) => volColor(i)), borderWidth: 0, barPercentage: .9, categoryPercentage: 1 },
+  ];
+  const chart = new Chart(canvas, {
+    type: "line",
+    data: { labels: days, datasets },
+    options: {
+      maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+      scales: {
+        y: { ...headroom(.45), ticks: { callback: money } },
+        vol: { position: "right", beginAtZero: true, max: maxCount * 4, display: false, grid: { display: false } },
+      },
+      plugins: {
+        legend: { labels: { filter: l => !l.text.startsWith("_") } },
+        tooltip: { filter: c => c.parsed.y != null && !c.dataset.label.startsWith("_"),
+          callbacks: {
+            label: c => c.dataset === soldLine[0]
+              ? (w => `Sold ${fmtShort(w.date)}–${fmtShort(w.end)}: ${usd(c.parsed.y)} median of ${w.count} sale${w.count === 1 ? "" : "s"} (${w.src === "ebay" ? "tracked by Toy Ticker" : "Terapeak"})`)(weekOf(days[c.dataIndex]))
+              : c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}`
+              : c.dataset.fill ? `Asking, middle half: ${usd(byDay[days[c.dataIndex]]?.p25)}–${usd(c.parsed.y)}`
+              : `${c.dataset.label}: ${usd(c.parsed.y)}`,
+            footer: items => { const p = byDay[days[items[0]?.dataIndex]];
+              return p && p.p75 == null && p.p25 != null ? `Asking 25th percentile: ${usd(p.p25)}` : ""; },
+          } },
+        eventMarkers: { dates: days, items: events } },
+    },
+  });
+  return { chart, weeks };
+}
+
 function showDetail(id) {
   selected = id;
   const r = rowsFor(SID).find(x => x.id === id);
@@ -2249,54 +2337,16 @@ function showDetail(id) {
   renderVariants(r);
   renderAuction(r);
   if (chart) chart.destroy();
-  Chart.defaults.color = css("--muted");
-  Chart.defaults.borderColor = css("--line");
-  // Weekly sold medians from a Terapeak backfill share the x-axis with the daily asking prices.
-  const sold = DATA.sold[id] || [];
-  const days = [...new Set([...r.h.map(p => p.date), ...sold.map(p => p.date)])].sort();
-  const byDay = Object.fromEntries(r.h.map(p => [p.date, p]));
-  const soldByDay = Object.fromEntries(sold.map(p => [p.date, p]));
-  const line = (key, label, color, dash) => ({
-    label, data: days.map(d => byDay[d]?.[key] ?? null), borderColor: color, backgroundColor: color,
-    borderDash: dash || [], tension: .25, pointRadius: r.h.length < 15 ? 3 : 0, spanGaps: true,
-  });
-  const soldLine = sold.length ? [{
-    label: "Sold median (weekly, Terapeak)", data: days.map(d => soldByDay[d]?.median ?? null),
-    borderColor: css("--up"), backgroundColor: css("--up"), tension: .25, pointRadius: 3, pointStyle: "rectRot", spanGaps: true,
-  }] : [];
-  // Listing counts as "volume" bars along the bottom, like a stock chart: up = more supply that day.
-  const counts = days.map(d => byDay[d]?.count ?? null);
-  const maxCount = Math.max(1, ...counts.filter(v => v != null));
-  const volColor = (i) => i && counts[i] != null && counts[i - 1] != null && counts[i] < counts[i - 1]
-    ? "rgba(198,40,40,.28)" : "rgba(26,127,55,.28)";
-  chart = new Chart($("dChart"), {
-    type: "line",
-    data: { labels: days, datasets: [
-      ...soldLine,
-      line("median", "Median incl. shipping", css("--accent")),
-      line("p25", "25th percentile", css("--gold")),
-      line("low", "Lowest", css("--muted"), [4, 4]),
-      { type: "bar", label: "Listings", data: counts, yAxisID: "vol", order: 10,
-        backgroundColor: counts.map((_, i) => volColor(i)), borderWidth: 0, barPercentage: .9, categoryPercentage: 1 },
-    ]},
-    options: {
-      maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
-      scales: {
-        y: { ...headroom(.45), ticks: { callback: money } },
-        vol: { position: "right", beginAtZero: true, max: maxCount * 4, display: false, grid: { display: false } },
-      },
-      plugins: { tooltip: { callbacks: { label: c =>
-        c.dataset.yAxisID === "vol" ? `Listings: ${c.parsed.y}`
-          : c.dataset === soldLine[0] ? `Sold, week of ${fmtDate(days[c.dataIndex])}: ${usd(c.parsed.y)} median of ${soldByDay[days[c.dataIndex]].count}`
-          : `${c.dataset.label}: ${usd(c.parsed.y)}` } },
-        eventMarkers: { dates: days, items: chartEvents(SID) } },
-    },
-  });
+  const sold = DATA.sold[id] || [], soldTo = DATA.sets[r.set].backfill?.to;
+  let weeks;
+  ({ chart, weeks } = priceChart($("dChart"), r.h, sold, soldTo, chartEvents(SID)));
   renderItemReturns(id);
   $("dDeals").innerHTML = (r.deals || []).length
     ? `<h4>Deals today</h4><div class="deal-grid">${r.deals.map(d => dealCard(d, r)).join("")}</div>` : "";
   $("dNote").textContent = (sold.length
-    ? `Green diamonds are past sold prices incl. shipping (weekly medians from eBay's Terapeak, ${fmtDate(sold[0].date)} to ${fmtDate(sold[sold.length - 1].date)}). The other lines are asking prices on live listings, a different measure. `
+    ? `The green steps are what people actually paid, shipping included: weekly median sold prices, each drawn across the days it covers (${fmtDate(weeks[0].date)} to ${fmtDate(weeks[weeks.length - 1].end)}). ` +
+      (weeks.some(w => w.src === "terapeak") ? `Weeks up to ${fmtDate(soldTo)} come from eBay's Terapeak; after that, from sales Toy Ticker detects on the listings it follows. ` : `They come from sales Toy Ticker detects on the listings it follows. `) +
+      `The red line and shaded band are asking prices on live listings (the median, and the middle half of them), a different measure, collected daily; the bars count those listings. `
     : "") + (!r.h.length ? "No asking prices collected yet."
     : r.h.length < 3 && !sold.length ? "Only a few days collected so far. The chart fills in as the daily job runs." : "");
   render();
