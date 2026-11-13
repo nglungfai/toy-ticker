@@ -21,7 +21,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import ebay
@@ -246,4 +246,31 @@ def insights(sid, today, window=30):
                 total[k] += p[k]
             total["days"] += p["days"]
         out["sales"] = {"window": window, **summ(total), "items": {k: summ(p) for k, p in per.items()}}
+    return out
+
+
+def sold_weeks(sid, today, after=None):
+    """Weekly sold medians per item from the ledger's sales (fixed-price sales and won auctions), shipping included.
+
+    Same method as the Terapeak backfill (import_terapeak.weekly), so the site's sold line carries on from it:
+    only sales after `after` (the backfill's last day) count, and the first week starts the day after it.
+    A sale is dated the day we detected it, which can trail the real sale by a day or two."""
+    from import_terapeak import weekly  # noqa: PLC0415  (shared method, imported lazily to avoid a cycle)
+    _, events = load(sid)
+    sales = {}
+    for e in events:
+        if e["kind"] not in ("sold", "auction") or (after and e["date"] <= after):
+            continue
+        sales.setdefault(e["key"], []).append({"date": e["date"], "price": e["total"], "qty": e.get("qty", 1) or 1})
+    # A week never starts before the data behind it: the day after the backfill, or the day tracking began.
+    first_day = ((date.fromisoformat(after) + timedelta(days=1)).isoformat() if after
+                 else min((e["first"] for e in events if e.get("first")), default=None))
+    out = {}
+    for key, s in sales.items():
+        weeks, _ = weekly(s, first_day)
+        for w in weeks:
+            monday = date.fromisoformat(w["date"]) - timedelta(days=date.fromisoformat(w["date"]).weekday())
+            w["end"] = min((monday + timedelta(days=6)).isoformat(), today)
+            w["src"] = "ebay"
+        out[key] = weeks
     return out

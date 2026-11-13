@@ -271,6 +271,7 @@ def stats(prices):
     return {
         "median": round(statistics.median(prices), 2),
         "p25": round(q[0], 2),
+        "p75": round(q[2] if len(prices) >= 4 else prices[-1], 2),
         "low": round(prices[0], 2),
         "count": len(prices),
     }

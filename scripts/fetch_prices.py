@@ -48,12 +48,14 @@ def load_data():
     """Everything in one dict {sets, cards, history, calendar, updated}, from split files or the legacy file."""
     if INDEX_FILE.exists():
         idx = json.loads(INDEX_FILE.read_text())
-        data = {"sets": idx.get("sets", {}), "cards": idx.get("items", {}), "history": {},
+        data = {"sets": idx.get("sets", {}), "cards": idx.get("items", {}), "history": {}, "sold": {},
                 "calendar": idx.get("calendar", []), "updated": idx.get("updated")}
         for sid in data["sets"]:
             f = SERIES_DIR / f"{sid}.json"
             if f.exists():
-                data["history"].update(json.loads(f.read_text()).get("history", {}))
+                saved = json.loads(f.read_text())
+                data["history"].update(saved.get("history", {}))
+                data["sold"].update(saved.get("sold", {}))
         return data
     if LEGACY_FILE.exists():
         return json.loads(LEGACY_FILE.read_text())
@@ -65,7 +67,7 @@ def summary(hist):
     if not hist:
         return None
     last, prev = hist[-1], (hist[-2] if len(hist) > 1 else None)
-    out = {k: last[k] for k in ("date", "median", "p25", "low", "count", "watchers", "watched", "cond", "graded", "total", "supply") if k in last}
+    out = {k: last[k] for k in ("date", "median", "p25", "p75", "low", "count", "watchers", "watched", "cond", "graded", "total", "supply") if k in last}
     if prev and prev.get("median") and (date.fromisoformat(last["date"]) - date.fromisoformat(prev["date"])).days <= 2:
         out["d1"] = round(last["median"] / prev["median"] - 1, 4)  # weekly series have no 1-day change
     month_ago = [p for p in hist[:-1] if (date.fromisoformat(last["date"]) - date.fromisoformat(p["date"])).days <= 30]
@@ -87,7 +89,11 @@ def save_data(data):
         s["days"] = len(days)
         s["lastUpdate"] = max(days) if days else None
         hist = {iid: h for iid, h in data["history"].items() if data["cards"].get(iid, {}).get("set") == sid}
-        (SERIES_DIR / f"{sid}.json").write_text(json.dumps({"series": sid, "history": hist}, ensure_ascii=False) + "\n")
+        # Weekly sold medians from the listing ledger (listings.sold_weeks), for the chart's sold line.
+        sold = {iid: w for iid, w in data.get("sold", {}).items()
+                if w and (data["cards"].get(iid, {}).get("set") == sid or iid == f"{sid}-SET")}
+        (SERIES_DIR / f"{sid}.json").write_text(json.dumps({"series": sid, "history": hist, **({"sold": sold} if sold else {})},
+                                                           ensure_ascii=False) + "\n")
     for f in SERIES_DIR.glob("*.json"):  # series no longer configured
         if f.stem not in data["sets"]:
             f.unlink()
@@ -175,6 +181,8 @@ def main():
             led = listings.update(s["id"], today)
             calls += (led or {}).get("checked", 0)
             data["sets"][s["id"]]["insights"] = listings.insights(s["id"], today)
+            after = (data["sets"][s["id"]].get("backfill") or {}).get("to")
+            data.setdefault("sold", {}).update(listings.sold_weeks(s["id"], today, after))
         except Exception as e:  # noqa: BLE001
             print(f"! {s['id']} listing ledger: {e}", file=sys.stderr)
 
