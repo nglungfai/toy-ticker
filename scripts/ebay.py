@@ -248,19 +248,25 @@ def ship_cost(it):
         if o.get("shippingCostType") == "FREE":
             costs.append(0.0)
         try:
-            costs.append(float(o["shippingCost"]["value"]))
+            cost = float(o["shippingCost"]["value"])
         except (KeyError, TypeError, ValueError):
-            pass
+            continue
+        # A calculated rate eBay couldn't work out can come back as 0: that's unknown, not free.
+        if not (cost == 0 and o.get("shippingCostType") == "CALCULATED"):
+            costs.append(cost)
     return min(costs) if costs else None
 
 
-def delivered(matched):
+def delivered(matched, fallback=5.0):
     """[(listing, item_price, shipping, total)] where total = item + shipping to the US.
-    Listings whose shipping eBay doesn't report get the typical (median) shipping of the others."""
+    Listings whose shipping eBay doesn't report get the typical (median) *paid* shipping of the others.
+    Search results leave out calculated shipping, and calculated shipping is never free: taking the median
+    of all reported costs, free ones included, filled them in as $0 (Torchic asked "$8" for what costs ~$12).
+    With no paid shipping to go on, use `fallback` (about a small parcel; cards pass a letter's cost)."""
     rows = [(it, item_price(it), ship_cost(it)) for it in matched]
     rows = [r for r in rows if r[1] is not None]
-    known = [sh for _, _, sh in rows if sh is not None]
-    typical = statistics.median(known) if known else 0.0
+    paid = [sh for _, _, sh in rows if sh]
+    typical = round(statistics.median(paid), 2) if paid else fallback
     return [(it, p, sh if sh is not None else typical, round(p + (sh if sh is not None else typical), 2), sh is not None)
             for it, p, sh in rows]
 
@@ -408,7 +414,9 @@ def snapshot(series, today):
                 matched.append(it)
             else:
                 rejected.append({"title": it.get("title", ""), "price": (it.get("price") or {}).get("value"), "why": why})
-        rows = delivered(matched)  # prices are item + shipping to the US
+        rows = delivered(matched, 1.0 if series["kind"] == "cards" else 5.0)  # prices are item + shipping to the US
+        if any(not k for *_, k in rows):
+            print(f"  {iid}: {sum(not k for *_, k in rows)} of {len(rows)} without shipping in search, filled at {rows[[k for *_, k in rows].index(False)][2]:.2f}")
         # Market depth: eBay's total for the query, and an estimate of how many of those are this item
         # (the share of fetched results we kept, applied to the total).
         total = TOTALS.get((item["q"], "FIXED_PRICE"))
